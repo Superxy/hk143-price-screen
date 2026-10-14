@@ -83,11 +83,12 @@ def test_end_to_end_offline_with_failure(tmp_path):
     assert report['meta']['fresh_count'] == 1
     assert report['meta']['missing_count'] == 1
     assert report['meta']['status'] == 'partial'
-    assert len(report['top20']) == 1
+    assert len(report['ranked_candidates']) == 1
     assert (tmp_path/'data'/'2025'/'01810_2025.csv').exists()
     assert (tmp_path/'data'/'2026'/'01810_2026.csv').exists()
     assert (tmp_path/'data'/'latest.md').exists()
     assert (tmp_path/'data'/'latest.json').exists()
+    assert (tmp_path/'data'/'全部低位候选.csv').exists()
     first = (tmp_path/'data'/'latest.json').read_text(encoding='utf-8')
     assert '2026-10-13' in first
     # Cached fresh code should not call the data source twice.
@@ -97,3 +98,49 @@ def test_end_to_end_offline_with_failure(tmp_path):
     report2 = m.run(tmp_path, stocks, ASOF, CAL, attempts=1, delay=0, fetch_func=error_fetch, sleep=False)
     assert report2['meta']['fresh_count'] == 1
     assert report2['meta']['missing_count'] == 1
+
+
+def test_three_buckets_and_unlimited_ranking():
+    # All qualifying stocks remain, even when double-low alone exceeds 20.
+    def candidate(index, prev, current, bearish=0):
+        return {
+            'code': str(index).zfill(5),
+            'name': '测试股票' + str(index),
+            'previous_year_low': prev,
+            'current_year_low': current,
+            'previous_year_range': {'position_pct': float(index % 10)},
+            'current_year_range': {'position_pct': float(index % 10)},
+            'bearish_streak': bearish,
+        }
+    records = (
+        [candidate(i, True, True, 4 if i == 21 else 0) for i in range(1, 22)]
+        + [candidate(i, False, True) for i in range(22, 26)]
+        + [candidate(i, True, False) for i in range(26, 29)]
+        + [candidate(29, False, False)]
+    )
+    both, current_only, previous_only, ranked = m.prioritize(records)
+    assert [len(both), len(current_only), len(previous_only), len(ranked)] == [21, 4, 3, 28]
+    assert all(r['bucket'] == '2025与2026双重低位' for r in both)
+    assert all(r['bucket'] == '仅2026年低位' for r in current_only)
+    assert all(r['bucket'] == '仅2025年低位' for r in previous_only)
+    assert [r['rank'] for r in ranked] == list(range(1, 29))
+    assert len({r['code'] for r in ranked}) == 28
+    assert ranked[0]['code'] == '00021'  # first sort on >=3 bearish sessions
+
+
+def test_report_contains_all_three_buckets(tmp_path):
+    stocks = [dict(rank=1, code='01810', name='小米集团')]
+    def fake_fetch(symbol, adjust):
+        assert adjust == ''
+        return example(symbol)
+    report = m.run(tmp_path, stocks, ASOF, CAL, attempts=1, delay=0, fetch_func=fake_fetch, sleep=False)
+    assert len(report['double_low_candidates']) == 1
+    assert len(report['current_year_only_candidates']) == 0
+    assert len(report['previous_year_only_candidates']) == 0
+    assert len(report['ranked_candidates']) == 1
+    markdown = (tmp_path / 'data' / 'latest.md').read_text(encoding='utf-8')
+    assert '双重低位' in markdown
+    assert '仅2026年低位' in markdown
+    assert '仅2025年低位' in markdown
+    assert '| 1 | 01810 小米集团 |' in markdown
+    assert '前20' not in markdown
