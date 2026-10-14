@@ -2,6 +2,27 @@
 
 > **状态：已部署到 Superxy/hk143-price-screen；2026-10-14首次手动下载143/143只成功，三组全量排名更新已通过云端测试。** 这是公开行情研究程序；不下单、不访问交易账户、不存放个人资产数据。
 
+## 每日底部结构观察模块（2026-10-14新增）
+
+每天 GitHub Actions 在 **cloud_run.py 更新143只数据并输出完整三组低位排名之后**，会执行 `python entry_signals.py --output .`。只分析 `data/latest.json` 中的 `ranked_candidates` 全量候选股，**原三组排序不变，不截断为20只**。
+
+只使用截至目标交易日收盘的原始 OHLC 价格，回溯此前20个连续港股交易日确定参考最低价（不包括今日）：
+
+1. **2B假跌破收回**：此前低点形成于5—20个交易日前；当日最低价跌破参考低点不超过3%，收盘重回低点上方。
+2. **二次回踩不破前低**：此前低点形成于5—20个交易日前；当日最低价位于参考低价和其上方2%以内，当日收阳且收盘高于昨日。
+3. **破底未收回**：当日创此前20交易日新低，并且收盘未站回参考低点。
+4. **局部价格转强**：当日收阳且收盘突破前三交易日最高价，最近五个交易日（含当天）的最低价曾触及参考低价上方3%以内。
+
+如过去20个交易日有任何历史K线缺失，则状态为 `insufficient_history`，不会伪造信号。四类标签可以同时出现。
+
+新增输出：
+- [每日形态观察报告](https://github.com/Superxy/hk143-price-screen/blob/main/data/entry_signals.md)
+- [机器可读形态数据](https://github.com/Superxy/hk143-price-screen/blob/main/data/entry_signals.json)
+- [全量观察CSV](https://github.com/Superxy/hk143-price-screen/blob/main/data/%E5%85%A5%E5%9C%BA%E7%BB%93%E6%9E%84%E8%A7%82%E5%AF%9F.csv)
+- 每个目标交易日另有 `data/signals/YYYY-MM-DD.md` 存档。
+
+**重要：观察标签并不等于确认底部、实际买入点、交易指令或经过验证的反弹概率。**
+
 ## 它如何工作
 
 - **行情**：使用你已在 Windows 验证可用的 `akshare.stock_hk_daily(symbol=..., adjust="")`（新浪财经港股不复权日线）。保留开盘、最高、最低、收盘、成交量、成交额原始字段，筛选计算只使用 OHLC。
