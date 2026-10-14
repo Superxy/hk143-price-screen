@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at_hkt": "2026-10-14 12:45:07 +0800",
+    "generated_at_hkt": "2026-10-14 13:54:41 +0800",
     "target_session_hkt": "2026-10-13",
     "price_type": "unadjusted",
     "currency": "HKD",
@@ -11,10 +11,14 @@
     "missing_count": 0,
     "download_failures": 0,
     "status": "complete_date_coverage",
-    "ranking_method": "pure_price_pattern_match_not_validated_probability",
+    "candidate_count": 48,
+    "double_low_count": 15,
+    "current_year_only_count": 15,
+    "previous_year_only_count": 18,
+    "ranking_method": "all_candidates_both_current_previous_not_validated_probability",
     "warning": "Never interpret rankings as calibrated rebound probabilities; provider may lag/suspend/correct prices."
   },
-  "previous_year_candidates": [
+  "double_low_candidates": [
     {
       "code": "01833",
       "name": "平安好医生",
@@ -48,322 +52,8 @@
       "suspicious_price_jump": false,
       "screen_eligible": true,
       "reasons": [],
-      "bucket": "上一年度低位优先"
-    },
-    {
-      "code": "00960",
-      "name": "龙湖集团",
-      "source_rank": 39,
-      "latest_date": "2026-10-13",
-      "close": 5.06,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": true,
-      "previous_year_range": {
-        "low": 8.45,
-        "high": 12.24,
-        "low_date": "2025-12-31",
-        "position_pct": -89.45,
-        "distance_from_low_pct": -40.12
-      },
-      "current_year_range": {
-        "low": 4.955,
-        "high": 10.83,
-        "low_date": "2026-10-13",
-        "position_pct": 1.79,
-        "distance_from_low_pct": 2.12
-      },
-      "previous_year_low": true,
-      "current_year_low": true,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -39.4,
-      "bearish_streak": 2,
-      "falling_close_streak": 2,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [],
-      "bucket": "上一年度低位优先"
-    },
-    {
-      "code": "00371",
-      "name": "北控水务集团",
-      "source_rank": 127,
-      "latest_date": "2026-10-13",
-      "close": 1.48,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": true,
-      "previous_year_range": {
-        "low": 2.07,
-        "high": 2.77,
-        "low_date": "2025-02-13",
-        "position_pct": -84.29,
-        "distance_from_low_pct": -28.5
-      },
-      "current_year_range": {
-        "low": 1.445,
-        "high": 2.98,
-        "low_date": "2026-10-13",
-        "position_pct": 2.28,
-        "distance_from_low_pct": 2.42
-      },
-      "previous_year_low": true,
-      "current_year_low": true,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -48.07,
-      "bearish_streak": 0,
-      "falling_close_streak": 0,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [],
-      "bucket": "上一年度低位优先"
-    },
-    {
-      "code": "06862",
-      "name": "海底捞",
-      "source_rank": 25,
-      "latest_date": "2026-10-13",
-      "close": 9.3,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": true,
-      "previous_year_range": {
-        "low": 12.43,
-        "high": 18.88,
-        "low_date": "2025-10-13",
-        "position_pct": -48.53,
-        "distance_from_low_pct": -25.18
-      },
-      "current_year_range": {
-        "low": 8.925,
-        "high": 17.86,
-        "low_date": "2026-10-13",
-        "position_pct": 4.2,
-        "distance_from_low_pct": 4.2
-      },
-      "previous_year_low": true,
-      "current_year_low": true,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -38.49,
-      "bearish_streak": 2,
-      "falling_close_streak": 1,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [],
-      "bucket": "上一年度低位优先"
-    },
-    {
-      "code": "02333",
-      "name": "长城汽车",
-      "source_rank": 84,
-      "latest_date": "2026-10-13",
-      "close": 7.075,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": true,
-      "previous_year_range": {
-        "low": 10.66,
-        "high": 19.86,
-        "low_date": "2025-04-09",
-        "position_pct": -38.97,
-        "distance_from_low_pct": -33.63
-      },
-      "current_year_range": {
-        "low": 6.89,
-        "high": 15.27,
-        "low_date": "2026-10-08",
-        "position_pct": 2.21,
-        "distance_from_low_pct": 2.69
-      },
-      "previous_year_low": true,
-      "current_year_low": true,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -47.28,
-      "bearish_streak": 2,
-      "falling_close_streak": 2,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [],
-      "bucket": "上一年度低位优先"
-    },
-    {
-      "code": "06186",
-      "name": "中国飞鹤",
-      "source_rank": 107,
-      "latest_date": "2026-10-13",
-      "close": 2.515,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": true,
-      "previous_year_range": {
-        "low": 3.8,
-        "high": 7.38,
-        "low_date": "2025-10-13",
-        "position_pct": -35.89,
-        "distance_from_low_pct": -33.82
-      },
-      "current_year_range": {
-        "low": 2.43,
-        "high": 4.1,
-        "low_date": "2026-10-13",
-        "position_pct": 5.09,
-        "distance_from_low_pct": 3.5
-      },
-      "previous_year_low": true,
-      "current_year_low": true,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -25.59,
-      "bearish_streak": 0,
-      "falling_close_streak": 2,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [],
-      "bucket": "上一年度低位优先"
-    },
-    {
-      "code": "01099",
-      "name": "国药控股",
-      "source_rank": 86,
-      "latest_date": "2026-10-13",
-      "close": 15.13,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": true,
-      "previous_year_range": {
-        "low": 16.74,
-        "high": 21.66,
-        "low_date": "2025-04-07",
-        "position_pct": -32.72,
-        "distance_from_low_pct": -9.62
-      },
-      "current_year_range": {
-        "low": 14.55,
-        "high": 22.34,
-        "low_date": "2026-10-05",
-        "position_pct": 7.45,
-        "distance_from_low_pct": 3.99
-      },
-      "previous_year_low": true,
-      "current_year_low": true,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -25.39,
-      "bearish_streak": 0,
-      "falling_close_streak": 0,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [],
-      "bucket": "上一年度低位优先"
-    },
-    {
-      "code": "02498",
-      "name": "速腾聚创",
-      "source_rank": 142,
-      "latest_date": "2026-10-13",
-      "close": 15.71,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": true,
-      "previous_year_range": {
-        "low": 23.6,
-        "high": 53.5,
-        "low_date": "2025-01-09",
-        "position_pct": -26.39,
-        "distance_from_low_pct": -33.43
-      },
-      "current_year_range": {
-        "low": 14.95,
-        "high": 41.46,
-        "low_date": "2026-10-13",
-        "position_pct": 2.87,
-        "distance_from_low_pct": 5.08
-      },
-      "previous_year_low": true,
-      "current_year_low": true,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -56.22,
-      "bearish_streak": 2,
-      "falling_close_streak": 2,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [],
-      "bucket": "上一年度低位优先"
-    },
-    {
-      "code": "00762",
-      "name": "中国联通",
-      "source_rank": 58,
-      "latest_date": "2026-10-13",
-      "close": 5.67,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": true,
-      "previous_year_range": {
-        "low": 6.89,
-        "high": 11.56,
-        "low_date": "2025-01-21",
-        "position_pct": -26.12,
-        "distance_from_low_pct": -17.71
-      },
-      "current_year_range": {
-        "low": 5.38,
-        "high": 8.28,
-        "low_date": "2026-10-02",
-        "position_pct": 10.0,
-        "distance_from_low_pct": 5.39
-      },
-      "previous_year_low": true,
-      "current_year_low": true,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -23.38,
-      "bearish_streak": 0,
-      "falling_close_streak": 0,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [],
-      "bucket": "上一年度低位优先"
-    },
-    {
-      "code": "00968",
-      "name": "信义光能",
-      "source_rank": 105,
-      "latest_date": "2026-10-13",
-      "close": 1.885,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": true,
-      "previous_year_range": {
-        "low": 2.22,
-        "high": 4.1,
-        "low_date": "2025-04-09",
-        "position_pct": -17.82,
-        "distance_from_low_pct": -15.09
-      },
-      "current_year_range": {
-        "low": 1.84,
-        "high": 3.73,
-        "low_date": "2026-10-02",
-        "position_pct": 2.38,
-        "distance_from_low_pct": 2.45
-      },
-      "previous_year_low": true,
-      "current_year_low": true,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -40.72,
-      "bearish_streak": 2,
-      "falling_close_streak": 2,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [],
-      "bucket": "上一年度低位优先"
+      "rank": 1,
+      "bucket": "2025与2026双重低位"
     },
     {
       "code": "00753",
@@ -398,7 +88,8 @@
       "suspicious_price_jump": false,
       "screen_eligible": true,
       "reasons": [],
-      "bucket": "上一年度低位优先"
+      "rank": 2,
+      "bucket": "2025与2026双重低位"
     },
     {
       "code": "01024",
@@ -433,7 +124,44 @@
       "suspicious_price_jump": false,
       "screen_eligible": true,
       "reasons": [],
-      "bucket": "上一年度低位优先"
+      "rank": 3,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "00960",
+      "name": "龙湖集团",
+      "source_rank": 39,
+      "latest_date": "2026-10-13",
+      "close": 5.06,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 8.45,
+        "high": 12.24,
+        "low_date": "2025-12-31",
+        "position_pct": -89.45,
+        "distance_from_low_pct": -40.12
+      },
+      "current_year_range": {
+        "low": 4.955,
+        "high": 10.83,
+        "low_date": "2026-10-13",
+        "position_pct": 1.79,
+        "distance_from_low_pct": 2.12
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -39.4,
+      "bearish_streak": 2,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 4,
+      "bucket": "2025与2026双重低位"
     },
     {
       "code": "00241",
@@ -468,7 +196,152 @@
       "suspicious_price_jump": false,
       "screen_eligible": true,
       "reasons": [],
-      "bucket": "上一年度低位优先"
+      "rank": 5,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "02333",
+      "name": "长城汽车",
+      "source_rank": 84,
+      "latest_date": "2026-10-13",
+      "close": 7.075,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 10.66,
+        "high": 19.86,
+        "low_date": "2025-04-09",
+        "position_pct": -38.97,
+        "distance_from_low_pct": -33.63
+      },
+      "current_year_range": {
+        "low": 6.89,
+        "high": 15.27,
+        "low_date": "2026-10-08",
+        "position_pct": 2.21,
+        "distance_from_low_pct": 2.69
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -47.28,
+      "bearish_streak": 2,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 6,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "00371",
+      "name": "北控水务集团",
+      "source_rank": 127,
+      "latest_date": "2026-10-13",
+      "close": 1.48,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 2.07,
+        "high": 2.77,
+        "low_date": "2025-02-13",
+        "position_pct": -84.29,
+        "distance_from_low_pct": -28.5
+      },
+      "current_year_range": {
+        "low": 1.445,
+        "high": 2.98,
+        "low_date": "2026-10-13",
+        "position_pct": 2.28,
+        "distance_from_low_pct": 2.42
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -48.07,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 7,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "00968",
+      "name": "信义光能",
+      "source_rank": 105,
+      "latest_date": "2026-10-13",
+      "close": 1.885,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 2.22,
+        "high": 4.1,
+        "low_date": "2025-04-09",
+        "position_pct": -17.82,
+        "distance_from_low_pct": -15.09
+      },
+      "current_year_range": {
+        "low": 1.84,
+        "high": 3.73,
+        "low_date": "2026-10-02",
+        "position_pct": 2.38,
+        "distance_from_low_pct": 2.45
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -40.72,
+      "bearish_streak": 2,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 8,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "02498",
+      "name": "速腾聚创",
+      "source_rank": 142,
+      "latest_date": "2026-10-13",
+      "close": 15.71,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 23.6,
+        "high": 53.5,
+        "low_date": "2025-01-09",
+        "position_pct": -26.39,
+        "distance_from_low_pct": -33.43
+      },
+      "current_year_range": {
+        "low": 14.95,
+        "high": 41.46,
+        "low_date": "2026-10-13",
+        "position_pct": 2.87,
+        "distance_from_low_pct": 5.08
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -56.22,
+      "bearish_streak": 2,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 9,
+      "bucket": "2025与2026双重低位"
     },
     {
       "code": "00020",
@@ -503,7 +376,152 @@
       "suspicious_price_jump": false,
       "screen_eligible": true,
       "reasons": [],
-      "bucket": "上一年度低位优先"
+      "rank": 10,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "06862",
+      "name": "海底捞",
+      "source_rank": 25,
+      "latest_date": "2026-10-13",
+      "close": 9.3,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 12.43,
+        "high": 18.88,
+        "low_date": "2025-10-13",
+        "position_pct": -48.53,
+        "distance_from_low_pct": -25.18
+      },
+      "current_year_range": {
+        "low": 8.925,
+        "high": 17.86,
+        "low_date": "2026-10-13",
+        "position_pct": 4.2,
+        "distance_from_low_pct": 4.2
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -38.49,
+      "bearish_streak": 2,
+      "falling_close_streak": 1,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 11,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "06186",
+      "name": "中国飞鹤",
+      "source_rank": 107,
+      "latest_date": "2026-10-13",
+      "close": 2.515,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 3.8,
+        "high": 7.38,
+        "low_date": "2025-10-13",
+        "position_pct": -35.89,
+        "distance_from_low_pct": -33.82
+      },
+      "current_year_range": {
+        "low": 2.43,
+        "high": 4.1,
+        "low_date": "2026-10-13",
+        "position_pct": 5.09,
+        "distance_from_low_pct": 3.5
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -25.59,
+      "bearish_streak": 0,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 12,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "01099",
+      "name": "国药控股",
+      "source_rank": 86,
+      "latest_date": "2026-10-13",
+      "close": 15.13,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 16.74,
+        "high": 21.66,
+        "low_date": "2025-04-07",
+        "position_pct": -32.72,
+        "distance_from_low_pct": -9.62
+      },
+      "current_year_range": {
+        "low": 14.55,
+        "high": 22.34,
+        "low_date": "2026-10-05",
+        "position_pct": 7.45,
+        "distance_from_low_pct": 3.99
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -25.39,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 13,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "00762",
+      "name": "中国联通",
+      "source_rank": 58,
+      "latest_date": "2026-10-13",
+      "close": 5.67,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 6.89,
+        "high": 11.56,
+        "low_date": "2025-01-21",
+        "position_pct": -26.12,
+        "distance_from_low_pct": -17.71
+      },
+      "current_year_range": {
+        "low": 5.38,
+        "high": 8.28,
+        "low_date": "2026-10-02",
+        "position_pct": 10.0,
+        "distance_from_low_pct": 5.39
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -23.38,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 14,
+      "bucket": "2025与2026双重低位"
     },
     {
       "code": "03896",
@@ -538,659 +556,11 @@
       "suspicious_price_jump": false,
       "screen_eligible": true,
       "reasons": [],
-      "bucket": "上一年度低位优先"
-    },
-    {
-      "code": "01999",
-      "name": "敏华控股",
-      "source_rank": 117,
-      "latest_date": "2026-10-13",
-      "close": 2.38,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": false,
-      "previous_year_range": {
-        "low": 3.33,
-        "high": 5.29,
-        "low_date": "2025-04-09",
-        "position_pct": -48.47,
-        "distance_from_low_pct": -28.53
-      },
-      "current_year_range": {
-        "low": 2.33,
-        "high": 5.2,
-        "low_date": "2026-10-13",
-        "position_pct": 1.74,
-        "distance_from_low_pct": 2.15
-      },
-      "previous_year_low": true,
-      "current_year_low": false,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -44.26,
-      "bearish_streak": 4,
-      "falling_close_streak": 2,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [
-        "本年度起点覆盖不足，不能认证年内低位"
-      ],
-      "bucket": "上一年度低位优先"
-    },
-    {
-      "code": "00384",
-      "name": "中国燃气",
-      "source_rank": 95,
-      "latest_date": "2026-10-13",
-      "close": 5.09,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": false,
-      "previous_year_range": {
-        "low": 6.19,
-        "high": 8.85,
-        "low_date": "2025-01-13",
-        "position_pct": -41.35,
-        "distance_from_low_pct": -17.77
-      },
-      "current_year_range": {
-        "low": 4.96,
-        "high": 8.37,
-        "low_date": "2026-10-13",
-        "position_pct": 3.81,
-        "distance_from_low_pct": 2.62
-      },
-      "previous_year_low": true,
-      "current_year_low": false,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -32.49,
-      "bearish_streak": 4,
-      "falling_close_streak": 4,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [
-        "本年度起点覆盖不足，不能认证年内低位"
-      ],
-      "bucket": "上一年度低位优先"
-    },
-    {
-      "code": "00780",
-      "name": "同程旅行",
-      "source_rank": 64,
-      "latest_date": "2026-10-13",
-      "close": 9.8,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": false,
-      "previous_year_range": {
-        "low": 17.02,
-        "high": 24.9,
-        "low_date": "2025-03-04",
-        "position_pct": -91.62,
-        "distance_from_low_pct": -42.42
-      },
-      "current_year_range": {
-        "low": 9.645,
-        "high": 25.42,
-        "low_date": "2026-10-07",
-        "position_pct": 0.98,
-        "distance_from_low_pct": 1.61
-      },
-      "previous_year_low": true,
-      "current_year_low": false,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -48.26,
-      "bearish_streak": 2,
-      "falling_close_streak": 2,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [
-        "本年度起点覆盖不足，不能认证年内低位"
-      ],
-      "bucket": "上一年度低位优先"
-    },
-    {
-      "code": "00152",
-      "name": "深圳国际",
-      "source_rank": 97,
-      "latest_date": "2026-10-13",
-      "close": 5.295,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": false,
-      "previous_year_range": {
-        "low": 6.72,
-        "high": 8.93,
-        "low_date": "2025-02-03",
-        "position_pct": -64.48,
-        "distance_from_low_pct": -21.21
-      },
-      "current_year_range": {
-        "low": 4.92,
-        "high": 9.3,
-        "low_date": "2026-08-10",
-        "position_pct": 8.56,
-        "distance_from_low_pct": 7.62
-      },
-      "previous_year_low": true,
-      "current_year_low": false,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -29.31,
-      "bearish_streak": 0,
-      "falling_close_streak": 0,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [
-        "本年度起点覆盖不足，不能认证年内低位"
-      ],
-      "bucket": "上一年度低位优先"
-    },
-    {
-      "code": "03933",
-      "name": "联邦制药",
-      "source_rank": 111,
-      "latest_date": "2026-10-13",
-      "close": 7.425,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": false,
-      "previous_year_range": {
-        "low": 10.62,
-        "high": 17.98,
-        "low_date": "2025-01-15",
-        "position_pct": -43.41,
-        "distance_from_low_pct": -30.08
-      },
-      "current_year_range": {
-        "low": 7.22,
-        "high": 13.72,
-        "low_date": "2026-10-13",
-        "position_pct": 3.15,
-        "distance_from_low_pct": 2.84
-      },
-      "previous_year_low": true,
-      "current_year_low": false,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -25.75,
-      "bearish_streak": 0,
-      "falling_close_streak": 0,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [
-        "本年度起点覆盖不足，不能认证年内低位"
-      ],
-      "bucket": "上一年度低位优先"
-    },
-    {
-      "code": "00168",
-      "name": "青岛啤酒",
-      "source_rank": 112,
-      "latest_date": "2026-10-13",
-      "close": 40.78,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": false,
-      "previous_year_range": {
-        "low": 46.7,
-        "high": 60.7,
-        "low_date": "2025-02-03",
-        "position_pct": -42.29,
-        "distance_from_low_pct": -12.68
-      },
-      "current_year_range": {
-        "low": 38.86,
-        "high": 54.25,
-        "low_date": "2026-09-21",
-        "position_pct": 12.48,
-        "distance_from_low_pct": 4.94
-      },
-      "previous_year_low": true,
-      "current_year_low": false,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -20.04,
-      "bearish_streak": 2,
-      "falling_close_streak": 0,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [
-        "本年度起点覆盖不足，不能认证年内低位"
-      ]
-    },
-    {
-      "code": "01876",
-      "name": "百威亚太",
-      "source_rank": 74,
-      "latest_date": "2026-10-13",
-      "close": 5.835,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": false,
-      "previous_year_range": {
-        "low": 6.84,
-        "high": 9.83,
-        "low_date": "2025-01-13",
-        "position_pct": -33.61,
-        "distance_from_low_pct": -14.69
-      },
-      "current_year_range": {
-        "low": 5.555,
-        "high": 8.3,
-        "low_date": "2026-10-05",
-        "position_pct": 10.2,
-        "distance_from_low_pct": 5.04
-      },
-      "previous_year_low": true,
-      "current_year_low": false,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -23.22,
-      "bearish_streak": 0,
-      "falling_close_streak": 0,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [
-        "本年度起点覆盖不足，不能认证年内低位"
-      ]
-    },
-    {
-      "code": "09896",
-      "name": "名创优品",
-      "source_rank": 123,
-      "latest_date": "2026-10-13",
-      "close": 19.37,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": false,
-      "previous_year_range": {
-        "low": 27.05,
-        "high": 55.0,
-        "low_date": "2025-04-09",
-        "position_pct": -27.48,
-        "distance_from_low_pct": -28.39
-      },
-      "current_year_range": {
-        "low": 16.84,
-        "high": 40.3,
-        "low_date": "2026-09-21",
-        "position_pct": 10.78,
-        "distance_from_low_pct": 15.02
-      },
-      "previous_year_low": true,
-      "current_year_low": false,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -36.86,
-      "bearish_streak": 0,
-      "falling_close_streak": 0,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [
-        "本年度起点覆盖不足，不能认证年内低位"
-      ]
-    },
-    {
-      "code": "01810",
-      "name": "小米集团",
-      "source_rank": 1,
-      "latest_date": "2026-10-13",
-      "close": 25.04,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": true,
-      "previous_year_range": {
-        "low": 32.2,
-        "high": 61.45,
-        "low_date": "2025-01-08",
-        "position_pct": -24.48,
-        "distance_from_low_pct": -22.24
-      },
-      "current_year_range": {
-        "low": 21.3,
-        "high": 40.6,
-        "low_date": "2026-06-26",
-        "position_pct": 19.38,
-        "distance_from_low_pct": 17.56
-      },
-      "previous_year_low": true,
-      "current_year_low": false,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -22.72,
-      "bearish_streak": 0,
-      "falling_close_streak": 0,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": []
-    },
-    {
-      "code": "02238",
-      "name": "广汽集团",
-      "source_rank": 143,
-      "latest_date": "2026-10-13",
-      "close": 2.19,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": false,
-      "previous_year_range": {
-        "low": 2.58,
-        "high": 4.38,
-        "low_date": "2025-04-09",
-        "position_pct": -21.67,
-        "distance_from_low_pct": -15.12
-      },
-      "current_year_range": {
-        "low": 2.02,
-        "high": 4.21,
-        "low_date": "2026-06-29",
-        "position_pct": 7.76,
-        "distance_from_low_pct": 8.42
-      },
-      "previous_year_low": true,
-      "current_year_low": false,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -31.13,
-      "bearish_streak": 0,
-      "falling_close_streak": 2,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [
-        "本年度起点覆盖不足，不能认证年内低位"
-      ]
-    },
-    {
-      "code": "02331",
-      "name": "李宁",
-      "source_rank": 40,
-      "latest_date": "2026-10-13",
-      "close": 12.53,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": false,
-      "previous_year_range": {
-        "low": 13.5,
-        "high": 20.9,
-        "low_date": "2025-04-09",
-        "position_pct": -13.11,
-        "distance_from_low_pct": -7.19
-      },
-      "current_year_range": {
-        "low": 12.04,
-        "high": 23.42,
-        "low_date": "2026-09-25",
-        "position_pct": 4.31,
-        "distance_from_low_pct": 4.07
-      },
-      "previous_year_low": true,
-      "current_year_low": false,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -41.5,
-      "bearish_streak": 2,
-      "falling_close_streak": 2,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [
-        "本年度起点覆盖不足，不能认证年内低位"
-      ]
-    },
-    {
-      "code": "09868",
-      "name": "小鹏汽车",
-      "source_rank": 100,
-      "latest_date": "2026-10-13",
-      "close": 37.84,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": false,
-      "previous_year_range": {
-        "low": 44.0,
-        "high": 110.8,
-        "low_date": "2025-01-03",
-        "position_pct": -9.22,
-        "distance_from_low_pct": -14.0
-      },
-      "current_year_range": {
-        "low": 35.64,
-        "high": 84.6,
-        "low_date": "2026-10-05",
-        "position_pct": 4.49,
-        "distance_from_low_pct": 6.17
-      },
-      "previous_year_low": true,
-      "current_year_low": false,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -44.6,
-      "bearish_streak": 0,
-      "falling_close_streak": 1,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [
-        "本年度起点覆盖不足，不能认证年内低位"
-      ]
-    },
-    {
-      "code": "03323",
-      "name": "中国建材",
-      "source_rank": 66,
-      "latest_date": "2026-10-13",
-      "close": 3.055,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": false,
-      "previous_year_range": {
-        "low": 3.3,
-        "high": 6.16,
-        "low_date": "2025-01-13",
-        "position_pct": -8.57,
-        "distance_from_low_pct": -7.42
-      },
-      "current_year_range": {
-        "low": 2.945,
-        "high": 7.26,
-        "low_date": "2026-10-13",
-        "position_pct": 2.55,
-        "distance_from_low_pct": 3.74
-      },
-      "previous_year_low": true,
-      "current_year_low": false,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -40.45,
-      "bearish_streak": 0,
-      "falling_close_streak": 0,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [
-        "本年度起点覆盖不足，不能认证年内低位"
-      ]
-    },
-    {
-      "code": "01928",
-      "name": "金沙中国",
-      "source_rank": 22,
-      "latest_date": "2026-10-13",
-      "close": 11.42,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": false,
-      "previous_year_range": {
-        "low": 12.2,
-        "high": 22.5,
-        "low_date": "2025-04-09",
-        "position_pct": -7.57,
-        "distance_from_low_pct": -6.39
-      },
-      "current_year_range": {
-        "low": 10.89,
-        "high": 20.14,
-        "low_date": "2026-10-13",
-        "position_pct": 5.73,
-        "distance_from_low_pct": 4.87
-      },
-      "previous_year_low": true,
-      "current_year_low": false,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -33.99,
-      "bearish_streak": 0,
-      "falling_close_streak": 0,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [
-        "本年度起点覆盖不足，不能认证年内低位"
-      ]
-    },
-    {
-      "code": "01478",
-      "name": "丘钛科技",
-      "source_rank": 133,
-      "latest_date": "2026-10-13",
-      "close": 4.84,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": false,
-      "previous_year_range": {
-        "low": 5.21,
-        "high": 16.99,
-        "low_date": "2025-04-09",
-        "position_pct": -3.14,
-        "distance_from_low_pct": -7.1
-      },
-      "current_year_range": {
-        "low": 4.66,
-        "high": 10.5,
-        "low_date": "2026-10-13",
-        "position_pct": 3.08,
-        "distance_from_low_pct": 3.86
-      },
-      "previous_year_low": true,
-      "current_year_low": false,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -43.26,
-      "bearish_streak": 0,
-      "falling_close_streak": 0,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [
-        "本年度起点覆盖不足，不能认证年内低位"
-      ]
-    },
-    {
-      "code": "00772",
-      "name": "阅文集团",
-      "source_rank": 82,
-      "latest_date": "2026-10-13",
-      "close": 21.7,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": true,
-      "previous_year_range": {
-        "low": 22.4,
-        "high": 46.88,
-        "low_date": "2025-04-09",
-        "position_pct": -2.86,
-        "distance_from_low_pct": -3.12
-      },
-      "current_year_range": {
-        "low": 18.0,
-        "high": 44.68,
-        "low_date": "2026-07-27",
-        "position_pct": 13.87,
-        "distance_from_low_pct": 20.56
-      },
-      "previous_year_low": true,
-      "current_year_low": false,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -20.4,
-      "bearish_streak": 0,
-      "falling_close_streak": 0,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": []
-    },
-    {
-      "code": "06060",
-      "name": "众安在线",
-      "source_rank": 80,
-      "latest_date": "2026-10-13",
-      "close": 9.465,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": false,
-      "previous_year_range": {
-        "low": 9.54,
-        "high": 22.75,
-        "low_date": "2025-04-09",
-        "position_pct": -0.57,
-        "distance_from_low_pct": -0.79
-      },
-      "current_year_range": {
-        "low": 8.83,
-        "high": 18.0,
-        "low_date": "2026-06-30",
-        "position_pct": 6.92,
-        "distance_from_low_pct": 7.19
-      },
-      "previous_year_low": true,
-      "current_year_low": false,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -26.23,
-      "bearish_streak": 2,
-      "falling_close_streak": 1,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [
-        "本年度起点覆盖不足，不能认证年内低位"
-      ]
-    },
-    {
-      "code": "09866",
-      "name": "蔚来",
-      "source_rank": 104,
-      "latest_date": "2026-10-13",
-      "close": 26.74,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": false,
-      "previous_year_range": {
-        "low": 23.7,
-        "high": 61.75,
-        "low_date": "2025-04-09",
-        "position_pct": 7.99,
-        "distance_from_low_pct": 12.83
-      },
-      "current_year_range": {
-        "low": 26.04,
-        "high": 54.95,
-        "low_date": "2026-10-13",
-        "position_pct": 2.42,
-        "distance_from_low_pct": 2.69
-      },
-      "previous_year_low": true,
-      "current_year_low": false,
-      "below_previous_year_low": false,
-      "return_120_sessions_pct": -49.21,
-      "bearish_streak": 2,
-      "falling_close_streak": 1,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [
-        "本年度起点覆盖不足，不能认证年内低位"
-      ]
+      "rank": 15,
+      "bucket": "2025与2026双重低位"
     }
   ],
-  "current_year_candidates": [
+  "current_year_only_candidates": [
     {
       "code": "01072",
       "name": "东方电气",
@@ -1223,7 +593,9 @@
       "falling_close_streak": 8,
       "suspicious_price_jump": false,
       "screen_eligible": true,
-      "reasons": []
+      "reasons": [],
+      "rank": 16,
+      "bucket": "仅2026年低位"
     },
     {
       "code": "02228",
@@ -1257,7 +629,9 @@
       "falling_close_streak": 5,
       "suspicious_price_jump": false,
       "screen_eligible": true,
-      "reasons": []
+      "reasons": [],
+      "rank": 17,
+      "bucket": "仅2026年低位"
     },
     {
       "code": "00914",
@@ -1293,7 +667,9 @@
       "screen_eligible": true,
       "reasons": [
         "上一年度首末交易日覆盖不足，不能认证全年低位"
-      ]
+      ],
+      "rank": 18,
+      "bucket": "仅2026年低位"
     },
     {
       "code": "01530",
@@ -1327,7 +703,9 @@
       "falling_close_streak": 0,
       "suspicious_price_jump": false,
       "screen_eligible": true,
-      "reasons": []
+      "reasons": [],
+      "rank": 19,
+      "bucket": "仅2026年低位"
     },
     {
       "code": "03931",
@@ -1363,7 +741,9 @@
       "screen_eligible": true,
       "reasons": [
         "上一年度首末交易日覆盖不足，不能认证全年低位"
-      ]
+      ],
+      "rank": 20,
+      "bucket": "仅2026年低位"
     },
     {
       "code": "01133",
@@ -1399,7 +779,9 @@
       "screen_eligible": true,
       "reasons": [
         "上一年度首末交易日覆盖不足，不能认证全年低位"
-      ]
+      ],
+      "rank": 21,
+      "bucket": "仅2026年低位"
     },
     {
       "code": "06088",
@@ -1433,7 +815,9 @@
       "falling_close_streak": 5,
       "suspicious_price_jump": false,
       "screen_eligible": true,
-      "reasons": []
+      "reasons": [],
+      "rank": 22,
+      "bucket": "仅2026年低位"
     },
     {
       "code": "00151",
@@ -1469,7 +853,9 @@
       "screen_eligible": true,
       "reasons": [
         "上一年度首末交易日覆盖不足，不能认证全年低位"
-      ]
+      ],
+      "rank": 23,
+      "bucket": "仅2026年低位"
     },
     {
       "code": "02600",
@@ -1503,7 +889,9 @@
       "falling_close_streak": 0,
       "suspicious_price_jump": false,
       "screen_eligible": true,
-      "reasons": []
+      "reasons": [],
+      "rank": 24,
+      "bucket": "仅2026年低位"
     },
     {
       "code": "01378",
@@ -1537,7 +925,9 @@
       "falling_close_streak": 0,
       "suspicious_price_jump": false,
       "screen_eligible": true,
-      "reasons": []
+      "reasons": [],
+      "rank": 25,
+      "bucket": "仅2026年低位"
     },
     {
       "code": "02400",
@@ -1571,7 +961,9 @@
       "falling_close_streak": 0,
       "suspicious_price_jump": false,
       "screen_eligible": true,
-      "reasons": []
+      "reasons": [],
+      "rank": 26,
+      "bucket": "仅2026年低位"
     },
     {
       "code": "09698",
@@ -1605,7 +997,9 @@
       "falling_close_streak": 2,
       "suspicious_price_jump": false,
       "screen_eligible": true,
-      "reasons": []
+      "reasons": [],
+      "rank": 27,
+      "bucket": "仅2026年低位"
     },
     {
       "code": "01209",
@@ -1639,7 +1033,9 @@
       "falling_close_streak": 1,
       "suspicious_price_jump": false,
       "screen_eligible": true,
-      "reasons": []
+      "reasons": [],
+      "rank": 28,
+      "bucket": "仅2026年低位"
     },
     {
       "code": "00291",
@@ -1675,7 +1071,9 @@
       "screen_eligible": true,
       "reasons": [
         "上一年度首末交易日覆盖不足，不能认证全年低位"
-      ]
+      ],
+      "rank": 29,
+      "bucket": "仅2026年低位"
     },
     {
       "code": "01898",
@@ -1709,535 +1107,12 @@
       "falling_close_streak": 1,
       "suspicious_price_jump": false,
       "screen_eligible": true,
-      "reasons": []
+      "reasons": [],
+      "rank": 30,
+      "bucket": "仅2026年低位"
     }
   ],
-  "top20": [
-    {
-      "code": "01833",
-      "name": "平安好医生",
-      "source_rank": 115,
-      "latest_date": "2026-10-13",
-      "close": 5.74,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": true,
-      "previous_year_range": {
-        "low": 6.06,
-        "high": 24.4,
-        "low_date": "2025-04-07",
-        "position_pct": -1.74,
-        "distance_from_low_pct": -5.28
-      },
-      "current_year_range": {
-        "low": 5.57,
-        "high": 18.79,
-        "low_date": "2026-10-13",
-        "position_pct": 1.29,
-        "distance_from_low_pct": 3.05
-      },
-      "previous_year_low": true,
-      "current_year_low": true,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -53.14,
-      "bearish_streak": 4,
-      "falling_close_streak": 2,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [],
-      "bucket": "上一年度低位优先"
-    },
-    {
-      "code": "00960",
-      "name": "龙湖集团",
-      "source_rank": 39,
-      "latest_date": "2026-10-13",
-      "close": 5.06,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": true,
-      "previous_year_range": {
-        "low": 8.45,
-        "high": 12.24,
-        "low_date": "2025-12-31",
-        "position_pct": -89.45,
-        "distance_from_low_pct": -40.12
-      },
-      "current_year_range": {
-        "low": 4.955,
-        "high": 10.83,
-        "low_date": "2026-10-13",
-        "position_pct": 1.79,
-        "distance_from_low_pct": 2.12
-      },
-      "previous_year_low": true,
-      "current_year_low": true,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -39.4,
-      "bearish_streak": 2,
-      "falling_close_streak": 2,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [],
-      "bucket": "上一年度低位优先"
-    },
-    {
-      "code": "00371",
-      "name": "北控水务集团",
-      "source_rank": 127,
-      "latest_date": "2026-10-13",
-      "close": 1.48,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": true,
-      "previous_year_range": {
-        "low": 2.07,
-        "high": 2.77,
-        "low_date": "2025-02-13",
-        "position_pct": -84.29,
-        "distance_from_low_pct": -28.5
-      },
-      "current_year_range": {
-        "low": 1.445,
-        "high": 2.98,
-        "low_date": "2026-10-13",
-        "position_pct": 2.28,
-        "distance_from_low_pct": 2.42
-      },
-      "previous_year_low": true,
-      "current_year_low": true,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -48.07,
-      "bearish_streak": 0,
-      "falling_close_streak": 0,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [],
-      "bucket": "上一年度低位优先"
-    },
-    {
-      "code": "06862",
-      "name": "海底捞",
-      "source_rank": 25,
-      "latest_date": "2026-10-13",
-      "close": 9.3,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": true,
-      "previous_year_range": {
-        "low": 12.43,
-        "high": 18.88,
-        "low_date": "2025-10-13",
-        "position_pct": -48.53,
-        "distance_from_low_pct": -25.18
-      },
-      "current_year_range": {
-        "low": 8.925,
-        "high": 17.86,
-        "low_date": "2026-10-13",
-        "position_pct": 4.2,
-        "distance_from_low_pct": 4.2
-      },
-      "previous_year_low": true,
-      "current_year_low": true,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -38.49,
-      "bearish_streak": 2,
-      "falling_close_streak": 1,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [],
-      "bucket": "上一年度低位优先"
-    },
-    {
-      "code": "02333",
-      "name": "长城汽车",
-      "source_rank": 84,
-      "latest_date": "2026-10-13",
-      "close": 7.075,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": true,
-      "previous_year_range": {
-        "low": 10.66,
-        "high": 19.86,
-        "low_date": "2025-04-09",
-        "position_pct": -38.97,
-        "distance_from_low_pct": -33.63
-      },
-      "current_year_range": {
-        "low": 6.89,
-        "high": 15.27,
-        "low_date": "2026-10-08",
-        "position_pct": 2.21,
-        "distance_from_low_pct": 2.69
-      },
-      "previous_year_low": true,
-      "current_year_low": true,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -47.28,
-      "bearish_streak": 2,
-      "falling_close_streak": 2,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [],
-      "bucket": "上一年度低位优先"
-    },
-    {
-      "code": "06186",
-      "name": "中国飞鹤",
-      "source_rank": 107,
-      "latest_date": "2026-10-13",
-      "close": 2.515,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": true,
-      "previous_year_range": {
-        "low": 3.8,
-        "high": 7.38,
-        "low_date": "2025-10-13",
-        "position_pct": -35.89,
-        "distance_from_low_pct": -33.82
-      },
-      "current_year_range": {
-        "low": 2.43,
-        "high": 4.1,
-        "low_date": "2026-10-13",
-        "position_pct": 5.09,
-        "distance_from_low_pct": 3.5
-      },
-      "previous_year_low": true,
-      "current_year_low": true,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -25.59,
-      "bearish_streak": 0,
-      "falling_close_streak": 2,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [],
-      "bucket": "上一年度低位优先"
-    },
-    {
-      "code": "01099",
-      "name": "国药控股",
-      "source_rank": 86,
-      "latest_date": "2026-10-13",
-      "close": 15.13,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": true,
-      "previous_year_range": {
-        "low": 16.74,
-        "high": 21.66,
-        "low_date": "2025-04-07",
-        "position_pct": -32.72,
-        "distance_from_low_pct": -9.62
-      },
-      "current_year_range": {
-        "low": 14.55,
-        "high": 22.34,
-        "low_date": "2026-10-05",
-        "position_pct": 7.45,
-        "distance_from_low_pct": 3.99
-      },
-      "previous_year_low": true,
-      "current_year_low": true,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -25.39,
-      "bearish_streak": 0,
-      "falling_close_streak": 0,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [],
-      "bucket": "上一年度低位优先"
-    },
-    {
-      "code": "02498",
-      "name": "速腾聚创",
-      "source_rank": 142,
-      "latest_date": "2026-10-13",
-      "close": 15.71,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": true,
-      "previous_year_range": {
-        "low": 23.6,
-        "high": 53.5,
-        "low_date": "2025-01-09",
-        "position_pct": -26.39,
-        "distance_from_low_pct": -33.43
-      },
-      "current_year_range": {
-        "low": 14.95,
-        "high": 41.46,
-        "low_date": "2026-10-13",
-        "position_pct": 2.87,
-        "distance_from_low_pct": 5.08
-      },
-      "previous_year_low": true,
-      "current_year_low": true,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -56.22,
-      "bearish_streak": 2,
-      "falling_close_streak": 2,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [],
-      "bucket": "上一年度低位优先"
-    },
-    {
-      "code": "00762",
-      "name": "中国联通",
-      "source_rank": 58,
-      "latest_date": "2026-10-13",
-      "close": 5.67,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": true,
-      "previous_year_range": {
-        "low": 6.89,
-        "high": 11.56,
-        "low_date": "2025-01-21",
-        "position_pct": -26.12,
-        "distance_from_low_pct": -17.71
-      },
-      "current_year_range": {
-        "low": 5.38,
-        "high": 8.28,
-        "low_date": "2026-10-02",
-        "position_pct": 10.0,
-        "distance_from_low_pct": 5.39
-      },
-      "previous_year_low": true,
-      "current_year_low": true,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -23.38,
-      "bearish_streak": 0,
-      "falling_close_streak": 0,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [],
-      "bucket": "上一年度低位优先"
-    },
-    {
-      "code": "00968",
-      "name": "信义光能",
-      "source_rank": 105,
-      "latest_date": "2026-10-13",
-      "close": 1.885,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": true,
-      "previous_year_range": {
-        "low": 2.22,
-        "high": 4.1,
-        "low_date": "2025-04-09",
-        "position_pct": -17.82,
-        "distance_from_low_pct": -15.09
-      },
-      "current_year_range": {
-        "low": 1.84,
-        "high": 3.73,
-        "low_date": "2026-10-02",
-        "position_pct": 2.38,
-        "distance_from_low_pct": 2.45
-      },
-      "previous_year_low": true,
-      "current_year_low": true,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -40.72,
-      "bearish_streak": 2,
-      "falling_close_streak": 2,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [],
-      "bucket": "上一年度低位优先"
-    },
-    {
-      "code": "00753",
-      "name": "中国国航",
-      "source_rank": 141,
-      "latest_date": "2026-10-13",
-      "close": 3.56,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": true,
-      "previous_year_range": {
-        "low": 4.09,
-        "high": 7.14,
-        "low_date": "2025-04-09",
-        "position_pct": -17.38,
-        "distance_from_low_pct": -12.96
-      },
-      "current_year_range": {
-        "low": 3.5,
-        "high": 7.77,
-        "low_date": "2026-10-13",
-        "position_pct": 1.41,
-        "distance_from_low_pct": 1.71
-      },
-      "previous_year_low": true,
-      "current_year_low": true,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -32.7,
-      "bearish_streak": 2,
-      "falling_close_streak": 2,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [],
-      "bucket": "上一年度低位优先"
-    },
-    {
-      "code": "01024",
-      "name": "快手",
-      "source_rank": 11,
-      "latest_date": "2026-10-13",
-      "close": 29.16,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": true,
-      "previous_year_range": {
-        "low": 38.15,
-        "high": 92.6,
-        "low_date": "2025-01-13",
-        "position_pct": -16.51,
-        "distance_from_low_pct": -23.56
-      },
-      "current_year_range": {
-        "low": 28.24,
-        "high": 85.2,
-        "low_date": "2026-10-13",
-        "position_pct": 1.62,
-        "distance_from_low_pct": 3.26
-      },
-      "previous_year_low": true,
-      "current_year_low": true,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -37.13,
-      "bearish_streak": 0,
-      "falling_close_streak": 2,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [],
-      "bucket": "上一年度低位优先"
-    },
-    {
-      "code": "00241",
-      "name": "阿里健康",
-      "source_rank": 37,
-      "latest_date": "2026-10-13",
-      "close": 2.85,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": true,
-      "previous_year_range": {
-        "low": 3.09,
-        "high": 7.5,
-        "low_date": "2025-01-13",
-        "position_pct": -5.44,
-        "distance_from_low_pct": -7.77
-      },
-      "current_year_range": {
-        "low": 2.745,
-        "high": 7.91,
-        "low_date": "2026-09-25",
-        "position_pct": 2.03,
-        "distance_from_low_pct": 3.83
-      },
-      "previous_year_low": true,
-      "current_year_low": true,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -39.62,
-      "bearish_streak": 0,
-      "falling_close_streak": 0,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [],
-      "bucket": "上一年度低位优先"
-    },
-    {
-      "code": "00020",
-      "name": "商汤",
-      "source_rank": 109,
-      "latest_date": "2026-10-13",
-      "close": 1.19,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": true,
-      "previous_year_range": {
-        "low": 1.24,
-        "high": 2.94,
-        "low_date": "2025-04-09",
-        "position_pct": -2.94,
-        "distance_from_low_pct": -4.03
-      },
-      "current_year_range": {
-        "low": 1.13,
-        "high": 2.8,
-        "low_date": "2026-10-08",
-        "position_pct": 3.59,
-        "distance_from_low_pct": 5.31
-      },
-      "previous_year_low": true,
-      "current_year_low": true,
-      "below_previous_year_low": true,
-      "return_120_sessions_pct": -40.8,
-      "bearish_streak": 0,
-      "falling_close_streak": 0,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [],
-      "bucket": "上一年度低位优先"
-    },
-    {
-      "code": "03896",
-      "name": "金山云",
-      "source_rank": 135,
-      "latest_date": "2026-10-13",
-      "close": 4.84,
-      "data_status": "fresh",
-      "prior_year": 2025,
-      "prior_year_full": true,
-      "current_year_full_from_start": true,
-      "previous_year_range": {
-        "low": 4.48,
-        "high": 11.4,
-        "low_date": "2025-01-22",
-        "position_pct": 5.2,
-        "distance_from_low_pct": 8.04
-      },
-      "current_year_range": {
-        "low": 4.22,
-        "high": 9.75,
-        "low_date": "2026-06-26",
-        "position_pct": 11.21,
-        "distance_from_low_pct": 14.69
-      },
-      "previous_year_low": true,
-      "current_year_low": true,
-      "below_previous_year_low": false,
-      "return_120_sessions_pct": -48.62,
-      "bearish_streak": 0,
-      "falling_close_streak": 1,
-      "suspicious_price_jump": false,
-      "screen_eligible": true,
-      "reasons": [],
-      "bucket": "上一年度低位优先"
-    },
+  "previous_year_only_candidates": [
     {
       "code": "01999",
       "name": "敏华控股",
@@ -2273,7 +1148,8 @@
       "reasons": [
         "本年度起点覆盖不足，不能认证年内低位"
       ],
-      "bucket": "上一年度低位优先"
+      "rank": 31,
+      "bucket": "仅2025年低位"
     },
     {
       "code": "00384",
@@ -2310,7 +1186,8 @@
       "reasons": [
         "本年度起点覆盖不足，不能认证年内低位"
       ],
-      "bucket": "上一年度低位优先"
+      "rank": 32,
+      "bucket": "仅2025年低位"
     },
     {
       "code": "00780",
@@ -2347,7 +1224,8 @@
       "reasons": [
         "本年度起点覆盖不足，不能认证年内低位"
       ],
-      "bucket": "上一年度低位优先"
+      "rank": 33,
+      "bucket": "仅2025年低位"
     },
     {
       "code": "00152",
@@ -2384,7 +1262,8 @@
       "reasons": [
         "本年度起点覆盖不足，不能认证年内低位"
       ],
-      "bucket": "上一年度低位优先"
+      "rank": 34,
+      "bucket": "仅2025年低位"
     },
     {
       "code": "03933",
@@ -2421,7 +1300,4584 @@
       "reasons": [
         "本年度起点覆盖不足，不能认证年内低位"
       ],
-      "bucket": "上一年度低位优先"
+      "rank": 35,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "00168",
+      "name": "青岛啤酒",
+      "source_rank": 112,
+      "latest_date": "2026-10-13",
+      "close": 40.78,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 46.7,
+        "high": 60.7,
+        "low_date": "2025-02-03",
+        "position_pct": -42.29,
+        "distance_from_low_pct": -12.68
+      },
+      "current_year_range": {
+        "low": 38.86,
+        "high": 54.25,
+        "low_date": "2026-09-21",
+        "position_pct": 12.48,
+        "distance_from_low_pct": 4.94
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -20.04,
+      "bearish_streak": 2,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 36,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "01876",
+      "name": "百威亚太",
+      "source_rank": 74,
+      "latest_date": "2026-10-13",
+      "close": 5.835,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 6.84,
+        "high": 9.83,
+        "low_date": "2025-01-13",
+        "position_pct": -33.61,
+        "distance_from_low_pct": -14.69
+      },
+      "current_year_range": {
+        "low": 5.555,
+        "high": 8.3,
+        "low_date": "2026-10-05",
+        "position_pct": 10.2,
+        "distance_from_low_pct": 5.04
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -23.22,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 37,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "09896",
+      "name": "名创优品",
+      "source_rank": 123,
+      "latest_date": "2026-10-13",
+      "close": 19.37,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 27.05,
+        "high": 55.0,
+        "low_date": "2025-04-09",
+        "position_pct": -27.48,
+        "distance_from_low_pct": -28.39
+      },
+      "current_year_range": {
+        "low": 16.84,
+        "high": 40.3,
+        "low_date": "2026-09-21",
+        "position_pct": 10.78,
+        "distance_from_low_pct": 15.02
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -36.86,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 38,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "01810",
+      "name": "小米集团",
+      "source_rank": 1,
+      "latest_date": "2026-10-13",
+      "close": 25.04,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 32.2,
+        "high": 61.45,
+        "low_date": "2025-01-08",
+        "position_pct": -24.48,
+        "distance_from_low_pct": -22.24
+      },
+      "current_year_range": {
+        "low": 21.3,
+        "high": 40.6,
+        "low_date": "2026-06-26",
+        "position_pct": 19.38,
+        "distance_from_low_pct": 17.56
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -22.72,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 39,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "02238",
+      "name": "广汽集团",
+      "source_rank": 143,
+      "latest_date": "2026-10-13",
+      "close": 2.19,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 2.58,
+        "high": 4.38,
+        "low_date": "2025-04-09",
+        "position_pct": -21.67,
+        "distance_from_low_pct": -15.12
+      },
+      "current_year_range": {
+        "low": 2.02,
+        "high": 4.21,
+        "low_date": "2026-06-29",
+        "position_pct": 7.76,
+        "distance_from_low_pct": 8.42
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -31.13,
+      "bearish_streak": 0,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 40,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "02331",
+      "name": "李宁",
+      "source_rank": 40,
+      "latest_date": "2026-10-13",
+      "close": 12.53,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 13.5,
+        "high": 20.9,
+        "low_date": "2025-04-09",
+        "position_pct": -13.11,
+        "distance_from_low_pct": -7.19
+      },
+      "current_year_range": {
+        "low": 12.04,
+        "high": 23.42,
+        "low_date": "2026-09-25",
+        "position_pct": 4.31,
+        "distance_from_low_pct": 4.07
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -41.5,
+      "bearish_streak": 2,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 41,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "09868",
+      "name": "小鹏汽车",
+      "source_rank": 100,
+      "latest_date": "2026-10-13",
+      "close": 37.84,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 44.0,
+        "high": 110.8,
+        "low_date": "2025-01-03",
+        "position_pct": -9.22,
+        "distance_from_low_pct": -14.0
+      },
+      "current_year_range": {
+        "low": 35.64,
+        "high": 84.6,
+        "low_date": "2026-10-05",
+        "position_pct": 4.49,
+        "distance_from_low_pct": 6.17
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -44.6,
+      "bearish_streak": 0,
+      "falling_close_streak": 1,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 42,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "03323",
+      "name": "中国建材",
+      "source_rank": 66,
+      "latest_date": "2026-10-13",
+      "close": 3.055,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 3.3,
+        "high": 6.16,
+        "low_date": "2025-01-13",
+        "position_pct": -8.57,
+        "distance_from_low_pct": -7.42
+      },
+      "current_year_range": {
+        "low": 2.945,
+        "high": 7.26,
+        "low_date": "2026-10-13",
+        "position_pct": 2.55,
+        "distance_from_low_pct": 3.74
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -40.45,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 43,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "01928",
+      "name": "金沙中国",
+      "source_rank": 22,
+      "latest_date": "2026-10-13",
+      "close": 11.42,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 12.2,
+        "high": 22.5,
+        "low_date": "2025-04-09",
+        "position_pct": -7.57,
+        "distance_from_low_pct": -6.39
+      },
+      "current_year_range": {
+        "low": 10.89,
+        "high": 20.14,
+        "low_date": "2026-10-13",
+        "position_pct": 5.73,
+        "distance_from_low_pct": 4.87
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -33.99,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 44,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "01478",
+      "name": "丘钛科技",
+      "source_rank": 133,
+      "latest_date": "2026-10-13",
+      "close": 4.84,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 5.21,
+        "high": 16.99,
+        "low_date": "2025-04-09",
+        "position_pct": -3.14,
+        "distance_from_low_pct": -7.1
+      },
+      "current_year_range": {
+        "low": 4.66,
+        "high": 10.5,
+        "low_date": "2026-10-13",
+        "position_pct": 3.08,
+        "distance_from_low_pct": 3.86
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -43.26,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 45,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "00772",
+      "name": "阅文集团",
+      "source_rank": 82,
+      "latest_date": "2026-10-13",
+      "close": 21.7,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 22.4,
+        "high": 46.88,
+        "low_date": "2025-04-09",
+        "position_pct": -2.86,
+        "distance_from_low_pct": -3.12
+      },
+      "current_year_range": {
+        "low": 18.0,
+        "high": 44.68,
+        "low_date": "2026-07-27",
+        "position_pct": 13.87,
+        "distance_from_low_pct": 20.56
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -20.4,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 46,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "06060",
+      "name": "众安在线",
+      "source_rank": 80,
+      "latest_date": "2026-10-13",
+      "close": 9.465,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 9.54,
+        "high": 22.75,
+        "low_date": "2025-04-09",
+        "position_pct": -0.57,
+        "distance_from_low_pct": -0.79
+      },
+      "current_year_range": {
+        "low": 8.83,
+        "high": 18.0,
+        "low_date": "2026-06-30",
+        "position_pct": 6.92,
+        "distance_from_low_pct": 7.19
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -26.23,
+      "bearish_streak": 2,
+      "falling_close_streak": 1,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 47,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "09866",
+      "name": "蔚来",
+      "source_rank": 104,
+      "latest_date": "2026-10-13",
+      "close": 26.74,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 23.7,
+        "high": 61.75,
+        "low_date": "2025-04-09",
+        "position_pct": 7.99,
+        "distance_from_low_pct": 12.83
+      },
+      "current_year_range": {
+        "low": 26.04,
+        "high": 54.95,
+        "low_date": "2026-10-13",
+        "position_pct": 2.42,
+        "distance_from_low_pct": 2.69
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": false,
+      "return_120_sessions_pct": -49.21,
+      "bearish_streak": 2,
+      "falling_close_streak": 1,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 48,
+      "bucket": "仅2025年低位"
+    }
+  ],
+  "ranked_candidates": [
+    {
+      "code": "01833",
+      "name": "平安好医生",
+      "source_rank": 115,
+      "latest_date": "2026-10-13",
+      "close": 5.74,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 6.06,
+        "high": 24.4,
+        "low_date": "2025-04-07",
+        "position_pct": -1.74,
+        "distance_from_low_pct": -5.28
+      },
+      "current_year_range": {
+        "low": 5.57,
+        "high": 18.79,
+        "low_date": "2026-10-13",
+        "position_pct": 1.29,
+        "distance_from_low_pct": 3.05
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -53.14,
+      "bearish_streak": 4,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 1,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "00753",
+      "name": "中国国航",
+      "source_rank": 141,
+      "latest_date": "2026-10-13",
+      "close": 3.56,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 4.09,
+        "high": 7.14,
+        "low_date": "2025-04-09",
+        "position_pct": -17.38,
+        "distance_from_low_pct": -12.96
+      },
+      "current_year_range": {
+        "low": 3.5,
+        "high": 7.77,
+        "low_date": "2026-10-13",
+        "position_pct": 1.41,
+        "distance_from_low_pct": 1.71
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -32.7,
+      "bearish_streak": 2,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 2,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "01024",
+      "name": "快手",
+      "source_rank": 11,
+      "latest_date": "2026-10-13",
+      "close": 29.16,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 38.15,
+        "high": 92.6,
+        "low_date": "2025-01-13",
+        "position_pct": -16.51,
+        "distance_from_low_pct": -23.56
+      },
+      "current_year_range": {
+        "low": 28.24,
+        "high": 85.2,
+        "low_date": "2026-10-13",
+        "position_pct": 1.62,
+        "distance_from_low_pct": 3.26
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -37.13,
+      "bearish_streak": 0,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 3,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "00960",
+      "name": "龙湖集团",
+      "source_rank": 39,
+      "latest_date": "2026-10-13",
+      "close": 5.06,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 8.45,
+        "high": 12.24,
+        "low_date": "2025-12-31",
+        "position_pct": -89.45,
+        "distance_from_low_pct": -40.12
+      },
+      "current_year_range": {
+        "low": 4.955,
+        "high": 10.83,
+        "low_date": "2026-10-13",
+        "position_pct": 1.79,
+        "distance_from_low_pct": 2.12
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -39.4,
+      "bearish_streak": 2,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 4,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "00241",
+      "name": "阿里健康",
+      "source_rank": 37,
+      "latest_date": "2026-10-13",
+      "close": 2.85,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 3.09,
+        "high": 7.5,
+        "low_date": "2025-01-13",
+        "position_pct": -5.44,
+        "distance_from_low_pct": -7.77
+      },
+      "current_year_range": {
+        "low": 2.745,
+        "high": 7.91,
+        "low_date": "2026-09-25",
+        "position_pct": 2.03,
+        "distance_from_low_pct": 3.83
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -39.62,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 5,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "02333",
+      "name": "长城汽车",
+      "source_rank": 84,
+      "latest_date": "2026-10-13",
+      "close": 7.075,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 10.66,
+        "high": 19.86,
+        "low_date": "2025-04-09",
+        "position_pct": -38.97,
+        "distance_from_low_pct": -33.63
+      },
+      "current_year_range": {
+        "low": 6.89,
+        "high": 15.27,
+        "low_date": "2026-10-08",
+        "position_pct": 2.21,
+        "distance_from_low_pct": 2.69
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -47.28,
+      "bearish_streak": 2,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 6,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "00371",
+      "name": "北控水务集团",
+      "source_rank": 127,
+      "latest_date": "2026-10-13",
+      "close": 1.48,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 2.07,
+        "high": 2.77,
+        "low_date": "2025-02-13",
+        "position_pct": -84.29,
+        "distance_from_low_pct": -28.5
+      },
+      "current_year_range": {
+        "low": 1.445,
+        "high": 2.98,
+        "low_date": "2026-10-13",
+        "position_pct": 2.28,
+        "distance_from_low_pct": 2.42
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -48.07,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 7,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "00968",
+      "name": "信义光能",
+      "source_rank": 105,
+      "latest_date": "2026-10-13",
+      "close": 1.885,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 2.22,
+        "high": 4.1,
+        "low_date": "2025-04-09",
+        "position_pct": -17.82,
+        "distance_from_low_pct": -15.09
+      },
+      "current_year_range": {
+        "low": 1.84,
+        "high": 3.73,
+        "low_date": "2026-10-02",
+        "position_pct": 2.38,
+        "distance_from_low_pct": 2.45
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -40.72,
+      "bearish_streak": 2,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 8,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "02498",
+      "name": "速腾聚创",
+      "source_rank": 142,
+      "latest_date": "2026-10-13",
+      "close": 15.71,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 23.6,
+        "high": 53.5,
+        "low_date": "2025-01-09",
+        "position_pct": -26.39,
+        "distance_from_low_pct": -33.43
+      },
+      "current_year_range": {
+        "low": 14.95,
+        "high": 41.46,
+        "low_date": "2026-10-13",
+        "position_pct": 2.87,
+        "distance_from_low_pct": 5.08
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -56.22,
+      "bearish_streak": 2,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 9,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "00020",
+      "name": "商汤",
+      "source_rank": 109,
+      "latest_date": "2026-10-13",
+      "close": 1.19,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 1.24,
+        "high": 2.94,
+        "low_date": "2025-04-09",
+        "position_pct": -2.94,
+        "distance_from_low_pct": -4.03
+      },
+      "current_year_range": {
+        "low": 1.13,
+        "high": 2.8,
+        "low_date": "2026-10-08",
+        "position_pct": 3.59,
+        "distance_from_low_pct": 5.31
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -40.8,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 10,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "06862",
+      "name": "海底捞",
+      "source_rank": 25,
+      "latest_date": "2026-10-13",
+      "close": 9.3,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 12.43,
+        "high": 18.88,
+        "low_date": "2025-10-13",
+        "position_pct": -48.53,
+        "distance_from_low_pct": -25.18
+      },
+      "current_year_range": {
+        "low": 8.925,
+        "high": 17.86,
+        "low_date": "2026-10-13",
+        "position_pct": 4.2,
+        "distance_from_low_pct": 4.2
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -38.49,
+      "bearish_streak": 2,
+      "falling_close_streak": 1,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 11,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "06186",
+      "name": "中国飞鹤",
+      "source_rank": 107,
+      "latest_date": "2026-10-13",
+      "close": 2.515,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 3.8,
+        "high": 7.38,
+        "low_date": "2025-10-13",
+        "position_pct": -35.89,
+        "distance_from_low_pct": -33.82
+      },
+      "current_year_range": {
+        "low": 2.43,
+        "high": 4.1,
+        "low_date": "2026-10-13",
+        "position_pct": 5.09,
+        "distance_from_low_pct": 3.5
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -25.59,
+      "bearish_streak": 0,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 12,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "01099",
+      "name": "国药控股",
+      "source_rank": 86,
+      "latest_date": "2026-10-13",
+      "close": 15.13,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 16.74,
+        "high": 21.66,
+        "low_date": "2025-04-07",
+        "position_pct": -32.72,
+        "distance_from_low_pct": -9.62
+      },
+      "current_year_range": {
+        "low": 14.55,
+        "high": 22.34,
+        "low_date": "2026-10-05",
+        "position_pct": 7.45,
+        "distance_from_low_pct": 3.99
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -25.39,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 13,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "00762",
+      "name": "中国联通",
+      "source_rank": 58,
+      "latest_date": "2026-10-13",
+      "close": 5.67,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 6.89,
+        "high": 11.56,
+        "low_date": "2025-01-21",
+        "position_pct": -26.12,
+        "distance_from_low_pct": -17.71
+      },
+      "current_year_range": {
+        "low": 5.38,
+        "high": 8.28,
+        "low_date": "2026-10-02",
+        "position_pct": 10.0,
+        "distance_from_low_pct": 5.39
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -23.38,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 14,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "03896",
+      "name": "金山云",
+      "source_rank": 135,
+      "latest_date": "2026-10-13",
+      "close": 4.84,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 4.48,
+        "high": 11.4,
+        "low_date": "2025-01-22",
+        "position_pct": 5.2,
+        "distance_from_low_pct": 8.04
+      },
+      "current_year_range": {
+        "low": 4.22,
+        "high": 9.75,
+        "low_date": "2026-06-26",
+        "position_pct": 11.21,
+        "distance_from_low_pct": 14.69
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": false,
+      "return_120_sessions_pct": -48.62,
+      "bearish_streak": 0,
+      "falling_close_streak": 1,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 15,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "01072",
+      "name": "东方电气",
+      "source_rank": 119,
+      "latest_date": "2026-10-13",
+      "close": 17.06,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 8.47,
+        "high": 119.9,
+        "low_date": "2025-02-03",
+        "position_pct": 7.71,
+        "distance_from_low_pct": 101.42
+      },
+      "current_year_range": {
+        "low": 16.8,
+        "high": 46.7,
+        "low_date": "2026-10-13",
+        "position_pct": 0.87,
+        "distance_from_low_pct": 1.55
+      },
+      "previous_year_low": false,
+      "current_year_low": true,
+      "below_previous_year_low": false,
+      "return_120_sessions_pct": -58.93,
+      "bearish_streak": 8,
+      "falling_close_streak": 8,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 16,
+      "bucket": "仅2026年低位"
+    },
+    {
+      "code": "02228",
+      "name": "晶泰控股",
+      "source_rank": 26,
+      "latest_date": "2026-10-13",
+      "close": 6.47,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 3.85,
+        "high": 15.12,
+        "low_date": "2025-04-09",
+        "position_pct": 23.25,
+        "distance_from_low_pct": 68.05
+      },
+      "current_year_range": {
+        "low": 6.3,
+        "high": 14.28,
+        "low_date": "2026-06-22",
+        "position_pct": 2.13,
+        "distance_from_low_pct": 2.7
+      },
+      "previous_year_low": false,
+      "current_year_low": true,
+      "below_previous_year_low": false,
+      "return_120_sessions_pct": -35.11,
+      "bearish_streak": 5,
+      "falling_close_streak": 5,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 17,
+      "bucket": "仅2026年低位"
+    },
+    {
+      "code": "00914",
+      "name": "海螺水泥",
+      "source_rank": 67,
+      "latest_date": "2026-10-13",
+      "close": 15.95,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": false,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 18.7,
+        "high": 25.9,
+        "low_date": "2025-06-20",
+        "position_pct": -38.19,
+        "distance_from_low_pct": -14.71
+      },
+      "current_year_range": {
+        "low": 15.45,
+        "high": 27.14,
+        "low_date": "2026-09-25",
+        "position_pct": 4.28,
+        "distance_from_low_pct": 3.24
+      },
+      "previous_year_low": false,
+      "current_year_low": true,
+      "below_previous_year_low": false,
+      "return_120_sessions_pct": -22.72,
+      "bearish_streak": 3,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "上一年度首末交易日覆盖不足，不能认证全年低位"
+      ],
+      "rank": 18,
+      "bucket": "仅2026年低位"
+    },
+    {
+      "code": "01530",
+      "name": "三生制药",
+      "source_rank": 55,
+      "latest_date": "2026-10-13",
+      "close": 14.76,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 5.6,
+        "high": 36.8,
+        "low_date": "2025-01-13",
+        "position_pct": 29.36,
+        "distance_from_low_pct": 163.57
+      },
+      "current_year_range": {
+        "low": 14.44,
+        "high": 29.3,
+        "low_date": "2026-10-13",
+        "position_pct": 2.15,
+        "distance_from_low_pct": 2.22
+      },
+      "previous_year_low": false,
+      "current_year_low": true,
+      "below_previous_year_low": false,
+      "return_120_sessions_pct": -40.53,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 19,
+      "bucket": "仅2026年低位"
+    },
+    {
+      "code": "03931",
+      "name": "中创新航",
+      "source_rank": 114,
+      "latest_date": "2026-10-13",
+      "close": 15.45,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": false,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 11.9,
+        "high": 37.2,
+        "low_date": "2025-01-08",
+        "position_pct": 14.03,
+        "distance_from_low_pct": 29.83
+      },
+      "current_year_range": {
+        "low": 14.9,
+        "high": 39.3,
+        "low_date": "2026-10-13",
+        "position_pct": 2.25,
+        "distance_from_low_pct": 3.69
+      },
+      "previous_year_low": false,
+      "current_year_low": true,
+      "below_previous_year_low": false,
+      "return_120_sessions_pct": -57.32,
+      "bearish_streak": 2,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "上一年度首末交易日覆盖不足，不能认证全年低位"
+      ],
+      "rank": 20,
+      "bucket": "仅2026年低位"
+    },
+    {
+      "code": "01133",
+      "name": "哈尔滨电气",
+      "source_rank": 118,
+      "latest_date": "2026-10-13",
+      "close": 13.09,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": false,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 2.36,
+        "high": 17.45,
+        "low_date": "2025-01-13",
+        "position_pct": 71.11,
+        "distance_from_low_pct": 454.66
+      },
+      "current_year_range": {
+        "low": 12.57,
+        "high": 28.88,
+        "low_date": "2026-07-20",
+        "position_pct": 3.19,
+        "distance_from_low_pct": 4.14
+      },
+      "previous_year_low": false,
+      "current_year_low": true,
+      "below_previous_year_low": false,
+      "return_120_sessions_pct": -38.25,
+      "bearish_streak": 0,
+      "falling_close_streak": 1,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "上一年度首末交易日覆盖不足，不能认证全年低位"
+      ],
+      "rank": 21,
+      "bucket": "仅2026年低位"
+    },
+    {
+      "code": "06088",
+      "name": "鸿腾精密",
+      "source_rank": 69,
+      "latest_date": "2026-10-13",
+      "close": 4.38,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 1.58,
+        "high": 7.89,
+        "low_date": "2025-04-09",
+        "position_pct": 44.37,
+        "distance_from_low_pct": 177.22
+      },
+      "current_year_range": {
+        "low": 4.16,
+        "high": 10.89,
+        "low_date": "2026-10-13",
+        "position_pct": 3.27,
+        "distance_from_low_pct": 5.29
+      },
+      "previous_year_low": false,
+      "current_year_low": true,
+      "below_previous_year_low": false,
+      "return_120_sessions_pct": -44.56,
+      "bearish_streak": 0,
+      "falling_close_streak": 5,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 22,
+      "bucket": "仅2026年低位"
+    },
+    {
+      "code": "00151",
+      "name": "中国旺旺",
+      "source_rank": 101,
+      "latest_date": "2026-10-13",
+      "close": 2.815,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": false,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 4.39,
+        "high": 5.97,
+        "low_date": "2025-01-13",
+        "position_pct": -99.68,
+        "distance_from_low_pct": -35.88
+      },
+      "current_year_range": {
+        "low": 2.675,
+        "high": 5.14,
+        "low_date": "2026-10-05",
+        "position_pct": 5.68,
+        "distance_from_low_pct": 5.23
+      },
+      "previous_year_low": false,
+      "current_year_low": true,
+      "below_previous_year_low": false,
+      "return_120_sessions_pct": -39.2,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "上一年度首末交易日覆盖不足，不能认证全年低位"
+      ],
+      "rank": 23,
+      "bucket": "仅2026年低位"
+    },
+    {
+      "code": "02600",
+      "name": "中国铝业",
+      "source_rank": 21,
+      "latest_date": "2026-10-13",
+      "close": 7.77,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 3.66,
+        "high": 12.55,
+        "low_date": "2025-04-09",
+        "position_pct": 46.23,
+        "distance_from_low_pct": 112.3
+      },
+      "current_year_range": {
+        "low": 7.29,
+        "high": 15.55,
+        "low_date": "2026-07-02",
+        "position_pct": 5.81,
+        "distance_from_low_pct": 6.58
+      },
+      "previous_year_low": false,
+      "current_year_low": true,
+      "below_previous_year_low": false,
+      "return_120_sessions_pct": -35.2,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 24,
+      "bucket": "仅2026年低位"
+    },
+    {
+      "code": "01378",
+      "name": "中国宏桥",
+      "source_rank": 17,
+      "latest_date": "2026-10-13",
+      "close": 21.36,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 10.56,
+        "high": 35.1,
+        "low_date": "2025-01-08",
+        "position_pct": 44.01,
+        "distance_from_low_pct": 102.27
+      },
+      "current_year_range": {
+        "low": 19.57,
+        "high": 41.36,
+        "low_date": "2026-07-09",
+        "position_pct": 8.21,
+        "distance_from_low_pct": 9.15
+      },
+      "previous_year_low": false,
+      "current_year_low": true,
+      "below_previous_year_low": false,
+      "return_120_sessions_pct": -42.46,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 25,
+      "bucket": "仅2026年低位"
+    },
+    {
+      "code": "02400",
+      "name": "心动公司",
+      "source_rank": 96,
+      "latest_date": "2026-10-13",
+      "close": 41.7,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 22.05,
+        "high": 89.4,
+        "low_date": "2025-01-10",
+        "position_pct": 29.18,
+        "distance_from_low_pct": 89.12
+      },
+      "current_year_range": {
+        "low": 36.82,
+        "high": 92.45,
+        "low_date": "2026-09-16",
+        "position_pct": 8.77,
+        "distance_from_low_pct": 13.25
+      },
+      "previous_year_low": false,
+      "current_year_low": true,
+      "below_previous_year_low": false,
+      "return_120_sessions_pct": -35.45,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 26,
+      "bucket": "仅2026年低位"
+    },
+    {
+      "code": "09698",
+      "name": "万国数据",
+      "source_rank": 68,
+      "latest_date": "2026-10-13",
+      "close": 29.84,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 17.0,
+        "high": 48.9,
+        "low_date": "2025-04-09",
+        "position_pct": 40.25,
+        "distance_from_low_pct": 75.53
+      },
+      "current_year_range": {
+        "low": 27.04,
+        "high": 46.94,
+        "low_date": "2026-10-05",
+        "position_pct": 14.07,
+        "distance_from_low_pct": 10.36
+      },
+      "previous_year_low": false,
+      "current_year_low": true,
+      "below_previous_year_low": false,
+      "return_120_sessions_pct": -31.84,
+      "bearish_streak": 2,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 27,
+      "bucket": "仅2026年低位"
+    },
+    {
+      "code": "01209",
+      "name": "华润万象生活",
+      "source_rank": 44,
+      "latest_date": "2026-10-13",
+      "close": 38.38,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 26.75,
+        "high": 46.54,
+        "low_date": "2025-01-08",
+        "position_pct": 58.77,
+        "distance_from_low_pct": 43.48
+      },
+      "current_year_range": {
+        "low": 36.14,
+        "high": 51.15,
+        "low_date": "2026-06-26",
+        "position_pct": 14.92,
+        "distance_from_low_pct": 6.2
+      },
+      "previous_year_low": false,
+      "current_year_low": true,
+      "below_previous_year_low": false,
+      "return_120_sessions_pct": -20.21,
+      "bearish_streak": 2,
+      "falling_close_streak": 1,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 28,
+      "bucket": "仅2026年低位"
+    },
+    {
+      "code": "00291",
+      "name": "华润啤酒",
+      "source_rank": 46,
+      "latest_date": "2026-10-13",
+      "close": 19.41,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": false,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 22.3,
+        "high": 31.05,
+        "low_date": "2025-01-13",
+        "position_pct": -33.03,
+        "distance_from_low_pct": -12.96
+      },
+      "current_year_range": {
+        "low": 17.87,
+        "high": 27.86,
+        "low_date": "2026-09-14",
+        "position_pct": 15.42,
+        "distance_from_low_pct": 8.62
+      },
+      "previous_year_low": false,
+      "current_year_low": true,
+      "below_previous_year_low": false,
+      "return_120_sessions_pct": -25.12,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "上一年度首末交易日覆盖不足，不能认证全年低位"
+      ],
+      "rank": 29,
+      "bucket": "仅2026年低位"
+    },
+    {
+      "code": "01898",
+      "name": "中煤能源",
+      "source_rank": 78,
+      "latest_date": "2026-10-13",
+      "close": 10.64,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 7.16,
+        "high": 12.31,
+        "low_date": "2025-04-07",
+        "position_pct": 67.57,
+        "distance_from_low_pct": 48.6
+      },
+      "current_year_range": {
+        "low": 9.7,
+        "high": 15.24,
+        "low_date": "2026-07-02",
+        "position_pct": 16.97,
+        "distance_from_low_pct": 9.69
+      },
+      "previous_year_low": false,
+      "current_year_low": true,
+      "below_previous_year_low": false,
+      "return_120_sessions_pct": -20.3,
+      "bearish_streak": 1,
+      "falling_close_streak": 1,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 30,
+      "bucket": "仅2026年低位"
+    },
+    {
+      "code": "01999",
+      "name": "敏华控股",
+      "source_rank": 117,
+      "latest_date": "2026-10-13",
+      "close": 2.38,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 3.33,
+        "high": 5.29,
+        "low_date": "2025-04-09",
+        "position_pct": -48.47,
+        "distance_from_low_pct": -28.53
+      },
+      "current_year_range": {
+        "low": 2.33,
+        "high": 5.2,
+        "low_date": "2026-10-13",
+        "position_pct": 1.74,
+        "distance_from_low_pct": 2.15
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -44.26,
+      "bearish_streak": 4,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 31,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "00384",
+      "name": "中国燃气",
+      "source_rank": 95,
+      "latest_date": "2026-10-13",
+      "close": 5.09,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 6.19,
+        "high": 8.85,
+        "low_date": "2025-01-13",
+        "position_pct": -41.35,
+        "distance_from_low_pct": -17.77
+      },
+      "current_year_range": {
+        "low": 4.96,
+        "high": 8.37,
+        "low_date": "2026-10-13",
+        "position_pct": 3.81,
+        "distance_from_low_pct": 2.62
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -32.49,
+      "bearish_streak": 4,
+      "falling_close_streak": 4,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 32,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "00780",
+      "name": "同程旅行",
+      "source_rank": 64,
+      "latest_date": "2026-10-13",
+      "close": 9.8,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 17.02,
+        "high": 24.9,
+        "low_date": "2025-03-04",
+        "position_pct": -91.62,
+        "distance_from_low_pct": -42.42
+      },
+      "current_year_range": {
+        "low": 9.645,
+        "high": 25.42,
+        "low_date": "2026-10-07",
+        "position_pct": 0.98,
+        "distance_from_low_pct": 1.61
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -48.26,
+      "bearish_streak": 2,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 33,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "00152",
+      "name": "深圳国际",
+      "source_rank": 97,
+      "latest_date": "2026-10-13",
+      "close": 5.295,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 6.72,
+        "high": 8.93,
+        "low_date": "2025-02-03",
+        "position_pct": -64.48,
+        "distance_from_low_pct": -21.21
+      },
+      "current_year_range": {
+        "low": 4.92,
+        "high": 9.3,
+        "low_date": "2026-08-10",
+        "position_pct": 8.56,
+        "distance_from_low_pct": 7.62
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -29.31,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 34,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "03933",
+      "name": "联邦制药",
+      "source_rank": 111,
+      "latest_date": "2026-10-13",
+      "close": 7.425,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 10.62,
+        "high": 17.98,
+        "low_date": "2025-01-15",
+        "position_pct": -43.41,
+        "distance_from_low_pct": -30.08
+      },
+      "current_year_range": {
+        "low": 7.22,
+        "high": 13.72,
+        "low_date": "2026-10-13",
+        "position_pct": 3.15,
+        "distance_from_low_pct": 2.84
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -25.75,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 35,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "00168",
+      "name": "青岛啤酒",
+      "source_rank": 112,
+      "latest_date": "2026-10-13",
+      "close": 40.78,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 46.7,
+        "high": 60.7,
+        "low_date": "2025-02-03",
+        "position_pct": -42.29,
+        "distance_from_low_pct": -12.68
+      },
+      "current_year_range": {
+        "low": 38.86,
+        "high": 54.25,
+        "low_date": "2026-09-21",
+        "position_pct": 12.48,
+        "distance_from_low_pct": 4.94
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -20.04,
+      "bearish_streak": 2,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 36,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "01876",
+      "name": "百威亚太",
+      "source_rank": 74,
+      "latest_date": "2026-10-13",
+      "close": 5.835,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 6.84,
+        "high": 9.83,
+        "low_date": "2025-01-13",
+        "position_pct": -33.61,
+        "distance_from_low_pct": -14.69
+      },
+      "current_year_range": {
+        "low": 5.555,
+        "high": 8.3,
+        "low_date": "2026-10-05",
+        "position_pct": 10.2,
+        "distance_from_low_pct": 5.04
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -23.22,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 37,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "09896",
+      "name": "名创优品",
+      "source_rank": 123,
+      "latest_date": "2026-10-13",
+      "close": 19.37,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 27.05,
+        "high": 55.0,
+        "low_date": "2025-04-09",
+        "position_pct": -27.48,
+        "distance_from_low_pct": -28.39
+      },
+      "current_year_range": {
+        "low": 16.84,
+        "high": 40.3,
+        "low_date": "2026-09-21",
+        "position_pct": 10.78,
+        "distance_from_low_pct": 15.02
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -36.86,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 38,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "01810",
+      "name": "小米集团",
+      "source_rank": 1,
+      "latest_date": "2026-10-13",
+      "close": 25.04,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 32.2,
+        "high": 61.45,
+        "low_date": "2025-01-08",
+        "position_pct": -24.48,
+        "distance_from_low_pct": -22.24
+      },
+      "current_year_range": {
+        "low": 21.3,
+        "high": 40.6,
+        "low_date": "2026-06-26",
+        "position_pct": 19.38,
+        "distance_from_low_pct": 17.56
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -22.72,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 39,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "02238",
+      "name": "广汽集团",
+      "source_rank": 143,
+      "latest_date": "2026-10-13",
+      "close": 2.19,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 2.58,
+        "high": 4.38,
+        "low_date": "2025-04-09",
+        "position_pct": -21.67,
+        "distance_from_low_pct": -15.12
+      },
+      "current_year_range": {
+        "low": 2.02,
+        "high": 4.21,
+        "low_date": "2026-06-29",
+        "position_pct": 7.76,
+        "distance_from_low_pct": 8.42
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -31.13,
+      "bearish_streak": 0,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 40,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "02331",
+      "name": "李宁",
+      "source_rank": 40,
+      "latest_date": "2026-10-13",
+      "close": 12.53,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 13.5,
+        "high": 20.9,
+        "low_date": "2025-04-09",
+        "position_pct": -13.11,
+        "distance_from_low_pct": -7.19
+      },
+      "current_year_range": {
+        "low": 12.04,
+        "high": 23.42,
+        "low_date": "2026-09-25",
+        "position_pct": 4.31,
+        "distance_from_low_pct": 4.07
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -41.5,
+      "bearish_streak": 2,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 41,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "09868",
+      "name": "小鹏汽车",
+      "source_rank": 100,
+      "latest_date": "2026-10-13",
+      "close": 37.84,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 44.0,
+        "high": 110.8,
+        "low_date": "2025-01-03",
+        "position_pct": -9.22,
+        "distance_from_low_pct": -14.0
+      },
+      "current_year_range": {
+        "low": 35.64,
+        "high": 84.6,
+        "low_date": "2026-10-05",
+        "position_pct": 4.49,
+        "distance_from_low_pct": 6.17
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -44.6,
+      "bearish_streak": 0,
+      "falling_close_streak": 1,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 42,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "03323",
+      "name": "中国建材",
+      "source_rank": 66,
+      "latest_date": "2026-10-13",
+      "close": 3.055,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 3.3,
+        "high": 6.16,
+        "low_date": "2025-01-13",
+        "position_pct": -8.57,
+        "distance_from_low_pct": -7.42
+      },
+      "current_year_range": {
+        "low": 2.945,
+        "high": 7.26,
+        "low_date": "2026-10-13",
+        "position_pct": 2.55,
+        "distance_from_low_pct": 3.74
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -40.45,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 43,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "01928",
+      "name": "金沙中国",
+      "source_rank": 22,
+      "latest_date": "2026-10-13",
+      "close": 11.42,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 12.2,
+        "high": 22.5,
+        "low_date": "2025-04-09",
+        "position_pct": -7.57,
+        "distance_from_low_pct": -6.39
+      },
+      "current_year_range": {
+        "low": 10.89,
+        "high": 20.14,
+        "low_date": "2026-10-13",
+        "position_pct": 5.73,
+        "distance_from_low_pct": 4.87
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -33.99,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 44,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "01478",
+      "name": "丘钛科技",
+      "source_rank": 133,
+      "latest_date": "2026-10-13",
+      "close": 4.84,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 5.21,
+        "high": 16.99,
+        "low_date": "2025-04-09",
+        "position_pct": -3.14,
+        "distance_from_low_pct": -7.1
+      },
+      "current_year_range": {
+        "low": 4.66,
+        "high": 10.5,
+        "low_date": "2026-10-13",
+        "position_pct": 3.08,
+        "distance_from_low_pct": 3.86
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -43.26,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 45,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "00772",
+      "name": "阅文集团",
+      "source_rank": 82,
+      "latest_date": "2026-10-13",
+      "close": 21.7,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 22.4,
+        "high": 46.88,
+        "low_date": "2025-04-09",
+        "position_pct": -2.86,
+        "distance_from_low_pct": -3.12
+      },
+      "current_year_range": {
+        "low": 18.0,
+        "high": 44.68,
+        "low_date": "2026-07-27",
+        "position_pct": 13.87,
+        "distance_from_low_pct": 20.56
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -20.4,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 46,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "06060",
+      "name": "众安在线",
+      "source_rank": 80,
+      "latest_date": "2026-10-13",
+      "close": 9.465,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 9.54,
+        "high": 22.75,
+        "low_date": "2025-04-09",
+        "position_pct": -0.57,
+        "distance_from_low_pct": -0.79
+      },
+      "current_year_range": {
+        "low": 8.83,
+        "high": 18.0,
+        "low_date": "2026-06-30",
+        "position_pct": 6.92,
+        "distance_from_low_pct": 7.19
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -26.23,
+      "bearish_streak": 2,
+      "falling_close_streak": 1,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 47,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "09866",
+      "name": "蔚来",
+      "source_rank": 104,
+      "latest_date": "2026-10-13",
+      "close": 26.74,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 23.7,
+        "high": 61.75,
+        "low_date": "2025-04-09",
+        "position_pct": 7.99,
+        "distance_from_low_pct": 12.83
+      },
+      "current_year_range": {
+        "low": 26.04,
+        "high": 54.95,
+        "low_date": "2026-10-13",
+        "position_pct": 2.42,
+        "distance_from_low_pct": 2.69
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": false,
+      "return_120_sessions_pct": -49.21,
+      "bearish_streak": 2,
+      "falling_close_streak": 1,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 48,
+      "bucket": "仅2025年低位"
+    }
+  ],
+  "previous_year_candidates": [
+    {
+      "code": "01833",
+      "name": "平安好医生",
+      "source_rank": 115,
+      "latest_date": "2026-10-13",
+      "close": 5.74,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 6.06,
+        "high": 24.4,
+        "low_date": "2025-04-07",
+        "position_pct": -1.74,
+        "distance_from_low_pct": -5.28
+      },
+      "current_year_range": {
+        "low": 5.57,
+        "high": 18.79,
+        "low_date": "2026-10-13",
+        "position_pct": 1.29,
+        "distance_from_low_pct": 3.05
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -53.14,
+      "bearish_streak": 4,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 1,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "00753",
+      "name": "中国国航",
+      "source_rank": 141,
+      "latest_date": "2026-10-13",
+      "close": 3.56,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 4.09,
+        "high": 7.14,
+        "low_date": "2025-04-09",
+        "position_pct": -17.38,
+        "distance_from_low_pct": -12.96
+      },
+      "current_year_range": {
+        "low": 3.5,
+        "high": 7.77,
+        "low_date": "2026-10-13",
+        "position_pct": 1.41,
+        "distance_from_low_pct": 1.71
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -32.7,
+      "bearish_streak": 2,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 2,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "01024",
+      "name": "快手",
+      "source_rank": 11,
+      "latest_date": "2026-10-13",
+      "close": 29.16,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 38.15,
+        "high": 92.6,
+        "low_date": "2025-01-13",
+        "position_pct": -16.51,
+        "distance_from_low_pct": -23.56
+      },
+      "current_year_range": {
+        "low": 28.24,
+        "high": 85.2,
+        "low_date": "2026-10-13",
+        "position_pct": 1.62,
+        "distance_from_low_pct": 3.26
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -37.13,
+      "bearish_streak": 0,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 3,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "00960",
+      "name": "龙湖集团",
+      "source_rank": 39,
+      "latest_date": "2026-10-13",
+      "close": 5.06,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 8.45,
+        "high": 12.24,
+        "low_date": "2025-12-31",
+        "position_pct": -89.45,
+        "distance_from_low_pct": -40.12
+      },
+      "current_year_range": {
+        "low": 4.955,
+        "high": 10.83,
+        "low_date": "2026-10-13",
+        "position_pct": 1.79,
+        "distance_from_low_pct": 2.12
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -39.4,
+      "bearish_streak": 2,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 4,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "00241",
+      "name": "阿里健康",
+      "source_rank": 37,
+      "latest_date": "2026-10-13",
+      "close": 2.85,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 3.09,
+        "high": 7.5,
+        "low_date": "2025-01-13",
+        "position_pct": -5.44,
+        "distance_from_low_pct": -7.77
+      },
+      "current_year_range": {
+        "low": 2.745,
+        "high": 7.91,
+        "low_date": "2026-09-25",
+        "position_pct": 2.03,
+        "distance_from_low_pct": 3.83
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -39.62,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 5,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "02333",
+      "name": "长城汽车",
+      "source_rank": 84,
+      "latest_date": "2026-10-13",
+      "close": 7.075,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 10.66,
+        "high": 19.86,
+        "low_date": "2025-04-09",
+        "position_pct": -38.97,
+        "distance_from_low_pct": -33.63
+      },
+      "current_year_range": {
+        "low": 6.89,
+        "high": 15.27,
+        "low_date": "2026-10-08",
+        "position_pct": 2.21,
+        "distance_from_low_pct": 2.69
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -47.28,
+      "bearish_streak": 2,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 6,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "00371",
+      "name": "北控水务集团",
+      "source_rank": 127,
+      "latest_date": "2026-10-13",
+      "close": 1.48,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 2.07,
+        "high": 2.77,
+        "low_date": "2025-02-13",
+        "position_pct": -84.29,
+        "distance_from_low_pct": -28.5
+      },
+      "current_year_range": {
+        "low": 1.445,
+        "high": 2.98,
+        "low_date": "2026-10-13",
+        "position_pct": 2.28,
+        "distance_from_low_pct": 2.42
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -48.07,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 7,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "00968",
+      "name": "信义光能",
+      "source_rank": 105,
+      "latest_date": "2026-10-13",
+      "close": 1.885,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 2.22,
+        "high": 4.1,
+        "low_date": "2025-04-09",
+        "position_pct": -17.82,
+        "distance_from_low_pct": -15.09
+      },
+      "current_year_range": {
+        "low": 1.84,
+        "high": 3.73,
+        "low_date": "2026-10-02",
+        "position_pct": 2.38,
+        "distance_from_low_pct": 2.45
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -40.72,
+      "bearish_streak": 2,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 8,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "02498",
+      "name": "速腾聚创",
+      "source_rank": 142,
+      "latest_date": "2026-10-13",
+      "close": 15.71,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 23.6,
+        "high": 53.5,
+        "low_date": "2025-01-09",
+        "position_pct": -26.39,
+        "distance_from_low_pct": -33.43
+      },
+      "current_year_range": {
+        "low": 14.95,
+        "high": 41.46,
+        "low_date": "2026-10-13",
+        "position_pct": 2.87,
+        "distance_from_low_pct": 5.08
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -56.22,
+      "bearish_streak": 2,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 9,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "00020",
+      "name": "商汤",
+      "source_rank": 109,
+      "latest_date": "2026-10-13",
+      "close": 1.19,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 1.24,
+        "high": 2.94,
+        "low_date": "2025-04-09",
+        "position_pct": -2.94,
+        "distance_from_low_pct": -4.03
+      },
+      "current_year_range": {
+        "low": 1.13,
+        "high": 2.8,
+        "low_date": "2026-10-08",
+        "position_pct": 3.59,
+        "distance_from_low_pct": 5.31
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -40.8,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 10,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "06862",
+      "name": "海底捞",
+      "source_rank": 25,
+      "latest_date": "2026-10-13",
+      "close": 9.3,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 12.43,
+        "high": 18.88,
+        "low_date": "2025-10-13",
+        "position_pct": -48.53,
+        "distance_from_low_pct": -25.18
+      },
+      "current_year_range": {
+        "low": 8.925,
+        "high": 17.86,
+        "low_date": "2026-10-13",
+        "position_pct": 4.2,
+        "distance_from_low_pct": 4.2
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -38.49,
+      "bearish_streak": 2,
+      "falling_close_streak": 1,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 11,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "06186",
+      "name": "中国飞鹤",
+      "source_rank": 107,
+      "latest_date": "2026-10-13",
+      "close": 2.515,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 3.8,
+        "high": 7.38,
+        "low_date": "2025-10-13",
+        "position_pct": -35.89,
+        "distance_from_low_pct": -33.82
+      },
+      "current_year_range": {
+        "low": 2.43,
+        "high": 4.1,
+        "low_date": "2026-10-13",
+        "position_pct": 5.09,
+        "distance_from_low_pct": 3.5
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -25.59,
+      "bearish_streak": 0,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 12,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "01099",
+      "name": "国药控股",
+      "source_rank": 86,
+      "latest_date": "2026-10-13",
+      "close": 15.13,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 16.74,
+        "high": 21.66,
+        "low_date": "2025-04-07",
+        "position_pct": -32.72,
+        "distance_from_low_pct": -9.62
+      },
+      "current_year_range": {
+        "low": 14.55,
+        "high": 22.34,
+        "low_date": "2026-10-05",
+        "position_pct": 7.45,
+        "distance_from_low_pct": 3.99
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -25.39,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 13,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "00762",
+      "name": "中国联通",
+      "source_rank": 58,
+      "latest_date": "2026-10-13",
+      "close": 5.67,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 6.89,
+        "high": 11.56,
+        "low_date": "2025-01-21",
+        "position_pct": -26.12,
+        "distance_from_low_pct": -17.71
+      },
+      "current_year_range": {
+        "low": 5.38,
+        "high": 8.28,
+        "low_date": "2026-10-02",
+        "position_pct": 10.0,
+        "distance_from_low_pct": 5.39
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -23.38,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 14,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "03896",
+      "name": "金山云",
+      "source_rank": 135,
+      "latest_date": "2026-10-13",
+      "close": 4.84,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 4.48,
+        "high": 11.4,
+        "low_date": "2025-01-22",
+        "position_pct": 5.2,
+        "distance_from_low_pct": 8.04
+      },
+      "current_year_range": {
+        "low": 4.22,
+        "high": 9.75,
+        "low_date": "2026-06-26",
+        "position_pct": 11.21,
+        "distance_from_low_pct": 14.69
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": false,
+      "return_120_sessions_pct": -48.62,
+      "bearish_streak": 0,
+      "falling_close_streak": 1,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 15,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "01999",
+      "name": "敏华控股",
+      "source_rank": 117,
+      "latest_date": "2026-10-13",
+      "close": 2.38,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 3.33,
+        "high": 5.29,
+        "low_date": "2025-04-09",
+        "position_pct": -48.47,
+        "distance_from_low_pct": -28.53
+      },
+      "current_year_range": {
+        "low": 2.33,
+        "high": 5.2,
+        "low_date": "2026-10-13",
+        "position_pct": 1.74,
+        "distance_from_low_pct": 2.15
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -44.26,
+      "bearish_streak": 4,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 31,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "00384",
+      "name": "中国燃气",
+      "source_rank": 95,
+      "latest_date": "2026-10-13",
+      "close": 5.09,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 6.19,
+        "high": 8.85,
+        "low_date": "2025-01-13",
+        "position_pct": -41.35,
+        "distance_from_low_pct": -17.77
+      },
+      "current_year_range": {
+        "low": 4.96,
+        "high": 8.37,
+        "low_date": "2026-10-13",
+        "position_pct": 3.81,
+        "distance_from_low_pct": 2.62
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -32.49,
+      "bearish_streak": 4,
+      "falling_close_streak": 4,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 32,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "00780",
+      "name": "同程旅行",
+      "source_rank": 64,
+      "latest_date": "2026-10-13",
+      "close": 9.8,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 17.02,
+        "high": 24.9,
+        "low_date": "2025-03-04",
+        "position_pct": -91.62,
+        "distance_from_low_pct": -42.42
+      },
+      "current_year_range": {
+        "low": 9.645,
+        "high": 25.42,
+        "low_date": "2026-10-07",
+        "position_pct": 0.98,
+        "distance_from_low_pct": 1.61
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -48.26,
+      "bearish_streak": 2,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 33,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "00152",
+      "name": "深圳国际",
+      "source_rank": 97,
+      "latest_date": "2026-10-13",
+      "close": 5.295,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 6.72,
+        "high": 8.93,
+        "low_date": "2025-02-03",
+        "position_pct": -64.48,
+        "distance_from_low_pct": -21.21
+      },
+      "current_year_range": {
+        "low": 4.92,
+        "high": 9.3,
+        "low_date": "2026-08-10",
+        "position_pct": 8.56,
+        "distance_from_low_pct": 7.62
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -29.31,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 34,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "03933",
+      "name": "联邦制药",
+      "source_rank": 111,
+      "latest_date": "2026-10-13",
+      "close": 7.425,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 10.62,
+        "high": 17.98,
+        "low_date": "2025-01-15",
+        "position_pct": -43.41,
+        "distance_from_low_pct": -30.08
+      },
+      "current_year_range": {
+        "low": 7.22,
+        "high": 13.72,
+        "low_date": "2026-10-13",
+        "position_pct": 3.15,
+        "distance_from_low_pct": 2.84
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -25.75,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 35,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "00168",
+      "name": "青岛啤酒",
+      "source_rank": 112,
+      "latest_date": "2026-10-13",
+      "close": 40.78,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 46.7,
+        "high": 60.7,
+        "low_date": "2025-02-03",
+        "position_pct": -42.29,
+        "distance_from_low_pct": -12.68
+      },
+      "current_year_range": {
+        "low": 38.86,
+        "high": 54.25,
+        "low_date": "2026-09-21",
+        "position_pct": 12.48,
+        "distance_from_low_pct": 4.94
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -20.04,
+      "bearish_streak": 2,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 36,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "01876",
+      "name": "百威亚太",
+      "source_rank": 74,
+      "latest_date": "2026-10-13",
+      "close": 5.835,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 6.84,
+        "high": 9.83,
+        "low_date": "2025-01-13",
+        "position_pct": -33.61,
+        "distance_from_low_pct": -14.69
+      },
+      "current_year_range": {
+        "low": 5.555,
+        "high": 8.3,
+        "low_date": "2026-10-05",
+        "position_pct": 10.2,
+        "distance_from_low_pct": 5.04
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -23.22,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 37,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "09896",
+      "name": "名创优品",
+      "source_rank": 123,
+      "latest_date": "2026-10-13",
+      "close": 19.37,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 27.05,
+        "high": 55.0,
+        "low_date": "2025-04-09",
+        "position_pct": -27.48,
+        "distance_from_low_pct": -28.39
+      },
+      "current_year_range": {
+        "low": 16.84,
+        "high": 40.3,
+        "low_date": "2026-09-21",
+        "position_pct": 10.78,
+        "distance_from_low_pct": 15.02
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -36.86,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 38,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "01810",
+      "name": "小米集团",
+      "source_rank": 1,
+      "latest_date": "2026-10-13",
+      "close": 25.04,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 32.2,
+        "high": 61.45,
+        "low_date": "2025-01-08",
+        "position_pct": -24.48,
+        "distance_from_low_pct": -22.24
+      },
+      "current_year_range": {
+        "low": 21.3,
+        "high": 40.6,
+        "low_date": "2026-06-26",
+        "position_pct": 19.38,
+        "distance_from_low_pct": 17.56
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -22.72,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 39,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "02238",
+      "name": "广汽集团",
+      "source_rank": 143,
+      "latest_date": "2026-10-13",
+      "close": 2.19,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 2.58,
+        "high": 4.38,
+        "low_date": "2025-04-09",
+        "position_pct": -21.67,
+        "distance_from_low_pct": -15.12
+      },
+      "current_year_range": {
+        "low": 2.02,
+        "high": 4.21,
+        "low_date": "2026-06-29",
+        "position_pct": 7.76,
+        "distance_from_low_pct": 8.42
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -31.13,
+      "bearish_streak": 0,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 40,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "02331",
+      "name": "李宁",
+      "source_rank": 40,
+      "latest_date": "2026-10-13",
+      "close": 12.53,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 13.5,
+        "high": 20.9,
+        "low_date": "2025-04-09",
+        "position_pct": -13.11,
+        "distance_from_low_pct": -7.19
+      },
+      "current_year_range": {
+        "low": 12.04,
+        "high": 23.42,
+        "low_date": "2026-09-25",
+        "position_pct": 4.31,
+        "distance_from_low_pct": 4.07
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -41.5,
+      "bearish_streak": 2,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 41,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "09868",
+      "name": "小鹏汽车",
+      "source_rank": 100,
+      "latest_date": "2026-10-13",
+      "close": 37.84,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 44.0,
+        "high": 110.8,
+        "low_date": "2025-01-03",
+        "position_pct": -9.22,
+        "distance_from_low_pct": -14.0
+      },
+      "current_year_range": {
+        "low": 35.64,
+        "high": 84.6,
+        "low_date": "2026-10-05",
+        "position_pct": 4.49,
+        "distance_from_low_pct": 6.17
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -44.6,
+      "bearish_streak": 0,
+      "falling_close_streak": 1,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 42,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "03323",
+      "name": "中国建材",
+      "source_rank": 66,
+      "latest_date": "2026-10-13",
+      "close": 3.055,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 3.3,
+        "high": 6.16,
+        "low_date": "2025-01-13",
+        "position_pct": -8.57,
+        "distance_from_low_pct": -7.42
+      },
+      "current_year_range": {
+        "low": 2.945,
+        "high": 7.26,
+        "low_date": "2026-10-13",
+        "position_pct": 2.55,
+        "distance_from_low_pct": 3.74
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -40.45,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 43,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "01928",
+      "name": "金沙中国",
+      "source_rank": 22,
+      "latest_date": "2026-10-13",
+      "close": 11.42,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 12.2,
+        "high": 22.5,
+        "low_date": "2025-04-09",
+        "position_pct": -7.57,
+        "distance_from_low_pct": -6.39
+      },
+      "current_year_range": {
+        "low": 10.89,
+        "high": 20.14,
+        "low_date": "2026-10-13",
+        "position_pct": 5.73,
+        "distance_from_low_pct": 4.87
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -33.99,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 44,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "01478",
+      "name": "丘钛科技",
+      "source_rank": 133,
+      "latest_date": "2026-10-13",
+      "close": 4.84,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 5.21,
+        "high": 16.99,
+        "low_date": "2025-04-09",
+        "position_pct": -3.14,
+        "distance_from_low_pct": -7.1
+      },
+      "current_year_range": {
+        "low": 4.66,
+        "high": 10.5,
+        "low_date": "2026-10-13",
+        "position_pct": 3.08,
+        "distance_from_low_pct": 3.86
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -43.26,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 45,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "00772",
+      "name": "阅文集团",
+      "source_rank": 82,
+      "latest_date": "2026-10-13",
+      "close": 21.7,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 22.4,
+        "high": 46.88,
+        "low_date": "2025-04-09",
+        "position_pct": -2.86,
+        "distance_from_low_pct": -3.12
+      },
+      "current_year_range": {
+        "low": 18.0,
+        "high": 44.68,
+        "low_date": "2026-07-27",
+        "position_pct": 13.87,
+        "distance_from_low_pct": 20.56
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -20.4,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 46,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "06060",
+      "name": "众安在线",
+      "source_rank": 80,
+      "latest_date": "2026-10-13",
+      "close": 9.465,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 9.54,
+        "high": 22.75,
+        "low_date": "2025-04-09",
+        "position_pct": -0.57,
+        "distance_from_low_pct": -0.79
+      },
+      "current_year_range": {
+        "low": 8.83,
+        "high": 18.0,
+        "low_date": "2026-06-30",
+        "position_pct": 6.92,
+        "distance_from_low_pct": 7.19
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -26.23,
+      "bearish_streak": 2,
+      "falling_close_streak": 1,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 47,
+      "bucket": "仅2025年低位"
+    },
+    {
+      "code": "09866",
+      "name": "蔚来",
+      "source_rank": 104,
+      "latest_date": "2026-10-13",
+      "close": 26.74,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": false,
+      "previous_year_range": {
+        "low": 23.7,
+        "high": 61.75,
+        "low_date": "2025-04-09",
+        "position_pct": 7.99,
+        "distance_from_low_pct": 12.83
+      },
+      "current_year_range": {
+        "low": 26.04,
+        "high": 54.95,
+        "low_date": "2026-10-13",
+        "position_pct": 2.42,
+        "distance_from_low_pct": 2.69
+      },
+      "previous_year_low": true,
+      "current_year_low": false,
+      "below_previous_year_low": false,
+      "return_120_sessions_pct": -49.21,
+      "bearish_streak": 2,
+      "falling_close_streak": 1,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "本年度起点覆盖不足，不能认证年内低位"
+      ],
+      "rank": 48,
+      "bucket": "仅2025年低位"
+    }
+  ],
+  "current_year_candidates": [
+    {
+      "code": "01833",
+      "name": "平安好医生",
+      "source_rank": 115,
+      "latest_date": "2026-10-13",
+      "close": 5.74,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 6.06,
+        "high": 24.4,
+        "low_date": "2025-04-07",
+        "position_pct": -1.74,
+        "distance_from_low_pct": -5.28
+      },
+      "current_year_range": {
+        "low": 5.57,
+        "high": 18.79,
+        "low_date": "2026-10-13",
+        "position_pct": 1.29,
+        "distance_from_low_pct": 3.05
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -53.14,
+      "bearish_streak": 4,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 1,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "00753",
+      "name": "中国国航",
+      "source_rank": 141,
+      "latest_date": "2026-10-13",
+      "close": 3.56,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 4.09,
+        "high": 7.14,
+        "low_date": "2025-04-09",
+        "position_pct": -17.38,
+        "distance_from_low_pct": -12.96
+      },
+      "current_year_range": {
+        "low": 3.5,
+        "high": 7.77,
+        "low_date": "2026-10-13",
+        "position_pct": 1.41,
+        "distance_from_low_pct": 1.71
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -32.7,
+      "bearish_streak": 2,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 2,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "01024",
+      "name": "快手",
+      "source_rank": 11,
+      "latest_date": "2026-10-13",
+      "close": 29.16,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 38.15,
+        "high": 92.6,
+        "low_date": "2025-01-13",
+        "position_pct": -16.51,
+        "distance_from_low_pct": -23.56
+      },
+      "current_year_range": {
+        "low": 28.24,
+        "high": 85.2,
+        "low_date": "2026-10-13",
+        "position_pct": 1.62,
+        "distance_from_low_pct": 3.26
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -37.13,
+      "bearish_streak": 0,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 3,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "00960",
+      "name": "龙湖集团",
+      "source_rank": 39,
+      "latest_date": "2026-10-13",
+      "close": 5.06,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 8.45,
+        "high": 12.24,
+        "low_date": "2025-12-31",
+        "position_pct": -89.45,
+        "distance_from_low_pct": -40.12
+      },
+      "current_year_range": {
+        "low": 4.955,
+        "high": 10.83,
+        "low_date": "2026-10-13",
+        "position_pct": 1.79,
+        "distance_from_low_pct": 2.12
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -39.4,
+      "bearish_streak": 2,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 4,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "00241",
+      "name": "阿里健康",
+      "source_rank": 37,
+      "latest_date": "2026-10-13",
+      "close": 2.85,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 3.09,
+        "high": 7.5,
+        "low_date": "2025-01-13",
+        "position_pct": -5.44,
+        "distance_from_low_pct": -7.77
+      },
+      "current_year_range": {
+        "low": 2.745,
+        "high": 7.91,
+        "low_date": "2026-09-25",
+        "position_pct": 2.03,
+        "distance_from_low_pct": 3.83
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -39.62,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 5,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "02333",
+      "name": "长城汽车",
+      "source_rank": 84,
+      "latest_date": "2026-10-13",
+      "close": 7.075,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 10.66,
+        "high": 19.86,
+        "low_date": "2025-04-09",
+        "position_pct": -38.97,
+        "distance_from_low_pct": -33.63
+      },
+      "current_year_range": {
+        "low": 6.89,
+        "high": 15.27,
+        "low_date": "2026-10-08",
+        "position_pct": 2.21,
+        "distance_from_low_pct": 2.69
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -47.28,
+      "bearish_streak": 2,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 6,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "00371",
+      "name": "北控水务集团",
+      "source_rank": 127,
+      "latest_date": "2026-10-13",
+      "close": 1.48,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 2.07,
+        "high": 2.77,
+        "low_date": "2025-02-13",
+        "position_pct": -84.29,
+        "distance_from_low_pct": -28.5
+      },
+      "current_year_range": {
+        "low": 1.445,
+        "high": 2.98,
+        "low_date": "2026-10-13",
+        "position_pct": 2.28,
+        "distance_from_low_pct": 2.42
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -48.07,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 7,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "00968",
+      "name": "信义光能",
+      "source_rank": 105,
+      "latest_date": "2026-10-13",
+      "close": 1.885,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 2.22,
+        "high": 4.1,
+        "low_date": "2025-04-09",
+        "position_pct": -17.82,
+        "distance_from_low_pct": -15.09
+      },
+      "current_year_range": {
+        "low": 1.84,
+        "high": 3.73,
+        "low_date": "2026-10-02",
+        "position_pct": 2.38,
+        "distance_from_low_pct": 2.45
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -40.72,
+      "bearish_streak": 2,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 8,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "02498",
+      "name": "速腾聚创",
+      "source_rank": 142,
+      "latest_date": "2026-10-13",
+      "close": 15.71,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 23.6,
+        "high": 53.5,
+        "low_date": "2025-01-09",
+        "position_pct": -26.39,
+        "distance_from_low_pct": -33.43
+      },
+      "current_year_range": {
+        "low": 14.95,
+        "high": 41.46,
+        "low_date": "2026-10-13",
+        "position_pct": 2.87,
+        "distance_from_low_pct": 5.08
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -56.22,
+      "bearish_streak": 2,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 9,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "00020",
+      "name": "商汤",
+      "source_rank": 109,
+      "latest_date": "2026-10-13",
+      "close": 1.19,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 1.24,
+        "high": 2.94,
+        "low_date": "2025-04-09",
+        "position_pct": -2.94,
+        "distance_from_low_pct": -4.03
+      },
+      "current_year_range": {
+        "low": 1.13,
+        "high": 2.8,
+        "low_date": "2026-10-08",
+        "position_pct": 3.59,
+        "distance_from_low_pct": 5.31
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -40.8,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 10,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "06862",
+      "name": "海底捞",
+      "source_rank": 25,
+      "latest_date": "2026-10-13",
+      "close": 9.3,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 12.43,
+        "high": 18.88,
+        "low_date": "2025-10-13",
+        "position_pct": -48.53,
+        "distance_from_low_pct": -25.18
+      },
+      "current_year_range": {
+        "low": 8.925,
+        "high": 17.86,
+        "low_date": "2026-10-13",
+        "position_pct": 4.2,
+        "distance_from_low_pct": 4.2
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -38.49,
+      "bearish_streak": 2,
+      "falling_close_streak": 1,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 11,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "06186",
+      "name": "中国飞鹤",
+      "source_rank": 107,
+      "latest_date": "2026-10-13",
+      "close": 2.515,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 3.8,
+        "high": 7.38,
+        "low_date": "2025-10-13",
+        "position_pct": -35.89,
+        "distance_from_low_pct": -33.82
+      },
+      "current_year_range": {
+        "low": 2.43,
+        "high": 4.1,
+        "low_date": "2026-10-13",
+        "position_pct": 5.09,
+        "distance_from_low_pct": 3.5
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -25.59,
+      "bearish_streak": 0,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 12,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "01099",
+      "name": "国药控股",
+      "source_rank": 86,
+      "latest_date": "2026-10-13",
+      "close": 15.13,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 16.74,
+        "high": 21.66,
+        "low_date": "2025-04-07",
+        "position_pct": -32.72,
+        "distance_from_low_pct": -9.62
+      },
+      "current_year_range": {
+        "low": 14.55,
+        "high": 22.34,
+        "low_date": "2026-10-05",
+        "position_pct": 7.45,
+        "distance_from_low_pct": 3.99
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -25.39,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 13,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "00762",
+      "name": "中国联通",
+      "source_rank": 58,
+      "latest_date": "2026-10-13",
+      "close": 5.67,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 6.89,
+        "high": 11.56,
+        "low_date": "2025-01-21",
+        "position_pct": -26.12,
+        "distance_from_low_pct": -17.71
+      },
+      "current_year_range": {
+        "low": 5.38,
+        "high": 8.28,
+        "low_date": "2026-10-02",
+        "position_pct": 10.0,
+        "distance_from_low_pct": 5.39
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": true,
+      "return_120_sessions_pct": -23.38,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 14,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "03896",
+      "name": "金山云",
+      "source_rank": 135,
+      "latest_date": "2026-10-13",
+      "close": 4.84,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 4.48,
+        "high": 11.4,
+        "low_date": "2025-01-22",
+        "position_pct": 5.2,
+        "distance_from_low_pct": 8.04
+      },
+      "current_year_range": {
+        "low": 4.22,
+        "high": 9.75,
+        "low_date": "2026-06-26",
+        "position_pct": 11.21,
+        "distance_from_low_pct": 14.69
+      },
+      "previous_year_low": true,
+      "current_year_low": true,
+      "below_previous_year_low": false,
+      "return_120_sessions_pct": -48.62,
+      "bearish_streak": 0,
+      "falling_close_streak": 1,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 15,
+      "bucket": "2025与2026双重低位"
+    },
+    {
+      "code": "01072",
+      "name": "东方电气",
+      "source_rank": 119,
+      "latest_date": "2026-10-13",
+      "close": 17.06,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 8.47,
+        "high": 119.9,
+        "low_date": "2025-02-03",
+        "position_pct": 7.71,
+        "distance_from_low_pct": 101.42
+      },
+      "current_year_range": {
+        "low": 16.8,
+        "high": 46.7,
+        "low_date": "2026-10-13",
+        "position_pct": 0.87,
+        "distance_from_low_pct": 1.55
+      },
+      "previous_year_low": false,
+      "current_year_low": true,
+      "below_previous_year_low": false,
+      "return_120_sessions_pct": -58.93,
+      "bearish_streak": 8,
+      "falling_close_streak": 8,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 16,
+      "bucket": "仅2026年低位"
+    },
+    {
+      "code": "02228",
+      "name": "晶泰控股",
+      "source_rank": 26,
+      "latest_date": "2026-10-13",
+      "close": 6.47,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 3.85,
+        "high": 15.12,
+        "low_date": "2025-04-09",
+        "position_pct": 23.25,
+        "distance_from_low_pct": 68.05
+      },
+      "current_year_range": {
+        "low": 6.3,
+        "high": 14.28,
+        "low_date": "2026-06-22",
+        "position_pct": 2.13,
+        "distance_from_low_pct": 2.7
+      },
+      "previous_year_low": false,
+      "current_year_low": true,
+      "below_previous_year_low": false,
+      "return_120_sessions_pct": -35.11,
+      "bearish_streak": 5,
+      "falling_close_streak": 5,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 17,
+      "bucket": "仅2026年低位"
+    },
+    {
+      "code": "00914",
+      "name": "海螺水泥",
+      "source_rank": 67,
+      "latest_date": "2026-10-13",
+      "close": 15.95,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": false,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 18.7,
+        "high": 25.9,
+        "low_date": "2025-06-20",
+        "position_pct": -38.19,
+        "distance_from_low_pct": -14.71
+      },
+      "current_year_range": {
+        "low": 15.45,
+        "high": 27.14,
+        "low_date": "2026-09-25",
+        "position_pct": 4.28,
+        "distance_from_low_pct": 3.24
+      },
+      "previous_year_low": false,
+      "current_year_low": true,
+      "below_previous_year_low": false,
+      "return_120_sessions_pct": -22.72,
+      "bearish_streak": 3,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "上一年度首末交易日覆盖不足，不能认证全年低位"
+      ],
+      "rank": 18,
+      "bucket": "仅2026年低位"
+    },
+    {
+      "code": "01530",
+      "name": "三生制药",
+      "source_rank": 55,
+      "latest_date": "2026-10-13",
+      "close": 14.76,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 5.6,
+        "high": 36.8,
+        "low_date": "2025-01-13",
+        "position_pct": 29.36,
+        "distance_from_low_pct": 163.57
+      },
+      "current_year_range": {
+        "low": 14.44,
+        "high": 29.3,
+        "low_date": "2026-10-13",
+        "position_pct": 2.15,
+        "distance_from_low_pct": 2.22
+      },
+      "previous_year_low": false,
+      "current_year_low": true,
+      "below_previous_year_low": false,
+      "return_120_sessions_pct": -40.53,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 19,
+      "bucket": "仅2026年低位"
+    },
+    {
+      "code": "03931",
+      "name": "中创新航",
+      "source_rank": 114,
+      "latest_date": "2026-10-13",
+      "close": 15.45,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": false,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 11.9,
+        "high": 37.2,
+        "low_date": "2025-01-08",
+        "position_pct": 14.03,
+        "distance_from_low_pct": 29.83
+      },
+      "current_year_range": {
+        "low": 14.9,
+        "high": 39.3,
+        "low_date": "2026-10-13",
+        "position_pct": 2.25,
+        "distance_from_low_pct": 3.69
+      },
+      "previous_year_low": false,
+      "current_year_low": true,
+      "below_previous_year_low": false,
+      "return_120_sessions_pct": -57.32,
+      "bearish_streak": 2,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "上一年度首末交易日覆盖不足，不能认证全年低位"
+      ],
+      "rank": 20,
+      "bucket": "仅2026年低位"
+    },
+    {
+      "code": "01133",
+      "name": "哈尔滨电气",
+      "source_rank": 118,
+      "latest_date": "2026-10-13",
+      "close": 13.09,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": false,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 2.36,
+        "high": 17.45,
+        "low_date": "2025-01-13",
+        "position_pct": 71.11,
+        "distance_from_low_pct": 454.66
+      },
+      "current_year_range": {
+        "low": 12.57,
+        "high": 28.88,
+        "low_date": "2026-07-20",
+        "position_pct": 3.19,
+        "distance_from_low_pct": 4.14
+      },
+      "previous_year_low": false,
+      "current_year_low": true,
+      "below_previous_year_low": false,
+      "return_120_sessions_pct": -38.25,
+      "bearish_streak": 0,
+      "falling_close_streak": 1,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "上一年度首末交易日覆盖不足，不能认证全年低位"
+      ],
+      "rank": 21,
+      "bucket": "仅2026年低位"
+    },
+    {
+      "code": "06088",
+      "name": "鸿腾精密",
+      "source_rank": 69,
+      "latest_date": "2026-10-13",
+      "close": 4.38,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 1.58,
+        "high": 7.89,
+        "low_date": "2025-04-09",
+        "position_pct": 44.37,
+        "distance_from_low_pct": 177.22
+      },
+      "current_year_range": {
+        "low": 4.16,
+        "high": 10.89,
+        "low_date": "2026-10-13",
+        "position_pct": 3.27,
+        "distance_from_low_pct": 5.29
+      },
+      "previous_year_low": false,
+      "current_year_low": true,
+      "below_previous_year_low": false,
+      "return_120_sessions_pct": -44.56,
+      "bearish_streak": 0,
+      "falling_close_streak": 5,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 22,
+      "bucket": "仅2026年低位"
+    },
+    {
+      "code": "00151",
+      "name": "中国旺旺",
+      "source_rank": 101,
+      "latest_date": "2026-10-13",
+      "close": 2.815,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": false,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 4.39,
+        "high": 5.97,
+        "low_date": "2025-01-13",
+        "position_pct": -99.68,
+        "distance_from_low_pct": -35.88
+      },
+      "current_year_range": {
+        "low": 2.675,
+        "high": 5.14,
+        "low_date": "2026-10-05",
+        "position_pct": 5.68,
+        "distance_from_low_pct": 5.23
+      },
+      "previous_year_low": false,
+      "current_year_low": true,
+      "below_previous_year_low": false,
+      "return_120_sessions_pct": -39.2,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "上一年度首末交易日覆盖不足，不能认证全年低位"
+      ],
+      "rank": 23,
+      "bucket": "仅2026年低位"
+    },
+    {
+      "code": "02600",
+      "name": "中国铝业",
+      "source_rank": 21,
+      "latest_date": "2026-10-13",
+      "close": 7.77,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 3.66,
+        "high": 12.55,
+        "low_date": "2025-04-09",
+        "position_pct": 46.23,
+        "distance_from_low_pct": 112.3
+      },
+      "current_year_range": {
+        "low": 7.29,
+        "high": 15.55,
+        "low_date": "2026-07-02",
+        "position_pct": 5.81,
+        "distance_from_low_pct": 6.58
+      },
+      "previous_year_low": false,
+      "current_year_low": true,
+      "below_previous_year_low": false,
+      "return_120_sessions_pct": -35.2,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 24,
+      "bucket": "仅2026年低位"
+    },
+    {
+      "code": "01378",
+      "name": "中国宏桥",
+      "source_rank": 17,
+      "latest_date": "2026-10-13",
+      "close": 21.36,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 10.56,
+        "high": 35.1,
+        "low_date": "2025-01-08",
+        "position_pct": 44.01,
+        "distance_from_low_pct": 102.27
+      },
+      "current_year_range": {
+        "low": 19.57,
+        "high": 41.36,
+        "low_date": "2026-07-09",
+        "position_pct": 8.21,
+        "distance_from_low_pct": 9.15
+      },
+      "previous_year_low": false,
+      "current_year_low": true,
+      "below_previous_year_low": false,
+      "return_120_sessions_pct": -42.46,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 25,
+      "bucket": "仅2026年低位"
+    },
+    {
+      "code": "02400",
+      "name": "心动公司",
+      "source_rank": 96,
+      "latest_date": "2026-10-13",
+      "close": 41.7,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 22.05,
+        "high": 89.4,
+        "low_date": "2025-01-10",
+        "position_pct": 29.18,
+        "distance_from_low_pct": 89.12
+      },
+      "current_year_range": {
+        "low": 36.82,
+        "high": 92.45,
+        "low_date": "2026-09-16",
+        "position_pct": 8.77,
+        "distance_from_low_pct": 13.25
+      },
+      "previous_year_low": false,
+      "current_year_low": true,
+      "below_previous_year_low": false,
+      "return_120_sessions_pct": -35.45,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 26,
+      "bucket": "仅2026年低位"
+    },
+    {
+      "code": "09698",
+      "name": "万国数据",
+      "source_rank": 68,
+      "latest_date": "2026-10-13",
+      "close": 29.84,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 17.0,
+        "high": 48.9,
+        "low_date": "2025-04-09",
+        "position_pct": 40.25,
+        "distance_from_low_pct": 75.53
+      },
+      "current_year_range": {
+        "low": 27.04,
+        "high": 46.94,
+        "low_date": "2026-10-05",
+        "position_pct": 14.07,
+        "distance_from_low_pct": 10.36
+      },
+      "previous_year_low": false,
+      "current_year_low": true,
+      "below_previous_year_low": false,
+      "return_120_sessions_pct": -31.84,
+      "bearish_streak": 2,
+      "falling_close_streak": 2,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 27,
+      "bucket": "仅2026年低位"
+    },
+    {
+      "code": "01209",
+      "name": "华润万象生活",
+      "source_rank": 44,
+      "latest_date": "2026-10-13",
+      "close": 38.38,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 26.75,
+        "high": 46.54,
+        "low_date": "2025-01-08",
+        "position_pct": 58.77,
+        "distance_from_low_pct": 43.48
+      },
+      "current_year_range": {
+        "low": 36.14,
+        "high": 51.15,
+        "low_date": "2026-06-26",
+        "position_pct": 14.92,
+        "distance_from_low_pct": 6.2
+      },
+      "previous_year_low": false,
+      "current_year_low": true,
+      "below_previous_year_low": false,
+      "return_120_sessions_pct": -20.21,
+      "bearish_streak": 2,
+      "falling_close_streak": 1,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 28,
+      "bucket": "仅2026年低位"
+    },
+    {
+      "code": "00291",
+      "name": "华润啤酒",
+      "source_rank": 46,
+      "latest_date": "2026-10-13",
+      "close": 19.41,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": false,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 22.3,
+        "high": 31.05,
+        "low_date": "2025-01-13",
+        "position_pct": -33.03,
+        "distance_from_low_pct": -12.96
+      },
+      "current_year_range": {
+        "low": 17.87,
+        "high": 27.86,
+        "low_date": "2026-09-14",
+        "position_pct": 15.42,
+        "distance_from_low_pct": 8.62
+      },
+      "previous_year_low": false,
+      "current_year_low": true,
+      "below_previous_year_low": false,
+      "return_120_sessions_pct": -25.12,
+      "bearish_streak": 0,
+      "falling_close_streak": 0,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [
+        "上一年度首末交易日覆盖不足，不能认证全年低位"
+      ],
+      "rank": 29,
+      "bucket": "仅2026年低位"
+    },
+    {
+      "code": "01898",
+      "name": "中煤能源",
+      "source_rank": 78,
+      "latest_date": "2026-10-13",
+      "close": 10.64,
+      "data_status": "fresh",
+      "prior_year": 2025,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
+      "previous_year_range": {
+        "low": 7.16,
+        "high": 12.31,
+        "low_date": "2025-04-07",
+        "position_pct": 67.57,
+        "distance_from_low_pct": 48.6
+      },
+      "current_year_range": {
+        "low": 9.7,
+        "high": 15.24,
+        "low_date": "2026-07-02",
+        "position_pct": 16.97,
+        "distance_from_low_pct": 9.69
+      },
+      "previous_year_low": false,
+      "current_year_low": true,
+      "below_previous_year_low": false,
+      "return_120_sessions_pct": -20.3,
+      "bearish_streak": 1,
+      "falling_close_streak": 1,
+      "suspicious_price_jump": false,
+      "screen_eligible": true,
+      "reasons": [],
+      "rank": 30,
+      "bucket": "仅2026年低位"
     }
   ],
   "stocks": [
@@ -2457,7 +5913,9 @@
       "falling_close_streak": 0,
       "suspicious_price_jump": false,
       "screen_eligible": true,
-      "reasons": []
+      "reasons": [],
+      "rank": 39,
+      "bucket": "仅2025年低位"
     },
     {
       "code": "00992",
@@ -2816,7 +6274,8 @@
       "suspicious_price_jump": false,
       "screen_eligible": true,
       "reasons": [],
-      "bucket": "上一年度低位优先"
+      "rank": 3,
+      "bucket": "2025与2026双重低位"
     },
     {
       "code": "00386",
@@ -3031,7 +6490,9 @@
       "falling_close_streak": 0,
       "suspicious_price_jump": false,
       "screen_eligible": true,
-      "reasons": []
+      "reasons": [],
+      "rank": 25,
+      "bucket": "仅2026年低位"
     },
     {
       "code": "00027",
@@ -3174,7 +6635,9 @@
       "falling_close_streak": 0,
       "suspicious_price_jump": false,
       "screen_eligible": true,
-      "reasons": []
+      "reasons": [],
+      "rank": 24,
+      "bucket": "仅2026年低位"
     },
     {
       "code": "01928",
@@ -3210,7 +6673,9 @@
       "screen_eligible": true,
       "reasons": [
         "本年度起点覆盖不足，不能认证年内低位"
-      ]
+      ],
+      "rank": 44,
+      "bucket": "仅2025年低位"
     },
     {
       "code": "03808",
@@ -3318,7 +6783,8 @@
       "suspicious_price_jump": false,
       "screen_eligible": true,
       "reasons": [],
-      "bucket": "上一年度低位优先"
+      "rank": 11,
+      "bucket": "2025与2026双重低位"
     },
     {
       "code": "02228",
@@ -3352,7 +6818,9 @@
       "falling_close_streak": 5,
       "suspicious_price_jump": false,
       "screen_eligible": true,
-      "reasons": []
+      "reasons": [],
+      "rank": 17,
+      "bucket": "仅2026年低位"
     },
     {
       "code": "02319",
@@ -3749,7 +7217,8 @@
       "suspicious_price_jump": false,
       "screen_eligible": true,
       "reasons": [],
-      "bucket": "上一年度低位优先"
+      "rank": 5,
+      "bucket": "2025与2026双重低位"
     },
     {
       "code": "01787",
@@ -3818,7 +7287,8 @@
       "suspicious_price_jump": false,
       "screen_eligible": true,
       "reasons": [],
-      "bucket": "上一年度低位优先"
+      "rank": 4,
+      "bucket": "2025与2026双重低位"
     },
     {
       "code": "02331",
@@ -3854,7 +7324,9 @@
       "screen_eligible": true,
       "reasons": [
         "本年度起点覆盖不足，不能认证年内低位"
-      ]
+      ],
+      "rank": 41,
+      "bucket": "仅2025年低位"
     },
     {
       "code": "01171",
@@ -3995,7 +7467,9 @@
       "falling_close_streak": 1,
       "suspicious_price_jump": false,
       "screen_eligible": true,
-      "reasons": []
+      "reasons": [],
+      "rank": 28,
+      "bucket": "仅2026年低位"
     },
     {
       "code": "00358",
@@ -4068,7 +7542,9 @@
       "screen_eligible": true,
       "reasons": [
         "上一年度首末交易日覆盖不足，不能认证全年低位"
-      ]
+      ],
+      "rank": 29,
+      "bucket": "仅2026年低位"
     },
     {
       "code": "03888",
@@ -4392,7 +7868,9 @@
       "falling_close_streak": 0,
       "suspicious_price_jump": false,
       "screen_eligible": true,
-      "reasons": []
+      "reasons": [],
+      "rank": 19,
+      "bucket": "仅2026年低位"
     },
     {
       "code": "00836",
@@ -4499,7 +7977,8 @@
       "suspicious_price_jump": false,
       "screen_eligible": true,
       "reasons": [],
-      "bucket": "上一年度低位优先"
+      "rank": 14,
+      "bucket": "2025与2026双重低位"
     },
     {
       "code": "00268",
@@ -4717,7 +8196,8 @@
       "reasons": [
         "本年度起点覆盖不足，不能认证年内低位"
       ],
-      "bucket": "上一年度低位优先"
+      "rank": 33,
+      "bucket": "仅2025年低位"
     },
     {
       "code": "01919",
@@ -4789,7 +8269,9 @@
       "screen_eligible": true,
       "reasons": [
         "本年度起点覆盖不足，不能认证年内低位"
-      ]
+      ],
+      "rank": 43,
+      "bucket": "仅2025年低位"
     },
     {
       "code": "00914",
@@ -4825,7 +8307,9 @@
       "screen_eligible": true,
       "reasons": [
         "上一年度首末交易日覆盖不足，不能认证全年低位"
-      ]
+      ],
+      "rank": 18,
+      "bucket": "仅2026年低位"
     },
     {
       "code": "09698",
@@ -4859,7 +8343,9 @@
       "falling_close_streak": 2,
       "suspicious_price_jump": false,
       "screen_eligible": true,
-      "reasons": []
+      "reasons": [],
+      "rank": 27,
+      "bucket": "仅2026年低位"
     },
     {
       "code": "06088",
@@ -4893,7 +8379,9 @@
       "falling_close_streak": 5,
       "suspicious_price_jump": false,
       "screen_eligible": true,
-      "reasons": []
+      "reasons": [],
+      "rank": 22,
+      "bucket": "仅2026年低位"
     },
     {
       "code": "02282",
@@ -5076,7 +8564,9 @@
       "screen_eligible": true,
       "reasons": [
         "本年度起点覆盖不足，不能认证年内低位"
-      ]
+      ],
+      "rank": 37,
+      "bucket": "仅2025年低位"
     },
     {
       "code": "00293",
@@ -5219,7 +8709,9 @@
       "falling_close_streak": 1,
       "suspicious_price_jump": false,
       "screen_eligible": true,
-      "reasons": []
+      "reasons": [],
+      "rank": 30,
+      "bucket": "仅2026年低位"
     },
     {
       "code": "02883",
@@ -5291,7 +8783,9 @@
       "screen_eligible": true,
       "reasons": [
         "本年度起点覆盖不足，不能认证年内低位"
-      ]
+      ],
+      "rank": 47,
+      "bucket": "仅2025年低位"
     },
     {
       "code": "00763",
@@ -5362,7 +8856,9 @@
       "falling_close_streak": 0,
       "suspicious_price_jump": false,
       "screen_eligible": true,
-      "reasons": []
+      "reasons": [],
+      "rank": 46,
+      "bucket": "仅2025年低位"
     },
     {
       "code": "00902",
@@ -5433,7 +8929,8 @@
       "suspicious_price_jump": false,
       "screen_eligible": true,
       "reasons": [],
-      "bucket": "上一年度低位优先"
+      "rank": 6,
+      "bucket": "2025与2026双重低位"
     },
     {
       "code": "01199",
@@ -5505,7 +9002,8 @@
       "suspicious_price_jump": false,
       "screen_eligible": true,
       "reasons": [],
-      "bucket": "上一年度低位优先"
+      "rank": 13,
+      "bucket": "2025与2026双重低位"
     },
     {
       "code": "03759",
@@ -5835,7 +9333,8 @@
       "reasons": [
         "本年度起点覆盖不足，不能认证年内低位"
       ],
-      "bucket": "上一年度低位优先"
+      "rank": 32,
+      "bucket": "仅2025年低位"
     },
     {
       "code": "02400",
@@ -5869,7 +9368,9 @@
       "falling_close_streak": 0,
       "suspicious_price_jump": false,
       "screen_eligible": true,
-      "reasons": []
+      "reasons": [],
+      "rank": 26,
+      "bucket": "仅2026年低位"
     },
     {
       "code": "00152",
@@ -5906,7 +9407,8 @@
       "reasons": [
         "本年度起点覆盖不足，不能认证年内低位"
       ],
-      "bucket": "上一年度低位优先"
+      "rank": 34,
+      "bucket": "仅2025年低位"
     },
     {
       "code": "01988",
@@ -6015,7 +9517,9 @@
       "screen_eligible": true,
       "reasons": [
         "本年度起点覆盖不足，不能认证年内低位"
-      ]
+      ],
+      "rank": 42,
+      "bucket": "仅2025年低位"
     },
     {
       "code": "00151",
@@ -6051,7 +9555,9 @@
       "screen_eligible": true,
       "reasons": [
         "上一年度首末交易日覆盖不足，不能认证全年低位"
-      ]
+      ],
+      "rank": 23,
+      "bucket": "仅2026年低位"
     },
     {
       "code": "00392",
@@ -6159,7 +9665,9 @@
       "screen_eligible": true,
       "reasons": [
         "本年度起点覆盖不足，不能认证年内低位"
-      ]
+      ],
+      "rank": 48,
+      "bucket": "仅2025年低位"
     },
     {
       "code": "00968",
@@ -6194,7 +9702,8 @@
       "suspicious_price_jump": false,
       "screen_eligible": true,
       "reasons": [],
-      "bucket": "上一年度低位优先"
+      "rank": 8,
+      "bucket": "2025与2026双重低位"
     },
     {
       "code": "00916",
@@ -6265,7 +9774,8 @@
       "suspicious_price_jump": false,
       "screen_eligible": true,
       "reasons": [],
-      "bucket": "上一年度低位优先"
+      "rank": 12,
+      "bucket": "2025与2026双重低位"
     },
     {
       "code": "00631",
@@ -6336,7 +9846,8 @@
       "suspicious_price_jump": false,
       "screen_eligible": true,
       "reasons": [],
-      "bucket": "上一年度低位优先"
+      "rank": 10,
+      "bucket": "2025与2026双重低位"
     },
     {
       "code": "02727",
@@ -6409,7 +9920,8 @@
       "reasons": [
         "本年度起点覆盖不足，不能认证年内低位"
       ],
-      "bucket": "上一年度低位优先"
+      "rank": 35,
+      "bucket": "仅2025年低位"
     },
     {
       "code": "00168",
@@ -6445,7 +9957,9 @@
       "screen_eligible": true,
       "reasons": [
         "本年度起点覆盖不足，不能认证年内低位"
-      ]
+      ],
+      "rank": 36,
+      "bucket": "仅2025年低位"
     },
     {
       "code": "01428",
@@ -6519,7 +10033,9 @@
       "screen_eligible": true,
       "reasons": [
         "上一年度首末交易日覆盖不足，不能认证全年低位"
-      ]
+      ],
+      "rank": 20,
+      "bucket": "仅2026年低位"
     },
     {
       "code": "01833",
@@ -6554,7 +10070,8 @@
       "suspicious_price_jump": false,
       "screen_eligible": true,
       "reasons": [],
-      "bucket": "上一年度低位优先"
+      "rank": 1,
+      "bucket": "2025与2026双重低位"
     },
     {
       "code": "01766",
@@ -6628,7 +10145,8 @@
       "reasons": [
         "本年度起点覆盖不足，不能认证年内低位"
       ],
-      "bucket": "上一年度低位优先"
+      "rank": 31,
+      "bucket": "仅2025年低位"
     },
     {
       "code": "01133",
@@ -6664,7 +10182,9 @@
       "screen_eligible": true,
       "reasons": [
         "上一年度首末交易日覆盖不足，不能认证全年低位"
-      ]
+      ],
+      "rank": 21,
+      "bucket": "仅2026年低位"
     },
     {
       "code": "01072",
@@ -6698,7 +10218,9 @@
       "falling_close_streak": 8,
       "suspicious_price_jump": false,
       "screen_eligible": true,
-      "reasons": []
+      "reasons": [],
+      "rank": 16,
+      "bucket": "仅2026年低位"
     },
     {
       "code": "01385",
@@ -6843,7 +10365,9 @@
       "screen_eligible": true,
       "reasons": [
         "本年度起点覆盖不足，不能认证年内低位"
-      ]
+      ],
+      "rank": 38,
+      "bucket": "仅2025年低位"
     },
     {
       "code": "00856",
@@ -6989,7 +10513,8 @@
       "suspicious_price_jump": false,
       "screen_eligible": true,
       "reasons": [],
-      "bucket": "上一年度低位优先"
+      "rank": 7,
+      "bucket": "2025与2026双重低位"
     },
     {
       "code": "03618",
@@ -7209,7 +10734,9 @@
       "screen_eligible": true,
       "reasons": [
         "本年度起点覆盖不足，不能认证年内低位"
-      ]
+      ],
+      "rank": 45,
+      "bucket": "仅2025年低位"
     },
     {
       "code": "00867",
@@ -7281,7 +10808,8 @@
       "suspicious_price_jump": false,
       "screen_eligible": true,
       "reasons": [],
-      "bucket": "上一年度低位优先"
+      "rank": 15,
+      "bucket": "2025与2026双重低位"
     },
     {
       "code": "02208",
@@ -7499,7 +11027,8 @@
       "suspicious_price_jump": false,
       "screen_eligible": true,
       "reasons": [],
-      "bucket": "上一年度低位优先"
+      "rank": 2,
+      "bucket": "2025与2026双重低位"
     },
     {
       "code": "02498",
@@ -7534,7 +11063,8 @@
       "suspicious_price_jump": false,
       "screen_eligible": true,
       "reasons": [],
-      "bucket": "上一年度低位优先"
+      "rank": 9,
+      "bucket": "2025与2026双重低位"
     },
     {
       "code": "02238",
@@ -7570,7 +11100,9 @@
       "screen_eligible": true,
       "reasons": [
         "本年度起点覆盖不足，不能认证年内低位"
-      ]
+      ],
+      "rank": 40,
+      "bucket": "仅2025年低位"
     }
   ],
   "errors": []
