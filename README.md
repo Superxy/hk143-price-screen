@@ -2,6 +2,30 @@
 
 > **状态：已部署到 Superxy/hk143-price-screen；2026-10-14首次手动下载143/143只成功，三组全量排名更新已通过云端测试。** 这是公开行情研究程序；不下单、不访问交易账户、不存放个人资产数据。
 
+## 2B / 二踩的条件式风险收益评估（risk_manager.py）
+
+在每日 `cloud_run.py` 和 `entry_signals.py` 成功运行之后，GitHub Actions 自动执行 `python risk_manager.py --output .`。只处理当天标记 `two_b=true` 或 `retest=true` 的低位股票；保留原始三组排名，不交易、不下单。
+
+**默认价格规则（仅为尚待验证的研究参数，不是买入建议）：**
+
+- **假设突破触发价**：结构信号K线当日最高价乘 `1.002`（+0.2%），仅供下一交易日条件触发观察，不能预测成交价或直接取代真实开盘价。
+- **2B结构失效参考价**：假跌破信号K线的最低价乘 `0.995`（低0.5%）。
+- **二踩结构失效参考价**：此前20交易日参考最低价乘 `0.995`（低0.5%）。
+- **8%价格风险门槛**：`(假设触发价-结构失效参考价)/假设触发价 ≤ 8%`；超出则标记 `over_8pct`，不得以该假设方案通过风险筛选。**实际止损可能因跳空/滑点损失超过8%**。
+- **历史阻力参考**：前低出现之后、结构信号发生之前交易日的最高价；如果该历史价未高于触发参考价，就不虚构上涨空间。
+- **风险收益比**：`(可用历史阻力-假设触发价)/(假设触发价-失效参考价)`；研究观察门槛默认≥2R，同时输出数学演算的2R/3R价位，均不代表未来能达到。
+
+参数可用 `python risk_manager.py --help` 查看并临时修改；**本系统不会假设任何未发生的次日开盘价或允许实际无限价追高**。价位没有按不同港股交易最小报价单位和交易费用调整，不能直接当作限价单提交。
+
+生成文件：
+- [risk_manager.py 源代码](https://github.com/Superxy/hk143-price-screen/blob/main/risk_manager.py)
+- [2B/二踩的每日风险收益研究报告](https://github.com/Superxy/hk143-price-screen/blob/main/data/risk_manager.md)
+- [结构化JSON](https://github.com/Superxy/hk143-price-screen/blob/main/data/risk_manager.json)
+- [风险收益评估CSV](https://github.com/Superxy/hk143-price-screen/blob/main/data/%E9%A3%8E%E9%99%A9%E6%94%B6%E7%9B%8A%E8%AF%84%E4%BC%B0.csv)
+- 每个目标日备份至 `data/risk/YYYY-MM-DD.md`。
+
+**风险与收益均属参考情景**：价格形态、2R阈值和0.5%缓冲未通过独立样本外回测；委托能否成交、最小报价单位、佣金、印花税、滑点、流动性与止损跳空须在任何实盘决策前重新评估。
+
 ## 每日底部结构观察模块（2026-10-14新增）
 
 每天 GitHub Actions 在 **cloud_run.py 更新143只数据并输出完整三组低位排名之后**，会执行 `python entry_signals.py --output .`。只分析 `data/latest.json` 中的 `ranked_candidates` 全量候选股，**原三组排序不变，不截断为20只**。
