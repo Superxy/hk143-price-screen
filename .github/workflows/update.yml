@@ -7,6 +7,9 @@ on:
     # 06:17 HKT Monday-Friday = 22:17 UTC Sunday-Thursday
     - cron: '17 22 * * 0-4'
   workflow_dispatch:
+  push:
+    paths:
+      - 'cloud_run.py'
 
 permissions:
   contents: write
@@ -29,6 +32,10 @@ jobs:
           cache: 'pip'
       - name: Install dependencies
         run: python -m pip install -r requirements.txt
+      - name: Validate screener rules (offline tests)
+        run: |
+          python -m pip install pytest
+          python -m pytest -q tests/test_cloud_run.py
       - name: Fetch, validate and screen
         run: python cloud_run.py --output . --delay 2.0 --attempts 3
       - name: Publish updated data and report to repository
