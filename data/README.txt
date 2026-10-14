@@ -1,1 +1,1 @@
-Generated data files will be saved in this directory by the GitHub Actions workflow.
+Generated files; do not delete.
