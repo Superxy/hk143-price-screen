@@ -1,12 +1,12 @@
 # 港股143只｜云端日线自动更新与历史低位筛选
 
-> **状态：可部署的项目模板，尚未部署到你的 GitHub 帐户，也未完成真实云端端到端运行。** 这是公开行情研究程序；不下单、不访问交易账户、不存放个人资产数据。
+> **状态：已部署到 Superxy/hk143-price-screen；2026-10-14首次手动下载143/143只成功，三组全量排名更新已通过云端测试。** 这是公开行情研究程序；不下单、不访问交易账户、不存放个人资产数据。
 
 ## 它如何工作
 
 - **行情**：使用你已在 Windows 验证可用的 `akshare.stock_hk_daily(symbol=..., adjust="")`（新浪财经港股不复权日线）。保留开盘、最高、最低、收盘、成交量、成交额原始字段，筛选计算只使用 OHLC。
 - **定时**：GitHub Actions 每周一至周五香港时间 **19:17** 下载，当地次日早上 **06:17** 补检。GitHub 的 `cron` 用 UTC：周一至周五 `11:17`、周日至周四 `22:17`。两次日程都根据香港交易日历确定“最近已完成的交易日”，避免时区和假期误报。
-- **存储**：`data/2025/代码_2025.csv`、`data/2026/代码_2026.csv`（年份自动向后扩展）；`data/latest.md`、`data/latest.json` 是晨报的固定入口；`data/覆盖与评分.csv`、`data/低位前20.csv` 为核对表。
+- **存储**：`data/2025/代码_2025.csv`、`data/2026/代码_2026.csv`（年份自动向后扩展）；`data/latest.md`、`data/latest.json` 是晨报的固定入口；`data/覆盖与评分.csv`、`data/全部低位候选.csv` 为核对表，后者包含所有合格股票且不设20只上限。
 - **故障恢复**：已覆盖目标日期的股票跳过重复下载；缺少的股票自动重试；接口超时不会用旧数据充当最新数据。每只股票标注最新K线日期；可能停牌的股票显示为 `stale`，而非擅自插值。
 - **价格校验**：香港交易日历 `XHKG`、OHLC 合法性、年份首末及交易日覆盖、120个**交易日**前精确日期、隔夜45%以上跳变提示，均内置。历史年份缺少交易日的，不认证为“全年低位”。
 
@@ -24,13 +24,13 @@ GitHub 官方文档：
 - [Scheduled workflows](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows)
 - [GITHUB_TOKEN/权限](https://docs.github.com/en/actions/tutorials/authenticate-with-github_token)
 
-### 最新数据固定地址（把 `用户名` 和仓库名替换为你的实际值）
+### 已部署仓库的最新数据固定地址
 
-- 浏览器查看（供人工检查，亦可供联网 AI 读取）：`https://github.com/用户名/hk143-price-screen/blob/main/data/latest.md`
-- 结构化完整数据：`https://raw.githubusercontent.com/用户名/hk143-price-screen/main/data/latest.json`
-- 纯文本日榜：`https://raw.githubusercontent.com/用户名/hk143-price-screen/main/data/latest.md`
+- 浏览器查看（供人工检查，亦可供联网 AI 读取）：`https://github.com/Superxy/hk143-price-screen/blob/main/data/latest.md`
+- 结构化完整数据：`https://raw.githubusercontent.com/Superxy/hk143-price-screen/main/data/latest.json`
+- 纯文本日榜：`https://raw.githubusercontent.com/Superxy/hk143-price-screen/main/data/latest.md`
 
-**注意**：这只是地址模板，首次运行成功以前 `data/latest.*` 并不存在；链接不能在创建仓库前直接打开。GitHub RAW 链接有时会有缓存延迟，晨报务必核对报告中的目标交易日。
+**注意**：以上链接已指向实际仓库。GitHub Raw 链接有时会有缓存延迟，晨报务必核对报告中的目标交易日。
 
 ### 自定义运行
 
@@ -49,7 +49,7 @@ python cloud_run.py --output .
 2. 年内低位：同样按当前年度1月1日至**最近已完成交易日**的 `L、H` 计算；年内交易日覆盖不全者，不认证“年内低位”。
 3. 长期下跌：只筛 `P / C[t-120个港股交易日] − 1≤−20%`，若精确参考交易日数据缺失就不给交易日跌幅。
 4. 阴线是 `收盘<开盘`；连续收盘下跌是 `今日收盘<上个交易日收盘`。两项**严格区分**。
-5. 最终排名先取“**长跌且符合上一年度低位**”的股票，再以“**长跌且符合年内低位**”股票补满至最多20只；第一组中双重低位优先，然后连续收阴≥3天优先，再按价格区间位置从低到高排序。
+5. **最新全量排序、不限制20只**：第一组上年+本年同时低位，第二组仅本年低位，第三组仅上年低位；三组互斥不重复，同组连续收阴≥3天优先，其次按本年价格区间位置（第三组按上年）升序。正式报告显示每组全部合格股票。
 6. **不使用成交量、均线、MACD、RSI或基本面评分，也不编造反弹概率。** 缺少充足样本外回测时标题明确写“低位形态匹配榜（未经概率验证）”。
 
 *年内价格可能跌破上一年度最低价，区间位置可以是负数；程序不会把“跌破”当作已确认支撑。若观察到大于45%的隔夜价格跳变，会提示可能存在公司行为或价格不连续并暂不入榜。此阈值是风险警戒，不是对拆合股的确认。*
