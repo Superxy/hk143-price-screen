@@ -12,6 +12,9 @@ on:
       - 'cloud_run.py'
       - 'entry_signals.py'
       - 'risk_manager.py'
+      - 'ths_watchlist_sync.py'
+      - 'config/ths_blockstock_template.xml'
+      - 'tests/test_ths_watchlist_sync.py'
       - 'tests/test_risk_manager.py'
       - 'tests/test_entry_signals.py'
       - '.github/workflows/update.yml'
@@ -40,13 +43,15 @@ jobs:
       - name: Validate screener rules (offline tests)
         run: |
           python -m pip install pytest
-          python -m pytest -q tests/test_cloud_run.py tests/test_entry_signals.py tests/test_risk_manager.py
+          python -m pytest -q tests/test_cloud_run.py tests/test_entry_signals.py tests/test_risk_manager.py tests/test_ths_watchlist_sync.py
       - name: Fetch, validate and screen
         run: python cloud_run.py --output . --delay 2.0 --attempts 3
       - name: Identify 2B, retest, breakdown and local strengthening
         run: python entry_signals.py --output .
       - name: Assess 2B/retest conditional entry and 8 percent risk
         run: python risk_manager.py --output .
+      - name: Export verified Tonghuashun custom-group XML
+        run: python ths_watchlist_sync.py --output .
       - name: Publish updated data and report to repository
         run: |
           git config user.name 'github-actions[bot]'
