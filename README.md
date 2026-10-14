@@ -2,6 +2,30 @@
 
 > **状态：已部署到 Superxy/hk143-price-screen；2026-10-14首次手动下载143/143只成功，三组全量排名更新已通过云端测试。** 这是公开行情研究程序；不下单、不访问交易账户、不存放个人资产数据。
 
+## 同花顺远航版：每日港股自选分组 XML（ths_watchlist_sync.py）
+
+每日云端任务在更新 `data/latest.json`、完成价格结构及风险评估后，自动执行：
+
+```bash
+python ths_watchlist_sync.py --output .
+```
+
+- **固定下载地址**：[每日最新 blockstockV3.xml](data/ths/blockstockV3.xml)
+- **历史备份**：`data/ths/history/交易日_blockstockV3.xml`，便于核对具体行情日期。
+- **真实基准模板**：`config/ths_blockstock_template.xml`，来自用户已在远航版成功导入48只港股的分组文件。
+- **数据输入**：`data/latest.json` 的 `ranked_candidates`，保持“前一年＋当年双重低位 → 当年低位 → 前一年低位”的完整原排名；不限20只。导出全部低位候选，不仅是2B/二踩信号。
+- **代码格式**：例如 `00753 → HK0753`、`00020 → HK0020`、`01810 → HK1810`，市场 `UHKM`。
+- **写入范围**：只替换基准XML中 `id=35` / `港股低价自选` 的证券节点；保留模板内 `A股低价自选`（`id=36`）等其他元素。
+- **失败保护**：行情覆盖不完整、日期不匹配、空名单、排名错误或重复代码时中止导出，不覆盖旧XML；文件采用原子写入。
+- **本机手动应用**：下载当日XML，**完全退出远航版**；备份原来的 `blockstockV3.xml` 后，将下载文件重命名为 `blockstockV3.xml` 并复制到本机 `bin/users/<本地用户文件夹>/`，再打开软件检查股票数量、名称及交易日。**此操作可能覆盖本机新增的自定义板块**，若本机板块已变化，应先使用 `--template` 指向本机最新的XML，重新生成；云端无法感知本机配置变更。
+- **安全界限**：GitHub只生成可下载XML；不连接中信或同花顺交易账户、不自动替换用户本机文件，也不会自动下单。
+
+本地只检查、不生成文件：
+
+```bash
+python ths_watchlist_sync.py --output . --dry-run
+```
+
 ## 2B / 二踩的条件式风险收益评估（risk_manager.py）
 
 在每日 `cloud_run.py` 和 `entry_signals.py` 成功运行之后，GitHub Actions 自动执行 `python risk_manager.py --output .`。只处理当天标记 `two_b=true` 或 `retest=true` 的低位股票；保留原始三组排名，不交易、不下单。
