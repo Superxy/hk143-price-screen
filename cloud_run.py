@@ -275,64 +275,107 @@ def calc_stock(stock, history: pd.DataFrame, asof: date, calendar, error: str = 
     return row
 
 
-def prioritize(records):
-    previous = [r for r in records if r["previous_year_low"]]
-    current_only = [r for r in records if r["current_year_low"] and not r["previous_year_low"]]
-    def prev_key(r):
-        return (not r["current_year_low"], r["bearish_streak"] < 3,
-                r["previous_year_range"]["position_pct"], r["code"])
-    def current_key(r):
-        return (r["bearish_streak"] < 3, r["current_year_range"]["position_pct"], r["code"])
-    previous.sort(key=prev_key)
-    current_only.sort(key=current_key)
-    top = previous[:20] + current_only[:max(0, 20-len(previous))]
-    for r in top:
-        r["bucket"] = "上一年度低位优先" if r["previous_year_low"] else "年内低位补充"
-    return previous, current_only, top
 
+def prioritize(records):
+    """全量候选排名：双重低位 -> 仅当年低位 -> 仅上年低位。
+
+    三组互斥，杜绝重复计数。连续3日以上收阴只影响组内名次，
+    不作为入选门槛；组内其次按照相应年度价格区间位置升序。
+    """
+    both = [r for r in records if r["previous_year_low"] and r["current_year_low"]]
+    current_only = [r for r in records if r["current_year_low"] and not r["previous_year_low"]]
+    previous_only = [r for r in records if r["previous_year_low"] and not r["current_year_low"]]
+
+    both.sort(key=lambda r: (
+        r["bearish_streak"] < 3,
+        r["current_year_range"]["position_pct"],
+        r["previous_year_range"]["position_pct"], r["code"]))
+    current_only.sort(key=lambda r: (
+        r["bearish_streak"] < 3, r["current_year_range"]["position_pct"], r["code"]))
+    previous_only.sort(key=lambda r: (
+        r["bearish_streak"] < 3, r["previous_year_range"]["position_pct"], r["code"]))
+
+    ranked = both + current_only + previous_only
+    for number, r in enumerate(ranked, start=1):
+        previous_year = r.get("prior_year", 2025)
+        current_year = previous_year + 1
+        r["rank"] = number
+        r["bucket"] = (
+            f"{previous_year}与{current_year}双重低位" if r["previous_year_low"] and r["current_year_low"]
+            else f"仅{current_year}年低位" if r["current_year_low"]
+            else f"仅{previous_year}年低位")
+    return both, current_only, previous_only, ranked
 
 def public_stock(r):
     return {k: v for k, v in r.items() if k != "error"}
 
 
+
 def format_rank(r):
     py = r["previous_year_range"] or {}
     cy = r["current_year_range"] or {}
+
     def position_str(rec):
         return (str(rec.get("position_pct")) + "%") if rec.get("position_pct") is not None else "—"
-    return (f"| {r['code']} {r['name']} | {r['close']:.3f} | "
+
+    return (f"| {r['rank']} | {r['code']} {r['name']} | {r['close']:.3f} | "
             f"{py.get('low', '—')} | {position_str(py)} | "
             f"{cy.get('low', '—')} | {position_str(cy)} | "
             f"{r['return_120_sessions_pct']}% | {r['bearish_streak']} | {r['falling_close_streak']} |")
 
 
 def make_markdown(report):
-    meta, records, prev, ytd, top = (report[k] for k in ("meta", "stocks", "previous_year_candidates", "current_year_candidates", "top20"))
-    lines = ["# 港股143只历史低位抄底筛选：最新报告", "",
-             f"- **交易日：{meta['target_session_hkt']}（香港）**；生成时间：{meta['generated_at_hkt']}",
-             f"- **数据源**：{SOURCE}",
-             f"- **覆盖**：{meta['fresh_count']}/143只包含该日有效日线；{meta['stale_count']}只陈旧，{meta['missing_count']}只缺失；{meta['download_failures']}只本轮请求失败",
-             f"- **运行状态**：{meta['status']}。非完整覆盖不可冒充143只全量排名。",
-             "- **规则**：只看不复权价格；120交易日跌幅≤-20%；区间位置≤20%且距低点≤15%；2025年低位优先于2026年低位（年份随时间滚动）。",
-             "- **排名性质**：低位形态匹配榜（**未经样本外概率验证**），不显示虚构反弹成功率。",
-             "- **注意**：低位不代表已经见底；连续收阴不保证反弹。", "",
-             f"## 上一年度低位（符合要求共{len(prev)}只）", "",
-             "| 股票 | 最新收盘价 | 上年低价 | 上年区间位置 | 当年低价 | 当年区间位置 | 120日涨跌 | 连阴天数 | 连续收盘下跌 |",
-             "|---|---:|---:|---:|---:|---:|---:|---:|---:|",]
-    lines += [format_rank(r) for r in top if r["previous_year_low"]] or ["| 无合格样本 | — | — | — | — | — | — | — | — |"]
-    lines += ["", f"## 年内低位补充（符合要求共{len(ytd)}只，不含上组）", "",
-              "| 股票 | 最新收盘价 | 上年低价 | 上年区间位置 | 当年低价 | 当年区间位置 | 120日涨跌 | 连阴天数 | 连续收盘下跌 |",
-              "|---|---:|---:|---:|---:|---:|---:|---:|---:|",]
-    lines += [format_rank(r) for r in top if r["current_year_low"] and not r["previous_year_low"]] or ["| 无合格样本 | — | — | — | — | — | — | — | — |"]
-    lines += ["", "## 数据完整性", "", "以下股票不参加今日排名；不把旧收盘价冒充目标交易日收盘价：", ""]
-    excluded = [r for r in records if r["data_status"] != "fresh"]
-    for r in excluded:
-        lines.append(f"- {r['code']} {r['name']}：最后K线 {r['latest_date'] or '无'}；{r['data_status']}")
-    if not excluded:
-        lines.append("- 无数据日期缺失（不代表公司行为或历史区间均已核验）。")
-    lines += ["", "## 说明", "", "本报告不是买卖指令。复权/供股/拆合股可能使不复权历史价格失去可比性；出现超过45%隔夜跳变者暂时排除，需人工核验。", ""]
-    return "\n".join(lines)
+    meta = report["meta"]
+    records = report["stocks"]
+    both = report["double_low_candidates"]
+    current_only = report["current_year_only_candidates"]
+    previous_only = report["previous_year_only_candidates"]
+    ranked = report["ranked_candidates"]
+    year = int(meta["target_session_hkt"][:4])
+    previous_year = year - 1
 
+    lines = [
+        "# 港股143只历史低位筛选：全部合格股票排序",
+        "",
+        f"- **交易日：{meta['target_session_hkt']}（香港）**；生成时间：{meta['generated_at_hkt']}",
+        f"- **数据源**：{SOURCE}",
+        f"- **覆盖**：{meta['fresh_count']}/143只包含目标日有效日线；{meta['stale_count']}只陈旧，{meta['missing_count']}只缺失；{meta['download_failures']}只本轮请求失败",
+        f"- **运行状态**：{meta['status']}；覆盖不完整时不冒充143只全量排名。",
+        f"- **合格总数：{len(ranked)}只**，其中双重低位{len(both)}只、仅{year}年低位{len(current_only)}只、仅{previous_year}年低位{len(previous_only)}只。",
+        f"- **入选规则**：只使用不复权OHLC价格；120交易日跌幅≤-20%；区间位置≤20%且距对应年度最低点≤15%；要求年度行情完整。",
+        f"- **排名规则**：{previous_year}和{year}双重低位 → 仅{year}年低位 → 仅{previous_year}年低位；组内先看连续收阴≥3日，再按该组主要年度价格位置从低到高排序；**不限制名额**。",
+        "- **排名性质**：低位价格形态匹配榜（未经样本外概率验证），不显示虚构反弹概率。",
+        "- **风险提示**：破年低或持续收阴不表示已经形成支撑，也不是买入信号。",
+        "",
+    ]
+
+    header = "| 总排名 | 股票 | 最新收盘价 | 上年最低价 | 上年区间位置 | 当年最低价 | 当年区间位置 | 120日涨跌 | 连阴天数 | 连续收盘下跌 |"
+    separator = "|---:|---|---:|---:|---:|---:|---:|---:|---:|---:|"
+    for heading, group in [
+        (f"{previous_year}与{year}年同时处于低位", both),
+        (f"仅{year}年处于低位", current_only),
+        (f"仅{previous_year}年处于低位", previous_only),
+    ]:
+        lines += [f"## {heading}（{len(group)}只）", ""]
+        if group:
+            lines += [header, separator]
+            lines += [format_rank(r) for r in group]
+        else:
+            lines.append("该组没有符合条件的股票。")
+        lines.append("")
+
+    lines += ["## 数据完整性", "",
+              "以下股票缺少目标日收盘K线，不能参与当日排名；不能用旧收盘价代替：", ""]
+    excluded = [r for r in records if r["data_status"] != "fresh"]
+    if excluded:
+        lines += [f"- {r['code']} {r['name']}：最后K线 {r['latest_date'] or '无'}；{r['data_status']}" for r in excluded]
+    else:
+        lines.append("- 所有股票的目标交易日均有日线（不代表每个年度的日线都完整）。")
+    lines += ["", "## 说明", "",
+              "年度完整性不满足的股票不会被认证为该年度低位；不复权历史价格可能受供股、拆合股等公司行为影响。",
+              "出现超过45%隔夜价格跳变者会暂时排除以待核验。此排名不等于未来20日的反弹概率，也不是交易指令。",
+              ""]
+    return "\n".join(lines)
 
 def run(root: Path, stocks, asof: date, calendar, *, attempts: int, delay: float, fetch_func, sleep=True):
     started_at = datetime.now(HKT)
@@ -356,7 +399,7 @@ def run(root: Path, stocks, asof: date, calendar, *, attempts: int, delay: float
                 time.sleep(delay + random.uniform(0, 0.6))
         results.append(calc_stock(stock, history, asof, calendar, error))
         print(f"    {results[-1]['data_status']} | last={results[-1]['latest_date']}" + (f" | {error}" if error else ""), flush=True)
-    prev, ytd, top = prioritize(results)
+    both, current_only, previous_only, ranked = prioritize(results)
     fresh = sum(r["data_status"] == "fresh" for r in results)
     stale = sum(r["data_status"] == "stale" for r in results)
     missing = sum(r["data_status"] == "missing" for r in results)
@@ -367,28 +410,59 @@ def run(root: Path, stocks, asof: date, calendar, *, attempts: int, delay: float
         "total": len(stocks), "fresh_count": fresh, "stale_count": stale,
         "missing_count": missing, "download_failures": len(errors),
         "status": "complete_date_coverage" if fresh == len(stocks) else ("partial" if fresh else "unavailable"),
-        "ranking_method": "pure_price_pattern_match_not_validated_probability",
+        "candidate_count": len(ranked),
+        "double_low_count": len(both),
+        "current_year_only_count": len(current_only),
+        "previous_year_only_count": len(previous_only),
+        "ranking_method": "all_candidates_both_current_previous_not_validated_probability",
         "warning": "Never interpret rankings as calibrated rebound probabilities; provider may lag/suspend/correct prices."
     }
-    report = {"meta": meta, "previous_year_candidates": [public_stock(r) for r in prev],
-              "current_year_candidates": [public_stock(r) for r in ytd],
-              "top20": [public_stock(r) for r in top],
-              "stocks": [public_stock(r) for r in results], "errors": errors}
+    report = {
+        "meta": meta,
+        "double_low_candidates": [public_stock(r) for r in both],
+        "current_year_only_candidates": [public_stock(r) for r in current_only],
+        "previous_year_only_candidates": [public_stock(r) for r in previous_only],
+        "ranked_candidates": [public_stock(r) for r in ranked],
+        # 保留之前的年度候选字段，供其他研究和外部读取使用；两组会包含交集。
+        "previous_year_candidates": [public_stock(r) for r in both + previous_only],
+        "current_year_candidates": [public_stock(r) for r in both + current_only],
+        "stocks": [public_stock(r) for r in results], "errors": errors}
     data_dir = root / "data"
     atomic_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", data_dir / "latest.json")
     atomic_text(make_markdown(report), data_dir / "latest.md")
     fields = ("code", "name", "latest_date", "close", "data_status", "return_120_sessions_pct", "bearish_streak",
               "falling_close_streak", "previous_year_low", "current_year_low", "prior_year_full", "current_year_full_from_start")
     atomic_csv(pd.DataFrame([{field: r[field] for field in fields} for r in results]), data_dir / "覆盖与评分.csv")
-    atomic_csv(pd.DataFrame([{"group": r["bucket"], "code": r["code"], "name": r["name"], "close": r["close"],
-                              "prior_year_position_pct": (r["previous_year_range"] or {}).get("position_pct"),
-                              "current_year_position_pct": (r["current_year_range"] or {}).get("position_pct"),
-                              "return_120_sessions_pct": r["return_120_sessions_pct"],
-                              "bearish_streak": r["bearish_streak"]} for r in top],
-                             columns=["group", "code", "name", "close", "prior_year_position_pct", "current_year_position_pct", "return_120_sessions_pct", "bearish_streak"]), data_dir / "低位前20.csv")
+    ranked_fields = ("rank", "bucket", "code", "name", "latest_date", "close",
+                     "previous_year_low", "current_year_low",
+                     "prior_year_low_price", "prior_year_low_date", "prior_year_position_pct",
+                     "current_year_low_price", "current_year_low_date", "current_year_position_pct",
+                     "return_120_sessions_pct", "bearish_streak", "falling_close_streak")
+    ranked_rows = []
+    for r in ranked:
+        py = r["previous_year_range"] or {}
+        cy = r["current_year_range"] or {}
+        ranked_rows.append({
+            "rank": r["rank"], "bucket": r["bucket"],
+            "code": r["code"], "name": r["name"], "latest_date": r["latest_date"],
+            "close": r["close"], "previous_year_low": r["previous_year_low"],
+            "current_year_low": r["current_year_low"],
+            "prior_year_low_price": py.get("low"), "prior_year_low_date": py.get("low_date"),
+            "prior_year_position_pct": py.get("position_pct"),
+            "current_year_low_price": cy.get("low"), "current_year_low_date": cy.get("low_date"),
+            "current_year_position_pct": cy.get("position_pct"),
+            "return_120_sessions_pct": r["return_120_sessions_pct"],
+            "bearish_streak": r["bearish_streak"],
+            "falling_close_streak": r["falling_close_streak"],
+        })
+    atomic_csv(pd.DataFrame(ranked_rows, columns=ranked_fields), data_dir / "全部低位候选.csv")
+    # 删除以前带20只上限的旧文件，防止读者误读过期榜单。
+    obsolete = data_dir / "低位前20.csv"
+    if obsolete.exists():
+        obsolete.unlink()
     dated = data_dir / "reports" / f"{asof.isoformat()}.md"
     atomic_text(make_markdown(report), dated)
-    print(f"REPORT target={asof} fresh={fresh}/{len(stocks)} stale={stale} missing={missing} errors={len(errors)} top={len(top)}")
+    print(f"REPORT target={asof} fresh={fresh}/{len(stocks)} stale={stale} missing={missing} errors={len(errors)} ranked={len(ranked)} both={len(both)} current_only={len(current_only)} previous_only={len(previous_only)}")
     return report
 
 
