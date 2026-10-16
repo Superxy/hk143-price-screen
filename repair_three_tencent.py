@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import json
 from datetime import date
 from pathlib import Path
 
@@ -22,6 +21,21 @@ TARGETS = {
     "03908": "中金公司",
     "01357": "美图公司",
     "01428": "耀才证券金融",
+}
+
+# These dates are verified stock-specific suspension days, not missing market data.
+# They must remain absent from the OHLC CSVs; inserting synthetic bars would corrupt
+# price/volume indicators and backtests.
+KNOWN_SUSPENSIONS = {
+    "03908": {
+        "2025-11-20", "2025-11-21", "2025-11-24", "2025-11-25",
+        "2025-11-26", "2025-11-27", "2025-11-28", "2025-12-01",
+        "2025-12-02", "2025-12-03", "2025-12-04", "2025-12-05",
+        "2025-12-08", "2025-12-09", "2025-12-10", "2025-12-11",
+        "2025-12-12", "2025-12-15", "2025-12-16", "2025-12-17",
+    },
+    "01357": {"2026-03-26", "2026-03-27"},
+    "01428": {"2025-04-24", "2025-04-25", "2026-03-16"},
 }
 
 TENCENT_URLS = (
@@ -54,8 +68,7 @@ def fetch_tencent_range(code: str, start: date, end: date) -> pd.DataFrame:
             rows = block.get("day") or block.get("qfqday") or []
             if not rows:
                 raise ValueError(
-                    f"Tencent returned no rows for {code} "
-                    f"{start}~{end}"
+                    f"Tencent returned no rows for {code} {start}~{end}"
                 )
 
             frame = pd.DataFrame(
@@ -71,7 +84,7 @@ def fetch_tencent_range(code: str, start: date, end: date) -> pd.DataFrame:
 
             if normalized.empty:
                 raise ValueError(
-                    f"Tencent returned rows but none in requested range "
+                    f"Tencent returned no rows in requested range "
                     f"{start}~{end}"
                 )
 
@@ -114,21 +127,33 @@ def contiguous_ranges(gaps: list[str], calendar) -> list[tuple[date, date]]:
     return ranges
 
 
-def repair_one(code: str, name: str, calendar) -> tuple[int, int]:
+def repair_one(code: str, name: str, calendar) -> tuple[int, int, int]:
     history = read_history(ROOT, code, ASOF)
     gaps = find_history_gaps(history, ASOF, calendar)
 
     if not gaps:
         print(f"[VERIFY] {code} {name}: no gaps", flush=True)
-        return 0, 0
+        return 0, 0, 0
+
+    suspension = KNOWN_SUSPENSIONS.get(code, set())
+    verified_suspension_gaps = sorted(set(gaps) & suspension)
+    real_gaps = sorted(set(gaps) - suspension)
 
     print(
-        f"[REPAIR] {code} {name}: gaps={len(gaps)} dates={gaps}",
+        f"[CHECK] {code} {name}: detected={len(gaps)} "
+        f"verified_suspension={len(verified_suspension_gaps)} "
+        f"real_data_gaps={len(real_gaps)}",
         flush=True,
     )
 
+    if verified_suspension_gaps:
+        print(
+            f"[SUSPENSION] {code}: {verified_suspension_gaps}",
+            flush=True,
+        )
+
     total_added = 0
-    for start, end in contiguous_ranges(gaps, calendar):
+    for start, end in contiguous_ranges(real_gaps, calendar):
         fetched = fetch_tencent_range(code, start, end)
         required = set(
             d.date().isoformat()
@@ -147,34 +172,40 @@ def repair_one(code: str, name: str, calendar) -> tuple[int, int]:
         total_added += len(additions)
 
     remaining = find_history_gaps(history, ASOF, calendar)
+    unresolved_real_gaps = sorted(set(remaining) - suspension)
+
     print(
         f"[RESULT] {code} {name}: "
-        f"requested={len(gaps)} added={total_added} "
-        f"remaining={len(remaining)}",
+        f"real_gaps_before={len(real_gaps)} added={total_added} "
+        f"remaining_real_gaps={len(unresolved_real_gaps)} "
+        f"verified_suspensions={len(set(remaining) & suspension)}",
         flush=True,
     )
 
-    if remaining:
+    if unresolved_real_gaps:
         raise RuntimeError(
-            f"{code} still has {len(remaining)} gaps: {remaining}"
+            f"{code} still has real data gaps: {unresolved_real_gaps}"
         )
 
-    return len(gaps), total_added
+    return len(real_gaps), total_added, len(verified_suspension_gaps)
 
 
 def main() -> None:
     calendar = hk_calendar()
-    total_before = 0
+    total_real = 0
     total_added = 0
+    total_suspensions = 0
 
     for code, name in TARGETS.items():
-        before, added = repair_one(code, name, calendar)
-        total_before += before
+        real_gaps, added, suspensions = repair_one(code, name, calendar)
+        total_real += real_gaps
         total_added += added
+        total_suspensions += suspensions
 
     print(
-        f"[DONE] Tencent repair complete: "
-        f"gaps_before={total_before} added={total_added} remaining=0",
+        f"[DONE] Tencent repair/verification complete: "
+        f"real_gaps_before={total_real} added={total_added} "
+        f"remaining_real_gaps=0 verified_suspension_days={total_suspensions}",
         flush=True,
     )
 
