@@ -1,0 +1,11 @@
+{
+  "updated_at_hkt": "2026-10-16 20:24:42 +0800",
+  "index": 143,
+  "total": 143,
+  "code": "02238",
+  "name": "广汽集团",
+  "stage": "done",
+  "status": "skipped",
+  "elapsed_seconds": 10.22,
+  "error": "secondary ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+}

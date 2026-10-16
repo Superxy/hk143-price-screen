@@ -1,16 +1,16 @@
 {
   "meta": {
-    "target_session": "2026-10-15",
-    "generated_at_hkt": "2026-10-16 08:22:43 +0800",
-    "source_fresh_count": 143,
+    "target_session": "2026-10-16",
+    "generated_at_hkt": "2026-10-16 20:24:44 +0800",
+    "source_fresh_count": 0,
     "source_total": 143,
-    "source_candidate_count": 47,
-    "signal_candidates": 3,
-    "evaluated_count": 3,
+    "source_candidate_count": 0,
+    "signal_candidates": 0,
+    "evaluated_count": 0,
     "invalid_count": 0,
     "status_counts": {
-      "scenario_pass": 1,
-      "rr_below_threshold": 2,
+      "scenario_pass": 0,
+      "rr_below_threshold": 0,
       "no_upside_resistance": 0,
       "over_8pct": 0,
       "data_not_verified": 0
@@ -22,99 +22,5 @@
     "rule_version": "conditional_risk_2b_retest_v1",
     "notice": "No future prices, no order, no guaranteed loss cap; fees/slippage not included"
   },
-  "assessments": [
-    {
-      "rank": 3,
-      "bucket": "2025与2026双重低位",
-      "code": "02333",
-      "name": "长城汽车",
-      "target_session": "2026-10-15",
-      "signal_type": "2B假跌破",
-      "close": 6.975,
-      "entry_reference": 7.00899,
-      "structure_invalidation": 6.79585,
-      "loss_pct_to_stop": 3.04,
-      "risk_within_8pct": true,
-      "historical_resistance": 7.305,
-      "historical_resistance_date_window": [
-        "2026-10-09",
-        "2026-10-14"
-      ],
-      "reward_pct_to_resistance": 4.22,
-      "reward_risk_to_resistance": 1.39,
-      "hypothetical_2r_target": 7.43527,
-      "hypothetical_3r_target": 7.64841,
-      "risk_status": "rr_below_threshold",
-      "reference_low": 6.89,
-      "reference_low_date": "2026-10-08",
-      "notes": [
-        "已满足8%价格风险上限，但至历史反弹高点空间不足2R",
-        "参考价非明日开盘价，真实成交需确认港股最小价位、跳空、价差和交易费用",
-        "若触发前先跌破结构失效价，条件方案作废；失效价不保证止损按该价成交"
-      ],
-      "trigger_rule": "未来交易日向上突破参考触发价，且实际成交价接近参考价才重新评估；非订单"
-    },
-    {
-      "rank": 9,
-      "bucket": "2025与2026双重低位",
-      "code": "00968",
-      "name": "信义光能",
-      "target_session": "2026-10-15",
-      "signal_type": "2B假跌破",
-      "close": 1.85,
-      "entry_reference": 1.86873,
-      "structure_invalidation": 1.79597,
-      "loss_pct_to_stop": 3.89,
-      "risk_within_8pct": true,
-      "historical_resistance": 1.995,
-      "historical_resistance_date_window": [
-        "2026-10-05",
-        "2026-10-14"
-      ],
-      "reward_pct_to_resistance": 6.76,
-      "reward_risk_to_resistance": 1.74,
-      "hypothetical_2r_target": 2.01424,
-      "hypothetical_3r_target": 2.087,
-      "risk_status": "rr_below_threshold",
-      "reference_low": 1.84,
-      "reference_low_date": "2026-10-02",
-      "notes": [
-        "已满足8%价格风险上限，但至历史反弹高点空间不足2R",
-        "参考价非明日开盘价，真实成交需确认港股最小价位、跳空、价差和交易费用",
-        "若触发前先跌破结构失效价，条件方案作废；失效价不保证止损按该价成交"
-      ],
-      "trigger_rule": "未来交易日向上突破参考触发价，且实际成交价接近参考价才重新评估；非订单"
-    },
-    {
-      "rank": 24,
-      "bucket": "仅2026年低位",
-      "code": "01787",
-      "name": "山东黄金",
-      "target_session": "2026-10-15",
-      "signal_type": "2B假跌破",
-      "close": 18.01,
-      "entry_reference": 18.1863,
-      "structure_invalidation": 17.5319,
-      "loss_pct_to_stop": 3.6,
-      "risk_within_8pct": true,
-      "historical_resistance": 19.7,
-      "historical_resistance_date_window": [
-        "2026-09-30",
-        "2026-10-14"
-      ],
-      "reward_pct_to_resistance": 8.32,
-      "reward_risk_to_resistance": 2.31,
-      "hypothetical_2r_target": 19.4951,
-      "hypothetical_3r_target": 20.1495,
-      "risk_status": "scenario_pass",
-      "reference_low": 17.91,
-      "reference_low_date": "2026-09-29",
-      "notes": [
-        "已满足8%价格风险上限，历史阻力空间≥2R；仅供研究",
-        "参考价非明日开盘价，真实成交需确认港股最小价位、跳空、价差和交易费用",
-        "若触发前先跌破结构失效价，条件方案作废；失效价不保证止损按该价成交"
-      ],
-      "trigger_rule": "未来交易日向上突破参考触发价，且实际成交价接近参考价才重新评估；非订单"
-    }
-  ]
+  "assessments": []
 }
