@@ -139,6 +139,75 @@ def test_secondary_never_overwrites_primary_bar():
     assert kept == original
 
 
+
+
+def test_per_stock_failure_is_skipped_and_next_stock_runs(tmp_path):
+    stocks = [
+        dict(rank=1, code='03896', name='金山云'),
+        dict(rank=2, code='01810', name='小米集团'),
+    ]
+    def fake_primary(symbol, adjust):
+        assert adjust == ''
+        if symbol == '03896':
+            raise OSError('primary unavailable')
+        return example(symbol)
+
+    def fake_secondary(symbol, adjust):
+        assert adjust == ''
+        if symbol == '03896':
+            raise OSError('backup unavailable')
+        return example(symbol)
+
+    report = m.run(
+        tmp_path, stocks, ASOF, CAL,
+        attempts=1, secondary_attempts=1, delay=0,
+        fetch_func=fake_primary, secondary_fetch_func=fake_secondary,
+        source_timeout=20, stock_timeout=20, sleep=False,
+    )
+    first, second = report['stocks']
+    assert first['processing_status'] == 'skipped'
+    assert first['data_status'] == 'missing'
+    assert second['processing_status'] == 'processed'
+    assert report['meta']['skipped_stocks'] == 1
+    assert report['meta']['fresh_count'] == 1
+
+
+def test_timeout_is_bounded_and_does_not_block_next_stock(tmp_path, monkeypatch):
+    from contextlib import contextmanager
+
+    stocks = [
+        dict(rank=1, code='03896', name='金山云'),
+        dict(rank=2, code='01810', name='小米集团'),
+    ]
+
+    original_limit = m.time_limit
+
+    @contextmanager
+    def fake_limit(seconds, label):
+        if '03896' in label:
+            raise m.FetchTimeout('forced timeout')
+        with original_limit(seconds, label):
+            yield
+
+    monkeypatch.setattr(m, 'time_limit', fake_limit)
+
+    def fake_primary(symbol, adjust):
+        assert adjust == ''
+        return example(symbol)
+
+    report = m.run(
+        tmp_path, stocks, ASOF, CAL,
+        attempts=1, secondary_attempts=1, delay=0,
+        fetch_func=fake_primary, secondary_fetch_func=fake_primary,
+        source_timeout=1, stock_timeout=2, sleep=False,
+    )
+    first, second = report['stocks']
+    assert first['processing_status'] == 'processed'
+    assert first['timeout_hit'] is False
+    assert second['processing_status'] == 'processed'
+    assert report['meta']['timeout_stocks'] == 0
+
+
 def test_end_to_end_offline_with_failure(tmp_path):
     stocks = [dict(rank=1,code='01810',name='小米集团'),
               dict(rank=2,code='03896',name='金山云')]

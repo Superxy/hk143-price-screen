@@ -15,8 +15,11 @@ import csv
 import json
 import os
 import random
+import signal
 import sys
+import threading
 import time
+from contextlib import contextmanager
 
 import requests
 from datetime import date, datetime, timedelta, timezone
@@ -260,15 +263,133 @@ def save_history(root: Path, code: str, prior: pd.DataFrame, fetched: pd.DataFra
     return combined
 
 
-def download(code: str, end: date, attempts: int, delay: float, source_func):
+class FetchTimeout(TimeoutError):
+    """One data-source attempt exceeded its time budget."""
+
+
+class StockTimeout(TimeoutError):
+    """One stock exceeded its total data-processing budget."""
+
+
+@contextmanager
+def time_limit(seconds: float | None, label: str):
+    """Interrupt a blocking source call on Unix runners.
+
+    GitHub's hosted Ubuntu runner is Unix, so SIGALRM gives us a real per-call
+    timeout even when an upstream library does not expose a requests timeout.
+    On platforms without SIGALRM, the source function's own timeout behavior
+    remains in effect.
+    """
+    if seconds is None or seconds <= 0 or not hasattr(signal, "SIGALRM") or (
+        threading.current_thread() is not threading.main_thread()
+    ):
+        yield
+        return
+
+    previous_handler = signal.getsignal(signal.SIGALRM)
+    previous_timer = signal.getitimer(signal.ITIMER_REAL)
+
+    def handler(signum, frame):
+        raise FetchTimeout(f"{label} timed out after {seconds:.1f}s")
+
+    signal.signal(signal.SIGALRM, handler)
+    signal.setitimer(signal.ITIMER_REAL, float(seconds))
+    try:
+        yield
+    finally:
+        signal.setitimer(signal.ITIMER_REAL, 0)
+        signal.signal(signal.SIGALRM, previous_handler)
+        if previous_timer[0] > 0:
+            signal.setitimer(
+                signal.ITIMER_REAL, previous_timer[0], previous_timer[1]
+            )
+
+
+def remaining_budget(deadline: float | None) -> float | None:
+    if deadline is None:
+        return None
+    remaining = deadline - time.monotonic()
+    if remaining <= 0:
+        raise StockTimeout("stock total timeout exceeded")
+    return remaining
+
+
+def sleep_with_budget(seconds: float, deadline: float | None):
+    if seconds <= 0:
+        return
+    remaining = remaining_budget(deadline)
+    if remaining is not None and seconds >= remaining:
+        time.sleep(max(0, remaining))
+        raise StockTimeout("stock total timeout exceeded during retry backoff")
+    time.sleep(seconds)
+
+
+def save_progress(root: Path, *, index: int, total: int, stock: dict,
+                  stage: str, started_monotonic: float, status: str = "running",
+                  error: str = ""):
+    """Write a lightweight local progress marker for post-run diagnostics."""
+    payload = {
+        "updated_at_hkt": datetime.now(HKT).strftime("%Y-%m-%d %H:%M:%S %z"),
+        "index": index,
+        "total": total,
+        "code": stock["code"],
+        "name": stock["name"],
+        "stage": stage,
+        "status": status,
+        "elapsed_seconds": round(time.monotonic() - started_monotonic, 2),
+        "error": error,
+    }
+    atomic_text(
+        json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
+        root / "data" / "run_progress.json",
+    )
+
+
+def download(code: str, end: date, attempts: int, delay: float, source_func,
+             *, source_name: str, timeout: float, deadline: float | None = None):
     for idx in range(attempts):
+        budget = remaining_budget(deadline)
+        attempt_timeout = timeout if budget is None else min(timeout, budget)
+        started = time.monotonic()
+        print(
+            f"        [{source_name}] attempt {idx + 1}/{attempts} START "
+            f"timeout={attempt_timeout:.1f}s",
+            flush=True,
+        )
         try:
-            return normalize(source_func(symbol=code, adjust=""), end)
+            with time_limit(attempt_timeout, f"{source_name}:{code}"):
+                raw = source_func(symbol=code, adjust="")
+            normalized = normalize(raw, end)
+            print(
+                f"        [{source_name}] attempt {idx + 1}/{attempts} OK "
+                f"rows={len(normalized)} elapsed={time.monotonic() - started:.1f}s",
+                flush=True,
+            )
+            return normalized
+        except StockTimeout:
+            raise
+        except FetchTimeout as exc:
+            print(
+                f"        [{source_name}] attempt {idx + 1}/{attempts} TIMEOUT "
+                f"elapsed={time.monotonic() - started:.1f}s",
+                flush=True,
+            )
+            last_exc = exc
         except Exception as exc:
-            print(f"{code} attempt {idx+1}/{attempts}: {type(exc).__name__}: {str(exc)[:130]}", flush=True)
-            if idx + 1 == attempts:
-                raise
-            time.sleep(delay * (idx + 1) + random.uniform(0, .8))
+            print(
+                f"        [{source_name}] attempt {idx + 1}/{attempts} FAIL "
+                f"{type(exc).__name__}: {str(exc)[:130]} "
+                f"elapsed={time.monotonic() - started:.1f}s",
+                flush=True,
+            )
+            last_exc = exc
+
+        if idx + 1 == attempts:
+            raise last_exc
+
+        wait = delay * (idx + 1) + random.uniform(0, .8)
+        sleep_with_budget(wait, deadline)
+
     raise RuntimeError("unreachable")
 
 
@@ -464,6 +585,7 @@ def make_markdown(report):
         f"- **覆盖**：{meta['fresh_count']}/143只包含目标日有效日线；{meta['stale_count']}只陈旧，{meta['missing_count']}只缺失；{meta['download_failures']}只本轮请求失败",
         f"- **历史缺口扫描**：发现{meta['initial_gap_stocks']}只存在内部交易日缺口；主源重抓{meta['primary_refetch_stocks']}只；备用源核验/补缺{meta['secondary_refetch_stocks']}只；最终仍有缺口{meta['unresolved_gap_stocks']}只（{meta['unresolved_gap_sessions']}个交易日）。",
         f"- **缺口修复**：主源新增/修复{meta['repaired_primary_sessions']}个交易日；东方财富备用源补入{meta['repaired_secondary_sessions']}个交易日；主备价格冲突涉及{meta['source_conflict_stocks']}只。",
+        f"- **故障处理**：{meta['skipped_stocks']}只因处理异常跳过；{meta['timeout_stocks']}只触发单股超时；故障股票不会阻塞后续股票。",
         f"- **运行状态**：{meta['status']}；覆盖不完整时不冒充143只全量排名。",
         f"- **合格总数：{len(ranked)}只**，其中双重低位{len(both)}只、仅{year}年低位{len(current_only)}只、仅{previous_year}年低位{len(previous_only)}只。",
         f"- **入选规则**：只使用不复权OHLC价格；120交易日跌幅≤-20%；区间位置≤20%且距对应年度最低点≤15%；要求年度行情完整。",
@@ -515,8 +637,10 @@ def make_markdown(report):
     return "\n".join(lines)
 
 def run(root: Path, stocks, asof: date, calendar, *, attempts: int,
-        delay: float, fetch_func, secondary_fetch_func=None, sleep=True):
-    """Download 143 stocks, repair internal gaps, then run the low-position screen.
+        delay: float, fetch_func, secondary_fetch_func=None, sleep=True,
+        source_timeout: float = 20.0, stock_timeout: float = 75.0,
+        secondary_attempts: int = 1):
+    """Download 143 stocks with bounded per-source/per-stock work.
 
     Repair order:
       1) inspect local history for missing HKEX sessions;
@@ -524,18 +648,44 @@ def run(root: Path, stocks, asof: date, calendar, *, attempts: int,
       3) if gaps remain, query independent Eastmoney data;
       4) fill only missing dates from Eastmoney; existing primary bars win;
       5) unresolved gaps remain explicitly marked and are never synthesized.
+
+    A bad/slow ticker is recorded and skipped; it can never stop later tickers.
     """
+    if source_timeout <= 0 or stock_timeout <= 0:
+        raise ValueError("source_timeout and stock_timeout must be > 0")
+    if attempts < 1 or secondary_attempts < 1:
+        raise ValueError("attempts and secondary_attempts must be >= 1")
+
     started_at = datetime.now(HKT)
     errors = []
     results = []
+    timeout_stocks = 0
+    skipped_stocks = 0
+    total = len(stocks)
+
+    print(
+        f"RUN START target={asof} stocks={total} "
+        f"source_timeout={source_timeout:.0f}s stock_timeout={stock_timeout:.0f}s "
+        f"primary_attempts={attempts} secondary_attempts={secondary_attempts}",
+        flush=True,
+    )
+
     for i, stock in enumerate(stocks, start=1):
         code = stock["code"]
-        print(f"[{i}/{len(stocks)}] {code} {stock['name']}", flush=True)
+        stock_started = time.monotonic()
+        deadline = stock_started + stock_timeout
+        print(
+            f"[{i}/{total}] START {code} {stock['name']} "
+            f"budget={stock_timeout:.0f}s",
+            flush=True,
+        )
+        save_progress(
+            root, index=i, total=total, stock=stock, stage="start",
+            started_monotonic=stock_started,
+        )
 
-        prior = read_history(root, code, asof)
-        initial_gaps = find_history_gaps(prior, calendar, asof)
-        last = date.fromisoformat(prior["date"].iloc[-1]) if not prior.empty else None
-        needs_primary_refresh = prior.empty or last != asof or bool(initial_gaps)
+        prior = pd.DataFrame(columns=FIELDS)
+        initial_gaps = []
         history = prior
         primary_refetched = False
         secondary_refetched = False
@@ -543,43 +693,124 @@ def run(root: Path, stocks, asof: date, calendar, *, attempts: int,
         secondary_added = 0
         conflicts = []
         error_messages = []
+        processing_status = "processed"
+        skip_reason = ""
+        timeout_hit = False
 
-        if needs_primary_refresh:
-            try:
-                fetched = download(code, asof, attempts, delay, fetch_func)
-                primary_added = count_new_dates(history, fetched)
-                history = save_history(root, code, history, fetched, asof)
-                primary_refetched = True
-            except Exception as exc:
-                msg = f"primary {type(exc).__name__}: {str(exc)[:150]}"
-                error_messages.append(msg)
-                errors.append({"code": code, "name": stock["name"], "error": msg})
-            if sleep and delay > 0:
-                time.sleep(delay + random.uniform(0, 0.6))
+        try:
+            prior = read_history(root, code, asof)
+            history = prior
+            initial_gaps = find_history_gaps(prior, calendar, asof)
+            last = date.fromisoformat(prior["date"].iloc[-1]) if not prior.empty else None
+            needs_primary_refresh = prior.empty or last != asof or bool(initial_gaps)
+            save_progress(
+                root, index=i, total=total, stock=stock, stage="local_check",
+                started_monotonic=stock_started,
+            )
 
-        remaining_gaps = find_history_gaps(history, calendar, asof)
-
-        if remaining_gaps and secondary_fetch_func is not None:
-            try:
-                secondary = download(code, asof, attempts, delay, secondary_fetch_func)
-                conflicts = source_conflicts(history, secondary)
-                before = set(history["date"].astype(str)) if not history.empty else set()
-                history, _ = fill_missing_history(
-                    history, secondary, calendar, asof
+            if needs_primary_refresh:
+                remaining_budget(deadline)
+                print(
+                    f"    PRIMARY needed reason="
+                    f"{'no_cache' if prior.empty else 'target_missing' if last != asof else 'history_gap'}",
+                    flush=True,
                 )
-                after = set(history["date"].astype(str)) if not history.empty else set()
-                secondary_added = len(after - before)
-                secondary_refetched = True
-            except Exception as exc:
-                msg = f"secondary {type(exc).__name__}: {str(exc)[:150]}"
-                error_messages.append(msg)
-                errors.append({"code": code, "name": stock["name"], "error": msg})
-            if sleep and delay > 0:
-                time.sleep(delay + random.uniform(0, 0.6))
+                try:
+                    fetched = download(
+                        code, asof, attempts, delay, fetch_func,
+                        source_name="Sina/AKShare", timeout=source_timeout,
+                        deadline=deadline,
+                    )
+                    primary_added = count_new_dates(history, fetched)
+                    history = save_history(root, code, history, fetched, asof)
+                    primary_refetched = True
+                    print(
+                        f"    PRIMARY saved new_sessions={primary_added}",
+                        flush=True,
+                    )
+                except StockTimeout:
+                    raise
+                except Exception as exc:
+                    msg = f"primary {type(exc).__name__}: {str(exc)[:150]}"
+                    error_messages.append(msg)
+                    errors.append({"code": code, "name": stock["name"], "error": msg})
+                    print(f"    PRIMARY exhausted -> {msg}", flush=True)
+                if sleep and delay > 0:
+                    sleep_with_budget(
+                        delay + random.uniform(0, 0.6), deadline
+                    )
 
-        remaining_gaps = find_history_gaps(history, calendar, asof)
-        error = "; ".join(error_messages)
-        result = calc_stock(stock, history, asof, calendar, error)
+            remaining_gaps = find_history_gaps(history, calendar, asof)
+
+            if remaining_gaps and secondary_fetch_func is not None:
+                remaining_budget(deadline)
+                print(
+                    f"    SECONDARY needed unresolved_gaps={len(remaining_gaps)}",
+                    flush=True,
+                )
+                try:
+                    secondary = download(
+                        code, asof, secondary_attempts, delay,
+                        secondary_fetch_func, source_name="Eastmoney",
+                        timeout=source_timeout, deadline=deadline,
+                    )
+                    conflicts = source_conflicts(history, secondary)
+                    before = set(history["date"].astype(str)) if not history.empty else set()
+                    history, _ = fill_missing_history(
+                        history, secondary, calendar, asof
+                    )
+                    after = set(history["date"].astype(str)) if not history.empty else set()
+                    secondary_added = len(after - before)
+                    secondary_refetched = True
+                    print(
+                        f"    SECONDARY saved new_sessions={secondary_added} "
+                        f"conflicts={len(conflicts)}",
+                        flush=True,
+                    )
+                except StockTimeout:
+                    raise
+                except Exception as exc:
+                    msg = f"secondary {type(exc).__name__}: {str(exc)[:150]}"
+                    error_messages.append(msg)
+                    errors.append({"code": code, "name": stock["name"], "error": msg})
+                    print(f"    SECONDARY exhausted -> {msg}", flush=True)
+                if sleep and delay > 0:
+                    sleep_with_budget(
+                        delay + random.uniform(0, 0.6), deadline
+                    )
+
+            remaining_gaps = find_history_gaps(history, calendar, asof)
+            remaining_budget(deadline)
+            save_progress(
+                root, index=i, total=total, stock=stock, stage="screen",
+                started_monotonic=stock_started,
+            )
+            error = "; ".join(error_messages)
+            result = calc_stock(stock, history, asof, calendar, error)
+        except StockTimeout as exc:
+            timeout_hit = True
+            processing_status = "skipped"
+            skip_reason = str(exc)
+            timeout_stocks += 1
+            msg = f"stock timeout: {skip_reason}"
+            error_messages.append(msg)
+            errors.append({"code": code, "name": stock["name"], "error": msg})
+            print(f"    SKIP TIMEOUT -> {msg}", flush=True)
+            error = "; ".join(error_messages)
+            result = calc_stock(stock, history, asof, calendar, error)
+            remaining_gaps = find_history_gaps(history, calendar, asof)
+        except Exception as exc:
+            processing_status = "skipped"
+            skip_reason = f"{type(exc).__name__}: {str(exc)[:150]}"
+            skipped_stocks += 1
+            msg = f"stock processing error: {skip_reason}"
+            error_messages.append(msg)
+            errors.append({"code": code, "name": stock["name"], "error": msg})
+            print(f"    SKIP ERROR -> {msg}", flush=True)
+            error = "; ".join(error_messages)
+            result = calc_stock(stock, history, asof, calendar, error)
+            remaining_gaps = find_history_gaps(history, calendar, asof)
+
         result.update({
             "initial_gap_count": len(initial_gaps),
             "initial_gap_dates": initial_gaps[:20],
@@ -600,6 +831,10 @@ def run(root: Path, stocks, asof: date, calendar, *, attempts: int,
                 if primary_refetched and secondary_refetched
                 else "local_cache"
             ),
+            "processing_status": processing_status,
+            "skip_reason": skip_reason,
+            "timeout_hit": timeout_hit,
+            "elapsed_seconds": round(time.monotonic() - stock_started, 2),
         })
         if remaining_gaps:
             result["reasons"].append(
@@ -613,12 +848,21 @@ def run(root: Path, stocks, asof: date, calendar, *, attempts: int,
 
         status = result["data_status"]
         print(
-            f"    {status} | last={result['latest_date']} | "
+            f"[{i}/{total}] DONE {code} {stock['name']} | "
+            f"{status} | last={result['latest_date']} | "
             f"gaps={len(initial_gaps)}->{len(remaining_gaps)} | "
-            f"primary={primary_refetched} secondary={secondary_refetched}"
+            f"primary={primary_refetched} secondary={secondary_refetched} | "
+            f"status={processing_status} elapsed={result['elapsed_seconds']:.1f}s"
             + (f" | {error}" if error else ""),
             flush=True,
         )
+        save_progress(
+            root, index=i, total=total, stock=stock, stage="done",
+            started_monotonic=stock_started, status=processing_status,
+            error=error,
+        )
+
+    both, current_only, previous_only, ranked = prioritize(results)
 
     both, current_only, previous_only, ranked = prioritize(results)
     fresh = sum(r["data_status"] == "fresh" for r in results)
@@ -653,6 +897,8 @@ def run(root: Path, stocks, asof: date, calendar, *, attempts: int,
         "unresolved_gap_stocks": unresolved_gap_stocks,
         "unresolved_gap_sessions": unresolved_gap_sessions,
         "source_conflict_stocks": source_conflict_stocks,
+        "skipped_stocks": skipped_stocks,
+        "timeout_stocks": timeout_stocks,
         "history_gap_policy": "scan HKEX sessions from first available bar through target session",
         "repair_policy": "Sina/AKShare retry first; direct Eastmoney backup fills only unresolved dates",
         "ranking_method": "all_candidates_both_current_previous_not_validated_probability",
@@ -676,7 +922,8 @@ def run(root: Path, stocks, asof: date, calendar, *, attempts: int,
         "previous_year_low", "current_year_low", "prior_year_full",
         "current_year_full_from_start", "initial_gap_count", "history_gap_count",
         "primary_refetched", "secondary_refetched", "secondary_added_sessions",
-        "source_conflict_count", "history_source"
+        "source_conflict_count", "history_source", "processing_status",
+        "skip_reason", "timeout_hit", "elapsed_seconds"
     )
     atomic_csv(
         pd.DataFrame([{field: r.get(field) for field in fields} for r in results]),
@@ -724,10 +971,15 @@ def main():
     p.add_argument("--output", type=Path, default=Path(__file__).resolve().parent)
     p.add_argument("--asof", help="Override expected HK market session YYYY-MM-DD (for testing/recovery)")
     p.add_argument("--delay", type=float, default=2.0)
-    p.add_argument("--attempts", type=int, default=3)
+    p.add_argument("--attempts", type=int, default=2)
+    p.add_argument("--secondary-attempts", type=int, default=1)
+    p.add_argument("--source-timeout", type=float, default=20.0)
+    p.add_argument("--stock-timeout", type=float, default=75.0)
     args = p.parse_args()
-    if args.delay < 0 or args.attempts < 1:
-        p.error("--delay must be >= 0 and --attempts >= 1")
+    if args.delay < 0 or args.attempts < 1 or args.secondary_attempts < 1:
+        p.error("--delay must be >= 0; attempts and secondary-attempts must be >= 1")
+    if args.source_timeout <= 0 or args.stock_timeout <= 0:
+        p.error("--source-timeout and --stock-timeout must be > 0")
     cal = hk_calendar()
     now = datetime.now(HKT)
     cutoff = date.fromisoformat(args.asof) if args.asof else expected_session(now, cal)
@@ -751,6 +1003,9 @@ def main():
         delay=args.delay,
         fetch_func=primary_fetch,
         secondary_fetch_func=secondary_fetch,
+        source_timeout=args.source_timeout,
+        stock_timeout=args.stock_timeout,
+        secondary_attempts=args.secondary_attempts,
     )
 
 
