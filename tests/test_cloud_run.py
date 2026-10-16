@@ -126,6 +126,7 @@ def test_primary_failure_secondary_recovers_and_persists(tmp_path):
     def fake_secondary(symbol, adjust):
         calls['secondary'] += 1
         assert adjust == ''
+        raw.attrs['source'] = 'tencent'
         return raw
 
     stocks = [dict(rank=135, code='03896', name='金山云')]
@@ -161,6 +162,7 @@ def test_primary_refetch_then_secondary_repairs_gap(tmp_path):
     def fake_secondary(symbol, adjust):
         calls['secondary'] += 1
         assert adjust == ''
+        secondary.attrs['source'] = 'tencent'
         return secondary
 
     stocks = [dict(rank=1, code='01810', name='小米集团')]
