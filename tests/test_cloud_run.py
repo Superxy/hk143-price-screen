@@ -131,8 +131,10 @@ def test_secondary_never_overwrites_primary_bar():
     repaired, added = m.fill_missing_history(base_df, backup_df, CAL, ASOF)
     assert added == 1
     assert gap.isoformat() in set(repaired['date'])
-    kept = repaired.loc[repaired['date'] == backup_df.iloc[3]['date'].isoformat(), 'close'].iloc[0]
-    assert kept == base_df.loc[base_df['date'] == backup_df.iloc[3]['date'].isoformat(), 'close'].iloc[0]
+    overlap_date = backup_df.iloc[3]['date']
+    kept = repaired.loc[repaired['date'] == overlap_date, 'close'].iloc[0]
+    original = base_df.loc[base_df['date'] == overlap_date, 'close'].iloc[0]
+    assert kept == original
 
 
 def test_end_to_end_offline_with_failure(tmp_path):
