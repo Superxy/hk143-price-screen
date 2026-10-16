@@ -71,6 +71,70 @@ def test_missing_target_never_candidate():
     assert not r['previous_year_low'] and not r['current_year_low']
 
 
+def test_history_gap_detection():
+    raw = example('01810')
+    missing_day = raw.iloc[len(raw) // 2]['date']
+    raw = raw[raw['date'] != missing_day]
+    hist = m.normalize(raw, ASOF)
+    gaps = m.find_history_gaps(hist, CAL, ASOF)
+    assert missing_day.isoformat() in gaps
+
+
+def test_primary_refetch_then_secondary_repairs_gap(tmp_path):
+    raw = example('01810')
+    gap_date = raw.iloc[len(raw) // 2]['date']
+    primary = raw[raw['date'] != gap_date].copy()
+    secondary = raw.copy()
+    calls = {'primary': 0, 'secondary': 0}
+
+    def fake_primary(symbol, adjust):
+        calls['primary'] += 1
+        assert adjust == ''
+        return primary
+
+    def fake_secondary(symbol, adjust):
+        calls['secondary'] += 1
+        assert adjust == ''
+        return secondary
+
+    stocks = [dict(rank=1, code='01810', name='小米集团')]
+    report = m.run(
+        tmp_path, stocks, ASOF, CAL,
+        attempts=1, delay=0,
+        fetch_func=fake_primary,
+        secondary_fetch_func=fake_secondary,
+        sleep=False,
+    )
+    assert calls == {'primary': 1, 'secondary': 1}
+    row = report['stocks'][0]
+    assert row['initial_gap_count'] == 0
+    assert row['history_gap_count'] == 0
+    assert row['secondary_added_sessions'] == 1
+    assert row['history_source'] == 'sina_akshare+eastmoney_backup'
+
+
+def test_secondary_never_overwrites_primary_bar():
+    sessions = CAL.sessions_in_range(pd.Timestamp('2026-10-01'), pd.Timestamp('2026-10-13'))
+    base = []
+    backup = []
+    for i, day in enumerate(sessions):
+        close = 10.0 + i
+        row = {'date': day.date(), 'open': close, 'high': close + 0.2,
+               'low': close - 0.2, 'close': close, 'volume': 100, 'amount': 1000}
+        base.append(row)
+        backup.append(dict(row))
+    gap = sessions[2].date()
+    base = [row for row in base if row['date'] != gap]
+    backup[3]['close'] = backup[3]['open'] + 5
+    base_df = m.normalize(pd.DataFrame(base), ASOF)
+    backup_df = m.normalize(pd.DataFrame(backup), ASOF)
+    repaired, added = m.fill_missing_history(base_df, backup_df, CAL, ASOF)
+    assert added == 1
+    assert gap.isoformat() in set(repaired['date'])
+    kept = repaired.loc[repaired['date'] == backup_df.iloc[3]['date'].isoformat(), 'close'].iloc[0]
+    assert kept == base_df.loc[base_df['date'] == backup_df.iloc[3]['date'].isoformat(), 'close'].iloc[0]
+
+
 def test_end_to_end_offline_with_failure(tmp_path):
     stocks = [dict(rank=1,code='01810',name='小米集团'),
               dict(rank=2,code='03896',name='金山云')]
