@@ -741,11 +741,21 @@ def run(root: Path, stocks, asof: date, calendar, *, attempts: int,
                     )
 
             remaining_gaps = find_history_gaps(history, calendar, asof)
+            history_latest = (
+                date.fromisoformat(history["date"].iloc[-1])
+                if not history.empty else None
+            )
+            needs_secondary = bool(
+                secondary_fetch_func is not None
+                and (remaining_gaps or history_latest != asof)
+            )
 
-            if remaining_gaps and secondary_fetch_func is not None:
+            if needs_secondary:
                 remaining_budget(deadline)
                 print(
-                    f"    SECONDARY needed unresolved_gaps={len(remaining_gaps)}",
+                    f"    SECONDARY needed target_or_gaps_missing="
+                    f"{history_latest != asof or bool(remaining_gaps)} "
+                    f"unresolved_gaps={len(remaining_gaps)}",
                     flush=True,
                 )
                 try:
@@ -811,6 +821,21 @@ def run(root: Path, stocks, asof: date, calendar, *, attempts: int,
             result = calc_stock(stock, history, asof, calendar, error)
             remaining_gaps = find_history_gaps(history, calendar, asof)
 
+        if (
+            processing_status == "processed"
+            and (
+                history.empty
+                or date.fromisoformat(history["date"].iloc[-1]) != asof
+            )
+        ):
+            processing_status = "skipped"
+            skip_reason = "目标交易日数据在主源与备用源处理后仍不可用"
+            skipped_stocks += 1
+            msg = f"data unavailable: {skip_reason}"
+            if msg not in errors:
+                errors.append({"code": code, "name": stock["name"], "error": msg})
+            result["reasons"].append(skip_reason)
+
         result.update({
             "initial_gap_count": len(initial_gaps),
             "initial_gap_dates": initial_gaps[:20],
@@ -861,8 +886,6 @@ def run(root: Path, stocks, asof: date, calendar, *, attempts: int,
             started_monotonic=stock_started, status=processing_status,
             error=error,
         )
-
-    both, current_only, previous_only, ranked = prioritize(results)
 
     both, current_only, previous_only, ranked = prioritize(results)
     fresh = sum(r["data_status"] == "fresh" for r in results)

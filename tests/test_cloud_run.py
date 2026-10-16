@@ -158,13 +158,24 @@ def test_per_stock_failure_is_skipped_and_next_stock_runs(tmp_path):
             raise OSError('backup unavailable')
         return example(symbol)
 
+    calls = {'primary': 0, 'secondary': 0}
+
+    def counted_primary(symbol, adjust):
+        calls['primary'] += 1
+        return fake_primary(symbol, adjust)
+
+    def counted_secondary(symbol, adjust):
+        calls['secondary'] += 1
+        return fake_secondary(symbol, adjust)
+
     report = m.run(
         tmp_path, stocks, ASOF, CAL,
         attempts=1, secondary_attempts=1, delay=0,
-        fetch_func=fake_primary, secondary_fetch_func=fake_secondary,
+        fetch_func=counted_primary, secondary_fetch_func=counted_secondary,
         source_timeout=20, stock_timeout=20, sleep=False,
     )
     first, second = report['stocks']
+    assert calls == {'primary': 2, 'secondary': 1}
     assert first['processing_status'] == 'skipped'
     assert first['data_status'] == 'missing'
     assert second['processing_status'] == 'processed'
