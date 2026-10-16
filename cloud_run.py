@@ -462,6 +462,8 @@ def make_markdown(report):
         f"- **交易日：{meta['target_session_hkt']}（香港）**；生成时间：{meta['generated_at_hkt']}",
         f"- **数据源**：{SOURCE}",
         f"- **覆盖**：{meta['fresh_count']}/143只包含目标日有效日线；{meta['stale_count']}只陈旧，{meta['missing_count']}只缺失；{meta['download_failures']}只本轮请求失败",
+        f"- **历史缺口扫描**：发现{meta['initial_gap_stocks']}只存在内部交易日缺口；主源重抓{meta['primary_refetch_stocks']}只；备用源核验/补缺{meta['secondary_refetch_stocks']}只；最终仍有缺口{meta['unresolved_gap_stocks']}只（{meta['unresolved_gap_sessions']}个交易日）。",
+        f"- **缺口修复**：主源新增/修复{meta['repaired_primary_sessions']}个交易日；东方财富备用源补入{meta['repaired_secondary_sessions']}个交易日；主备价格冲突涉及{meta['source_conflict_stocks']}只。",
         f"- **运行状态**：{meta['status']}；覆盖不完整时不冒充143只全量排名。",
         f"- **合格总数：{len(ranked)}只**，其中双重低位{len(both)}只、仅{year}年低位{len(current_only)}只、仅{previous_year}年低位{len(previous_only)}只。",
         f"- **入选规则**：只使用不复权OHLC价格；120交易日跌幅≤-20%；区间位置≤20%且距对应年度最低点≤15%；要求年度行情完整。",
@@ -493,6 +495,19 @@ def make_markdown(report):
         lines += [f"- {r['code']} {r['name']}：最后K线 {r['latest_date'] or '无'}；{r['data_status']}" for r in excluded]
     else:
         lines.append("- 所有股票的目标交易日均有日线（不代表每个年度的日线都完整）。")
+    gap_records = [r for r in records if r.get("initial_gap_count", 0) or r.get("history_gap_count", 0)]
+    if gap_records:
+        lines += ["", "### 历史缺口修复明细", ""]
+        for r in gap_records:
+            initial = ", ".join(r.get("initial_gap_dates", [])) or "无"
+            remaining = ", ".join(r.get("history_gap_dates", [])) or "无"
+            lines.append(
+                f"- {r['code']} {r['name']}：初始缺口{r.get('initial_gap_count', 0)}个；"
+                f"主源重抓={'是' if r.get('primary_refetched') else '否'}；"
+                f"备用源={'是' if r.get('secondary_refetched') else '否'}；"
+                f"修复后剩余{r.get('history_gap_count', 0)}个；"
+                f"初始日期：{initial}；剩余日期：{remaining}"
+            )
     lines += ["", "## 说明", "",
               "年度完整性不满足的股票不会被认证为该年度低位；不复权历史价格可能受供股、拆合股等公司行为影响。",
               "出现超过45%隔夜价格跳变者会暂时排除以待核验。此排名不等于未来20日的反弹概率，也不是交易指令。",
