@@ -185,7 +185,7 @@ def test_timeout_is_bounded_and_does_not_block_next_stock(tmp_path, monkeypatch)
     @contextmanager
     def fake_limit(seconds, label):
         if '03896' in label:
-            raise m.FetchTimeout('forced timeout')
+            raise m.StockTimeout('forced stock timeout')
         with original_limit(seconds, label):
             yield
 
@@ -202,10 +202,10 @@ def test_timeout_is_bounded_and_does_not_block_next_stock(tmp_path, monkeypatch)
         source_timeout=1, stock_timeout=2, sleep=False,
     )
     first, second = report['stocks']
-    assert first['processing_status'] == 'processed'
-    assert first['timeout_hit'] is False
+    assert first['processing_status'] == 'skipped'
+    assert first['timeout_hit'] is True
     assert second['processing_status'] == 'processed'
-    assert report['meta']['timeout_stocks'] == 0
+    assert report['meta']['timeout_stocks'] == 1
 
 
 def test_end_to_end_offline_with_failure(tmp_path):
