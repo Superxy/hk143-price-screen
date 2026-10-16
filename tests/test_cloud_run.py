@@ -125,7 +125,9 @@ def test_secondary_never_overwrites_primary_bar():
         backup.append(dict(row))
     gap = sessions[2].date()
     base = [row for row in base if row['date'] != gap]
-    backup[3]['close'] = backup[3]['open'] + 5
+    backup[3]['close'] = backup[3]['close'] + 0.5
+    backup[3]['high'] = backup[3]['close'] + 0.2
+    backup[3]['low'] = backup[3]['close'] - 0.2
     base_df = m.normalize(pd.DataFrame(base), ASOF)
     backup_df = m.normalize(pd.DataFrame(backup), ASOF)
     repaired, added = m.fill_missing_history(base_df, backup_df, CAL, ASOF)
