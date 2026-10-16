@@ -103,6 +103,32 @@ def normalize_hk_code(value) -> str:
         s = s[:-2]
     return s.zfill(5) if s.isdigit() else s
 
+# Confirmed stock-specific suspension/non-trading dates.
+# These dates are intentionally absent from OHLC CSVs and must not be treated
+# as historical data gaps or filled with synthetic bars.
+KNOWN_SUSPENSION_DATES = {
+    "03908": {
+        "2025-11-20", "2025-11-21", "2025-11-24", "2025-11-25",
+        "2025-11-26", "2025-11-27", "2025-11-28", "2025-12-01",
+        "2025-12-02", "2025-12-03", "2025-12-04", "2025-12-05",
+        "2025-12-08", "2025-12-09", "2025-12-10", "2025-12-11",
+        "2025-12-12", "2025-12-15", "2025-12-16", "2025-12-17",
+    },
+    "01357": {"2026-03-26", "2026-03-27"},
+    "01428": {"2025-04-24", "2025-04-25", "2026-03-16"},
+}
+
+
+def expected_stock_sessions(calendar, start: date | None, end: date | None, code: str):
+    if start is None or end is None:
+        return set()
+    excluded = KNOWN_SUSPENSION_DATES.get(normalize_hk_code(code), set())
+    return {
+        d.date().isoformat()
+        for d in calendar.sessions_in_range(pd.Timestamp(start), pd.Timestamp(end))
+        if d.date().isoformat() not in excluded
+    }
+
 
 def call_with_timeout(func, timeout: float, label: str):
     box = {}
@@ -272,13 +298,13 @@ def batch_today_quotes(stocks, asof: date, ak, attempts: int, secondary_attempts
     return quotes, source_used, remaining, source_errors
 
 
-def find_history_gaps(history: pd.DataFrame, asof: date, calendar):
+def find_history_gaps(history: pd.DataFrame, asof: date, calendar, code: str):
     if history.empty:
         return ["NO_HISTORY"]
     existing = set(history["date"].astype(str))
     first = max(min(date.fromisoformat(s) for s in existing), date(START_YEAR, 1, 1))
-    expected = calendar.sessions_in_range(pd.Timestamp(first), pd.Timestamp(asof))
-    return [d.date().isoformat() for d in expected if d.date().isoformat() not in existing]
+    expected = expected_stock_sessions(calendar, first, asof, code)
+    return sorted(expected - existing)
 
 
 def fetch_sina_history(ak, code):
@@ -315,7 +341,7 @@ def fetch_tencent_history(code, timeout: float):
 
 def repair_history_for_stock(stock, history, asof, calendar, ak, attempts,
                              secondary_attempts, source_timeout, stock_timeout, root, delay):
-    gaps = find_history_gaps(history, asof, calendar)
+    gaps = find_history_gaps(history, asof, calendar, stock["code"])
     if not gaps:
         return history, [], None, []
     if gaps == ["NO_HISTORY"]:
@@ -344,7 +370,7 @@ def repair_history_for_stock(stock, history, asof, calendar, ak, attempts,
                     additions = additions[additions["date"] != asof.isoformat()]
                 if not additions.empty:
                     history = save_history(root, stock["code"], history, additions, asof)
-                remaining = find_history_gaps(history, asof, calendar)
+                remaining = find_history_gaps(history, asof, calendar, stock["code"])
                 if not remaining:
                     return history, [], source, errors
                 gaps = remaining
@@ -507,8 +533,8 @@ def calc_stock(stock, history: pd.DataFrame, asof: date, calendar, error: str = 
     # first+last dates. Do not call such an incomplete year verified/full.
     prior_days = set(previous["date"])
     current_days = set(current["date"])
-    py_expected = {d.date().isoformat() for d in calendar.sessions_in_range(pd.Timestamp(py_first), pd.Timestamp(py_last))} if py_first else set()
-    cy_expected = {d.date().isoformat() for d in calendar.sessions_in_range(pd.Timestamp(cy_first), pd.Timestamp(cy_last))} if cy_first else set()
+    py_expected = expected_stock_sessions(calendar, py_first, py_last, code)
+    cy_expected = expected_stock_sessions(calendar, cy_first, cy_last, code)
     row["prior_year_full"] = bool(py_expected and py_expected.issubset(prior_days))
     row["current_year_full_from_start"] = bool(cy_expected and cy_expected.issubset(current_days))
     row["previous_year_range"] = price_position(previous, row["close"])
@@ -713,7 +739,7 @@ def run(root: Path, stocks, asof: date, calendar, *, attempts: int, delay: float
         for i, stock in enumerate(stocks, start=1):
             code = stock["code"]
             history = histories[code]
-            gaps = find_history_gaps(history, asof, calendar)
+            gaps = find_history_gaps(history, asof, calendar, code)
             if not gaps:
                 results.append(calc_stock(stock, history, asof, calendar,
                                           today_source=today_source_used.get(code, "")))
