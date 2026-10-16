@@ -7,6 +7,7 @@ import pandas as pd
 import requests
 
 from cloud_run import (
+    KNOWN_SUSPENSION_DATES,
     find_history_gaps,
     hk_calendar,
     normalize,
@@ -21,21 +22,6 @@ TARGETS = {
     "03908": "中金公司",
     "01357": "美图公司",
     "01428": "耀才证券金融",
-}
-
-# These dates are verified stock-specific suspension days, not missing market data.
-# They must remain absent from the OHLC CSVs; inserting synthetic bars would corrupt
-# price/volume indicators and backtests.
-KNOWN_SUSPENSIONS = {
-    "03908": {
-        "2025-11-20", "2025-11-21", "2025-11-24", "2025-11-25",
-        "2025-11-26", "2025-11-27", "2025-11-28", "2025-12-01",
-        "2025-12-02", "2025-12-03", "2025-12-04", "2025-12-05",
-        "2025-12-08", "2025-12-09", "2025-12-10", "2025-12-11",
-        "2025-12-12", "2025-12-15", "2025-12-16", "2025-12-17",
-    },
-    "01357": {"2026-03-26", "2026-03-27"},
-    "01428": {"2025-04-24", "2025-04-25", "2026-03-16"},
 }
 
 TENCENT_URLS = (
@@ -129,13 +115,13 @@ def contiguous_ranges(gaps: list[str], calendar) -> list[tuple[date, date]]:
 
 def repair_one(code: str, name: str, calendar) -> tuple[int, int, int]:
     history = read_history(ROOT, code, ASOF)
-    gaps = find_history_gaps(history, ASOF, calendar)
+    gaps = find_history_gaps(history, ASOF, calendar, code)
 
     if not gaps:
         print(f"[VERIFY] {code} {name}: no gaps", flush=True)
         return 0, 0, 0
 
-    suspension = KNOWN_SUSPENSIONS.get(code, set())
+    suspension = KNOWN_SUSPENSION_DATES.get(code, set())
     verified_suspension_gaps = sorted(set(gaps) & suspension)
     real_gaps = sorted(set(gaps) - suspension)
 
@@ -171,7 +157,7 @@ def repair_one(code: str, name: str, calendar) -> tuple[int, int, int]:
         history = save_history(ROOT, code, history, additions, ASOF)
         total_added += len(additions)
 
-    remaining = find_history_gaps(history, ASOF, calendar)
+    remaining = find_history_gaps(history, ASOF, calendar, code)
     unresolved_real_gaps = sorted(set(remaining) - suspension)
 
     print(
