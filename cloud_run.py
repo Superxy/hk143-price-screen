@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """HK143 cloud downloader / price-only screen.
 
-Data: Sina HK daily OHLC (AKShare stock_hk_daily, adjust='').
+Data: daily unadjusted HK OHLC. Normal run uses batch realtime quotes (Sina -> Eastmoney -> Tencent), then appends the target session to local CSVs. Historical sources are contacted only for detected local gaps.
 Never treat an old close as a new close. No synthetic OHLC or return probabilities.
 """
 from __future__ import annotations
@@ -13,6 +13,8 @@ import os
 import random
 import sys
 import time
+import threading
+import requests
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -25,7 +27,12 @@ FIELDS = OHLC + ["volume", "amount"]
 HKT = ZoneInfo("Asia/Hong_Kong")
 UTC = timezone.utc
 START_YEAR = 2025
-SOURCE = "Sina Finance via AKShare stock_hk_daily(adjust='') | unadjusted HKD OHLC"
+SOURCE = "Batch realtime: Sina -> Eastmoney -> Tencent | unadjusted HKD OHLC"
+SINA_HK_SPOT_URL = ("https://vip.stock.finance.sina.com.cn/quotes_service/api/json_v2.php/" "Market_Center.getHKStockData")
+TENCENT_QUOTE_URL = "https://qt.gtimg.cn/q="
+TENCENT_KLINE_URLS = ("https://web.ifzq.gtimg.cn/appstock/app/fqkline/get", "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get")
+TENCENT_BATCH_SIZE = 60
+TENCENT_KLINE_COUNT = 640
 
 
 def hk_calendar():
@@ -86,6 +93,269 @@ def normalize(raw, cutoff: date) -> pd.DataFrame:
         raise ValueError("2025年至今没有可用的不复权日线")
     df["date"] = df["date"].dt.strftime("%Y-%m-%d")
     return df.reset_index(drop=True)
+
+
+def normalize_hk_code(value) -> str:
+    s = str(value).strip().upper().replace(".HK", "")
+    if s.startswith("HK"):
+        s = s[2:]
+    if s.endswith(".0") and s[:-2].isdigit():
+        s = s[:-2]
+    return s.zfill(5) if s.isdigit() else s
+
+
+def call_with_timeout(func, timeout: float, label: str):
+    box = {}
+
+    def worker():
+        try:
+            box["result"] = func()
+        except BaseException as exc:
+            box["error"] = exc
+
+    thread = threading.Thread(target=worker, name=f"provider-{label}", daemon=True)
+    thread.start()
+    thread.join(timeout)
+    if thread.is_alive():
+        raise TimeoutError(f"{label} timeout after {timeout:.1f}s")
+    if "error" in box:
+        raise box["error"]
+    if "result" not in box:
+        raise RuntimeError(f"{label} returned no result")
+    return box["result"]
+
+
+def _numeric(value):
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return float("nan")
+
+
+def _valid_bar(row) -> bool:
+    values = [_numeric(row.get(k)) for k in ("open", "high", "low", "close")]
+    if not all(pd.notna(values)):
+        return False
+    op, hi, lo, cl = values
+    return min(op, hi, lo, cl) > 0 and hi + 1e-9 >= max(op, lo, cl) and lo - 1e-9 <= min(op, hi, cl)
+
+
+def _standardize_quote_rows(rows, asof: date, source: str) -> pd.DataFrame:
+    if not rows:
+        raise ValueError(f"{source} returned no valid HK quotes")
+    frame = pd.DataFrame(rows)
+    required = ["code", "name", "open", "high", "low", "close", "volume", "amount", "date"]
+    missing = [c for c in required if c not in frame.columns]
+    if missing:
+        raise ValueError(f"{source} standardized fields missing: {missing}")
+    frame["code"] = frame["code"].map(normalize_hk_code)
+    frame["date"] = pd.to_datetime(frame["date"], errors="coerce").dt.date
+    for field in required[2:8]:
+        frame[field] = pd.to_numeric(frame[field], errors="coerce")
+    frame = frame[frame["date"] == asof].copy()
+    frame = frame[frame.apply(_valid_bar, axis=1)]
+    frame = frame.drop_duplicates("code", keep="last")
+    if frame.empty:
+        raise ValueError(f"{source} has no usable quotes for {asof}")
+    frame.attrs["source"] = source
+    return frame.reset_index(drop=True)
+
+
+def fetch_sina_realtime(codes, asof: date, timeout: float) -> pd.DataFrame:
+    params = {"page": "1", "num": "3000", "sort": "symbol", "asc": "1", "node": "qbgg_hk", "_s_r_a": "page"}
+    headers = {"User-Agent": "Mozilla/5.0", "Referer": "https://vip.stock.finance.sina.com.cn/"}
+    response = requests.get(SINA_HK_SPOT_URL, params=params, headers=headers, timeout=timeout)
+    response.raise_for_status()
+    payload = response.json()
+    wanted = set(codes)
+    rows = []
+    for item in payload or []:
+        code = normalize_hk_code(item.get("symbol") or item.get("code"))
+        if code not in wanted:
+            continue
+        rows.append({
+            "code": code, "name": item.get("name") or item.get("中文名称") or "",
+            "open": item.get("open"), "high": item.get("high"), "low": item.get("low"),
+            "close": item.get("lasttrade"),
+            "volume": _numeric(item.get("volume")) * 10000,
+            "amount": _numeric(item.get("amount")) * 10000,
+            "date": str(item.get("ticktime") or item.get("日期时间") or "")[:10],
+        })
+    return _standardize_quote_rows(rows, asof, "sina")
+
+
+def fetch_eastmoney_realtime(ak, codes, asof: date) -> pd.DataFrame:
+    raw = ak.stock_hk_spot_em()
+    if not isinstance(raw, pd.DataFrame) or raw.empty:
+        raise ValueError("Eastmoney HK realtime returned empty table")
+    wanted = set(codes)
+    rows = []
+    for _, item in raw.iterrows():
+        code = normalize_hk_code(item.get("代码"))
+        if code not in wanted:
+            continue
+        rows.append({
+            "code": code, "name": item.get("名称", ""),
+            "open": item.get("今开"), "high": item.get("最高"), "low": item.get("最低"),
+            "close": item.get("最新价"), "volume": item.get("成交量"), "amount": item.get("成交额"),
+            "date": asof.isoformat(),
+        })
+    return _standardize_quote_rows(rows, asof, "eastmoney")
+
+
+def fetch_tencent_realtime(codes, asof: date, timeout: float) -> pd.DataFrame:
+    headers = {"User-Agent": "Mozilla/5.0", "Referer": "https://gu.qq.com/"}
+    wanted = set(codes)
+    rows = []
+    for start in range(0, len(codes), TENCENT_BATCH_SIZE):
+        batch = codes[start:start + TENCENT_BATCH_SIZE]
+        url = TENCENT_QUOTE_URL + ",".join(f"hk{normalize_hk_code(code)}" for code in batch)
+        response = requests.get(url, headers=headers, timeout=timeout)
+        response.raise_for_status()
+        response.encoding = "gbk"
+        for line in response.text.split(";"):
+            if "=" not in line or '"' not in line:
+                continue
+            try:
+                fields = line.split('"', 2)[1].split("~")
+                if len(fields) < 35:
+                    continue
+                code = normalize_hk_code(fields[2])
+                if code not in wanted:
+                    continue
+                quote_date = datetime.strptime(fields[30], "%Y/%m/%d %H:%M:%S").date()
+                if quote_date != asof:
+                    continue
+                rows.append({
+                    "code": code, "name": fields[1], "open": fields[5], "high": fields[33],
+                    "low": fields[34], "close": fields[3], "volume": fields[6],
+                    "amount": fields[37] if len(fields) > 37 else float("nan"),
+                    "date": quote_date.isoformat(),
+                })
+            except (ValueError, IndexError):
+                continue
+    return _standardize_quote_rows(rows, asof, "tencent")
+
+
+def batch_today_quotes(stocks, asof: date, ak, attempts: int, secondary_attempts: int,
+                       source_timeout: float, delay: float):
+    remaining = [s["code"] for s in stocks]
+    quotes, source_used, source_errors = {}, {}, []
+    providers = [
+        ("sina", lambda codes: fetch_sina_realtime(codes, asof, source_timeout), attempts),
+        ("eastmoney", lambda codes: fetch_eastmoney_realtime(ak, codes, asof), secondary_attempts),
+        ("tencent", lambda codes: fetch_tencent_realtime(codes, asof, source_timeout), secondary_attempts),
+    ]
+    for source, fetcher, source_attempts in providers:
+        if not remaining:
+            break
+        for attempt in range(1, max(1, source_attempts) + 1):
+            try:
+                print(f"[TODAY] {source.upper()} batch START missing={len(remaining)} attempt={attempt}/{source_attempts}", flush=True)
+                raw = call_with_timeout(lambda: fetcher(list(remaining)), source_timeout, source)
+                for _, row in raw.iterrows():
+                    code = normalize_hk_code(row["code"])
+                    if code in remaining:
+                        quotes[code] = row.to_dict()
+                        source_used[code] = source
+                remaining = [code for code in remaining if code not in quotes]
+                print(f"[TODAY] {source.upper()} batch OK recovered={len(source_used)} remaining={len(remaining)}", flush=True)
+                break
+            except Exception as exc:
+                source_errors.append({"source": source, "attempt": attempt,
+                                      "error": f"{type(exc).__name__}: {str(exc)[:180]}"})
+                print(f"[TODAY] {source.upper()} FAIL {type(exc).__name__}: {str(exc)[:180]}", flush=True)
+                if attempt < max(1, source_attempts) and delay > 0:
+                    time.sleep(delay)
+        if remaining:
+            print(f"[TODAY] {source.upper()} -> next source; remaining={len(remaining)}", flush=True)
+    return quotes, source_used, remaining, source_errors
+
+
+def find_history_gaps(history: pd.DataFrame, asof: date, calendar):
+    if history.empty:
+        return ["NO_HISTORY"]
+    existing = set(history["date"].astype(str))
+    first = max(min(date.fromisoformat(s) for s in existing), date(START_YEAR, 1, 1))
+    expected = calendar.sessions_in_range(pd.Timestamp(first), pd.Timestamp(asof))
+    return [d.date().isoformat() for d in expected if d.date().isoformat() not in existing]
+
+
+def fetch_sina_history(ak, code):
+    return ak.stock_hk_daily(symbol=code, adjust="")
+
+
+def fetch_eastmoney_history(ak, code, start_date, end_date):
+    return ak.stock_hk_hist(symbol=code, period="daily",
+                            start_date=start_date.strftime("%Y%m%d"),
+                            end_date=end_date.strftime("%Y%m%d"), adjust="")
+
+
+def fetch_tencent_history(code, timeout: float):
+    code = normalize_hk_code(code)
+    last_error = None
+    for url in TENCENT_KLINE_URLS:
+        try:
+            response = requests.get(url, params={"param": f"hk{code},day,,,{TENCENT_KLINE_COUNT},"},
+                                     headers={"User-Agent": "Mozilla/5.0"}, timeout=timeout)
+            response.raise_for_status()
+            payload = response.json()
+            data = (payload.get("data") or {}).get(f"hk{code}") or {}
+            rows = data.get("day") or []
+            if not rows:
+                raise ValueError(f"Tencent returned no day rows for {code}")
+            frame = pd.DataFrame([row[:6] for row in rows if len(row) >= 6],
+                                 columns=["date", "open", "close", "high", "low", "volume"])
+            frame["amount"] = float("nan")
+            return frame
+        except Exception as exc:
+            last_error = exc
+    raise last_error or RuntimeError(f"Tencent history failed for {code}")
+
+
+def repair_history_for_stock(stock, history, asof, calendar, ak, attempts,
+                             secondary_attempts, source_timeout, stock_timeout, root, delay):
+    gaps = find_history_gaps(history, asof, calendar)
+    if not gaps:
+        return history, [], None, []
+    if gaps == ["NO_HISTORY"]:
+        start_date, required = date(START_YEAR, 1, 1), None
+    else:
+        start_date, required = min(date.fromisoformat(g) for g in gaps), set(gaps)
+    sources = [
+        ("sina", lambda: fetch_sina_history(ak, stock["code"]), attempts),
+        ("eastmoney", lambda: fetch_eastmoney_history(ak, stock["code"], start_date, asof), secondary_attempts),
+        ("tencent", lambda: fetch_tencent_history(stock["code"], source_timeout), secondary_attempts),
+    ]
+    errors = []
+    for source, fetcher, source_attempts in sources:
+        for attempt in range(1, max(1, source_attempts) + 1):
+            try:
+                print(f"        [HISTORY] {stock['code']} {source.upper()} START gaps={len(gaps)} attempt={attempt}/{source_attempts}", flush=True)
+                fetched = call_with_timeout(fetcher, min(source_timeout, stock_timeout), f"{source}-{stock['code']}")
+                normalized = normalize(fetched, asof)
+                if required is None:
+                    additions = normalized
+                else:
+                    additions = normalized[normalized["date"].isin(required)].copy()
+                if required is not None and not required.intersection(set(normalized["date"])):
+                    raise ValueError(f"{source} returned none of the required gap dates")
+                if asof.isoformat() in set(history["date"]):
+                    additions = additions[additions["date"] != asof.isoformat()]
+                if not additions.empty:
+                    history = save_history(root, stock["code"], history, additions, asof)
+                remaining = find_history_gaps(history, asof, calendar)
+                if not remaining:
+                    return history, [], source, errors
+                gaps = remaining
+                break
+            except Exception as exc:
+                errors.append({"code": stock["code"], "source": source, "attempt": attempt,
+                               "error": f"{type(exc).__name__}: {str(exc)[:180]}"})
+                print(f"        [HISTORY] {stock['code']} {source.upper()} FAIL {type(exc).__name__}: {str(exc)[:180]}", flush=True)
+                if attempt < max(1, source_attempts) and delay > 0:
+                    time.sleep(delay)
+    return history, gaps, None, errors
 
 
 def read_history(root: Path, code: str, end: date) -> pd.DataFrame:
@@ -206,11 +476,11 @@ def suspected_jump(df):
     return bool((overnight_gap > 0.45).any())
 
 
-def calc_stock(stock, history: pd.DataFrame, asof: date, calendar, error: str = ""):
+def calc_stock(stock, history: pd.DataFrame, asof: date, calendar, error: str = "", today_source: str = ""):
     code, name = stock["code"], stock["name"]
     row = {"code": code, "name": name, "source_rank": stock["rank"],
            "latest_date": None, "close": None, "data_status": "missing",
-           "error": error, "prior_year": asof.year-1,
+           "today_source": today_source, "error": error, "prior_year": asof.year-1,
            "prior_year_full": False, "current_year_full_from_start": False,
            "previous_year_range": None, "current_year_range": None,
            "previous_year_low": False, "current_year_low": False,
@@ -377,28 +647,98 @@ def make_markdown(report):
               ""]
     return "\n".join(lines)
 
-def run(root: Path, stocks, asof: date, calendar, *, attempts: int, delay: float, fetch_func, sleep=True):
+def run(root: Path, stocks, asof: date, calendar, *, attempts: int, delay: float,
+        fetch_func=None, sleep=True, secondary_attempts: int = 1,
+        source_timeout: float = 20.0, stock_timeout: float = 75.0, ak=None):
     started_at = datetime.now(HKT)
     errors = []
     results = []
-    for i, stock in enumerate(stocks, start=1):
-        code = stock["code"]
-        print(f"[{i}/{len(stocks)}] {code} {stock['name']}", flush=True)
-        prior = read_history(root, code, asof)
-        last = date.fromisoformat(prior["date"].iloc[-1]) if not prior.empty else None
-        error = ""
-        history = prior
-        if last != asof:
-            try:
-                fetched = download(code, asof, attempts, delay, fetch_func)
-                history = save_history(root, code, prior, fetched, asof)
-            except Exception as exc:
-                error = f"{type(exc).__name__}: {str(exc)[:150]}"
+    today_source_used = {}
+    history_repairs = []
+    history_gap_stocks = 0
+    history_gap_count = 0
+
+    if fetch_func is not None:
+        # Backward-compatible offline-test path.
+        for i, stock in enumerate(stocks, start=1):
+            code = stock["code"]
+            print(f"[{i}/{len(stocks)}] {code} {stock['name']}", flush=True)
+            prior = read_history(root, code, asof)
+            last = date.fromisoformat(prior["date"].iloc[-1]) if not prior.empty else None
+            error = ""
+            history = prior
+            if last != asof:
+                try:
+                    fetched = download(code, asof, attempts, delay, fetch_func)
+                    history = save_history(root, code, prior, fetched, asof)
+                except Exception as exc:
+                    error = f"{type(exc).__name__}: {str(exc)[:150]}"
+                    errors.append({"code": code, "name": stock["name"], "error": error})
+                if sleep and delay > 0:
+                    time.sleep(delay + random.uniform(0, 0.6))
+            results.append(calc_stock(stock, history, asof, calendar, error))
+            print(f"    {results[-1]['data_status']} | last={results[-1]['latest_date']}" +
+                  (f" | {error}" if error else ""), flush=True)
+    else:
+        if ak is None:
+            raise ValueError("production run requires akshare module")
+        print(f"[TODAY] 1) Batch realtime download for {len(stocks)} stocks target={asof}", flush=True)
+        quotes, today_source_used, unresolved_today, today_errors = batch_today_quotes(
+            stocks, asof, ak, attempts, secondary_attempts, source_timeout, delay
+        )
+        stock_by_code = {s["code"]: s for s in stocks}
+        for code in unresolved_today:
+            errors.append({"code": code, "name": stock_by_code[code]["name"],
+                           "error": "today quote unresolved after Sina -> Eastmoney -> Tencent"})
+        errors.extend({"stage": "today_source", **item} for item in today_errors)
+
+        histories = {}
+        for i, stock in enumerate(stocks, start=1):
+            code = stock["code"]
+            history = read_history(root, code, asof)
+            quote = quotes.get(code)
+            if quote:
+                today_bar = pd.DataFrame([{
+                    "date": asof.isoformat(), "open": quote["open"], "high": quote["high"],
+                    "low": quote["low"], "close": quote["close"],
+                    "volume": quote["volume"], "amount": quote["amount"],
+                }])
+                history = save_history(root, code, history, today_bar, asof)
+            histories[code] = history
+            print(f"[TODAY {i}/{len(stocks)}] {code} {stock['name']} source={today_source_used.get(code, 'UNRESOLVED')} last={history['date'].iloc[-1] if not history.empty else 'NONE'}", flush=True)
+
+        print("[HISTORY] 2) Local-only scan of all CSV files for missing XHKG sessions", flush=True)
+        for i, stock in enumerate(stocks, start=1):
+            code = stock["code"]
+            history = histories[code]
+            gaps = find_history_gaps(history, asof, calendar)
+            if not gaps:
+                results.append(calc_stock(stock, history, asof, calendar,
+                                          today_source=today_source_used.get(code, "")))
+                print(f"[HISTORY {i}/{len(stocks)}] {code} no gap -> no history request", flush=True)
+                continue
+
+            history_gap_stocks += 1
+            history_gap_count += len(gaps) if gaps != ["NO_HISTORY"] else 1
+            repaired, remaining, repair_source, repair_errors = repair_history_for_stock(
+                stock, history, asof, calendar, ak, attempts, secondary_attempts,
+                source_timeout, stock_timeout, root, delay
+            )
+            histories[code] = repaired
+            history_repairs.append({
+                "code": code, "name": stock["name"],
+                "initial_gap_count": len(gaps) if gaps != ["NO_HISTORY"] else 1,
+                "remaining_gap_count": len(remaining),
+                "source": repair_source,
+            })
+            errors.extend({"stage": "history_repair", **item} for item in repair_errors)
+            error = f"history gaps remain: {len(remaining)}" if remaining else ""
+            if error:
                 errors.append({"code": code, "name": stock["name"], "error": error})
-            if sleep and delay > 0:
-                time.sleep(delay + random.uniform(0, 0.6))
-        results.append(calc_stock(stock, history, asof, calendar, error))
-        print(f"    {results[-1]['data_status']} | last={results[-1]['latest_date']}" + (f" | {error}" if error else ""), flush=True)
+            results.append(calc_stock(stock, repaired, asof, calendar, error,
+                                      today_source=today_source_used.get(code, "")))
+            print(f"[HISTORY {i}/{len(stocks)}] {code} repaired_by={repair_source or 'NONE'} remaining={len(remaining)}", flush=True)
+
     both, current_only, previous_only, ranked = prioritize(results)
     fresh = sum(r["data_status"] == "fresh" for r in results)
     stale = sum(r["data_status"] == "stale" for r in results)
@@ -467,14 +807,19 @@ def run(root: Path, stocks, asof: date, calendar, *, attempts: int, delay: float
 
 
 def main():
-    p = argparse.ArgumentParser(description="HK143 cloud daily screening; pure unadjusted price")
+    p = argparse.ArgumentParser(description="HK143 daily incremental downloader and low-position screen")
     p.add_argument("--output", type=Path, default=Path(__file__).resolve().parent)
     p.add_argument("--asof", help="Override expected HK market session YYYY-MM-DD (for testing/recovery)")
     p.add_argument("--delay", type=float, default=2.0)
-    p.add_argument("--attempts", type=int, default=3)
+    p.add_argument("--attempts", type=int, default=2)
+    p.add_argument("--secondary-attempts", type=int, default=1)
+    p.add_argument("--source-timeout", type=float, default=20.0)
+    p.add_argument("--stock-timeout", type=float, default=75.0)
     args = p.parse_args()
-    if args.delay < 0 or args.attempts < 1:
-        p.error("--delay must be >= 0 and --attempts >= 1")
+    if args.delay < 0 or args.attempts < 1 or args.secondary_attempts < 1:
+        p.error("attempt counts must be >= 1 and --delay must be >= 0")
+    if args.source_timeout <= 0 or args.stock_timeout <= 0:
+        p.error("--source-timeout and --stock-timeout must be > 0")
     cal = hk_calendar()
     now = datetime.now(HKT)
     cutoff = date.fromisoformat(args.asof) if args.asof else expected_session(now, cal)
@@ -483,7 +828,9 @@ def main():
     root = args.output.resolve()
     stocks = load_stocks(root / "config" / "stocks.csv")
     import akshare as ak
-    run(root, stocks, cutoff, cal, attempts=args.attempts, delay=args.delay, fetch_func=ak.stock_hk_daily)
+    run(root, stocks, cutoff, cal, attempts=args.attempts, delay=args.delay,
+        fetch_func=None, secondary_attempts=args.secondary_attempts,
+        source_timeout=args.source_timeout, stock_timeout=args.stock_timeout, ak=ak)
 
 
 if __name__ == "__main__":
