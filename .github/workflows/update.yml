@@ -1,8 +1,6 @@
 name: HK143 unadjusted daily prices and low-position screen
 
 on:
-  push:
-    branches: [main]
   schedule:
     # 19:17 Beijing time (UTC+8), Monday-Friday = 11:17 UTC, Monday-Friday.
     - cron: '17 11 * * 1-5'
