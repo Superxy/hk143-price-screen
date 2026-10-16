@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
 """HK143 cloud downloader / price-only screen.
 
-Data: Sina HK daily OHLC (AKShare stock_hk_daily, adjust='').
-Never treat an old close as a new close. No synthetic OHLC or return probabilities.
+Primary data: Sina Finance via AKShare stock_hk_daily(adjust=""), unadjusted OHLC.
+Repair data: direct Eastmoney HK K-line API, unadjusted OHLC.
+The runner scans the HKEX trading calendar for internal historical gaps before
+accepting a ticker as structurally complete. It retries the primary source first,
+then uses the independent secondary source only for unresolved gaps and source
+cross-checking. Never synthesize OHLC or replace a missing close with an old close.
 """
 from __future__ import annotations
 
@@ -13,6 +17,8 @@ import os
 import random
 import sys
 import time
+
+import requests
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -26,6 +32,11 @@ HKT = ZoneInfo("Asia/Hong_Kong")
 UTC = timezone.utc
 START_YEAR = 2025
 SOURCE = "Sina Finance via AKShare stock_hk_daily(adjust='') | unadjusted HKD OHLC"
+SECONDARY_SOURCE = "Eastmoney HK K-line API | unadjusted HKD OHLC"
+EASTMONEY_KLINE_URL = "https://push2his.eastmoney.com/api/qt/stock/kline/get"
+EASTMONEY_UT = "7eea3edcaed734bea9cbfc24409ed989"
+SOURCE_CONFLICT_TOLERANCE = 0.003
+SOURCE_CONFLICT_ABS_MIN = 0.01
 
 
 def hk_calendar():
@@ -86,6 +97,117 @@ def normalize(raw, cutoff: date) -> pd.DataFrame:
         raise ValueError("2025年至今没有可用的不复权日线")
     df["date"] = df["date"].dt.strftime("%Y-%m-%d")
     return df.reset_index(drop=True)
+
+
+def expected_sessions_between(calendar, start: date, end: date) -> set[str]:
+    """Return all HKEX trading sessions in [start, end] as ISO date strings."""
+    if start > end:
+        return set()
+    sessions = calendar.sessions_in_range(pd.Timestamp(start), pd.Timestamp(end))
+    return {d.date().isoformat() for d in sessions}
+
+
+def find_history_gaps(history: pd.DataFrame, calendar, asof: date) -> list[str]:
+    """Scan for missing HKEX sessions inside the available history."""
+    if history.empty or "date" not in history.columns:
+        return []
+    first = date.fromisoformat(str(history["date"].min()))
+    if first > asof:
+        return []
+    expected = expected_sessions_between(
+        calendar, max(first, date(START_YEAR, 1, 1)), asof
+    )
+    actual = set(history["date"].astype(str))
+    return sorted(expected - actual)
+
+
+def count_new_dates(base: pd.DataFrame, candidate: pd.DataFrame) -> int:
+    if candidate.empty:
+        return 0
+    base_dates = set(base["date"].astype(str)) if not base.empty else set()
+    return len(set(candidate["date"].astype(str)) - base_dates)
+
+
+def source_conflicts(primary: pd.DataFrame, secondary: pd.DataFrame,
+                     limit: int = 12) -> list[str]:
+    """Compare overlapping unadjusted OHLC bars without overwriting primary data."""
+    if primary.empty or secondary.empty:
+        return []
+    left = primary[["date", "open", "high", "low", "close"]]
+    right = secondary[["date", "open", "high", "low", "close"]]
+    merged = left.merge(
+        right, on="date", how="inner", suffixes=("_primary", "_secondary")
+    )
+    conflicts = []
+    for row in merged.itertuples(index=False):
+        for field in ("open", "high", "low", "close"):
+            a = float(getattr(row, f"{field}_primary"))
+            b = float(getattr(row, f"{field}_secondary"))
+            tolerance = max(SOURCE_CONFLICT_ABS_MIN, abs(a) * SOURCE_CONFLICT_TOLERANCE)
+            if abs(a - b) > tolerance:
+                conflicts.append(f"{row.date} {field}: primary={a:g}, secondary={b:g}")
+                break
+        if len(conflicts) >= limit:
+            break
+    return conflicts
+
+
+def fill_missing_history(base: pd.DataFrame, supplement: pd.DataFrame,
+                         calendar, asof: date) -> tuple[pd.DataFrame, int]:
+    """Add only missing dates; the backup can never overwrite a primary bar."""
+    if supplement.empty:
+        return base, 0
+    if base.empty:
+        repaired = normalize(supplement, asof)
+        return repaired, len(repaired)
+    gaps = set(find_history_gaps(base, calendar, asof))
+    if not gaps:
+        return base, 0
+    missing_rows = supplement[supplement["date"].astype(str).isin(gaps)].copy()
+    if missing_rows.empty:
+        return base, 0
+    repaired = normalize(pd.concat([base, missing_rows], ignore_index=True), asof)
+    return repaired, len(missing_rows)
+
+
+def fetch_eastmoney_hk_daily(symbol: str, end: date) -> pd.DataFrame:
+    """Independent backup: Eastmoney HK daily K-line, unadjusted."""
+    params = {
+        "fields1": "f1,f2,f3,f4,f5,f6",
+        "fields2": "f51,f52,f53,f54,f55,f56,f57,f58,f59,f60,f61",
+        "ut": EASTMONEY_UT,
+        "klt": "101",
+        "fqt": "0",
+        "secid": f"116.{symbol}",
+        "beg": f"{START_YEAR}0101",
+        "end": end.strftime("%Y%m%d"),
+        "lmt": "1000",
+        "_": str(int(time.time() * 1000)),
+    }
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                      "AppleWebKit/537.36 Chrome/155 Safari/537.36",
+        "Referer": "https://quote.eastmoney.com/",
+    }
+    response = requests.get(
+        EASTMONEY_KLINE_URL, params=params, headers=headers, timeout=20
+    )
+    response.raise_for_status()
+    payload = response.json()
+    data = payload.get("data")
+    if data is None:
+        raise ValueError(f"Eastmoney returned no data for {symbol}")
+    klines = data.get("klines") or []
+    if not klines:
+        return pd.DataFrame(columns=FIELDS)
+    rows = [item.split(",") for item in klines]
+    if any(len(row) < 7 for row in rows):
+        raise ValueError(f"Eastmoney returned malformed K-lines for {symbol}")
+    raw = pd.DataFrame(rows, columns=[
+        "date", "open", "close", "high", "low",
+        "volume", "amount", "amplitude", "pct", "change", "turnover",
+    ])
+    return normalize(raw, end)
 
 
 def read_history(root: Path, code: str, end: date) -> pd.DataFrame:
@@ -377,36 +499,130 @@ def make_markdown(report):
               ""]
     return "\n".join(lines)
 
-def run(root: Path, stocks, asof: date, calendar, *, attempts: int, delay: float, fetch_func, sleep=True):
+def run(root: Path, stocks, asof: date, calendar, *, attempts: int,
+        delay: float, fetch_func, secondary_fetch_func=None, sleep=True):
+    """Download 143 stocks, repair internal gaps, then run the low-position screen.
+
+    Repair order:
+      1) inspect local history for missing HKEX sessions;
+      2) if target day or any internal session is missing, refetch Sina/AKShare;
+      3) if gaps remain, query independent Eastmoney data;
+      4) fill only missing dates from Eastmoney; existing primary bars win;
+      5) unresolved gaps remain explicitly marked and are never synthesized.
+    """
     started_at = datetime.now(HKT)
     errors = []
     results = []
     for i, stock in enumerate(stocks, start=1):
         code = stock["code"]
         print(f"[{i}/{len(stocks)}] {code} {stock['name']}", flush=True)
+
         prior = read_history(root, code, asof)
+        initial_gaps = find_history_gaps(prior, calendar, asof)
         last = date.fromisoformat(prior["date"].iloc[-1]) if not prior.empty else None
-        error = ""
+        needs_primary_refresh = prior.empty or last != asof or bool(initial_gaps)
         history = prior
-        if last != asof:
+        primary_refetched = False
+        secondary_refetched = False
+        primary_added = 0
+        secondary_added = 0
+        conflicts = []
+        error_messages = []
+
+        if needs_primary_refresh:
             try:
                 fetched = download(code, asof, attempts, delay, fetch_func)
-                history = save_history(root, code, prior, fetched, asof)
+                primary_added = count_new_dates(history, fetched)
+                history = save_history(root, code, history, fetched, asof)
+                primary_refetched = True
             except Exception as exc:
-                error = f"{type(exc).__name__}: {str(exc)[:150]}"
-                errors.append({"code": code, "name": stock["name"], "error": error})
+                msg = f"primary {type(exc).__name__}: {str(exc)[:150]}"
+                error_messages.append(msg)
+                errors.append({"code": code, "name": stock["name"], "error": msg})
             if sleep and delay > 0:
                 time.sleep(delay + random.uniform(0, 0.6))
-        results.append(calc_stock(stock, history, asof, calendar, error))
-        print(f"    {results[-1]['data_status']} | last={results[-1]['latest_date']}" + (f" | {error}" if error else ""), flush=True)
+
+        remaining_gaps = find_history_gaps(history, calendar, asof)
+
+        if remaining_gaps and secondary_fetch_func is not None:
+            try:
+                secondary = download(code, asof, attempts, delay, secondary_fetch_func)
+                conflicts = source_conflicts(history, secondary)
+                before = set(history["date"].astype(str)) if not history.empty else set()
+                history, _ = fill_missing_history(
+                    history, secondary, calendar, asof
+                )
+                after = set(history["date"].astype(str)) if not history.empty else set()
+                secondary_added = len(after - before)
+                secondary_refetched = True
+            except Exception as exc:
+                msg = f"secondary {type(exc).__name__}: {str(exc)[:150]}"
+                error_messages.append(msg)
+                errors.append({"code": code, "name": stock["name"], "error": msg})
+            if sleep and delay > 0:
+                time.sleep(delay + random.uniform(0, 0.6))
+
+        remaining_gaps = find_history_gaps(history, calendar, asof)
+        error = "; ".join(error_messages)
+        result = calc_stock(stock, history, asof, calendar, error)
+        result.update({
+            "initial_gap_count": len(initial_gaps),
+            "initial_gap_dates": initial_gaps[:20],
+            "history_gap_count": len(remaining_gaps),
+            "history_gap_dates": remaining_gaps[:20],
+            "primary_refetched": primary_refetched,
+            "primary_added_sessions": primary_added,
+            "secondary_refetched": secondary_refetched,
+            "secondary_added_sessions": secondary_added,
+            "source_conflict_count": len(conflicts),
+            "source_conflicts": conflicts,
+            "history_source": (
+                "sina_akshare"
+                if primary_refetched and not secondary_refetched
+                else "eastmoney_backup"
+                if secondary_refetched and not primary_refetched
+                else "sina_akshare+eastmoney_backup"
+                if primary_refetched and secondary_refetched
+                else "local_cache"
+            ),
+        })
+        if remaining_gaps:
+            result["reasons"].append(
+                f"历史交易日仍缺失{len(remaining_gaps)}个，未使用旧价或人工补造"
+            )
+        if conflicts:
+            result["reasons"].append(
+                f"主备数据存在{len(conflicts)}个价格差异，保留主源数据并记录冲突"
+            )
+        results.append(result)
+
+        status = result["data_status"]
+        print(
+            f"    {status} | last={result['latest_date']} | "
+            f"gaps={len(initial_gaps)}->{len(remaining_gaps)} | "
+            f"primary={primary_refetched} secondary={secondary_refetched}"
+            + (f" | {error}" if error else ""),
+            flush=True,
+        )
+
     both, current_only, previous_only, ranked = prioritize(results)
     fresh = sum(r["data_status"] == "fresh" for r in results)
     stale = sum(r["data_status"] == "stale" for r in results)
     missing = sum(r["data_status"] == "missing" for r in results)
+    initial_gap_stocks = sum(r["initial_gap_count"] > 0 for r in results)
+    primary_refetch_stocks = sum(r["primary_refetched"] for r in results)
+    secondary_refetch_stocks = sum(r["secondary_refetched"] for r in results)
+    repaired_primary_sessions = sum(r["primary_added_sessions"] for r in results)
+    repaired_secondary_sessions = sum(r["secondary_added_sessions"] for r in results)
+    unresolved_gap_stocks = sum(r["history_gap_count"] > 0 for r in results)
+    unresolved_gap_sessions = sum(r["history_gap_count"] for r in results)
+    source_conflict_stocks = sum(r["source_conflict_count"] > 0 for r in results)
+
     meta = {
         "generated_at_hkt": started_at.strftime("%Y-%m-%d %H:%M:%S %z"),
         "target_session_hkt": asof.isoformat(),
-        "price_type": "unadjusted", "currency": "HKD", "source": SOURCE,
+        "price_type": "unadjusted", "currency": "HKD",
+        "source": SOURCE, "secondary_source": SECONDARY_SOURCE,
         "total": len(stocks), "fresh_count": fresh, "stale_count": stale,
         "missing_count": missing, "download_failures": len(errors),
         "status": "complete_date_coverage" if fresh == len(stocks) else ("partial" if fresh else "unavailable"),
@@ -414,6 +630,16 @@ def run(root: Path, stocks, asof: date, calendar, *, attempts: int, delay: float
         "double_low_count": len(both),
         "current_year_only_count": len(current_only),
         "previous_year_only_count": len(previous_only),
+        "initial_gap_stocks": initial_gap_stocks,
+        "primary_refetch_stocks": primary_refetch_stocks,
+        "secondary_refetch_stocks": secondary_refetch_stocks,
+        "repaired_primary_sessions": repaired_primary_sessions,
+        "repaired_secondary_sessions": repaired_secondary_sessions,
+        "unresolved_gap_stocks": unresolved_gap_stocks,
+        "unresolved_gap_sessions": unresolved_gap_sessions,
+        "source_conflict_stocks": source_conflict_stocks,
+        "history_gap_policy": "scan HKEX sessions from first available bar through target session",
+        "repair_policy": "Sina/AKShare retry first; direct Eastmoney backup fills only unresolved dates",
         "ranking_method": "all_candidates_both_current_previous_not_validated_probability",
         "warning": "Never interpret rankings as calibrated rebound probabilities; provider may lag/suspend/correct prices."
     }
@@ -423,16 +649,24 @@ def run(root: Path, stocks, asof: date, calendar, *, attempts: int, delay: float
         "current_year_only_candidates": [public_stock(r) for r in current_only],
         "previous_year_only_candidates": [public_stock(r) for r in previous_only],
         "ranked_candidates": [public_stock(r) for r in ranked],
-        # 保留之前的年度候选字段，供其他研究和外部读取使用；两组会包含交集。
         "previous_year_candidates": [public_stock(r) for r in both + previous_only],
         "current_year_candidates": [public_stock(r) for r in both + current_only],
         "stocks": [public_stock(r) for r in results], "errors": errors}
     data_dir = root / "data"
     atomic_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", data_dir / "latest.json")
     atomic_text(make_markdown(report), data_dir / "latest.md")
-    fields = ("code", "name", "latest_date", "close", "data_status", "return_120_sessions_pct", "bearish_streak",
-              "falling_close_streak", "previous_year_low", "current_year_low", "prior_year_full", "current_year_full_from_start")
-    atomic_csv(pd.DataFrame([{field: r[field] for field in fields} for r in results]), data_dir / "覆盖与评分.csv")
+    fields = (
+        "code", "name", "latest_date", "close", "data_status",
+        "return_120_sessions_pct", "bearish_streak", "falling_close_streak",
+        "previous_year_low", "current_year_low", "prior_year_full",
+        "current_year_full_from_start", "initial_gap_count", "history_gap_count",
+        "primary_refetched", "secondary_refetched", "secondary_added_sessions",
+        "source_conflict_count", "history_source"
+    )
+    atomic_csv(
+        pd.DataFrame([{field: r.get(field) for field in fields} for r in results]),
+        data_dir / "覆盖与评分.csv"
+    )
     ranked_fields = ("rank", "bucket", "code", "name", "latest_date", "close",
                      "previous_year_low", "current_year_low",
                      "prior_year_low_price", "prior_year_low_date", "prior_year_position_pct",
@@ -456,13 +690,17 @@ def run(root: Path, stocks, asof: date, calendar, *, attempts: int, delay: float
             "falling_close_streak": r["falling_close_streak"],
         })
     atomic_csv(pd.DataFrame(ranked_rows, columns=ranked_fields), data_dir / "全部低位候选.csv")
-    # 删除以前带20只上限的旧文件，防止读者误读过期榜单。
     obsolete = data_dir / "低位前20.csv"
     if obsolete.exists():
         obsolete.unlink()
     dated = data_dir / "reports" / f"{asof.isoformat()}.md"
     atomic_text(make_markdown(report), dated)
-    print(f"REPORT target={asof} fresh={fresh}/{len(stocks)} stale={stale} missing={missing} errors={len(errors)} ranked={len(ranked)} both={len(both)} current_only={len(current_only)} previous_only={len(previous_only)}")
+    print(
+        f"REPORT target={asof} fresh={fresh}/{len(stocks)} stale={stale} "
+        f"missing={missing} errors={len(errors)} ranked={len(ranked)} "
+        f"gaps={initial_gap_stocks} primary_refetch={primary_refetch_stocks} "
+        f"secondary_refetch={secondary_refetch_stocks} unresolved={unresolved_gap_stocks}"
+    )
     return report
 
 
@@ -483,7 +721,22 @@ def main():
     root = args.output.resolve()
     stocks = load_stocks(root / "config" / "stocks.csv")
     import akshare as ak
-    run(root, stocks, cutoff, cal, attempts=args.attempts, delay=args.delay, fetch_func=ak.stock_hk_daily)
+
+    def primary_fetch(symbol, adjust):
+        return ak.stock_hk_daily(symbol=symbol, adjust=adjust)
+
+    def secondary_fetch(symbol, adjust):
+        if adjust != "":
+            raise ValueError("secondary Eastmoney backup supports only unadjusted data")
+        return fetch_eastmoney_hk_daily(symbol, cutoff)
+
+    run(
+        root, stocks, cutoff, cal,
+        attempts=args.attempts,
+        delay=args.delay,
+        fetch_func=primary_fetch,
+        secondary_fetch_func=secondary_fetch,
+    )
 
 
 if __name__ == "__main__":
