@@ -1,25 +1,9 @@
 name: HK143 unadjusted daily prices and low-position screen
 
 on:
-  schedule:
-    # 19:17 HKT Monday-Friday = 11:17 UTC Monday-Friday
-    - cron: '17 11 * * 1-5'
-    # 06:17 HKT Monday-Friday = 22:17 UTC Sunday-Thursday
-    - cron: '17 22 * * 0-4'
+  # PAUSED: automatic schedule and push-triggered runs are disabled.
   workflow_dispatch:
-  push:
-    paths:
-      - 'cloud_run.py'
-      - 'entry_signals.py'
-      - 'risk_manager.py'
-      - 'ths_watchlist_sync.py'
-      - 'config/ths_blockstock_template.xml'
-      - 'tests/test_ths_watchlist_sync.py'
-      - 'tests/test_risk_manager.py'
-      - 'tests/test_entry_signals.py'
-      - 'tests/test_cloud_run.py'
-      - 'requirements.txt'
-      - '.github/workflows/update.yml'
+
 
 permissions:
   contents: write
