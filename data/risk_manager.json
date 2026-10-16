@@ -1,18 +1,18 @@
 {
   "meta": {
     "target_session": "2026-10-16",
-    "generated_at_hkt": "2026-10-16 20:24:44 +0800",
-    "source_fresh_count": 0,
+    "generated_at_hkt": "2026-10-16 21:16:56 +0800",
+    "source_fresh_count": 143,
     "source_total": 143,
-    "source_candidate_count": 0,
-    "signal_candidates": 0,
-    "evaluated_count": 0,
+    "source_candidate_count": 56,
+    "signal_candidates": 1,
+    "evaluated_count": 1,
     "invalid_count": 0,
     "status_counts": {
       "scenario_pass": 0,
       "rr_below_threshold": 0,
       "no_upside_resistance": 0,
-      "over_8pct": 0,
+      "over_8pct": 1,
       "data_not_verified": 0
     },
     "max_risk": 0.08,
@@ -22,5 +22,37 @@
     "rule_version": "conditional_risk_2b_retest_v1",
     "notice": "No future prices, no order, no guaranteed loss cap; fees/slippage not included"
   },
-  "assessments": []
+  "assessments": [
+    {
+      "rank": 53,
+      "bucket": "仅2026年低位",
+      "code": "01818",
+      "name": "招金矿业",
+      "target_session": "2026-10-16",
+      "signal_type": "2B假跌破",
+      "close": 18.19,
+      "entry_reference": 18.65724,
+      "structure_invalidation": 16.5568,
+      "loss_pct_to_stop": 11.26,
+      "risk_within_8pct": false,
+      "historical_resistance": 18.75,
+      "historical_resistance_date_window": [
+        "2026-09-30",
+        "2026-10-15"
+      ],
+      "reward_pct_to_resistance": 0.5,
+      "reward_risk_to_resistance": 0.04,
+      "hypothetical_2r_target": 22.85812,
+      "hypothetical_3r_target": 24.95856,
+      "risk_status": "over_8pct",
+      "reference_low": 17.02,
+      "reference_low_date": "2026-09-29",
+      "notes": [
+        "参考触发价到结构失效价的价格风险超过8%；不符合风险上限",
+        "参考价非明日开盘价，真实成交需确认港股最小价位、跳空、价差和交易费用",
+        "若触发前先跌破结构失效价，条件方案作废；失效价不保证止损按该价成交"
+      ],
+      "trigger_rule": "未来交易日向上突破参考触发价，且实际成交价接近参考价才重新评估；非订单"
+    }
+  ]
 }

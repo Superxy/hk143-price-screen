@@ -1,1 +1,2 @@
 ﻿rank,bucket,code,name,target_session,signal_type,close,entry_reference,structure_invalidation,loss_pct_to_stop,risk_within_8pct,historical_resistance,reward_pct_to_resistance,reward_risk_to_resistance,hypothetical_2r_target,hypothetical_3r_target,risk_status,reference_low,reference_low_date,notes
+53,仅2026年低位,01818,招金矿业,2026-10-16,2B假跌破,18.19,18.65724,16.5568,11.26,False,18.75,0.5,0.04,22.85812,24.95856,over_8pct,17.02,2026-09-29,参考触发价到结构失效价的价格风险超过8%；不符合风险上限；参考价非明日开盘价，真实成交需确认港股最小价位、跳空、价差和交易费用；若触发前先跌破结构失效价，条件方案作废；失效价不保证止损按该价成交
