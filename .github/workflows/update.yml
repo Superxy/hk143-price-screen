@@ -3,6 +3,9 @@ name: HK143 unadjusted daily prices and low-position screen
 on:
   push:
     branches: [main]
+  schedule:
+    # 19:17 Beijing time (UTC+8) every day = 11:17 UTC.
+    - cron: '17 11 * * *'
   workflow_dispatch:
 
 
@@ -15,7 +18,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # TEMPORARILY PAUSED: stop the currently queued/in-progress data run.
+  # Automatic daily run enabled at 19:17 Beijing time.
   update:
     if: ${{ github.actor != 'github-actions[bot]' }}
     runs-on: ubuntu-latest
