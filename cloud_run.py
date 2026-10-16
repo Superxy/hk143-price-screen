@@ -778,7 +778,7 @@ def run(root: Path, stocks, asof: date, calendar, *, attempts: int, delay: float
     data_dir = root / "data"
     atomic_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", data_dir / "latest.json")
     atomic_text(make_markdown(report), data_dir / "latest.md")
-    fields = ("code", "name", "latest_date", "close", "data_status", "return_120_sessions_pct", "bearish_streak",
+    fields = ("code", "name", "latest_date", "close", "data_status", "today_source", "return_120_sessions_pct", "bearish_streak",
               "falling_close_streak", "previous_year_low", "current_year_low", "prior_year_full", "current_year_full_from_start")
     atomic_csv(pd.DataFrame([{field: r[field] for field in fields} for r in results]), data_dir / "覆盖与评分.csv")
     ranked_fields = ("rank", "bucket", "code", "name", "latest_date", "close",
