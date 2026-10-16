@@ -44,7 +44,7 @@ def session_on_or_before(day: date, calendar) -> date:
 
 
 def expected_session(now: datetime, calendar) -> date:
-    # Use today's closing bar only after 18:00 HKT; 06:17 run means preceding session.
+    # Runs before 18:00 HKT target the preceding HK trading session; the scheduled daily run is 19:17 HKT.
     local = now.astimezone(HKT)
     candidate = local.date() if local.hour >= 18 else local.date() - timedelta(days=1)
     return session_on_or_before(candidate, calendar)
