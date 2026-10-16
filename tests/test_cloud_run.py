@@ -80,6 +80,41 @@ def test_history_gap_detection():
     assert missing_day.isoformat() in gaps
 
 
+def test_tencent_hk_daily_unadjusted_parser(monkeypatch):
+    payload = {
+        "code": 0,
+        "data": {
+            "hk01478": {
+                "day": [
+                    ["2026-10-15", "4.82", "4.70", "4.82", "4.66", "3940000"],
+                    ["2026-10-16", "4.80", "4.77", "4.80", "4.71", "862000"],
+                ]
+            }
+        },
+    }
+
+    class Response:
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return payload
+
+    calls = []
+
+    def fake_get(url, **kwargs):
+        calls.append((url, kwargs))
+        return Response()
+
+    monkeypatch.setattr(m.requests, "get", fake_get)
+    result = m.fetch_tencent_hk_daily("01478", date(2026, 10, 16))
+    assert result["date"].tolist() == ["2026-10-15", "2026-10-16"]
+    assert result.iloc[-1]["close"] == 4.77
+    assert result.iloc[-1]["volume"] == 862000
+    assert calls[0][1]["params"]["param"] == "hk01478,day,,,640,"
+    assert result.attrs["source"] == "tencent"
+
+
 def test_primary_failure_secondary_recovers_and_persists(tmp_path):
     raw = example('03896')
     calls = {'primary': 0, 'secondary': 0}
@@ -104,7 +139,7 @@ def test_primary_failure_secondary_recovers_and_persists(tmp_path):
     assert calls == {'primary': 1, 'secondary': 1}
     assert row['processing_status'] == 'processed'
     assert row['data_status'] == 'fresh'
-    assert row['history_source'] == 'eastmoney_backup'
+    assert row['history_source'] == 'tencent_backup'
     assert row['secondary_added_sessions'] == len(raw)
     assert row['history_gap_count'] == 0
     assert (tmp_path / 'data' / '2025' / '03896_2025.csv').exists()
@@ -141,7 +176,7 @@ def test_primary_refetch_then_secondary_repairs_gap(tmp_path):
     assert row['initial_gap_count'] == 0
     assert row['history_gap_count'] == 0
     assert row['secondary_added_sessions'] == 1
-    assert row['history_source'] == 'sina_akshare+eastmoney_backup'
+    assert row['history_source'] == 'sina_akshare+tencent_backup'
 
 
 def test_secondary_never_overwrites_primary_bar():
