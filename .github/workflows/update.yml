@@ -1,7 +1,8 @@
 name: HK143 unadjusted daily prices and low-position screen
 
 on:
-  # PAUSED: automatic schedule and push-triggered runs are disabled.
+  push:
+    branches: [main]
   workflow_dispatch:
 
 
@@ -16,7 +17,7 @@ concurrency:
 jobs:
   # TEMPORARILY PAUSED: stop the currently queued/in-progress data run.
   update:
-    if: ${{ false }}
+    if: ${{ github.actor != 'github-actions[bot]' }}
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
