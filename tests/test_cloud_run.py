@@ -80,6 +80,37 @@ def test_history_gap_detection():
     assert missing_day.isoformat() in gaps
 
 
+def test_primary_failure_secondary_recovers_and_persists(tmp_path):
+    raw = example('03896')
+    calls = {'primary': 0, 'secondary': 0}
+
+    def fake_primary(symbol, adjust):
+        calls['primary'] += 1
+        raise OSError('primary unavailable')
+
+    def fake_secondary(symbol, adjust):
+        calls['secondary'] += 1
+        assert adjust == ''
+        return raw
+
+    stocks = [dict(rank=135, code='03896', name='金山云')]
+    report = m.run(
+        tmp_path, stocks, ASOF, CAL,
+        attempts=1, secondary_attempts=1, delay=0,
+        fetch_func=fake_primary, secondary_fetch_func=fake_secondary,
+        source_timeout=20, stock_timeout=20, sleep=False,
+    )
+    row = report['stocks'][0]
+    assert calls == {'primary': 1, 'secondary': 1}
+    assert row['processing_status'] == 'processed'
+    assert row['data_status'] == 'fresh'
+    assert row['history_source'] == 'eastmoney_backup'
+    assert row['secondary_added_sessions'] == len(raw)
+    assert row['history_gap_count'] == 0
+    assert (tmp_path / 'data' / '2025' / '03896_2025.csv').exists()
+    assert (tmp_path / 'data' / '2026' / '03896_2026.csv').exists()
+
+
 def test_primary_refetch_then_secondary_repairs_gap(tmp_path):
     raw = example('01810')
     gap_date = raw.iloc[len(raw) // 2]['date']
@@ -181,6 +212,9 @@ def test_per_stock_failure_is_skipped_and_next_stock_runs(tmp_path):
     assert second['processing_status'] == 'processed'
     assert report['meta']['skipped_stocks'] == 1
     assert report['meta']['fresh_count'] == 1
+    assert (tmp_path / 'data' / 'run_progress.json').exists()
+    progress = (tmp_path / 'data' / 'run_progress.json').read_text(encoding='utf-8')
+    assert '01810' in progress
 
 
 def test_timeout_is_bounded_and_does_not_block_next_stock(tmp_path, monkeypatch):

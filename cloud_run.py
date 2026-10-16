@@ -253,14 +253,21 @@ def atomic_text(content: str, path: Path):
             temp.unlink()
 
 
-def save_history(root: Path, code: str, prior: pd.DataFrame, fetched: pd.DataFrame, end: date):
-    frames = [frame for frame in (prior, fetched) if not frame.empty]
-    combined = normalize(pd.concat(frames, ignore_index=True), end)
+def persist_history(root: Path, code: str, history: pd.DataFrame, end: date):
+    """Persist an already-merged history without changing source precedence."""
+    combined = normalize(history, end)
     for year in range(START_YEAR, end.year + 1):
         rows = combined[combined["date"].str.startswith(str(year))]
         if not rows.empty:
             atomic_csv(rows, root / "data" / str(year) / f"{code}_{year}.csv")
     return combined
+
+
+def save_history(root: Path, code: str, prior: pd.DataFrame, fetched: pd.DataFrame, end: date):
+    frames = [frame for frame in (prior, fetched) if not frame.empty]
+    return persist_history(
+        root, code, pd.concat(frames, ignore_index=True), end
+    )
 
 
 class FetchTimeout(TimeoutError):
@@ -715,6 +722,10 @@ def run(root: Path, stocks, asof: date, calendar, *, attempts: int,
                     f"{'no_cache' if prior.empty else 'target_missing' if last != asof else 'history_gap'}",
                     flush=True,
                 )
+                save_progress(
+                    root, index=i, total=total, stock=stock, stage="primary_fetch",
+                    started_monotonic=stock_started,
+                )
                 try:
                     fetched = download(
                         code, asof, attempts, delay, fetch_func,
@@ -724,6 +735,10 @@ def run(root: Path, stocks, asof: date, calendar, *, attempts: int,
                     primary_added = count_new_dates(history, fetched)
                     history = save_history(root, code, history, fetched, asof)
                     primary_refetched = True
+                    save_progress(
+                        root, index=i, total=total, stock=stock, stage="primary_saved",
+                        started_monotonic=stock_started,
+                    )
                     print(
                         f"    PRIMARY saved new_sessions={primary_added}",
                         flush=True,
@@ -734,6 +749,10 @@ def run(root: Path, stocks, asof: date, calendar, *, attempts: int,
                     msg = f"primary {type(exc).__name__}: {str(exc)[:150]}"
                     error_messages.append(msg)
                     errors.append({"code": code, "name": stock["name"], "error": msg})
+                    save_progress(
+                        root, index=i, total=total, stock=stock, stage="primary_failed",
+                        started_monotonic=stock_started, error=msg,
+                    )
                     print(f"    PRIMARY exhausted -> {msg}", flush=True)
                 if sleep and delay > 0:
                     sleep_with_budget(
@@ -758,6 +777,10 @@ def run(root: Path, stocks, asof: date, calendar, *, attempts: int,
                     f"unresolved_gaps={len(remaining_gaps)}",
                     flush=True,
                 )
+                save_progress(
+                    root, index=i, total=total, stock=stock, stage="secondary_fetch",
+                    started_monotonic=stock_started,
+                )
                 try:
                     secondary = download(
                         code, asof, secondary_attempts, delay,
@@ -771,7 +794,12 @@ def run(root: Path, stocks, asof: date, calendar, *, attempts: int,
                     )
                     after = set(history["date"].astype(str)) if not history.empty else set()
                     secondary_added = len(after - before)
+                    history = persist_history(root, code, history, asof)
                     secondary_refetched = True
+                    save_progress(
+                        root, index=i, total=total, stock=stock, stage="secondary_saved",
+                        started_monotonic=stock_started,
+                    )
                     print(
                         f"    SECONDARY saved new_sessions={secondary_added} "
                         f"conflicts={len(conflicts)}",
@@ -783,6 +811,10 @@ def run(root: Path, stocks, asof: date, calendar, *, attempts: int,
                     msg = f"secondary {type(exc).__name__}: {str(exc)[:150]}"
                     error_messages.append(msg)
                     errors.append({"code": code, "name": stock["name"], "error": msg})
+                    save_progress(
+                        root, index=i, total=total, stock=stock, stage="secondary_failed",
+                        started_monotonic=stock_started, error=msg,
+                    )
                     print(f"    SECONDARY exhausted -> {msg}", flush=True)
                 if sleep and delay > 0:
                     sleep_with_budget(
