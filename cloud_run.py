@@ -2,7 +2,7 @@
 """HK143 cloud downloader / price-only screen.
 
 Primary data: Sina Finance via AKShare stock_hk_daily(adjust=""), unadjusted OHLC.
-Repair data: direct Eastmoney HK K-line API, unadjusted OHLC.
+Repair data: Tencent Finance HK K-line API first, with Eastmoney as last-resort fallback; both unadjusted OHLC.
 The runner scans the HKEX trading calendar for internal historical gaps before
 accepting a ticker as structurally complete. It retries the primary source first,
 then uses the independent secondary source only for unresolved gaps and source
@@ -35,7 +35,14 @@ HKT = ZoneInfo("Asia/Hong_Kong")
 UTC = timezone.utc
 START_YEAR = 2025
 SOURCE = "Sina Finance via AKShare stock_hk_daily(adjust='') | unadjusted HKD OHLC"
-SECONDARY_SOURCE = "Eastmoney HK K-line API | unadjusted HKD OHLC"
+SECONDARY_SOURCE = "Tencent Finance HK K-line API | unadjusted HKD OHLC"
+TERTIARY_SOURCE = "Eastmoney HK K-line API | unadjusted HKD OHLC"
+TENCENT_KLINE_URLS = (
+    "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get",
+    "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/fqkline/get",
+)
+TENCENT_KLINE_COUNT = 640
+TENCENT_REQUEST_TIMEOUT = 8
 EASTMONEY_KLINE_URL = "https://push2his.eastmoney.com/api/qt/stock/kline/get"
 EASTMONEY_UT = "7eea3edcaed734bea9cbfc24409ed989"
 SOURCE_CONFLICT_TOLERANCE = 0.003
@@ -171,6 +178,88 @@ def fill_missing_history(base: pd.DataFrame, supplement: pd.DataFrame,
         return base, 0
     repaired = normalize(pd.concat([base, missing_rows], ignore_index=True), asof)
     return repaired, len(missing_rows)
+
+
+def fetch_tencent_hk_daily(symbol: str, end: date) -> pd.DataFrame:
+    """Tencent HK daily K-line backup; accept only unadjusted `day` rows."""
+    symbol = symbol.zfill(5)
+    api_symbol = f"hk{symbol}"
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                      "AppleWebKit/537.36 Chrome/155 Safari/537.36",
+        "Referer": "https://gu.qq.com/",
+        "Accept": "application/json,text/plain,*/*",
+    }
+    last_error = None
+    for url in TENCENT_KLINE_URLS:
+        try:
+            response = requests.get(
+                url,
+                params={"param": f"{api_symbol},day,,,{TENCENT_KLINE_COUNT},"},
+                headers=headers,
+                timeout=TENCENT_REQUEST_TIMEOUT,
+            )
+            response.raise_for_status()
+            payload = response.json()
+            data = (payload.get("data") or {}).get(api_symbol) or {}
+            rows = data.get("day") or []
+            if not rows:
+                raise ValueError(f"Tencent returned no unadjusted day rows for {symbol}")
+            parsed = []
+            for row in rows:
+                if len(row) < 6:
+                    raise ValueError(f"Tencent returned malformed K-line for {symbol}")
+                parsed.append({
+                    "date": row[0],
+                    "open": row[1],
+                    "close": row[2],
+                    "high": row[3],
+                    "low": row[4],
+                    "volume": row[5],
+                })
+            result = normalize(pd.DataFrame(parsed), end)
+            if end.isoformat() not in set(result["date"].astype(str)):
+                raise ValueError(
+                    f"Tencent data is stale for {symbol}: target={end.isoformat()} "
+                    f"latest={result['date'].max()}"
+                )
+            result.attrs["source"] = "tencent"
+            return result
+        except Exception as exc:
+            last_error = exc
+            print(
+                f"        [Tencent HK] {url} FAIL "
+                f"{type(exc).__name__}: {str(exc)[:130]}",
+                flush=True,
+            )
+    raise last_error or RuntimeError(f"Tencent failed for {symbol}")
+
+
+def fetch_backup_hk_daily(symbol: str, end: date) -> pd.DataFrame:
+    """Try Tencent first; use Eastmoney only if Tencent cannot provide target-day data."""
+    try:
+        print(f"        [Tencent HK] START {symbol}", flush=True)
+        result = fetch_tencent_hk_daily(symbol, end)
+        print(
+            f"        [Tencent HK] OK {symbol} rows={len(result)} "
+            f"latest={result['date'].max()}",
+            flush=True,
+        )
+        return result
+    except Exception as tencent_exc:
+        print(
+            f"        [Tencent HK] exhausted -> Eastmoney fallback "
+            f"reason={type(tencent_exc).__name__}: {str(tencent_exc)[:130]}",
+            flush=True,
+        )
+        result = fetch_eastmoney_hk_daily(symbol, end)
+        if end.isoformat() not in set(result["date"].astype(str)):
+            raise ValueError(
+                f"Eastmoney data is stale for {symbol}: target={end.isoformat()} "
+                f"latest={result['date'].max() if not result.empty else 'empty'}"
+            )
+        result.attrs["source"] = "eastmoney"
+        return result
 
 
 def fetch_eastmoney_hk_daily(symbol: str, end: date) -> pd.DataFrame:
@@ -367,6 +456,8 @@ def download(code: str, end: date, attempts: int, delay: float, source_func,
             with time_limit(attempt_timeout, f"{source_name}:{code}"):
                 raw = source_func(symbol=code, adjust="")
             normalized = normalize(raw, end)
+            if getattr(raw, "attrs", None):
+                normalized.attrs.update(raw.attrs)
             print(
                 f"        [{source_name}] attempt {idx + 1}/{attempts} OK "
                 f"rows={len(normalized)} elapsed={time.monotonic() - started:.1f}s",
@@ -698,6 +789,7 @@ def run(root: Path, stocks, asof: date, calendar, *, attempts: int,
         secondary_refetched = False
         primary_added = 0
         secondary_added = 0
+        secondary_source_used = None
         conflicts = []
         error_messages = []
         processing_status = "processed"
@@ -796,6 +888,7 @@ def run(root: Path, stocks, asof: date, calendar, *, attempts: int,
                     secondary_added = len(after - before)
                     history = persist_history(root, code, history, asof)
                     secondary_refetched = True
+                    secondary_source_used = getattr(secondary, "attrs", {}).get("source")
                     save_progress(
                         root, index=i, total=total, stock=stock, stage="secondary_saved",
                         started_monotonic=stock_started,
@@ -879,12 +972,13 @@ def run(root: Path, stocks, asof: date, calendar, *, attempts: int,
             "secondary_added_sessions": secondary_added,
             "source_conflict_count": len(conflicts),
             "source_conflicts": conflicts,
+            "secondary_source": secondary_source_used,
             "history_source": (
                 "sina_akshare"
                 if primary_refetched and not secondary_refetched
-                else "eastmoney_backup"
+                else f"{secondary_source_used}_backup"
                 if secondary_refetched and not primary_refetched
-                else "sina_akshare+eastmoney_backup"
+                else f"sina_akshare+{secondary_source_used}_backup"
                 if primary_refetched and secondary_refetched
                 else "local_cache"
             ),
@@ -977,7 +1071,7 @@ def run(root: Path, stocks, asof: date, calendar, *, attempts: int,
         "previous_year_low", "current_year_low", "prior_year_full",
         "current_year_full_from_start", "initial_gap_count", "history_gap_count",
         "primary_refetched", "secondary_refetched", "secondary_added_sessions",
-        "source_conflict_count", "history_source", "processing_status",
+        "secondary_source", "source_conflict_count", "history_source", "processing_status",
         "skip_reason", "timeout_hit", "elapsed_seconds"
     )
     atomic_csv(
@@ -1049,8 +1143,8 @@ def main():
 
     def secondary_fetch(symbol, adjust):
         if adjust != "":
-            raise ValueError("secondary Eastmoney backup supports only unadjusted data")
-        return fetch_eastmoney_hk_daily(symbol, cutoff)
+            raise ValueError("backup sources support only unadjusted data")
+        return fetch_backup_hk_daily(symbol, cutoff)
 
     run(
         root, stocks, cutoff, cal,
