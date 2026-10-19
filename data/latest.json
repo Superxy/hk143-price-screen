@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at_hkt": "2026-10-16 21:22:21 +0800",
+    "generated_at_hkt": "2026-10-20 01:27:29 +0800",
     "target_session_hkt": "2026-10-16",
     "price_type": "unadjusted",
     "currency": "HKD",
@@ -9,38 +9,16 @@
     "fresh_count": 143,
     "stale_count": 0,
     "missing_count": 0,
-    "download_failures": 16,
+    "download_failures": 1,
     "today_source_counts": {
       "sina": 5,
       "eastmoney": 0,
       "tencent": 138
     },
     "today_unresolved_codes": [],
-    "history_gap_stocks": 3,
-    "history_gap_count": 25,
-    "history_repairs": [
-      {
-        "code": "03908",
-        "name": "中金公司",
-        "initial_gap_count": 20,
-        "remaining_gap_count": 20,
-        "source": null
-      },
-      {
-        "code": "01357",
-        "name": "美图公司",
-        "initial_gap_count": 2,
-        "remaining_gap_count": 2,
-        "source": null
-      },
-      {
-        "code": "01428",
-        "name": "耀才证券金融",
-        "initial_gap_count": 3,
-        "remaining_gap_count": 3,
-        "source": null
-      }
-    ],
+    "history_gap_stocks": 0,
+    "history_gap_count": 0,
+    "history_repairs": [],
     "status": "complete_date_coverage",
     "candidate_count": 56,
     "double_low_count": 34,
@@ -9352,7 +9330,7 @@
       "data_status": "fresh",
       "today_source": "tencent",
       "prior_year": 2025,
-      "prior_year_full": false,
+      "prior_year_full": true,
       "current_year_full_from_start": true,
       "previous_year_range": {
         "low": 11.52,
@@ -9377,7 +9355,6 @@
       "suspicious_price_jump": false,
       "screen_eligible": false,
       "reasons": [
-        "上一年度首末交易日覆盖不足，不能认证全年低位",
         "120个交易日跌幅未达到20%或缺失"
       ]
     },
@@ -10983,7 +10960,7 @@
       "today_source": "tencent",
       "prior_year": 2025,
       "prior_year_full": true,
-      "current_year_full_from_start": false,
+      "current_year_full_from_start": true,
       "previous_year_range": {
         "low": 2.7,
         "high": 12.56,
@@ -11007,7 +10984,6 @@
       "suspicious_price_jump": false,
       "screen_eligible": false,
       "reasons": [
-        "本年度起点覆盖不足，不能认证年内低位",
         "120个交易日跌幅未达到20%或缺失"
       ]
     },
@@ -11684,8 +11660,8 @@
       "data_status": "fresh",
       "today_source": "tencent",
       "prior_year": 2025,
-      "prior_year_full": false,
-      "current_year_full_from_start": false,
+      "prior_year_full": true,
+      "current_year_full_from_start": true,
       "previous_year_range": {
         "low": 2.1,
         "high": 17.68,
@@ -11709,8 +11685,6 @@
       "suspicious_price_jump": true,
       "screen_eligible": false,
       "reasons": [
-        "上一年度首末交易日覆盖不足，不能认证全年低位",
-        "本年度起点覆盖不足，不能认证年内低位",
         "存在超过45%的隔夜价格跳变，需核验拆合股、供股或突发事件"
       ]
     },
@@ -12829,105 +12803,6 @@
       "source": "eastmoney",
       "attempt": 1,
       "error": "ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
-    },
-    {
-      "stage": "history_repair",
-      "code": "03908",
-      "source": "sina",
-      "attempt": 1,
-      "error": "ValueError: sina returned none of the required gap dates"
-    },
-    {
-      "stage": "history_repair",
-      "code": "03908",
-      "source": "sina",
-      "attempt": 2,
-      "error": "ValueError: sina returned none of the required gap dates"
-    },
-    {
-      "stage": "history_repair",
-      "code": "03908",
-      "source": "eastmoney",
-      "attempt": 1,
-      "error": "ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
-    },
-    {
-      "stage": "history_repair",
-      "code": "03908",
-      "source": "tencent",
-      "attempt": 1,
-      "error": "ValueError: tencent returned none of the required gap dates"
-    },
-    {
-      "code": "03908",
-      "name": "中金公司",
-      "error": "history gaps remain: 20"
-    },
-    {
-      "stage": "history_repair",
-      "code": "01357",
-      "source": "sina",
-      "attempt": 1,
-      "error": "ValueError: sina returned none of the required gap dates"
-    },
-    {
-      "stage": "history_repair",
-      "code": "01357",
-      "source": "sina",
-      "attempt": 2,
-      "error": "ValueError: sina returned none of the required gap dates"
-    },
-    {
-      "stage": "history_repair",
-      "code": "01357",
-      "source": "eastmoney",
-      "attempt": 1,
-      "error": "ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
-    },
-    {
-      "stage": "history_repair",
-      "code": "01357",
-      "source": "tencent",
-      "attempt": 1,
-      "error": "ValueError: tencent returned none of the required gap dates"
-    },
-    {
-      "code": "01357",
-      "name": "美图公司",
-      "error": "history gaps remain: 2"
-    },
-    {
-      "stage": "history_repair",
-      "code": "01428",
-      "source": "sina",
-      "attempt": 1,
-      "error": "ValueError: sina returned none of the required gap dates"
-    },
-    {
-      "stage": "history_repair",
-      "code": "01428",
-      "source": "sina",
-      "attempt": 2,
-      "error": "ValueError: sina returned none of the required gap dates"
-    },
-    {
-      "stage": "history_repair",
-      "code": "01428",
-      "source": "eastmoney",
-      "attempt": 1,
-      "error": "ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
-    },
-    {
-      "stage": "history_repair",
-      "code": "01428",
-      "source": "tencent",
-      "attempt": 1,
-      "error": "ValueError: tencent returned none of the required gap dates"
-    },
-    {
-      "code": "01428",
-      "name": "耀才证券金融",
-      "error": "history gaps remain: 3"
     }
   ]
 }
