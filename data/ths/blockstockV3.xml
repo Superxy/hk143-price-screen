@@ -2,63 +2,65 @@
   <Block name="港股低价自选" id="35" IsLock="false" IsSecuritiesChanged="false">
     <security market="UHKM" code="HK1024" />
     <security market="UHKM" code="HK1157" />
+    <security market="UHKM" code="HK0762" />
     <security market="UHKM" code="HK3933" />
     <security market="UHKM" code="HK0384" />
-    <security market="UHKM" code="HK0762" />
-    <security market="UHKM" code="HK0020" />
+    <security market="UHKM" code="HK0168" />
+    <security market="UHKM" code="HK3931" />
+    <security market="UHKM" code="HK2333" />
     <security market="UHKM" code="HK3323" />
     <security market="UHKM" code="HK0881" />
-    <security market="UHKM" code="HK1833" />
-    <security market="UHKM" code="HK9866" />
-    <security market="UHKM" code="HK0753" />
-    <security market="UHKM" code="HK9660" />
-    <security market="UHKM" code="HK2333" />
+    <security market="UHKM" code="HK0020" />
     <security market="UHKM" code="HK2498" />
-    <security market="UHKM" code="HK2238" />
-    <security market="UHKM" code="HK0780" />
-    <security market="UHKM" code="HK1478" />
-    <security market="UHKM" code="HK0763" />
-    <security market="UHKM" code="HK1999" />
-    <security market="UHKM" code="HK9868" />
+    <security market="UHKM" code="HK9866" />
     <security market="UHKM" code="HK0968" />
+    <security market="UHKM" code="HK0175" />
+    <security market="UHKM" code="HK1833" />
+    <security market="UHKM" code="HK0753" />
+    <security market="UHKM" code="HK2238" />
+    <security market="UHKM" code="HK9868" />
+    <security market="UHKM" code="HK1999" />
+    <security market="UHKM" code="HK0780" />
     <security market="UHKM" code="HK0371" />
-    <security market="UHKM" code="HK1928" />
-    <security market="UHKM" code="HK0960" />
-    <security market="UHKM" code="HK0241" />
     <security market="UHKM" code="HK1044" />
+    <security market="UHKM" code="HK9660" />
+    <security market="UHKM" code="HK0241" />
     <security market="UHKM" code="HK6060" />
-    <security market="UHKM" code="HK3896" />
-    <security market="UHKM" code="HK6186" />
+    <security market="UHKM" code="HK1478" />
     <security market="UHKM" code="HK6862" />
-    <security market="UHKM" code="HK0152" />
+    <security market="UHKM" code="HK0960" />
+    <security market="UHKM" code="HK6186" />
+    <security market="UHKM" code="HK1928" />
+    <security market="UHKM" code="HK3896" />
     <security market="UHKM" code="HK0151" />
+    <security market="UHKM" code="HK0152" />
     <security market="UHKM" code="HK2331" />
-    <security market="UHKM" code="HK6855" />
     <security market="UHKM" code="HK0291" />
+    <security market="UHKM" code="HK1876" />
     <security market="UHKM" code="HK2600" />
-    <security market="UHKM" code="HK6088" />
+    <security market="UHKM" code="HK6030" />
     <security market="UHKM" code="HK0101" />
     <security market="UHKM" code="HK1898" />
+    <security market="UHKM" code="HK6088" />
     <security market="UHKM" code="HK1171" />
     <security market="UHKM" code="HK1133" />
     <security market="UHKM" code="HK1072" />
-    <security market="UHKM" code="HK3931" />
-    <security market="UHKM" code="HK0017" />
     <security market="UHKM" code="HK2727" />
-    <security market="UHKM" code="HK6030" />
-    <security market="UHKM" code="HK2208" />
-    <security market="UHKM" code="HK3993" />
-    <security market="UHKM" code="HK2228" />
-    <security market="UHKM" code="HK1378" />
     <security market="UHKM" code="HK1530" />
-    <security market="UHKM" code="HK0175" />
+    <security market="UHKM" code="HK2208" />
     <security market="UHKM" code="HK0425" />
-    <security market="UHKM" code="HK9698" />
-    <security market="UHKM" code="HK1385" />
+    <security market="UHKM" code="HK0017" />
+    <security market="UHKM" code="HK3993" />
+    <security market="UHKM" code="HK1378" />
+    <security market="UHKM" code="HK2228" />
     <security market="UHKM" code="HK2400" />
+    <security market="UHKM" code="HK1787" />
+    <security market="UHKM" code="HK9698" />
     <security market="UHKM" code="HK1818" />
+    <security market="UHKM" code="HK1385" />
     <security market="UHKM" code="HK0867" />
     <security market="UHKM" code="HK9896" />
+    <security market="UHKM" code="HK6855" />
   </Block>
   <Block name="A股低价自选" id="36" />
 </hevo>

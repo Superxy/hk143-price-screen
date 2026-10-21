@@ -1,2 +1,2 @@
 ﻿rank,bucket,code,name,target_session,signal_type,close,entry_reference,structure_invalidation,loss_pct_to_stop,risk_within_8pct,historical_resistance,reward_pct_to_resistance,reward_risk_to_resistance,hypothetical_2r_target,hypothetical_3r_target,risk_status,reference_low,reference_low_date,notes
-20,2025与2026双重低位,09868,小鹏汽车,2026-10-20,二次回踩,37.6,37.85556,35.4618,6.32,True,40.2,6.19,0.98,42.64308,45.03684,rr_below_threshold,35.64,2026-10-05,已满足8%价格风险上限，但至历史反弹高点空间不足2R；参考价非明日开盘价，真实成交需确认港股最小价位、跳空、价差和交易费用；若触发前先跌破结构失效价，条件方案作废；失效价不保证止损按该价成交
+59,仅2026年低位,00867,康哲药业,2026-10-21,2B假跌破,10.25,10.59114,9.9699,5.87,True,10.66,0.65,0.11,11.83362,12.45486,rr_below_threshold,10.09,2026-10-13,已满足8%价格风险上限，但至历史反弹高点空间不足2R；参考价非明日开盘价，真实成交需确认港股最小价位、跳空、价差和交易费用；若触发前先跌破结构失效价，条件方案作废；失效价不保证止损按该价成交
