@@ -1,16 +1,16 @@
 {
   "meta": {
-    "target_session": "2026-10-26",
-    "generated_at_hkt": "2026-10-27 01:21:06 +0800",
+    "target_session": "2026-10-27",
+    "generated_at_hkt": "2026-10-28 00:35:53 +0800",
     "source_fresh_count": 143,
     "source_total": 143,
     "source_candidate_count": 69,
-    "signal_candidates": 2,
-    "evaluated_count": 2,
+    "signal_candidates": 0,
+    "evaluated_count": 0,
     "invalid_count": 0,
     "status_counts": {
       "scenario_pass": 0,
-      "rr_below_threshold": 2,
+      "rr_below_threshold": 0,
       "no_upside_resistance": 0,
       "over_8pct": 0,
       "data_not_verified": 0
@@ -22,68 +22,5 @@
     "rule_version": "conditional_risk_2b_retest_v1",
     "notice": "No future prices, no order, no guaranteed loss cap; fees/slippage not included"
   },
-  "assessments": [
-    {
-      "rank": 25,
-      "bucket": "2025与2026双重低位",
-      "code": "02380",
-      "name": "中国电力",
-      "target_session": "2026-10-26",
-      "signal_type": "二次回踩",
-      "close": 2.625,
-      "entry_reference": 2.6553,
-      "structure_invalidation": 2.57207,
-      "loss_pct_to_stop": 3.13,
-      "risk_within_8pct": true,
-      "historical_resistance": 2.795,
-      "historical_resistance_date_window": [
-        "2026-09-28",
-        "2026-10-23"
-      ],
-      "reward_pct_to_resistance": 5.26,
-      "reward_risk_to_resistance": 1.68,
-      "hypothetical_2r_target": 2.82175,
-      "hypothetical_3r_target": 2.90498,
-      "risk_status": "rr_below_threshold",
-      "reference_low": 2.585,
-      "reference_low_date": "2026-09-25",
-      "notes": [
-        "已满足8%价格风险上限，但至历史反弹高点空间不足2R",
-        "参考价非明日开盘价，真实成交需确认港股最小价位、跳空、价差和交易费用",
-        "若触发前先跌破结构失效价，条件方案作废；失效价不保证止损按该价成交"
-      ],
-      "trigger_rule": "未来交易日向上突破参考触发价，且实际成交价接近参考价才重新评估；非订单"
-    },
-    {
-      "rank": 31,
-      "bucket": "2025与2026双重低位",
-      "code": "06862",
-      "name": "海底捞",
-      "target_session": "2026-10-26",
-      "signal_type": "二次回踩",
-      "close": 9.275,
-      "entry_reference": 9.38874,
-      "structure_invalidation": 8.88038,
-      "loss_pct_to_stop": 5.41,
-      "risk_within_8pct": true,
-      "historical_resistance": 9.6,
-      "historical_resistance_date_window": [
-        "2026-10-14",
-        "2026-10-23"
-      ],
-      "reward_pct_to_resistance": 2.25,
-      "reward_risk_to_resistance": 0.42,
-      "hypothetical_2r_target": 10.40547,
-      "hypothetical_3r_target": 10.91383,
-      "risk_status": "rr_below_threshold",
-      "reference_low": 8.925,
-      "reference_low_date": "2026-10-13",
-      "notes": [
-        "已满足8%价格风险上限，但至历史反弹高点空间不足2R",
-        "参考价非明日开盘价，真实成交需确认港股最小价位、跳空、价差和交易费用",
-        "若触发前先跌破结构失效价，条件方案作废；失效价不保证止损按该价成交"
-      ],
-      "trigger_rule": "未来交易日向上突破参考触发价，且实际成交价接近参考价才重新评估；非订单"
-    }
-  ]
+  "assessments": []
 }

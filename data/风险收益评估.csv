@@ -1,3 +1,1 @@
 ﻿rank,bucket,code,name,target_session,signal_type,close,entry_reference,structure_invalidation,loss_pct_to_stop,risk_within_8pct,historical_resistance,reward_pct_to_resistance,reward_risk_to_resistance,hypothetical_2r_target,hypothetical_3r_target,risk_status,reference_low,reference_low_date,notes
-25,2025与2026双重低位,02380,中国电力,2026-10-26,二次回踩,2.625,2.6553,2.57207,3.13,True,2.795,5.26,1.68,2.82175,2.90498,rr_below_threshold,2.585,2026-09-25,已满足8%价格风险上限，但至历史反弹高点空间不足2R；参考价非明日开盘价，真实成交需确认港股最小价位、跳空、价差和交易费用；若触发前先跌破结构失效价，条件方案作废；失效价不保证止损按该价成交
-31,2025与2026双重低位,06862,海底捞,2026-10-26,二次回踩,9.275,9.38874,8.88038,5.41,True,9.6,2.25,0.42,10.40547,10.91383,rr_below_threshold,8.925,2026-10-13,已满足8%价格风险上限，但至历史反弹高点空间不足2R；参考价非明日开盘价，真实成交需确认港股最小价位、跳空、价差和交易费用；若触发前先跌破结构失效价，条件方案作废；失效价不保证止损按该价成交
