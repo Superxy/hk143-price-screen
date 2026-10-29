@@ -1,1 +1,3 @@
 ﻿rank,bucket,code,name,target_session,signal_type,close,entry_reference,structure_invalidation,loss_pct_to_stop,risk_within_8pct,historical_resistance,reward_pct_to_resistance,reward_risk_to_resistance,hypothetical_2r_target,hypothetical_3r_target,risk_status,reference_low,reference_low_date,notes
+4,2025与2026双重低位,00780,同程旅行,2026-10-29,2B假跌破,9.6,9.83964,9.52712,3.18,True,10.5,6.71,2.11,10.46467,10.77719,scenario_pass,9.58,2026-10-14,已满足8%价格风险上限，历史阻力空间≥2R；仅供研究；参考价非明日开盘价，真实成交需确认港股最小价位、跳空、价差和交易费用；若触发前先跌破结构失效价，条件方案作废；失效价不保证止损按该价成交
+43,2025与2026双重低位,06186,中国飞鹤,2026-10-29,二次回踩,2.505,2.51502,2.388,5.05,True,2.54,0.99,0.2,2.76906,2.89608,rr_below_threshold,2.4,2026-10-16,已满足8%价格风险上限，但至历史反弹高点空间不足2R；参考价非明日开盘价，真实成交需确认港股最小价位、跳空、价差和交易费用；若触发前先跌破结构失效价，条件方案作废；失效价不保证止损按该价成交

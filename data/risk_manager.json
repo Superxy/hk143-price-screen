@@ -1,16 +1,16 @@
 {
   "meta": {
-    "target_session": "2026-10-28",
-    "generated_at_hkt": "2026-10-29 01:10:03 +0800",
+    "target_session": "2026-10-29",
+    "generated_at_hkt": "2026-10-30 01:25:18 +0800",
     "source_fresh_count": 143,
     "source_total": 143,
-    "source_candidate_count": 72,
-    "signal_candidates": 0,
-    "evaluated_count": 0,
+    "source_candidate_count": 80,
+    "signal_candidates": 2,
+    "evaluated_count": 2,
     "invalid_count": 0,
     "status_counts": {
-      "scenario_pass": 0,
-      "rr_below_threshold": 0,
+      "scenario_pass": 1,
+      "rr_below_threshold": 1,
       "no_upside_resistance": 0,
       "over_8pct": 0,
       "data_not_verified": 0
@@ -22,5 +22,68 @@
     "rule_version": "conditional_risk_2b_retest_v1",
     "notice": "No future prices, no order, no guaranteed loss cap; fees/slippage not included"
   },
-  "assessments": []
+  "assessments": [
+    {
+      "rank": 4,
+      "bucket": "2025与2026双重低位",
+      "code": "00780",
+      "name": "同程旅行",
+      "target_session": "2026-10-29",
+      "signal_type": "2B假跌破",
+      "close": 9.6,
+      "entry_reference": 9.83964,
+      "structure_invalidation": 9.52712,
+      "loss_pct_to_stop": 3.18,
+      "risk_within_8pct": true,
+      "historical_resistance": 10.5,
+      "historical_resistance_date_window": [
+        "2026-10-15",
+        "2026-10-28"
+      ],
+      "reward_pct_to_resistance": 6.71,
+      "reward_risk_to_resistance": 2.11,
+      "hypothetical_2r_target": 10.46467,
+      "hypothetical_3r_target": 10.77719,
+      "risk_status": "scenario_pass",
+      "reference_low": 9.58,
+      "reference_low_date": "2026-10-14",
+      "notes": [
+        "已满足8%价格风险上限，历史阻力空间≥2R；仅供研究",
+        "参考价非明日开盘价，真实成交需确认港股最小价位、跳空、价差和交易费用",
+        "若触发前先跌破结构失效价，条件方案作废；失效价不保证止损按该价成交"
+      ],
+      "trigger_rule": "未来交易日向上突破参考触发价，且实际成交价接近参考价才重新评估；非订单"
+    },
+    {
+      "rank": 43,
+      "bucket": "2025与2026双重低位",
+      "code": "06186",
+      "name": "中国飞鹤",
+      "target_session": "2026-10-29",
+      "signal_type": "二次回踩",
+      "close": 2.505,
+      "entry_reference": 2.51502,
+      "structure_invalidation": 2.388,
+      "loss_pct_to_stop": 5.05,
+      "risk_within_8pct": true,
+      "historical_resistance": 2.54,
+      "historical_resistance_date_window": [
+        "2026-10-20",
+        "2026-10-28"
+      ],
+      "reward_pct_to_resistance": 0.99,
+      "reward_risk_to_resistance": 0.2,
+      "hypothetical_2r_target": 2.76906,
+      "hypothetical_3r_target": 2.89608,
+      "risk_status": "rr_below_threshold",
+      "reference_low": 2.4,
+      "reference_low_date": "2026-10-16",
+      "notes": [
+        "已满足8%价格风险上限，但至历史反弹高点空间不足2R",
+        "参考价非明日开盘价，真实成交需确认港股最小价位、跳空、价差和交易费用",
+        "若触发前先跌破结构失效价，条件方案作废；失效价不保证止损按该价成交"
+      ],
+      "trigger_rule": "未来交易日向上突破参考触发价，且实际成交价接近参考价才重新评估；非订单"
+    }
+  ]
 }
