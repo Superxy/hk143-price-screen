@@ -1,17 +1,17 @@
 {
   "meta": {
-    "target_session": "2026-11-03",
-    "generated_at_hkt": "2026-11-04 02:25:32 +0800",
+    "target_session": "2026-11-04",
+    "generated_at_hkt": "2026-11-05 02:37:45 +0800",
     "source_fresh_count": 143,
     "source_total": 143,
-    "source_candidate_count": 67,
-    "signal_candidates": 5,
-    "evaluated_count": 5,
+    "source_candidate_count": 64,
+    "signal_candidates": 0,
+    "evaluated_count": 0,
     "invalid_count": 0,
     "status_counts": {
       "scenario_pass": 0,
-      "rr_below_threshold": 3,
-      "no_upside_resistance": 2,
+      "rr_below_threshold": 0,
+      "no_upside_resistance": 0,
       "over_8pct": 0,
       "data_not_verified": 0
     },
@@ -22,161 +22,5 @@
     "rule_version": "conditional_risk_2b_retest_v1",
     "notice": "No future prices, no order, no guaranteed loss cap; fees/slippage not included"
   },
-  "assessments": [
-    {
-      "rank": 21,
-      "bucket": "2025与2026双重低位",
-      "code": "00968",
-      "name": "信义光能",
-      "target_session": "2026-11-03",
-      "signal_type": "二次回踩",
-      "close": 1.865,
-      "entry_reference": 1.91382,
-      "structure_invalidation": 1.77607,
-      "loss_pct_to_stop": 7.2,
-      "risk_within_8pct": true,
-      "historical_resistance": 1.895,
-      "historical_resistance_date_window": [
-        "2026-10-26",
-        "2026-11-02"
-      ],
-      "reward_pct_to_resistance": null,
-      "reward_risk_to_resistance": null,
-      "hypothetical_2r_target": 2.18931,
-      "hypothetical_3r_target": 2.32705,
-      "risk_status": "no_upside_resistance",
-      "reference_low": 1.785,
-      "reference_low_date": "2026-10-23",
-      "notes": [
-        "历史区间高点未高于参考触发价，无法证实上方存在正收益空间",
-        "参考价非明日开盘价，真实成交需确认港股最小价位、跳空、价差和交易费用",
-        "若触发前先跌破结构失效价，条件方案作废；失效价不保证止损按该价成交"
-      ],
-      "trigger_rule": "未来交易日向上突破参考触发价，且实际成交价接近参考价才重新评估；非订单"
-    },
-    {
-      "rank": 30,
-      "bucket": "2025与2026双重低位",
-      "code": "02380",
-      "name": "中国电力",
-      "target_session": "2026-11-03",
-      "signal_type": "二次回踩",
-      "close": 2.68,
-      "entry_reference": 2.68536,
-      "structure_invalidation": 2.57705,
-      "loss_pct_to_stop": 4.03,
-      "risk_within_8pct": true,
-      "historical_resistance": 2.67,
-      "historical_resistance_date_window": [
-        "2026-10-27",
-        "2026-11-02"
-      ],
-      "reward_pct_to_resistance": null,
-      "reward_risk_to_resistance": null,
-      "hypothetical_2r_target": 2.90198,
-      "hypothetical_3r_target": 3.01029,
-      "risk_status": "no_upside_resistance",
-      "reference_low": 2.59,
-      "reference_low_date": "2026-10-26",
-      "notes": [
-        "历史区间高点未高于参考触发价，无法证实上方存在正收益空间",
-        "参考价非明日开盘价，真实成交需确认港股最小价位、跳空、价差和交易费用",
-        "若触发前先跌破结构失效价，条件方案作废；失效价不保证止损按该价成交"
-      ],
-      "trigger_rule": "未来交易日向上突破参考触发价，且实际成交价接近参考价才重新评估；非订单"
-    },
-    {
-      "rank": 44,
-      "bucket": "仅2026年低位",
-      "code": "09698",
-      "name": "万国数据",
-      "target_session": "2026-11-03",
-      "signal_type": "2B假跌破",
-      "close": 21.0,
-      "entry_reference": 21.72336,
-      "structure_invalidation": 20.696,
-      "loss_pct_to_stop": 4.73,
-      "risk_within_8pct": true,
-      "historical_resistance": 23.5,
-      "historical_resistance_date_window": [
-        "2026-10-26",
-        "2026-11-02"
-      ],
-      "reward_pct_to_resistance": 8.18,
-      "reward_risk_to_resistance": 1.73,
-      "hypothetical_2r_target": 23.77808,
-      "hypothetical_3r_target": 24.80544,
-      "risk_status": "rr_below_threshold",
-      "reference_low": 20.88,
-      "reference_low_date": "2026-10-23",
-      "notes": [
-        "已满足8%价格风险上限，但至历史反弹高点空间不足2R",
-        "参考价非明日开盘价，真实成交需确认港股最小价位、跳空、价差和交易费用",
-        "若触发前先跌破结构失效价，条件方案作废；失效价不保证止损按该价成交"
-      ],
-      "trigger_rule": "未来交易日向上突破参考触发价，且实际成交价接近参考价才重新评估；非订单"
-    },
-    {
-      "rank": 50,
-      "bucket": "仅2026年低位",
-      "code": "01208",
-      "name": "五矿资源",
-      "target_session": "2026-11-03",
-      "signal_type": "2B假跌破",
-      "close": 6.795,
-      "entry_reference": 7.1142,
-      "structure_invalidation": 6.6267,
-      "loss_pct_to_stop": 6.85,
-      "risk_within_8pct": true,
-      "historical_resistance": 7.335,
-      "historical_resistance_date_window": [
-        "2026-10-26",
-        "2026-11-02"
-      ],
-      "reward_pct_to_resistance": 3.1,
-      "reward_risk_to_resistance": 0.45,
-      "hypothetical_2r_target": 8.0892,
-      "hypothetical_3r_target": 8.5767,
-      "risk_status": "rr_below_threshold",
-      "reference_low": 6.67,
-      "reference_low_date": "2026-10-23",
-      "notes": [
-        "已满足8%价格风险上限，但至历史反弹高点空间不足2R",
-        "参考价非明日开盘价，真实成交需确认港股最小价位、跳空、价差和交易费用",
-        "若触发前先跌破结构失效价，条件方案作废；失效价不保证止损按该价成交"
-      ],
-      "trigger_rule": "未来交易日向上突破参考触发价，且实际成交价接近参考价才重新评估；非订单"
-    },
-    {
-      "rank": 51,
-      "bucket": "仅2026年低位",
-      "code": "00856",
-      "name": "伟仕佳杰",
-      "target_session": "2026-11-03",
-      "signal_type": "2B假跌破",
-      "close": 7.54,
-      "entry_reference": 7.78554,
-      "structure_invalidation": 7.4227,
-      "loss_pct_to_stop": 4.66,
-      "risk_within_8pct": true,
-      "historical_resistance": 8.3,
-      "historical_resistance_date_window": [
-        "2026-10-26",
-        "2026-11-02"
-      ],
-      "reward_pct_to_resistance": 6.61,
-      "reward_risk_to_resistance": 1.42,
-      "hypothetical_2r_target": 8.51122,
-      "hypothetical_3r_target": 8.87406,
-      "risk_status": "rr_below_threshold",
-      "reference_low": 7.5,
-      "reference_low_date": "2026-10-23",
-      "notes": [
-        "已满足8%价格风险上限，但至历史反弹高点空间不足2R",
-        "参考价非明日开盘价，真实成交需确认港股最小价位、跳空、价差和交易费用",
-        "若触发前先跌破结构失效价，条件方案作废；失效价不保证止损按该价成交"
-      ],
-      "trigger_rule": "未来交易日向上突破参考触发价，且实际成交价接近参考价才重新评估；非订单"
-    }
-  ]
+  "assessments": []
 }
