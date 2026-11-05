@@ -1,10 +1,10 @@
 {
   "meta": {
-    "target_session": "2026-11-04",
-    "generated_at_hkt": "2026-11-05 02:37:45 +0800",
+    "target_session": "2026-11-05",
+    "generated_at_hkt": "2026-11-06 02:42:40 +0800",
     "source_fresh_count": 143,
     "source_total": 143,
-    "source_candidate_count": 64,
+    "source_candidate_count": 54,
     "signal_candidates": 0,
     "evaluated_count": 0,
     "invalid_count": 0,

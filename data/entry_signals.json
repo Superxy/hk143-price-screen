@@ -1,18 +1,18 @@
 {
   "meta": {
-    "target_session": "2026-11-04",
-    "generated_at_hkt": "2026-11-05 02:37:45 +0800",
-    "source_report_generated_at_hkt": "2026-11-05 02:37:15 +0800",
+    "target_session": "2026-11-05",
+    "generated_at_hkt": "2026-11-06 02:42:40 +0800",
+    "source_report_generated_at_hkt": "2026-11-06 02:42:10 +0800",
     "source_fresh_count": 143,
     "source_status": "complete_date_coverage",
-    "candidate_count": 64,
-    "analyzed_count": 64,
+    "candidate_count": 54,
+    "analyzed_count": 54,
     "insufficient_count": 0,
     "signal_counts": {
       "two_b": 0,
       "retest": 0,
       "breakdown": 0,
-      "strength": 22
+      "strength": 34
     },
     "rule_version": "entry_structures_v1_20session_price_only",
     "warning": "Signals are observations, not validated probabilities or order instructions"
@@ -29,30 +29,32 @@
       "bucket": "2025与2026双重低位",
       "code": "00881",
       "name": "中升控股",
-      "target_session": "2026-11-04",
-      "close": 2.195,
+      "target_session": "2026-11-05",
+      "close": 2.26,
       "analysis_status": "analyzed",
       "signals": {
         "two_b": false,
         "retest": false,
         "breakdown": false,
-        "strength": false
+        "strength": true
       },
-      "signal_labels": [],
-      "notes": [
-        "今天未触发四类严格结构；仅保持低位观察"
+      "signal_labels": [
+        "底部附近局部价格转强"
       ],
-      "reference_low": 2.14,
-      "reference_low_date": "2026-11-02",
-      "low_age_sessions": 2,
-      "today_low_vs_reference_pct": -0.47,
-      "today_close_vs_reference_pct": 2.57,
-      "prior_3_high": 2.3,
+      "notes": [
+        "底部附近，收阳且收盘突破前三个交易日最高价"
+      ],
+      "reference_low": 2.13,
+      "reference_low_date": "2026-11-04",
+      "low_age_sessions": 1,
+      "today_low_vs_reference_pct": 3.52,
+      "today_close_vs_reference_pct": 6.1,
+      "prior_3_high": 2.255,
       "target_ohlc": {
-        "open": 2.22,
-        "high": 2.22,
-        "low": 2.13,
-        "close": 2.195
+        "open": 2.21,
+        "high": 2.32,
+        "low": 2.205,
+        "close": 2.26
       },
       "previous_year_low": true,
       "current_year_low": true
@@ -60,10 +62,45 @@
     {
       "rank": 2,
       "bucket": "2025与2026双重低位",
-      "code": "02333",
-      "name": "长城汽车",
-      "target_session": "2026-11-04",
-      "close": 6.225,
+      "code": "03323",
+      "name": "中国建材",
+      "target_session": "2026-11-05",
+      "close": 2.945,
+      "analysis_status": "analyzed",
+      "signals": {
+        "two_b": false,
+        "retest": false,
+        "breakdown": false,
+        "strength": true
+      },
+      "signal_labels": [
+        "底部附近局部价格转强"
+      ],
+      "notes": [
+        "底部附近，收阳且收盘突破前三个交易日最高价"
+      ],
+      "reference_low": 2.79,
+      "reference_low_date": "2026-10-23",
+      "low_age_sessions": 9,
+      "today_low_vs_reference_pct": 3.76,
+      "today_close_vs_reference_pct": 5.56,
+      "prior_3_high": 2.94,
+      "target_ohlc": {
+        "open": 2.905,
+        "high": 3.0,
+        "low": 2.895,
+        "close": 2.945
+      },
+      "previous_year_low": true,
+      "current_year_low": true
+    },
+    {
+      "rank": 3,
+      "bucket": "2025与2026双重低位",
+      "code": "00371",
+      "name": "北控水务集团",
+      "target_session": "2026-11-05",
+      "close": 1.46,
       "analysis_status": "analyzed",
       "signals": {
         "two_b": false,
@@ -75,28 +112,98 @@
       "notes": [
         "今天未触发四类严格结构；仅保持低位观察"
       ],
-      "reference_low": 6.125,
-      "reference_low_date": "2026-11-02",
-      "low_age_sessions": 2,
-      "today_low_vs_reference_pct": -1.71,
-      "today_close_vs_reference_pct": 1.63,
-      "prior_3_high": 6.6,
+      "reference_low": 1.405,
+      "reference_low_date": "2026-10-29",
+      "low_age_sessions": 5,
+      "today_low_vs_reference_pct": 3.91,
+      "today_close_vs_reference_pct": 3.91,
+      "prior_3_high": 1.48,
       "target_ohlc": {
-        "open": 6.315,
-        "high": 6.315,
-        "low": 6.02,
-        "close": 6.225
+        "open": 1.48,
+        "high": 1.495,
+        "low": 1.46,
+        "close": 1.46
       },
       "previous_year_low": true,
       "current_year_low": true
     },
     {
-      "rank": 3,
+      "rank": 4,
+      "bucket": "2025与2026双重低位",
+      "code": "02498",
+      "name": "速腾聚创",
+      "target_session": "2026-11-05",
+      "close": 14.09,
+      "analysis_status": "analyzed",
+      "signals": {
+        "two_b": false,
+        "retest": false,
+        "breakdown": false,
+        "strength": true
+      },
+      "signal_labels": [
+        "底部附近局部价格转强"
+      ],
+      "notes": [
+        "底部附近，收阳且收盘突破前三个交易日最高价"
+      ],
+      "reference_low": 12.6,
+      "reference_low_date": "2026-11-04",
+      "low_age_sessions": 1,
+      "today_low_vs_reference_pct": 6.19,
+      "today_close_vs_reference_pct": 11.83,
+      "prior_3_high": 13.46,
+      "target_ohlc": {
+        "open": 13.38,
+        "high": 14.36,
+        "low": 13.38,
+        "close": 14.09
+      },
+      "previous_year_low": true,
+      "current_year_low": true
+    },
+    {
+      "rank": 5,
+      "bucket": "2025与2026双重低位",
+      "code": "02333",
+      "name": "长城汽车",
+      "target_session": "2026-11-05",
+      "close": 6.525,
+      "analysis_status": "analyzed",
+      "signals": {
+        "two_b": false,
+        "retest": false,
+        "breakdown": false,
+        "strength": true
+      },
+      "signal_labels": [
+        "底部附近局部价格转强"
+      ],
+      "notes": [
+        "底部附近，收阳且收盘突破前三个交易日最高价"
+      ],
+      "reference_low": 6.02,
+      "reference_low_date": "2026-11-04",
+      "low_age_sessions": 1,
+      "today_low_vs_reference_pct": 5.15,
+      "today_close_vs_reference_pct": 8.39,
+      "prior_3_high": 6.45,
+      "target_ohlc": {
+        "open": 6.35,
+        "high": 6.555,
+        "low": 6.33,
+        "close": 6.525
+      },
+      "previous_year_low": true,
+      "current_year_low": true
+    },
+    {
+      "rank": 6,
       "bucket": "2025与2026双重低位",
       "code": "01833",
       "name": "平安好医生",
-      "target_session": "2026-11-04",
-      "close": 5.57,
+      "target_session": "2026-11-05",
+      "close": 5.99,
       "analysis_status": "analyzed",
       "signals": {
         "two_b": false,
@@ -112,59 +219,131 @@
       ],
       "reference_low": 5.245,
       "reference_low_date": "2026-10-30",
-      "low_age_sessions": 3,
-      "today_low_vs_reference_pct": 1.62,
-      "today_close_vs_reference_pct": 6.2,
-      "prior_3_high": 5.545,
+      "low_age_sessions": 4,
+      "today_low_vs_reference_pct": 7.53,
+      "today_close_vs_reference_pct": 14.2,
+      "prior_3_high": 5.57,
       "target_ohlc": {
-        "open": 5.45,
-        "high": 5.57,
-        "low": 5.33,
-        "close": 5.57
+        "open": 5.64,
+        "high": 6.045,
+        "low": 5.64,
+        "close": 5.99
       },
       "previous_year_low": true,
       "current_year_low": true
     },
     {
-      "rank": 4,
+      "rank": 7,
       "bucket": "2025与2026双重低位",
-      "code": "09660",
-      "name": "地平线机器人",
-      "target_session": "2026-11-04",
-      "close": 3.545,
+      "code": "00152",
+      "name": "深圳国际",
+      "target_session": "2026-11-05",
+      "close": 4.86,
       "analysis_status": "analyzed",
       "signals": {
         "two_b": false,
         "retest": false,
         "breakdown": false,
-        "strength": false
+        "strength": true
       },
-      "signal_labels": [],
-      "notes": [
-        "今天未触发四类严格结构；仅保持低位观察"
+      "signal_labels": [
+        "底部附近局部价格转强"
       ],
-      "reference_low": 3.38,
-      "reference_low_date": "2026-10-30",
-      "low_age_sessions": 3,
-      "today_low_vs_reference_pct": 0.3,
-      "today_close_vs_reference_pct": 4.88,
-      "prior_3_high": 3.71,
+      "notes": [
+        "底部附近，收阳且收盘突破前三个交易日最高价"
+      ],
+      "reference_low": 4.585,
+      "reference_low_date": "2026-11-04",
+      "low_age_sessions": 1,
+      "today_low_vs_reference_pct": 3.49,
+      "today_close_vs_reference_pct": 6.0,
+      "prior_3_high": 4.855,
       "target_ohlc": {
-        "open": 3.5,
-        "high": 3.575,
-        "low": 3.39,
-        "close": 3.545
+        "open": 4.745,
+        "high": 4.89,
+        "low": 4.745,
+        "close": 4.86
       },
       "previous_year_low": true,
       "current_year_low": true
     },
     {
-      "rank": 5,
+      "rank": 8,
+      "bucket": "2025与2026双重低位",
+      "code": "09660",
+      "name": "地平线机器人",
+      "target_session": "2026-11-05",
+      "close": 3.755,
+      "analysis_status": "analyzed",
+      "signals": {
+        "two_b": false,
+        "retest": false,
+        "breakdown": false,
+        "strength": true
+      },
+      "signal_labels": [
+        "底部附近局部价格转强"
+      ],
+      "notes": [
+        "底部附近，收阳且收盘突破前三个交易日最高价"
+      ],
+      "reference_low": 3.38,
+      "reference_low_date": "2026-10-30",
+      "low_age_sessions": 4,
+      "today_low_vs_reference_pct": 4.29,
+      "today_close_vs_reference_pct": 11.09,
+      "prior_3_high": 3.71,
+      "target_ohlc": {
+        "open": 3.565,
+        "high": 3.765,
+        "low": 3.525,
+        "close": 3.755
+      },
+      "previous_year_low": true,
+      "current_year_low": true
+    },
+    {
+      "rank": 9,
+      "bucket": "2025与2026双重低位",
+      "code": "01024",
+      "name": "快手",
+      "target_session": "2026-11-05",
+      "close": 29.4,
+      "analysis_status": "analyzed",
+      "signals": {
+        "two_b": false,
+        "retest": false,
+        "breakdown": false,
+        "strength": true
+      },
+      "signal_labels": [
+        "底部附近局部价格转强"
+      ],
+      "notes": [
+        "底部附近，收阳且收盘突破前三个交易日最高价"
+      ],
+      "reference_low": 25.88,
+      "reference_low_date": "2026-10-30",
+      "low_age_sessions": 4,
+      "today_low_vs_reference_pct": 9.97,
+      "today_close_vs_reference_pct": 13.6,
+      "prior_3_high": 28.14,
+      "target_ohlc": {
+        "open": 28.5,
+        "high": 29.62,
+        "low": 28.46,
+        "close": 29.4
+      },
+      "previous_year_low": true,
+      "current_year_low": true
+    },
+    {
+      "rank": 10,
       "bucket": "2025与2026双重低位",
       "code": "02238",
       "name": "广汽集团",
-      "target_session": "2026-11-04",
-      "close": 1.99,
+      "target_session": "2026-11-05",
+      "close": 2.07,
       "analysis_status": "analyzed",
       "signals": {
         "two_b": false,
@@ -180,180 +359,15 @@
       ],
       "reference_low": 1.93,
       "reference_low_date": "2026-11-02",
-      "low_age_sessions": 2,
-      "today_low_vs_reference_pct": 0.26,
-      "today_close_vs_reference_pct": 3.11,
-      "prior_3_high": 1.98,
+      "low_age_sessions": 3,
+      "today_low_vs_reference_pct": 3.11,
+      "today_close_vs_reference_pct": 7.25,
+      "prior_3_high": 1.99,
       "target_ohlc": {
-        "open": 1.94,
-        "high": 1.99,
-        "low": 1.935,
-        "close": 1.99
-      },
-      "previous_year_low": true,
-      "current_year_low": true
-    },
-    {
-      "rank": 6,
-      "bucket": "2025与2026双重低位",
-      "code": "03323",
-      "name": "中国建材",
-      "target_session": "2026-11-04",
-      "close": 2.91,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": false
-      },
-      "signal_labels": [],
-      "notes": [
-        "今天未触发四类严格结构；仅保持低位观察"
-      ],
-      "reference_low": 2.79,
-      "reference_low_date": "2026-10-23",
-      "low_age_sessions": 8,
-      "today_low_vs_reference_pct": 2.51,
-      "today_close_vs_reference_pct": 4.3,
-      "prior_3_high": 2.94,
-      "target_ohlc": {
-        "open": 2.91,
-        "high": 2.94,
-        "low": 2.86,
-        "close": 2.91
-      },
-      "previous_year_low": true,
-      "current_year_low": true
-    },
-    {
-      "rank": 7,
-      "bucket": "2025与2026双重低位",
-      "code": "02498",
-      "name": "速腾聚创",
-      "target_session": "2026-11-04",
-      "close": 13.38,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": false
-      },
-      "signal_labels": [],
-      "notes": [
-        "今天未触发四类严格结构；仅保持低位观察"
-      ],
-      "reference_low": 12.62,
-      "reference_low_date": "2026-11-03",
-      "low_age_sessions": 1,
-      "today_low_vs_reference_pct": -0.16,
-      "today_close_vs_reference_pct": 6.02,
-      "prior_3_high": 13.67,
-      "target_ohlc": {
-        "open": 12.8,
-        "high": 13.39,
-        "low": 12.6,
-        "close": 13.38
-      },
-      "previous_year_low": true,
-      "current_year_low": true
-    },
-    {
-      "rank": 8,
-      "bucket": "2025与2026双重低位",
-      "code": "09866",
-      "name": "蔚来",
-      "target_session": "2026-11-04",
-      "close": 25.04,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": false
-      },
-      "signal_labels": [],
-      "notes": [
-        "今天未触发四类严格结构；仅保持低位观察"
-      ],
-      "reference_low": 24.5,
-      "reference_low_date": "2026-11-02",
-      "low_age_sessions": 2,
-      "today_low_vs_reference_pct": -1.39,
-      "today_close_vs_reference_pct": 2.2,
-      "prior_3_high": 25.64,
-      "target_ohlc": {
-        "open": 24.84,
-        "high": 25.12,
-        "low": 24.16,
-        "close": 25.04
-      },
-      "previous_year_low": true,
-      "current_year_low": true
-    },
-    {
-      "rank": 9,
-      "bucket": "2025与2026双重低位",
-      "code": "00152",
-      "name": "深圳国际",
-      "target_session": "2026-11-04",
-      "close": 4.745,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": false
-      },
-      "signal_labels": [],
-      "notes": [
-        "今天未触发四类严格结构；仅保持低位观察"
-      ],
-      "reference_low": 4.69,
-      "reference_low_date": "2026-11-02",
-      "low_age_sessions": 2,
-      "today_low_vs_reference_pct": -2.24,
-      "today_close_vs_reference_pct": 1.17,
-      "prior_3_high": 4.945,
-      "target_ohlc": {
-        "open": 4.755,
-        "high": 4.76,
-        "low": 4.585,
-        "close": 4.745
-      },
-      "previous_year_low": true,
-      "current_year_low": true
-    },
-    {
-      "rank": 10,
-      "bucket": "2025与2026双重低位",
-      "code": "00020",
-      "name": "商汤",
-      "target_session": "2026-11-04",
-      "close": 1.11,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": false
-      },
-      "signal_labels": [],
-      "notes": [
-        "今天未触发四类严格结构；仅保持低位观察"
-      ],
-      "reference_low": 1.055,
-      "reference_low_date": "2026-11-03",
-      "low_age_sessions": 1,
-      "today_low_vs_reference_pct": -0.47,
-      "today_close_vs_reference_pct": 5.21,
-      "prior_3_high": 1.17,
-      "target_ohlc": {
-        "open": 1.06,
-        "high": 1.115,
-        "low": 1.05,
-        "close": 1.11
+        "open": 1.99,
+        "high": 2.085,
+        "low": 1.99,
+        "close": 2.07
       },
       "previous_year_low": true,
       "current_year_low": true
@@ -363,8 +377,8 @@
       "bucket": "2025与2026双重低位",
       "code": "01478",
       "name": "丘钛科技",
-      "target_session": "2026-11-04",
-      "close": 4.39,
+      "target_session": "2026-11-05",
+      "close": 4.565,
       "analysis_status": "analyzed",
       "signals": {
         "two_b": false,
@@ -376,17 +390,17 @@
       "notes": [
         "今天未触发四类严格结构；仅保持低位观察"
       ],
-      "reference_low": 4.23,
-      "reference_low_date": "2026-11-03",
+      "reference_low": 4.17,
+      "reference_low_date": "2026-11-04",
       "low_age_sessions": 1,
-      "today_low_vs_reference_pct": -1.42,
-      "today_close_vs_reference_pct": 3.78,
-      "prior_3_high": 4.7,
+      "today_low_vs_reference_pct": 5.52,
+      "today_close_vs_reference_pct": 9.47,
+      "prior_3_high": 4.565,
       "target_ohlc": {
-        "open": 4.26,
-        "high": 4.395,
-        "low": 4.17,
-        "close": 4.39
+        "open": 4.445,
+        "high": 4.695,
+        "low": 4.4,
+        "close": 4.565
       },
       "previous_year_low": true,
       "current_year_low": true
@@ -394,10 +408,80 @@
     {
       "rank": 12,
       "bucket": "2025与2026双重低位",
-      "code": "01024",
-      "name": "快手",
-      "target_session": "2026-11-04",
-      "close": 28.0,
+      "code": "00020",
+      "name": "商汤",
+      "target_session": "2026-11-05",
+      "close": 1.16,
+      "analysis_status": "analyzed",
+      "signals": {
+        "two_b": false,
+        "retest": false,
+        "breakdown": false,
+        "strength": true
+      },
+      "signal_labels": [
+        "底部附近局部价格转强"
+      ],
+      "notes": [
+        "底部附近，收阳且收盘突破前三个交易日最高价"
+      ],
+      "reference_low": 1.05,
+      "reference_low_date": "2026-11-04",
+      "low_age_sessions": 1,
+      "today_low_vs_reference_pct": 5.24,
+      "today_close_vs_reference_pct": 10.48,
+      "prior_3_high": 1.13,
+      "target_ohlc": {
+        "open": 1.11,
+        "high": 1.2,
+        "low": 1.105,
+        "close": 1.16
+      },
+      "previous_year_low": true,
+      "current_year_low": true
+    },
+    {
+      "rank": 13,
+      "bucket": "2025与2026双重低位",
+      "code": "00241",
+      "name": "阿里健康",
+      "target_session": "2026-11-05",
+      "close": 3.145,
+      "analysis_status": "analyzed",
+      "signals": {
+        "two_b": false,
+        "retest": false,
+        "breakdown": false,
+        "strength": true
+      },
+      "signal_labels": [
+        "底部附近局部价格转强"
+      ],
+      "notes": [
+        "底部附近，收阳且收盘突破前三个交易日最高价"
+      ],
+      "reference_low": 2.74,
+      "reference_low_date": "2026-10-30",
+      "low_age_sessions": 4,
+      "today_low_vs_reference_pct": 8.39,
+      "today_close_vs_reference_pct": 14.78,
+      "prior_3_high": 2.955,
+      "target_ohlc": {
+        "open": 2.98,
+        "high": 3.165,
+        "low": 2.97,
+        "close": 3.145
+      },
+      "previous_year_low": true,
+      "current_year_low": true
+    },
+    {
+      "rank": 14,
+      "bucket": "2025与2026双重低位",
+      "code": "00384",
+      "name": "中国燃气",
+      "target_session": "2026-11-05",
+      "close": 5.09,
       "analysis_status": "analyzed",
       "signals": {
         "two_b": false,
@@ -409,28 +493,506 @@
       "notes": [
         "今天未触发四类严格结构；仅保持低位观察"
       ],
-      "reference_low": 25.88,
-      "reference_low_date": "2026-10-30",
-      "low_age_sessions": 3,
-      "today_low_vs_reference_pct": 3.48,
-      "today_close_vs_reference_pct": 8.19,
-      "prior_3_high": 28.14,
+      "reference_low": 4.805,
+      "reference_low_date": "2026-10-28",
+      "low_age_sessions": 6,
+      "today_low_vs_reference_pct": 5.52,
+      "today_close_vs_reference_pct": 5.93,
+      "prior_3_high": 5.195,
       "target_ohlc": {
-        "open": 27.24,
-        "high": 28.06,
-        "low": 26.78,
-        "close": 28.0
+        "open": 5.185,
+        "high": 5.235,
+        "low": 5.07,
+        "close": 5.09
       },
       "previous_year_low": true,
       "current_year_low": true
     },
     {
-      "rank": 13,
+      "rank": 15,
       "bucket": "2025与2026双重低位",
+      "code": "01157",
+      "name": "中联重科",
+      "target_session": "2026-11-05",
+      "close": 5.345,
+      "analysis_status": "analyzed",
+      "signals": {
+        "two_b": false,
+        "retest": false,
+        "breakdown": false,
+        "strength": false
+      },
+      "signal_labels": [],
+      "notes": [
+        "今天未触发四类严格结构；仅保持低位观察"
+      ],
+      "reference_low": 4.88,
+      "reference_low_date": "2026-11-02",
+      "low_age_sessions": 3,
+      "today_low_vs_reference_pct": 6.97,
+      "today_close_vs_reference_pct": 9.53,
+      "prior_3_high": 5.315,
+      "target_ohlc": {
+        "open": 5.4,
+        "high": 5.44,
+        "low": 5.22,
+        "close": 5.345
+      },
+      "previous_year_low": true,
+      "current_year_low": true
+    },
+    {
+      "rank": 16,
+      "bucket": "2025与2026双重低位",
+      "code": "00960",
+      "name": "龙湖集团",
+      "target_session": "2026-11-05",
+      "close": 4.815,
+      "analysis_status": "analyzed",
+      "signals": {
+        "two_b": false,
+        "retest": false,
+        "breakdown": false,
+        "strength": true
+      },
+      "signal_labels": [
+        "底部附近局部价格转强"
+      ],
+      "notes": [
+        "底部附近，收阳且收盘突破前三个交易日最高价"
+      ],
+      "reference_low": 4.27,
+      "reference_low_date": "2026-11-04",
+      "low_age_sessions": 1,
+      "today_low_vs_reference_pct": 9.25,
+      "today_close_vs_reference_pct": 12.76,
+      "prior_3_high": 4.685,
+      "target_ohlc": {
+        "open": 4.665,
+        "high": 4.905,
+        "low": 4.665,
+        "close": 4.815
+      },
+      "previous_year_low": true,
+      "current_year_low": true
+    },
+    {
+      "rank": 17,
+      "bucket": "2025与2026双重低位",
+      "code": "09866",
+      "name": "蔚来",
+      "target_session": "2026-11-05",
+      "close": 26.78,
+      "analysis_status": "analyzed",
+      "signals": {
+        "two_b": false,
+        "retest": false,
+        "breakdown": false,
+        "strength": true
+      },
+      "signal_labels": [
+        "底部附近局部价格转强"
+      ],
+      "notes": [
+        "底部附近，收阳且收盘突破前三个交易日最高价"
+      ],
+      "reference_low": 24.16,
+      "reference_low_date": "2026-11-04",
+      "low_age_sessions": 1,
+      "today_low_vs_reference_pct": 6.04,
+      "today_close_vs_reference_pct": 10.84,
+      "prior_3_high": 25.5,
+      "target_ohlc": {
+        "open": 25.76,
+        "high": 26.82,
+        "low": 25.62,
+        "close": 26.78
+      },
+      "previous_year_low": true,
+      "current_year_low": true
+    },
+    {
+      "rank": 18,
+      "bucket": "2025与2026双重低位",
+      "code": "01928",
+      "name": "金沙中国",
+      "target_session": "2026-11-05",
+      "close": 11.32,
+      "analysis_status": "analyzed",
+      "signals": {
+        "two_b": false,
+        "retest": false,
+        "breakdown": false,
+        "strength": false
+      },
+      "signal_labels": [],
+      "notes": [
+        "今天未触发四类严格结构；仅保持低位观察"
+      ],
+      "reference_low": 10.47,
+      "reference_low_date": "2026-10-29",
+      "low_age_sessions": 5,
+      "today_low_vs_reference_pct": 7.83,
+      "today_close_vs_reference_pct": 8.12,
+      "prior_3_high": 11.5,
+      "target_ohlc": {
+        "open": 11.6,
+        "high": 11.84,
+        "low": 11.29,
+        "close": 11.32
+      },
+      "previous_year_low": true,
+      "current_year_low": true
+    },
+    {
+      "rank": 19,
+      "bucket": "2025与2026双重低位",
+      "code": "01999",
+      "name": "敏华控股",
+      "target_session": "2026-11-05",
+      "close": 2.465,
+      "analysis_status": "analyzed",
+      "signals": {
+        "two_b": false,
+        "retest": false,
+        "breakdown": false,
+        "strength": true
+      },
+      "signal_labels": [
+        "底部附近局部价格转强"
+      ],
+      "notes": [
+        "底部附近，收阳且收盘突破前三个交易日最高价"
+      ],
+      "reference_low": 2.18,
+      "reference_low_date": "2026-10-15",
+      "low_age_sessions": 14,
+      "today_low_vs_reference_pct": 10.09,
+      "today_close_vs_reference_pct": 13.07,
+      "prior_3_high": 2.41,
+      "target_ohlc": {
+        "open": 2.46,
+        "high": 2.53,
+        "low": 2.4,
+        "close": 2.465
+      },
+      "previous_year_low": true,
+      "current_year_low": true
+    },
+    {
+      "rank": 20,
+      "bucket": "2025与2026双重低位",
+      "code": "02380",
+      "name": "中国电力",
+      "target_session": "2026-11-05",
+      "close": 2.705,
+      "analysis_status": "analyzed",
+      "signals": {
+        "two_b": false,
+        "retest": false,
+        "breakdown": false,
+        "strength": false
+      },
+      "signal_labels": [],
+      "notes": [
+        "今天未触发四类严格结构；仅保持低位观察"
+      ],
+      "reference_low": 2.59,
+      "reference_low_date": "2026-10-26",
+      "low_age_sessions": 8,
+      "today_low_vs_reference_pct": 3.86,
+      "today_close_vs_reference_pct": 4.44,
+      "prior_3_high": 2.705,
+      "target_ohlc": {
+        "open": 2.7,
+        "high": 2.72,
+        "low": 2.69,
+        "close": 2.705
+      },
+      "previous_year_low": true,
+      "current_year_low": true
+    },
+    {
+      "rank": 21,
+      "bucket": "2025与2026双重低位",
+      "code": "09868",
+      "name": "小鹏汽车",
+      "target_session": "2026-11-05",
+      "close": 40.14,
+      "analysis_status": "analyzed",
+      "signals": {
+        "two_b": false,
+        "retest": false,
+        "breakdown": false,
+        "strength": true
+      },
+      "signal_labels": [
+        "底部附近局部价格转强"
+      ],
+      "notes": [
+        "底部附近，收阳且收盘突破前三个交易日最高价"
+      ],
+      "reference_low": 34.96,
+      "reference_low_date": "2026-10-27",
+      "low_age_sessions": 7,
+      "today_low_vs_reference_pct": 10.07,
+      "today_close_vs_reference_pct": 14.82,
+      "prior_3_high": 39.3,
+      "target_ohlc": {
+        "open": 38.48,
+        "high": 40.22,
+        "low": 38.48,
+        "close": 40.14
+      },
+      "previous_year_low": true,
+      "current_year_low": true
+    },
+    {
+      "rank": 22,
+      "bucket": "2025与2026双重低位",
+      "code": "00762",
+      "name": "中国联通",
+      "target_session": "2026-11-05",
+      "close": 5.45,
+      "analysis_status": "analyzed",
+      "signals": {
+        "two_b": false,
+        "retest": false,
+        "breakdown": false,
+        "strength": true
+      },
+      "signal_labels": [
+        "底部附近局部价格转强"
+      ],
+      "notes": [
+        "底部附近，收阳且收盘突破前三个交易日最高价"
+      ],
+      "reference_low": 5.11,
+      "reference_low_date": "2026-10-29",
+      "low_age_sessions": 5,
+      "today_low_vs_reference_pct": 5.28,
+      "today_close_vs_reference_pct": 6.65,
+      "prior_3_high": 5.43,
+      "target_ohlc": {
+        "open": 5.43,
+        "high": 5.51,
+        "low": 5.38,
+        "close": 5.45
+      },
+      "previous_year_low": true,
+      "current_year_low": true
+    },
+    {
+      "rank": 23,
+      "bucket": "2025与2026双重低位",
+      "code": "00285",
+      "name": "比亚迪电子",
+      "target_session": "2026-11-05",
+      "close": 22.1,
+      "analysis_status": "analyzed",
+      "signals": {
+        "two_b": false,
+        "retest": false,
+        "breakdown": false,
+        "strength": true
+      },
+      "signal_labels": [
+        "底部附近局部价格转强"
+      ],
+      "notes": [
+        "底部附近，收阳且收盘突破前三个交易日最高价"
+      ],
+      "reference_low": 20.08,
+      "reference_low_date": "2026-11-04",
+      "low_age_sessions": 1,
+      "today_low_vs_reference_pct": 5.68,
+      "today_close_vs_reference_pct": 10.06,
+      "prior_3_high": 21.78,
+      "target_ohlc": {
+        "open": 21.28,
+        "high": 22.44,
+        "low": 21.22,
+        "close": 22.1
+      },
+      "previous_year_low": true,
+      "current_year_low": true
+    },
+    {
+      "rank": 24,
+      "bucket": "2025与2026双重低位",
+      "code": "00151",
+      "name": "中国旺旺",
+      "target_session": "2026-11-05",
+      "close": 2.98,
+      "analysis_status": "analyzed",
+      "signals": {
+        "two_b": false,
+        "retest": false,
+        "breakdown": false,
+        "strength": false
+      },
+      "signal_labels": [],
+      "notes": [
+        "今天未触发四类严格结构；仅保持低位观察"
+      ],
+      "reference_low": 2.695,
+      "reference_low_date": "2026-10-08",
+      "low_age_sessions": 19,
+      "today_low_vs_reference_pct": 9.09,
+      "today_close_vs_reference_pct": 10.58,
+      "prior_3_high": 3.0,
+      "target_ohlc": {
+        "open": 2.94,
+        "high": 3.015,
+        "low": 2.94,
+        "close": 2.98
+      },
+      "previous_year_low": true,
+      "current_year_low": true
+    },
+    {
+      "rank": 25,
+      "bucket": "2025与2026双重低位",
+      "code": "06862",
+      "name": "海底捞",
+      "target_session": "2026-11-05",
+      "close": 10.19,
+      "analysis_status": "analyzed",
+      "signals": {
+        "two_b": false,
+        "retest": false,
+        "breakdown": false,
+        "strength": true
+      },
+      "signal_labels": [
+        "底部附近局部价格转强"
+      ],
+      "notes": [
+        "底部附近，收阳且收盘突破前三个交易日最高价"
+      ],
+      "reference_low": 8.925,
+      "reference_low_date": "2026-10-13",
+      "low_age_sessions": 16,
+      "today_low_vs_reference_pct": 12.27,
+      "today_close_vs_reference_pct": 14.17,
+      "prior_3_high": 10.04,
+      "target_ohlc": {
+        "open": 10.08,
+        "high": 10.27,
+        "low": 10.02,
+        "close": 10.19
+      },
+      "previous_year_low": true,
+      "current_year_low": true
+    },
+    {
+      "rank": 26,
+      "bucket": "2025与2026双重低位",
+      "code": "06098",
+      "name": "碧桂园服务",
+      "target_session": "2026-11-05",
+      "close": 5.045,
+      "analysis_status": "analyzed",
+      "signals": {
+        "two_b": false,
+        "retest": false,
+        "breakdown": false,
+        "strength": true
+      },
+      "signal_labels": [
+        "底部附近局部价格转强"
+      ],
+      "notes": [
+        "底部附近，收阳且收盘突破前三个交易日最高价"
+      ],
+      "reference_low": 4.77,
+      "reference_low_date": "2026-11-02",
+      "low_age_sessions": 3,
+      "today_low_vs_reference_pct": 3.14,
+      "today_close_vs_reference_pct": 5.77,
+      "prior_3_high": 5.0,
+      "target_ohlc": {
+        "open": 4.92,
+        "high": 5.085,
+        "low": 4.92,
+        "close": 5.045
+      },
+      "previous_year_low": true,
+      "current_year_low": true
+    },
+    {
+      "rank": 27,
+      "bucket": "2025与2026双重低位",
+      "code": "00763",
+      "name": "中兴通讯",
+      "target_session": "2026-11-05",
+      "close": 20.62,
+      "analysis_status": "analyzed",
+      "signals": {
+        "two_b": false,
+        "retest": false,
+        "breakdown": false,
+        "strength": false
+      },
+      "signal_labels": [],
+      "notes": [
+        "今天未触发四类严格结构；仅保持低位观察"
+      ],
+      "reference_low": 18.39,
+      "reference_low_date": "2026-10-23",
+      "low_age_sessions": 9,
+      "today_low_vs_reference_pct": 8.43,
+      "today_close_vs_reference_pct": 12.13,
+      "prior_3_high": 20.26,
+      "target_ohlc": {
+        "open": 20.2,
+        "high": 20.9,
+        "low": 19.94,
+        "close": 20.62
+      },
+      "previous_year_low": true,
+      "current_year_low": true
+    },
+    {
+      "rank": 28,
+      "bucket": "仅2026年低位",
+      "code": "06088",
+      "name": "鸿腾精密",
+      "target_session": "2026-11-05",
+      "close": 3.39,
+      "analysis_status": "analyzed",
+      "signals": {
+        "two_b": false,
+        "retest": false,
+        "breakdown": false,
+        "strength": false
+      },
+      "signal_labels": [],
+      "notes": [
+        "今天未触发四类严格结构；仅保持低位观察"
+      ],
+      "reference_low": 3.11,
+      "reference_low_date": "2026-11-03",
+      "low_age_sessions": 2,
+      "today_low_vs_reference_pct": 1.77,
+      "today_close_vs_reference_pct": 9.0,
+      "prior_3_high": 3.45,
+      "target_ohlc": {
+        "open": 3.3,
+        "high": 3.43,
+        "low": 3.165,
+        "close": 3.39
+      },
+      "previous_year_low": false,
+      "current_year_low": true
+    },
+    {
+      "rank": 29,
+      "bucket": "仅2026年低位",
       "code": "02727",
       "name": "上海电气",
-      "target_session": "2026-11-04",
-      "close": 2.5,
+      "target_session": "2026-11-05",
+      "close": 2.525,
       "analysis_status": "analyzed",
       "signals": {
         "two_b": false,
@@ -446,564 +1008,26 @@
       ],
       "reference_low": 2.39,
       "reference_low_date": "2026-10-30",
-      "low_age_sessions": 3,
-      "today_low_vs_reference_pct": 0.21,
-      "today_close_vs_reference_pct": 4.6,
-      "prior_3_high": 2.49,
-      "target_ohlc": {
-        "open": 2.45,
-        "high": 2.5,
-        "low": 2.395,
-        "close": 2.5
-      },
-      "previous_year_low": true,
-      "current_year_low": true
-    },
-    {
-      "rank": 14,
-      "bucket": "2025与2026双重低位",
-      "code": "00241",
-      "name": "阿里健康",
-      "target_session": "2026-11-04",
-      "close": 2.955,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": false
-      },
-      "signal_labels": [],
-      "notes": [
-        "今天未触发四类严格结构；仅保持低位观察"
-      ],
-      "reference_low": 2.74,
-      "reference_low_date": "2026-10-30",
-      "low_age_sessions": 3,
-      "today_low_vs_reference_pct": 5.11,
-      "today_close_vs_reference_pct": 7.85,
-      "prior_3_high": 2.955,
-      "target_ohlc": {
-        "open": 2.905,
-        "high": 2.955,
-        "low": 2.88,
-        "close": 2.955
-      },
-      "previous_year_low": true,
-      "current_year_low": true
-    },
-    {
-      "rank": 15,
-      "bucket": "2025与2026双重低位",
-      "code": "00371",
-      "name": "北控水务集团",
-      "target_session": "2026-11-04",
-      "close": 1.475,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": true
-      },
-      "signal_labels": [
-        "底部附近局部价格转强"
-      ],
-      "notes": [
-        "底部附近，收阳且收盘突破前三个交易日最高价"
-      ],
-      "reference_low": 1.405,
-      "reference_low_date": "2026-10-29",
       "low_age_sessions": 4,
-      "today_low_vs_reference_pct": 2.49,
-      "today_close_vs_reference_pct": 4.98,
-      "prior_3_high": 1.465,
+      "today_low_vs_reference_pct": 4.39,
+      "today_close_vs_reference_pct": 5.65,
+      "prior_3_high": 2.5,
       "target_ohlc": {
-        "open": 1.46,
-        "high": 1.48,
-        "low": 1.44,
-        "close": 1.475
+        "open": 2.515,
+        "high": 2.57,
+        "low": 2.495,
+        "close": 2.525
       },
-      "previous_year_low": true,
-      "current_year_low": true
-    },
-    {
-      "rank": 16,
-      "bucket": "2025与2026双重低位",
-      "code": "03896",
-      "name": "金山云",
-      "target_session": "2026-11-04",
-      "close": 4.145,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": false
-      },
-      "signal_labels": [],
-      "notes": [
-        "今天未触发四类严格结构；仅保持低位观察"
-      ],
-      "reference_low": 3.96,
-      "reference_low_date": "2026-11-03",
-      "low_age_sessions": 1,
-      "today_low_vs_reference_pct": -2.15,
-      "today_close_vs_reference_pct": 4.67,
-      "prior_3_high": 4.285,
-      "target_ohlc": {
-        "open": 4.015,
-        "high": 4.155,
-        "low": 3.875,
-        "close": 4.145
-      },
-      "previous_year_low": true,
-      "current_year_low": true
-    },
-    {
-      "rank": 17,
-      "bucket": "2025与2026双重低位",
-      "code": "00960",
-      "name": "龙湖集团",
-      "target_session": "2026-11-04",
-      "close": 4.595,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": false
-      },
-      "signal_labels": [],
-      "notes": [
-        "今天未触发四类严格结构；仅保持低位观察"
-      ],
-      "reference_low": 4.395,
-      "reference_low_date": "2026-11-03",
-      "low_age_sessions": 1,
-      "today_low_vs_reference_pct": -2.84,
-      "today_close_vs_reference_pct": 4.55,
-      "prior_3_high": 4.685,
-      "target_ohlc": {
-        "open": 4.425,
-        "high": 4.615,
-        "low": 4.27,
-        "close": 4.595
-      },
-      "previous_year_low": true,
-      "current_year_low": true
-    },
-    {
-      "rank": 18,
-      "bucket": "2025与2026双重低位",
-      "code": "00175",
-      "name": "吉利汽车",
-      "target_session": "2026-11-04",
-      "close": 13.87,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": false
-      },
-      "signal_labels": [],
-      "notes": [
-        "今天未触发四类严格结构；仅保持低位观察"
-      ],
-      "reference_low": 13.15,
-      "reference_low_date": "2026-10-30",
-      "low_age_sessions": 3,
-      "today_low_vs_reference_pct": 1.29,
-      "today_close_vs_reference_pct": 5.48,
-      "prior_3_high": 14.03,
-      "target_ohlc": {
-        "open": 13.75,
-        "high": 13.96,
-        "low": 13.32,
-        "close": 13.87
-      },
-      "previous_year_low": true,
-      "current_year_low": true
-    },
-    {
-      "rank": 19,
-      "bucket": "2025与2026双重低位",
-      "code": "00780",
-      "name": "同程旅行",
-      "target_session": "2026-11-04",
-      "close": 10.52,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": false
-      },
-      "signal_labels": [],
-      "notes": [
-        "今天未触发四类严格结构；仅保持低位观察"
-      ],
-      "reference_low": 9.555,
-      "reference_low_date": "2026-10-30",
-      "low_age_sessions": 3,
-      "today_low_vs_reference_pct": 8.95,
-      "today_close_vs_reference_pct": 10.1,
-      "prior_3_high": 10.81,
-      "target_ohlc": {
-        "open": 10.6,
-        "high": 10.71,
-        "low": 10.41,
-        "close": 10.52
-      },
-      "previous_year_low": true,
-      "current_year_low": true
-    },
-    {
-      "rank": 20,
-      "bucket": "2025与2026双重低位",
-      "code": "09868",
-      "name": "小鹏汽车",
-      "target_session": "2026-11-04",
-      "close": 38.08,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": false
-      },
-      "signal_labels": [],
-      "notes": [
-        "今天未触发四类严格结构；仅保持低位观察"
-      ],
-      "reference_low": 34.96,
-      "reference_low_date": "2026-10-27",
-      "low_age_sessions": 6,
-      "today_low_vs_reference_pct": 4.69,
-      "today_close_vs_reference_pct": 8.92,
-      "prior_3_high": 39.3,
-      "target_ohlc": {
-        "open": 37.88,
-        "high": 38.22,
-        "low": 36.6,
-        "close": 38.08
-      },
-      "previous_year_low": true,
-      "current_year_low": true
-    },
-    {
-      "rank": 21,
-      "bucket": "2025与2026双重低位",
-      "code": "00285",
-      "name": "比亚迪电子",
-      "target_session": "2026-11-04",
-      "close": 21.18,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": false
-      },
-      "signal_labels": [],
-      "notes": [
-        "今天未触发四类严格结构；仅保持低位观察"
-      ],
-      "reference_low": 20.48,
-      "reference_low_date": "2026-11-03",
-      "low_age_sessions": 1,
-      "today_low_vs_reference_pct": -1.95,
-      "today_close_vs_reference_pct": 3.42,
-      "prior_3_high": 22.28,
-      "target_ohlc": {
-        "open": 20.6,
-        "high": 21.18,
-        "low": 20.08,
-        "close": 21.18
-      },
-      "previous_year_low": true,
-      "current_year_low": true
-    },
-    {
-      "rank": 22,
-      "bucket": "2025与2026双重低位",
-      "code": "01157",
-      "name": "中联重科",
-      "target_session": "2026-11-04",
-      "close": 5.28,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": true
-      },
-      "signal_labels": [
-        "底部附近局部价格转强"
-      ],
-      "notes": [
-        "底部附近，收阳且收盘突破前三个交易日最高价"
-      ],
-      "reference_low": 4.88,
-      "reference_low_date": "2026-11-02",
-      "low_age_sessions": 2,
-      "today_low_vs_reference_pct": 4.51,
-      "today_close_vs_reference_pct": 8.2,
-      "prior_3_high": 5.185,
-      "target_ohlc": {
-        "open": 5.11,
-        "high": 5.315,
-        "low": 5.1,
-        "close": 5.28
-      },
-      "previous_year_low": true,
-      "current_year_low": true
-    },
-    {
-      "rank": 23,
-      "bucket": "2025与2026双重低位",
-      "code": "01999",
-      "name": "敏华控股",
-      "target_session": "2026-11-04",
-      "close": 2.39,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": false
-      },
-      "signal_labels": [],
-      "notes": [
-        "今天未触发四类严格结构；仅保持低位观察"
-      ],
-      "reference_low": 2.18,
-      "reference_low_date": "2026-10-15",
-      "low_age_sessions": 13,
-      "today_low_vs_reference_pct": 6.88,
-      "today_close_vs_reference_pct": 9.63,
-      "prior_3_high": 2.41,
-      "target_ohlc": {
-        "open": 2.405,
-        "high": 2.41,
-        "low": 2.33,
-        "close": 2.39
-      },
-      "previous_year_low": true,
-      "current_year_low": true
-    },
-    {
-      "rank": 24,
-      "bucket": "2025与2026双重低位",
-      "code": "06855",
-      "name": "亚盛医药",
-      "target_session": "2026-11-04",
-      "close": 28.34,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": false
-      },
-      "signal_labels": [],
-      "notes": [
-        "今天未触发四类严格结构；仅保持低位观察"
-      ],
-      "reference_low": 25.8,
-      "reference_low_date": "2026-11-03",
-      "low_age_sessions": 1,
-      "today_low_vs_reference_pct": 2.09,
-      "today_close_vs_reference_pct": 9.84,
-      "prior_3_high": 28.38,
-      "target_ohlc": {
-        "open": 26.44,
-        "high": 28.34,
-        "low": 26.34,
-        "close": 28.34
-      },
-      "previous_year_low": true,
-      "current_year_low": true
-    },
-    {
-      "rank": 25,
-      "bucket": "2025与2026双重低位",
-      "code": "02380",
-      "name": "中国电力",
-      "target_session": "2026-11-04",
-      "close": 2.7,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": true
-      },
-      "signal_labels": [
-        "底部附近局部价格转强"
-      ],
-      "notes": [
-        "底部附近，收阳且收盘突破前三个交易日最高价"
-      ],
-      "reference_low": 2.59,
-      "reference_low_date": "2026-10-26",
-      "low_age_sessions": 7,
-      "today_low_vs_reference_pct": 2.9,
-      "today_close_vs_reference_pct": 4.25,
-      "prior_3_high": 2.68,
-      "target_ohlc": {
-        "open": 2.68,
-        "high": 2.705,
-        "low": 2.665,
-        "close": 2.7
-      },
-      "previous_year_low": true,
-      "current_year_low": true
-    },
-    {
-      "rank": 26,
-      "bucket": "2025与2026双重低位",
-      "code": "00762",
-      "name": "中国联通",
-      "target_session": "2026-11-04",
-      "close": 5.4,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": false
-      },
-      "signal_labels": [],
-      "notes": [
-        "今天未触发四类严格结构；仅保持低位观察"
-      ],
-      "reference_low": 5.11,
-      "reference_low_date": "2026-10-29",
-      "low_age_sessions": 4,
-      "today_low_vs_reference_pct": 4.7,
-      "today_close_vs_reference_pct": 5.68,
-      "prior_3_high": 5.4,
-      "target_ohlc": {
-        "open": 5.37,
-        "high": 5.43,
-        "low": 5.35,
-        "close": 5.4
-      },
-      "previous_year_low": true,
-      "current_year_low": true
-    },
-    {
-      "rank": 27,
-      "bucket": "2025与2026双重低位",
-      "code": "00753",
-      "name": "中国国航",
-      "target_session": "2026-11-04",
-      "close": 3.755,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": false
-      },
-      "signal_labels": [],
-      "notes": [
-        "今天未触发四类严格结构；仅保持低位观察"
-      ],
-      "reference_low": 3.35,
-      "reference_low_date": "2026-10-23",
-      "low_age_sessions": 8,
-      "today_low_vs_reference_pct": 7.16,
-      "today_close_vs_reference_pct": 12.09,
-      "prior_3_high": 3.845,
-      "target_ohlc": {
-        "open": 3.74,
-        "high": 3.76,
-        "low": 3.59,
-        "close": 3.755
-      },
-      "previous_year_low": true,
-      "current_year_low": true
-    },
-    {
-      "rank": 28,
-      "bucket": "2025与2026双重低位",
-      "code": "03933",
-      "name": "联邦制药",
-      "target_session": "2026-11-04",
-      "close": 7.33,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": true
-      },
-      "signal_labels": [
-        "底部附近局部价格转强"
-      ],
-      "notes": [
-        "底部附近，收阳且收盘突破前三个交易日最高价"
-      ],
-      "reference_low": 6.665,
-      "reference_low_date": "2026-10-28",
-      "low_age_sessions": 5,
-      "today_low_vs_reference_pct": 4.43,
-      "today_close_vs_reference_pct": 9.98,
-      "prior_3_high": 7.08,
-      "target_ohlc": {
-        "open": 7.125,
-        "high": 7.33,
-        "low": 6.96,
-        "close": 7.33
-      },
-      "previous_year_low": true,
-      "current_year_low": true
-    },
-    {
-      "rank": 29,
-      "bucket": "2025与2026双重低位",
-      "code": "01928",
-      "name": "金沙中国",
-      "target_session": "2026-11-04",
-      "close": 11.44,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": true
-      },
-      "signal_labels": [
-        "底部附近局部价格转强"
-      ],
-      "notes": [
-        "底部附近，收阳且收盘突破前三个交易日最高价"
-      ],
-      "reference_low": 10.47,
-      "reference_low_date": "2026-10-29",
-      "low_age_sessions": 4,
-      "today_low_vs_reference_pct": 6.59,
-      "today_close_vs_reference_pct": 9.26,
-      "prior_3_high": 11.38,
-      "target_ohlc": {
-        "open": 11.32,
-        "high": 11.5,
-        "low": 11.16,
-        "close": 11.44
-      },
-      "previous_year_low": true,
+      "previous_year_low": false,
       "current_year_low": true
     },
     {
       "rank": 30,
-      "bucket": "2025与2026双重低位",
-      "code": "06098",
-      "name": "碧桂园服务",
-      "target_session": "2026-11-04",
-      "close": 4.96,
+      "bucket": "仅2026年低位",
+      "code": "01898",
+      "name": "中煤能源",
+      "target_session": "2026-11-05",
+      "close": 9.61,
       "analysis_status": "analyzed",
       "signals": {
         "two_b": false,
@@ -1015,294 +1039,28 @@
       "notes": [
         "今天未触发四类严格结构；仅保持低位观察"
       ],
-      "reference_low": 4.77,
-      "reference_low_date": "2026-11-02",
-      "low_age_sessions": 2,
-      "today_low_vs_reference_pct": 1.57,
-      "today_close_vs_reference_pct": 3.98,
-      "prior_3_high": 5.0,
+      "reference_low": 9.31,
+      "reference_low_date": "2026-10-23",
+      "low_age_sessions": 9,
+      "today_low_vs_reference_pct": 1.56,
+      "today_close_vs_reference_pct": 3.22,
+      "prior_3_high": 9.925,
       "target_ohlc": {
-        "open": 4.91,
-        "high": 4.96,
-        "low": 4.845,
-        "close": 4.96
+        "open": 9.735,
+        "high": 9.74,
+        "low": 9.455,
+        "close": 9.61
       },
-      "previous_year_low": true,
+      "previous_year_low": false,
       "current_year_low": true
     },
     {
       "rank": 31,
-      "bucket": "2025与2026双重低位",
-      "code": "06862",
-      "name": "海底捞",
-      "target_session": "2026-11-04",
-      "close": 9.85,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": false
-      },
-      "signal_labels": [],
-      "notes": [
-        "今天未触发四类严格结构；仅保持低位观察"
-      ],
-      "reference_low": 8.925,
-      "reference_low_date": "2026-10-13",
-      "low_age_sessions": 15,
-      "today_low_vs_reference_pct": 9.36,
-      "today_close_vs_reference_pct": 10.36,
-      "prior_3_high": 9.965,
-      "target_ohlc": {
-        "open": 9.91,
-        "high": 10.04,
-        "low": 9.76,
-        "close": 9.85
-      },
-      "previous_year_low": true,
-      "current_year_low": true
-    },
-    {
-      "rank": 32,
-      "bucket": "2025与2026双重低位",
-      "code": "00384",
-      "name": "中国燃气",
-      "target_session": "2026-11-04",
-      "close": 5.18,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": false
-      },
-      "signal_labels": [],
-      "notes": [
-        "今天未触发四类严格结构；仅保持低位观察"
-      ],
-      "reference_low": 4.805,
-      "reference_low_date": "2026-10-28",
-      "low_age_sessions": 5,
-      "today_low_vs_reference_pct": 5.41,
-      "today_close_vs_reference_pct": 7.8,
-      "prior_3_high": 5.195,
-      "target_ohlc": {
-        "open": 5.15,
-        "high": 5.19,
-        "low": 5.065,
-        "close": 5.18
-      },
-      "previous_year_low": true,
-      "current_year_low": true
-    },
-    {
-      "rank": 33,
-      "bucket": "2025与2026双重低位",
-      "code": "00151",
-      "name": "中国旺旺",
-      "target_session": "2026-11-04",
-      "close": 2.94,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": false
-      },
-      "signal_labels": [],
-      "notes": [
-        "今天未触发四类严格结构；仅保持低位观察"
-      ],
-      "reference_low": 2.69,
-      "reference_low_date": "2026-10-06",
-      "low_age_sessions": 20,
-      "today_low_vs_reference_pct": 8.74,
-      "today_close_vs_reference_pct": 9.29,
-      "prior_3_high": 2.99,
-      "target_ohlc": {
-        "open": 3.0,
-        "high": 3.0,
-        "low": 2.925,
-        "close": 2.94
-      },
-      "previous_year_low": true,
-      "current_year_low": true
-    },
-    {
-      "rank": 34,
-      "bucket": "2025与2026双重低位",
-      "code": "00763",
-      "name": "中兴通讯",
-      "target_session": "2026-11-04",
-      "close": 20.26,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": false
-      },
-      "signal_labels": [],
-      "notes": [
-        "今天未触发四类严格结构；仅保持低位观察"
-      ],
-      "reference_low": 18.39,
-      "reference_low_date": "2026-10-23",
-      "low_age_sessions": 8,
-      "today_low_vs_reference_pct": 4.51,
-      "today_close_vs_reference_pct": 10.17,
-      "prior_3_high": 19.8,
-      "target_ohlc": {
-        "open": 19.5,
-        "high": 20.26,
-        "low": 19.22,
-        "close": 20.26
-      },
-      "previous_year_low": true,
-      "current_year_low": true
-    },
-    {
-      "rank": 35,
-      "bucket": "2025与2026双重低位",
-      "code": "00916",
-      "name": "龙源电力",
-      "target_session": "2026-11-04",
-      "close": 5.625,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": true
-      },
-      "signal_labels": [
-        "底部附近局部价格转强"
-      ],
-      "notes": [
-        "底部附近，收阳且收盘突破前三个交易日最高价"
-      ],
-      "reference_low": 4.905,
-      "reference_low_date": "2026-10-30",
-      "low_age_sessions": 3,
-      "today_low_vs_reference_pct": 12.23,
-      "today_close_vs_reference_pct": 14.68,
-      "prior_3_high": 5.58,
-      "target_ohlc": {
-        "open": 5.54,
-        "high": 5.625,
-        "low": 5.505,
-        "close": 5.625
-      },
-      "previous_year_low": true,
-      "current_year_low": true
-    },
-    {
-      "rank": 36,
-      "bucket": "2025与2026双重低位",
-      "code": "01044",
-      "name": "恒安国际",
-      "target_session": "2026-11-04",
-      "close": 21.32,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": false
-      },
-      "signal_labels": [],
-      "notes": [
-        "今天未触发四类严格结构；仅保持低位观察"
-      ],
-      "reference_low": 19.19,
-      "reference_low_date": "2026-10-06",
-      "low_age_sessions": 20,
-      "today_low_vs_reference_pct": 10.47,
-      "today_close_vs_reference_pct": 11.1,
-      "prior_3_high": 21.84,
-      "target_ohlc": {
-        "open": 21.82,
-        "high": 21.82,
-        "low": 21.2,
-        "close": 21.32
-      },
-      "previous_year_low": true,
-      "current_year_low": true
-    },
-    {
-      "rank": 37,
-      "bucket": "仅2026年低位",
-      "code": "06088",
-      "name": "鸿腾精密",
-      "target_session": "2026-11-04",
-      "close": 3.41,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": false
-      },
-      "signal_labels": [],
-      "notes": [
-        "今天未触发四类严格结构；仅保持低位观察"
-      ],
-      "reference_low": 3.11,
-      "reference_low_date": "2026-11-03",
-      "low_age_sessions": 1,
-      "today_low_vs_reference_pct": 0.32,
-      "today_close_vs_reference_pct": 9.65,
-      "prior_3_high": 3.46,
-      "target_ohlc": {
-        "open": 3.165,
-        "high": 3.415,
-        "low": 3.12,
-        "close": 3.41
-      },
-      "previous_year_low": false,
-      "current_year_low": true
-    },
-    {
-      "rank": 38,
-      "bucket": "仅2026年低位",
-      "code": "03931",
-      "name": "中创新航",
-      "target_session": "2026-11-04",
-      "close": 13.72,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": false
-      },
-      "signal_labels": [],
-      "notes": [
-        "今天未触发四类严格结构；仅保持低位观察"
-      ],
-      "reference_low": 12.63,
-      "reference_low_date": "2026-11-02",
-      "low_age_sessions": 2,
-      "today_low_vs_reference_pct": 3.4,
-      "today_close_vs_reference_pct": 8.63,
-      "prior_3_high": 14.15,
-      "target_ohlc": {
-        "open": 13.57,
-        "high": 13.8,
-        "low": 13.06,
-        "close": 13.72
-      },
-      "previous_year_low": false,
-      "current_year_low": true
-    },
-    {
-      "rank": 39,
       "bucket": "仅2026年低位",
       "code": "00017",
       "name": "新世界发展",
-      "target_session": "2026-11-04",
-      "close": 5.185,
+      "target_session": "2026-11-05",
+      "close": 5.255,
       "analysis_status": "analyzed",
       "signals": {
         "two_b": false,
@@ -1316,26 +1074,92 @@
       ],
       "reference_low": 4.84,
       "reference_low_date": "2026-10-23",
-      "low_age_sessions": 8,
-      "today_low_vs_reference_pct": 5.37,
-      "today_close_vs_reference_pct": 7.13,
+      "low_age_sessions": 9,
+      "today_low_vs_reference_pct": 7.44,
+      "today_close_vs_reference_pct": 8.57,
       "prior_3_high": 5.375,
       "target_ohlc": {
-        "open": 5.215,
-        "high": 5.3,
-        "low": 5.1,
-        "close": 5.185
+        "open": 5.2,
+        "high": 5.45,
+        "low": 5.2,
+        "close": 5.255
       },
       "previous_year_low": false,
       "current_year_low": true
     },
     {
-      "rank": 40,
+      "rank": 32,
+      "bucket": "仅2026年低位",
+      "code": "03993",
+      "name": "洛阳钼业",
+      "target_session": "2026-11-05",
+      "close": 12.8,
+      "analysis_status": "analyzed",
+      "signals": {
+        "two_b": false,
+        "retest": false,
+        "breakdown": false,
+        "strength": false
+      },
+      "signal_labels": [],
+      "notes": [
+        "今天未触发四类严格结构；仅保持低位观察"
+      ],
+      "reference_low": 11.99,
+      "reference_low_date": "2026-10-30",
+      "low_age_sessions": 4,
+      "today_low_vs_reference_pct": 4.67,
+      "today_close_vs_reference_pct": 6.76,
+      "prior_3_high": 13.03,
+      "target_ohlc": {
+        "open": 13.26,
+        "high": 13.33,
+        "low": 12.55,
+        "close": 12.8
+      },
+      "previous_year_low": false,
+      "current_year_low": true
+    },
+    {
+      "rank": 33,
+      "bucket": "仅2026年低位",
+      "code": "01133",
+      "name": "哈尔滨电气",
+      "target_session": "2026-11-05",
+      "close": 11.94,
+      "analysis_status": "analyzed",
+      "signals": {
+        "two_b": false,
+        "retest": false,
+        "breakdown": false,
+        "strength": false
+      },
+      "signal_labels": [],
+      "notes": [
+        "今天未触发四类严格结构；仅保持低位观察"
+      ],
+      "reference_low": 10.8,
+      "reference_low_date": "2026-10-23",
+      "low_age_sessions": 9,
+      "today_low_vs_reference_pct": 8.7,
+      "today_close_vs_reference_pct": 10.56,
+      "prior_3_high": 12.21,
+      "target_ohlc": {
+        "open": 12.13,
+        "high": 12.34,
+        "low": 11.74,
+        "close": 11.94
+      },
+      "previous_year_low": false,
+      "current_year_low": true
+    },
+    {
+      "rank": 34,
       "bucket": "仅2026年低位",
       "code": "01385",
       "name": "上海复旦",
-      "target_session": "2026-11-04",
-      "close": 22.92,
+      "target_session": "2026-11-05",
+      "close": 23.18,
       "analysis_status": "analyzed",
       "signals": {
         "two_b": false,
@@ -1351,59 +1175,26 @@
       ],
       "reference_low": 20.82,
       "reference_low_date": "2026-11-03",
-      "low_age_sessions": 1,
-      "today_low_vs_reference_pct": 1.06,
-      "today_close_vs_reference_pct": 10.09,
-      "prior_3_high": 22.4,
+      "low_age_sessions": 2,
+      "today_low_vs_reference_pct": 7.97,
+      "today_close_vs_reference_pct": 11.34,
+      "prior_3_high": 23.0,
       "target_ohlc": {
-        "open": 21.16,
-        "high": 23.0,
-        "low": 21.04,
-        "close": 22.92
+        "open": 22.92,
+        "high": 23.98,
+        "low": 22.48,
+        "close": 23.18
       },
       "previous_year_low": false,
       "current_year_low": true
     },
     {
-      "rank": 41,
-      "bucket": "仅2026年低位",
-      "code": "02228",
-      "name": "晶泰控股",
-      "target_session": "2026-11-04",
-      "close": 6.115,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": false
-      },
-      "signal_labels": [],
-      "notes": [
-        "今天未触发四类严格结构；仅保持低位观察"
-      ],
-      "reference_low": 5.6,
-      "reference_low_date": "2026-10-23",
-      "low_age_sessions": 8,
-      "today_low_vs_reference_pct": 3.75,
-      "today_close_vs_reference_pct": 9.2,
-      "prior_3_high": 6.32,
-      "target_ohlc": {
-        "open": 5.85,
-        "high": 6.115,
-        "low": 5.81,
-        "close": 6.115
-      },
-      "previous_year_low": false,
-      "current_year_low": true
-    },
-    {
-      "rank": 42,
+      "rank": 35,
       "bucket": "仅2026年低位",
       "code": "00358",
       "name": "江西铜业股份",
-      "target_session": "2026-11-04",
-      "close": 25.14,
+      "target_session": "2026-11-05",
+      "close": 25.64,
       "analysis_status": "analyzed",
       "signals": {
         "two_b": false,
@@ -1417,26 +1208,61 @@
       ],
       "reference_low": 23.32,
       "reference_low_date": "2026-11-02",
-      "low_age_sessions": 2,
-      "today_low_vs_reference_pct": 2.14,
-      "today_close_vs_reference_pct": 7.8,
-      "prior_3_high": 25.38,
+      "low_age_sessions": 3,
+      "today_low_vs_reference_pct": 8.23,
+      "today_close_vs_reference_pct": 9.95,
+      "prior_3_high": 25.48,
       "target_ohlc": {
-        "open": 23.9,
-        "high": 25.48,
-        "low": 23.82,
-        "close": 25.14
+        "open": 25.66,
+        "high": 26.26,
+        "low": 25.24,
+        "close": 25.64
       },
       "previous_year_low": false,
       "current_year_low": true
     },
     {
-      "rank": 43,
+      "rank": 36,
       "bucket": "仅2026年低位",
-      "code": "09698",
-      "name": "万国数据",
-      "target_session": "2026-11-04",
-      "close": 22.46,
+      "code": "02228",
+      "name": "晶泰控股",
+      "target_session": "2026-11-05",
+      "close": 6.37,
+      "analysis_status": "analyzed",
+      "signals": {
+        "two_b": false,
+        "retest": false,
+        "breakdown": false,
+        "strength": true
+      },
+      "signal_labels": [
+        "底部附近局部价格转强"
+      ],
+      "notes": [
+        "底部附近，收阳且收盘突破前三个交易日最高价"
+      ],
+      "reference_low": 5.6,
+      "reference_low_date": "2026-10-23",
+      "low_age_sessions": 9,
+      "today_low_vs_reference_pct": 9.38,
+      "today_close_vs_reference_pct": 13.75,
+      "prior_3_high": 6.185,
+      "target_ohlc": {
+        "open": 6.185,
+        "high": 6.425,
+        "low": 6.125,
+        "close": 6.37
+      },
+      "previous_year_low": false,
+      "current_year_low": true
+    },
+    {
+      "rank": 37,
+      "bucket": "仅2026年低位",
+      "code": "02600",
+      "name": "中国铝业",
+      "target_session": "2026-11-05",
+      "close": 7.5,
       "analysis_status": "analyzed",
       "signals": {
         "two_b": false,
@@ -1448,131 +1274,28 @@
       "notes": [
         "今天未触发四类严格结构；仅保持低位观察"
       ],
-      "reference_low": 20.8,
-      "reference_low_date": "2026-11-03",
-      "low_age_sessions": 1,
-      "today_low_vs_reference_pct": 1.15,
-      "today_close_vs_reference_pct": 7.98,
-      "prior_3_high": 22.76,
-      "target_ohlc": {
-        "open": 21.3,
-        "high": 22.5,
-        "low": 21.04,
-        "close": 22.46
-      },
-      "previous_year_low": false,
-      "current_year_low": true
-    },
-    {
-      "rank": 44,
-      "bucket": "仅2026年低位",
-      "code": "01072",
-      "name": "东方电气",
-      "target_session": "2026-11-04",
-      "close": 17.31,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": true
-      },
-      "signal_labels": [
-        "底部附近局部价格转强"
-      ],
-      "notes": [
-        "底部附近，收阳且收盘突破前三个交易日最高价"
-      ],
-      "reference_low": 15.12,
+      "reference_low": 6.55,
       "reference_low_date": "2026-10-23",
-      "low_age_sessions": 8,
-      "today_low_vs_reference_pct": 9.92,
-      "today_close_vs_reference_pct": 14.48,
-      "prior_3_high": 17.1,
+      "low_age_sessions": 9,
+      "today_low_vs_reference_pct": 13.36,
+      "today_close_vs_reference_pct": 14.5,
+      "prior_3_high": 7.475,
       "target_ohlc": {
-        "open": 16.98,
-        "high": 17.4,
-        "low": 16.62,
-        "close": 17.31
+        "open": 7.545,
+        "high": 7.595,
+        "low": 7.425,
+        "close": 7.5
       },
       "previous_year_low": false,
       "current_year_low": true
     },
     {
-      "rank": 45,
-      "bucket": "仅2026年低位",
-      "code": "03993",
-      "name": "洛阳钼业",
-      "target_session": "2026-11-04",
-      "close": 12.91,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": true
-      },
-      "signal_labels": [
-        "底部附近局部价格转强"
-      ],
-      "notes": [
-        "底部附近，收阳且收盘突破前三个交易日最高价"
-      ],
-      "reference_low": 11.99,
-      "reference_low_date": "2026-10-30",
-      "low_age_sessions": 3,
-      "today_low_vs_reference_pct": 1.08,
-      "today_close_vs_reference_pct": 7.67,
-      "prior_3_high": 12.54,
-      "target_ohlc": {
-        "open": 12.49,
-        "high": 13.03,
-        "low": 12.12,
-        "close": 12.91
-      },
-      "previous_year_low": false,
-      "current_year_low": true
-    },
-    {
-      "rank": 46,
+      "rank": 38,
       "bucket": "仅2026年低位",
       "code": "01208",
       "name": "五矿资源",
-      "target_session": "2026-11-04",
-      "close": 6.915,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": false
-      },
-      "signal_labels": [],
-      "notes": [
-        "今天未触发四类严格结构；仅保持低位观察"
-      ],
-      "reference_low": 6.66,
-      "reference_low_date": "2026-11-03",
-      "low_age_sessions": 1,
-      "today_low_vs_reference_pct": -1.88,
-      "today_close_vs_reference_pct": 3.83,
-      "prior_3_high": 7.1,
-      "target_ohlc": {
-        "open": 6.88,
-        "high": 7.025,
-        "low": 6.535,
-        "close": 6.915
-      },
-      "previous_year_low": false,
-      "current_year_low": true
-    },
-    {
-      "rank": 47,
-      "bucket": "仅2026年低位",
-      "code": "01133",
-      "name": "哈尔滨电气",
-      "target_session": "2026-11-04",
-      "close": 12.12,
+      "target_session": "2026-11-05",
+      "close": 7.115,
       "analysis_status": "analyzed",
       "signals": {
         "two_b": false,
@@ -1586,28 +1309,28 @@
       "notes": [
         "底部附近，收阳且收盘突破前三个交易日最高价"
       ],
-      "reference_low": 10.8,
-      "reference_low_date": "2026-10-23",
-      "low_age_sessions": 8,
-      "today_low_vs_reference_pct": 6.57,
-      "today_close_vs_reference_pct": 12.22,
-      "prior_3_high": 11.88,
+      "reference_low": 6.535,
+      "reference_low_date": "2026-11-04",
+      "low_age_sessions": 1,
+      "today_low_vs_reference_pct": 5.81,
+      "today_close_vs_reference_pct": 8.88,
+      "prior_3_high": 7.1,
       "target_ohlc": {
-        "open": 11.8,
-        "high": 12.21,
-        "low": 11.51,
-        "close": 12.12
+        "open": 7.07,
+        "high": 7.13,
+        "low": 6.915,
+        "close": 7.115
       },
       "previous_year_low": false,
       "current_year_low": true
     },
     {
-      "rank": 48,
+      "rank": 39,
       "bucket": "仅2026年低位",
       "code": "00425",
       "name": "敏实集团",
-      "target_session": "2026-11-04",
-      "close": 23.0,
+      "target_session": "2026-11-05",
+      "close": 23.78,
       "analysis_status": "analyzed",
       "signals": {
         "two_b": false,
@@ -1623,26 +1346,26 @@
       ],
       "reference_low": 21.0,
       "reference_low_date": "2026-10-23",
-      "low_age_sessions": 8,
-      "today_low_vs_reference_pct": 5.24,
-      "today_close_vs_reference_pct": 9.52,
-      "prior_3_high": 22.64,
+      "low_age_sessions": 9,
+      "today_low_vs_reference_pct": 9.71,
+      "today_close_vs_reference_pct": 13.24,
+      "prior_3_high": 23.06,
       "target_ohlc": {
-        "open": 22.72,
-        "high": 23.06,
-        "low": 22.1,
-        "close": 23.0
+        "open": 23.3,
+        "high": 24.2,
+        "low": 23.04,
+        "close": 23.78
       },
       "previous_year_low": false,
       "current_year_low": true
     },
     {
-      "rank": 49,
+      "rank": 40,
       "bucket": "仅2026年低位",
-      "code": "01818",
-      "name": "招金矿业",
-      "target_session": "2026-11-04",
-      "close": 16.91,
+      "code": "09698",
+      "name": "万国数据",
+      "target_session": "2026-11-05",
+      "close": 23.74,
       "analysis_status": "analyzed",
       "signals": {
         "two_b": false,
@@ -1656,28 +1379,28 @@
       "notes": [
         "底部附近，收阳且收盘突破前三个交易日最高价"
       ],
-      "reference_low": 14.72,
-      "reference_low_date": "2026-11-02",
+      "reference_low": 20.8,
+      "reference_low_date": "2026-11-03",
       "low_age_sessions": 2,
-      "today_low_vs_reference_pct": 2.85,
-      "today_close_vs_reference_pct": 14.88,
-      "prior_3_high": 15.98,
+      "today_low_vs_reference_pct": 9.04,
+      "today_close_vs_reference_pct": 14.13,
+      "prior_3_high": 22.5,
       "target_ohlc": {
-        "open": 15.3,
-        "high": 17.08,
-        "low": 15.14,
-        "close": 16.91
+        "open": 22.68,
+        "high": 24.16,
+        "low": 22.68,
+        "close": 23.74
       },
       "previous_year_low": false,
       "current_year_low": true
     },
     {
-      "rank": 50,
+      "rank": 41,
       "bucket": "仅2026年低位",
-      "code": "02208",
-      "name": "金风科技",
-      "target_session": "2026-11-04",
-      "close": 7.68,
+      "code": "00175",
+      "name": "吉利汽车",
+      "target_session": "2026-11-05",
+      "close": 14.77,
       "analysis_status": "analyzed",
       "signals": {
         "two_b": false,
@@ -1691,197 +1414,28 @@
       "notes": [
         "底部附近，收阳且收盘突破前三个交易日最高价"
       ],
-      "reference_low": 6.715,
-      "reference_low_date": "2026-10-27",
-      "low_age_sessions": 6,
-      "today_low_vs_reference_pct": 5.29,
-      "today_close_vs_reference_pct": 14.37,
-      "prior_3_high": 7.245,
-      "target_ohlc": {
-        "open": 7.18,
-        "high": 7.68,
-        "low": 7.07,
-        "close": 7.68
-      },
-      "previous_year_low": false,
-      "current_year_low": true
-    },
-    {
-      "rank": 51,
-      "bucket": "仅2026年低位",
-      "code": "01898",
-      "name": "中煤能源",
-      "target_session": "2026-11-04",
-      "close": 9.85,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": false
-      },
-      "signal_labels": [],
-      "notes": [
-        "今天未触发四类严格结构；仅保持低位观察"
-      ],
-      "reference_low": 9.31,
-      "reference_low_date": "2026-10-23",
-      "low_age_sessions": 8,
-      "today_low_vs_reference_pct": 2.04,
-      "today_close_vs_reference_pct": 5.8,
-      "prior_3_high": 9.9,
-      "target_ohlc": {
-        "open": 9.6,
-        "high": 9.925,
-        "low": 9.5,
-        "close": 9.85
-      },
-      "previous_year_low": false,
-      "current_year_low": true
-    },
-    {
-      "rank": 52,
-      "bucket": "仅2026年低位",
-      "code": "02600",
-      "name": "中国铝业",
-      "target_session": "2026-11-04",
-      "close": 7.44,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": false
-      },
-      "signal_labels": [],
-      "notes": [
-        "今天未触发四类严格结构；仅保持低位观察"
-      ],
-      "reference_low": 6.55,
-      "reference_low_date": "2026-10-23",
-      "low_age_sessions": 8,
-      "today_low_vs_reference_pct": 10.08,
-      "today_close_vs_reference_pct": 13.59,
-      "prior_3_high": 7.39,
-      "target_ohlc": {
-        "open": 7.29,
-        "high": 7.475,
-        "low": 7.21,
-        "close": 7.44
-      },
-      "previous_year_low": false,
-      "current_year_low": true
-    },
-    {
-      "rank": 53,
-      "bucket": "仅2026年低位",
-      "code": "00101",
-      "name": "恒隆地产",
-      "target_session": "2026-11-04",
-      "close": 6.525,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": true
-      },
-      "signal_labels": [
-        "底部附近局部价格转强"
-      ],
-      "notes": [
-        "底部附近，收阳且收盘突破前三个交易日最高价"
-      ],
-      "reference_low": 6.11,
+      "reference_low": 13.15,
       "reference_low_date": "2026-10-30",
-      "low_age_sessions": 3,
-      "today_low_vs_reference_pct": 3.52,
-      "today_close_vs_reference_pct": 6.79,
-      "prior_3_high": 6.44,
+      "low_age_sessions": 4,
+      "today_low_vs_reference_pct": 7.53,
+      "today_close_vs_reference_pct": 12.32,
+      "prior_3_high": 14.03,
       "target_ohlc": {
-        "open": 6.4,
-        "high": 6.525,
-        "low": 6.325,
-        "close": 6.525
+        "open": 14.35,
+        "high": 14.91,
+        "low": 14.14,
+        "close": 14.77
       },
       "previous_year_low": false,
       "current_year_low": true
     },
     {
-      "rank": 54,
-      "bucket": "仅2026年低位",
-      "code": "01530",
-      "name": "三生制药",
-      "target_session": "2026-11-04",
-      "close": 14.75,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": true
-      },
-      "signal_labels": [
-        "底部附近局部价格转强"
-      ],
-      "notes": [
-        "底部附近，收阳且收盘突破前三个交易日最高价"
-      ],
-      "reference_low": 13.05,
-      "reference_low_date": "2026-10-27",
-      "low_age_sessions": 6,
-      "today_low_vs_reference_pct": 6.13,
-      "today_close_vs_reference_pct": 13.03,
-      "prior_3_high": 14.09,
-      "target_ohlc": {
-        "open": 13.93,
-        "high": 14.78,
-        "low": 13.85,
-        "close": 14.75
-      },
-      "previous_year_low": false,
-      "current_year_low": true
-    },
-    {
-      "rank": 55,
-      "bucket": "仅2026年低位",
-      "code": "01378",
-      "name": "中国宏桥",
-      "target_session": "2026-11-04",
-      "close": 20.34,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": false
-      },
-      "signal_labels": [],
-      "notes": [
-        "今天未触发四类严格结构；仅保持低位观察"
-      ],
-      "reference_low": 17.75,
-      "reference_low_date": "2026-10-23",
-      "low_age_sessions": 8,
-      "today_low_vs_reference_pct": 11.15,
-      "today_close_vs_reference_pct": 14.59,
-      "prior_3_high": 20.36,
-      "target_ohlc": {
-        "open": 19.77,
-        "high": 20.56,
-        "low": 19.73,
-        "close": 20.34
-      },
-      "previous_year_low": false,
-      "current_year_low": true
-    },
-    {
-      "rank": 56,
+      "rank": 42,
       "bucket": "仅2026年低位",
       "code": "00856",
       "name": "伟仕佳杰",
-      "target_session": "2026-11-04",
-      "close": 7.935,
+      "target_session": "2026-11-05",
+      "close": 8.0,
       "analysis_status": "analyzed",
       "signals": {
         "two_b": false,
@@ -1897,26 +1451,26 @@
       ],
       "reference_low": 7.46,
       "reference_low_date": "2026-11-03",
-      "low_age_sessions": 1,
-      "today_low_vs_reference_pct": 1.21,
-      "today_close_vs_reference_pct": 6.37,
-      "prior_3_high": 7.88,
+      "low_age_sessions": 2,
+      "today_low_vs_reference_pct": 6.03,
+      "today_close_vs_reference_pct": 7.24,
+      "prior_3_high": 7.935,
       "target_ohlc": {
-        "open": 7.55,
-        "high": 7.935,
-        "low": 7.55,
-        "close": 7.935
+        "open": 7.995,
+        "high": 8.225,
+        "low": 7.91,
+        "close": 8.0
       },
       "previous_year_low": false,
       "current_year_low": true
     },
     {
-      "rank": 57,
+      "rank": 43,
       "bucket": "仅2026年低位",
-      "code": "02899",
-      "name": "紫金矿业",
-      "target_session": "2026-11-04",
-      "close": 29.38,
+      "code": "00101",
+      "name": "恒隆地产",
+      "target_session": "2026-11-05",
+      "close": 6.76,
       "analysis_status": "analyzed",
       "signals": {
         "two_b": false,
@@ -1930,28 +1484,28 @@
       "notes": [
         "底部附近，收阳且收盘突破前三个交易日最高价"
       ],
-      "reference_low": 26.76,
-      "reference_low_date": "2026-11-02",
-      "low_age_sessions": 2,
-      "today_low_vs_reference_pct": 1.2,
-      "today_close_vs_reference_pct": 9.79,
-      "prior_3_high": 28.24,
+      "reference_low": 6.11,
+      "reference_low_date": "2026-10-30",
+      "low_age_sessions": 4,
+      "today_low_vs_reference_pct": 7.2,
+      "today_close_vs_reference_pct": 10.64,
+      "prior_3_high": 6.525,
       "target_ohlc": {
-        "open": 27.32,
-        "high": 29.48,
-        "low": 27.08,
-        "close": 29.38
+        "open": 6.55,
+        "high": 6.88,
+        "low": 6.55,
+        "close": 6.76
       },
       "previous_year_low": false,
       "current_year_low": true
     },
     {
-      "rank": 58,
+      "rank": 44,
       "bucket": "仅2026年低位",
-      "code": "06030",
-      "name": "中信证券",
-      "target_session": "2026-11-04",
-      "close": 21.46,
+      "code": "01171",
+      "name": "兖矿能源",
+      "target_session": "2026-11-05",
+      "close": 10.76,
       "analysis_status": "analyzed",
       "signals": {
         "two_b": false,
@@ -1963,28 +1517,96 @@
       "notes": [
         "今天未触发四类严格结构；仅保持低位观察"
       ],
-      "reference_low": 19.37,
-      "reference_low_date": "2026-10-30",
-      "low_age_sessions": 3,
-      "today_low_vs_reference_pct": 7.07,
-      "today_close_vs_reference_pct": 10.79,
-      "prior_3_high": 21.48,
+      "reference_low": 10.01,
+      "reference_low_date": "2026-10-23",
+      "low_age_sessions": 9,
+      "today_low_vs_reference_pct": 6.89,
+      "today_close_vs_reference_pct": 7.49,
+      "prior_3_high": 11.32,
       "target_ohlc": {
-        "open": 21.4,
-        "high": 21.6,
-        "low": 20.74,
-        "close": 21.46
+        "open": 10.99,
+        "high": 11.09,
+        "low": 10.7,
+        "close": 10.76
       },
       "previous_year_low": false,
       "current_year_low": true
     },
     {
-      "rank": 59,
+      "rank": 45,
+      "bucket": "仅2025年低位",
+      "code": "00780",
+      "name": "同程旅行",
+      "target_session": "2026-11-05",
+      "close": 11.34,
+      "analysis_status": "analyzed",
+      "signals": {
+        "two_b": false,
+        "retest": false,
+        "breakdown": false,
+        "strength": true
+      },
+      "signal_labels": [
+        "底部附近局部价格转强"
+      ],
+      "notes": [
+        "底部附近，收阳且收盘突破前三个交易日最高价"
+      ],
+      "reference_low": 9.555,
+      "reference_low_date": "2026-10-30",
+      "low_age_sessions": 4,
+      "today_low_vs_reference_pct": 12.3,
+      "today_close_vs_reference_pct": 18.68,
+      "prior_3_high": 10.81,
+      "target_ohlc": {
+        "open": 10.73,
+        "high": 11.42,
+        "low": 10.73,
+        "close": 11.34
+      },
+      "previous_year_low": true,
+      "current_year_low": false
+    },
+    {
+      "rank": 46,
       "bucket": "仅2025年低位",
       "code": "00168",
       "name": "青岛啤酒",
-      "target_session": "2026-11-04",
-      "close": 41.3,
+      "target_session": "2026-11-05",
+      "close": 41.6,
+      "analysis_status": "analyzed",
+      "signals": {
+        "two_b": false,
+        "retest": false,
+        "breakdown": false,
+        "strength": false
+      },
+      "signal_labels": [],
+      "notes": [
+        "今天未触发四类严格结构；仅保持低位观察"
+      ],
+      "reference_low": 37.2,
+      "reference_low_date": "2026-10-29",
+      "low_age_sessions": 5,
+      "today_low_vs_reference_pct": 10.59,
+      "today_close_vs_reference_pct": 11.83,
+      "prior_3_high": 41.76,
+      "target_ohlc": {
+        "open": 41.6,
+        "high": 42.0,
+        "low": 41.14,
+        "close": 41.6
+      },
+      "previous_year_low": true,
+      "current_year_low": false
+    },
+    {
+      "rank": 47,
+      "bucket": "仅2025年低位",
+      "code": "01876",
+      "name": "百威亚太",
+      "target_session": "2026-11-05",
+      "close": 6.215,
       "analysis_status": "analyzed",
       "signals": {
         "two_b": false,
@@ -1998,28 +1620,28 @@
       "notes": [
         "底部附近，收阳且收盘突破前三个交易日最高价"
       ],
-      "reference_low": 37.2,
+      "reference_low": 5.58,
       "reference_low_date": "2026-10-29",
-      "low_age_sessions": 4,
-      "today_low_vs_reference_pct": 9.19,
-      "today_close_vs_reference_pct": 11.02,
-      "prior_3_high": 41.26,
+      "low_age_sessions": 5,
+      "today_low_vs_reference_pct": 9.14,
+      "today_close_vs_reference_pct": 11.38,
+      "prior_3_high": 6.2,
       "target_ohlc": {
-        "open": 41.28,
-        "high": 41.76,
-        "low": 40.62,
-        "close": 41.3
+        "open": 6.09,
+        "high": 6.305,
+        "low": 6.09,
+        "close": 6.215
       },
       "previous_year_low": true,
       "current_year_low": false
     },
     {
-      "rank": 60,
+      "rank": 48,
       "bucket": "仅2025年低位",
       "code": "09896",
       "name": "名创优品",
-      "target_session": "2026-11-04",
-      "close": 19.89,
+      "target_session": "2026-11-05",
+      "close": 21.64,
       "analysis_status": "analyzed",
       "signals": {
         "two_b": false,
@@ -2031,61 +1653,28 @@
       "notes": [
         "今天未触发四类严格结构；仅保持低位观察"
       ],
-      "reference_low": 17.22,
-      "reference_low_date": "2026-10-06",
+      "reference_low": 17.26,
+      "reference_low_date": "2026-10-07",
       "low_age_sessions": 20,
-      "today_low_vs_reference_pct": 13.7,
-      "today_close_vs_reference_pct": 15.51,
+      "today_low_vs_reference_pct": 18.08,
+      "today_close_vs_reference_pct": 25.38,
       "prior_3_high": 20.62,
       "target_ohlc": {
-        "open": 20.1,
-        "high": 20.1,
-        "low": 19.58,
-        "close": 19.89
+        "open": 20.46,
+        "high": 21.88,
+        "low": 20.38,
+        "close": 21.64
       },
       "previous_year_low": true,
       "current_year_low": false
     },
     {
-      "rank": 61,
-      "bucket": "仅2025年低位",
-      "code": "01876",
-      "name": "百威亚太",
-      "target_session": "2026-11-04",
-      "close": 6.11,
-      "analysis_status": "analyzed",
-      "signals": {
-        "two_b": false,
-        "retest": false,
-        "breakdown": false,
-        "strength": false
-      },
-      "signal_labels": [],
-      "notes": [
-        "今天未触发四类严格结构；仅保持低位观察"
-      ],
-      "reference_low": 5.58,
-      "reference_low_date": "2026-10-29",
-      "low_age_sessions": 4,
-      "today_low_vs_reference_pct": 7.8,
-      "today_close_vs_reference_pct": 9.5,
-      "prior_3_high": 6.2,
-      "target_ohlc": {
-        "open": 6.18,
-        "high": 6.195,
-        "low": 6.015,
-        "close": 6.11
-      },
-      "previous_year_low": true,
-      "current_year_low": false
-    },
-    {
-      "rank": 62,
+      "rank": 49,
       "bucket": "仅2025年低位",
       "code": "00291",
       "name": "华润啤酒",
-      "target_session": "2026-11-04",
-      "close": 20.34,
+      "target_session": "2026-11-05",
+      "close": 20.66,
       "analysis_status": "analyzed",
       "signals": {
         "two_b": false,
@@ -2099,26 +1688,61 @@
       ],
       "reference_low": 18.5,
       "reference_low_date": "2026-10-07",
-      "low_age_sessions": 19,
-      "today_low_vs_reference_pct": 9.19,
-      "today_close_vs_reference_pct": 9.95,
+      "low_age_sessions": 20,
+      "today_low_vs_reference_pct": 10.27,
+      "today_close_vs_reference_pct": 11.68,
       "prior_3_high": 20.74,
       "target_ohlc": {
-        "open": 20.4,
-        "high": 20.64,
-        "low": 20.2,
-        "close": 20.34
+        "open": 20.72,
+        "high": 21.06,
+        "low": 20.4,
+        "close": 20.66
       },
       "previous_year_low": true,
       "current_year_low": false
     },
     {
-      "rank": 63,
+      "rank": 50,
+      "bucket": "仅2025年低位",
+      "code": "00753",
+      "name": "中国国航",
+      "target_session": "2026-11-05",
+      "close": 3.935,
+      "analysis_status": "analyzed",
+      "signals": {
+        "two_b": false,
+        "retest": false,
+        "breakdown": false,
+        "strength": true
+      },
+      "signal_labels": [
+        "底部附近局部价格转强"
+      ],
+      "notes": [
+        "底部附近，收阳且收盘突破前三个交易日最高价"
+      ],
+      "reference_low": 3.35,
+      "reference_low_date": "2026-10-23",
+      "low_age_sessions": 9,
+      "today_low_vs_reference_pct": 15.82,
+      "today_close_vs_reference_pct": 17.46,
+      "prior_3_high": 3.845,
+      "target_ohlc": {
+        "open": 3.915,
+        "high": 4.05,
+        "low": 3.88,
+        "close": 3.935
+      },
+      "previous_year_low": true,
+      "current_year_low": false
+    },
+    {
+      "rank": 51,
       "bucket": "仅2025年低位",
       "code": "00968",
       "name": "信义光能",
-      "target_session": "2026-11-04",
-      "close": 2.055,
+      "target_session": "2026-11-05",
+      "close": 2.125,
       "analysis_status": "analyzed",
       "signals": {
         "two_b": false,
@@ -2134,26 +1758,96 @@
       ],
       "reference_low": 1.785,
       "reference_low_date": "2026-10-23",
-      "low_age_sessions": 8,
-      "today_low_vs_reference_pct": 3.36,
-      "today_close_vs_reference_pct": 15.13,
-      "prior_3_high": 1.91,
+      "low_age_sessions": 9,
+      "today_low_vs_reference_pct": 14.57,
+      "today_close_vs_reference_pct": 19.05,
+      "prior_3_high": 2.065,
       "target_ohlc": {
-        "open": 1.87,
-        "high": 2.065,
-        "low": 1.845,
-        "close": 2.055
+        "open": 2.085,
+        "high": 2.21,
+        "low": 2.045,
+        "close": 2.125
       },
       "previous_year_low": true,
       "current_year_low": false
     },
     {
-      "rank": 64,
+      "rank": 52,
+      "bucket": "仅2025年低位",
+      "code": "06855",
+      "name": "亚盛医药",
+      "target_session": "2026-11-05",
+      "close": 30.24,
+      "analysis_status": "analyzed",
+      "signals": {
+        "two_b": false,
+        "retest": false,
+        "breakdown": false,
+        "strength": true
+      },
+      "signal_labels": [
+        "底部附近局部价格转强"
+      ],
+      "notes": [
+        "底部附近，收阳且收盘突破前三个交易日最高价"
+      ],
+      "reference_low": 25.8,
+      "reference_low_date": "2026-11-03",
+      "low_age_sessions": 2,
+      "today_low_vs_reference_pct": 13.26,
+      "today_close_vs_reference_pct": 17.21,
+      "prior_3_high": 28.34,
+      "target_ohlc": {
+        "open": 29.5,
+        "high": 30.72,
+        "low": 29.22,
+        "close": 30.24
+      },
+      "previous_year_low": true,
+      "current_year_low": false
+    },
+    {
+      "rank": 53,
+      "bucket": "仅2025年低位",
+      "code": "03896",
+      "name": "金山云",
+      "target_session": "2026-11-05",
+      "close": 4.675,
+      "analysis_status": "analyzed",
+      "signals": {
+        "two_b": false,
+        "retest": false,
+        "breakdown": false,
+        "strength": true
+      },
+      "signal_labels": [
+        "底部附近局部价格转强"
+      ],
+      "notes": [
+        "底部附近，收阳且收盘突破前三个交易日最高价"
+      ],
+      "reference_low": 3.875,
+      "reference_low_date": "2026-11-04",
+      "low_age_sessions": 1,
+      "today_low_vs_reference_pct": 9.94,
+      "today_close_vs_reference_pct": 20.65,
+      "prior_3_high": 4.265,
+      "target_ohlc": {
+        "open": 4.3,
+        "high": 4.73,
+        "low": 4.26,
+        "close": 4.675
+      },
+      "previous_year_low": true,
+      "current_year_low": false
+    },
+    {
+      "rank": 54,
       "bucket": "仅2025年低位",
       "code": "02331",
       "name": "李宁",
-      "target_session": "2026-11-04",
-      "close": 14.43,
+      "target_session": "2026-11-05",
+      "close": 14.72,
       "analysis_status": "analyzed",
       "signals": {
         "two_b": false,
@@ -2165,17 +1859,17 @@
       "notes": [
         "今天未触发四类严格结构；仅保持低位观察"
       ],
-      "reference_low": 12.23,
-      "reference_low_date": "2026-10-06",
-      "low_age_sessions": 20,
-      "today_low_vs_reference_pct": 17.01,
-      "today_close_vs_reference_pct": 17.99,
-      "prior_3_high": 14.55,
+      "reference_low": 12.24,
+      "reference_low_date": "2026-10-08",
+      "low_age_sessions": 19,
+      "today_low_vs_reference_pct": 19.61,
+      "today_close_vs_reference_pct": 20.26,
+      "prior_3_high": 14.58,
       "target_ohlc": {
-        "open": 14.37,
-        "high": 14.58,
-        "low": 14.31,
-        "close": 14.43
+        "open": 14.8,
+        "high": 14.92,
+        "low": 14.64,
+        "close": 14.72
       },
       "previous_year_low": true,
       "current_year_low": false
