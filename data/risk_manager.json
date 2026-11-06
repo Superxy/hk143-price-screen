@@ -1,15 +1,15 @@
 {
   "meta": {
-    "target_session": "2026-11-05",
-    "generated_at_hkt": "2026-11-06 02:42:40 +0800",
+    "target_session": "2026-11-06",
+    "generated_at_hkt": "2026-11-07 01:57:00 +0800",
     "source_fresh_count": 143,
     "source_total": 143,
     "source_candidate_count": 54,
-    "signal_candidates": 0,
-    "evaluated_count": 0,
+    "signal_candidates": 1,
+    "evaluated_count": 1,
     "invalid_count": 0,
     "status_counts": {
-      "scenario_pass": 0,
+      "scenario_pass": 1,
       "rr_below_threshold": 0,
       "no_upside_resistance": 0,
       "over_8pct": 0,
@@ -22,5 +22,37 @@
     "rule_version": "conditional_risk_2b_retest_v1",
     "notice": "No future prices, no order, no guaranteed loss cap; fees/slippage not included"
   },
-  "assessments": []
+  "assessments": [
+    {
+      "rank": 33,
+      "bucket": "仅2026年低位",
+      "code": "03993",
+      "name": "洛阳钼业",
+      "target_session": "2026-11-06",
+      "signal_type": "2B假跌破",
+      "close": 12.05,
+      "entry_reference": 12.2745,
+      "structure_invalidation": 11.77085,
+      "loss_pct_to_stop": 4.1,
+      "risk_within_8pct": true,
+      "historical_resistance": 13.33,
+      "historical_resistance_date_window": [
+        "2026-11-02",
+        "2026-11-05"
+      ],
+      "reward_pct_to_resistance": 8.6,
+      "reward_risk_to_resistance": 2.1,
+      "hypothetical_2r_target": 13.2818,
+      "hypothetical_3r_target": 13.78545,
+      "risk_status": "scenario_pass",
+      "reference_low": 11.99,
+      "reference_low_date": "2026-10-30",
+      "notes": [
+        "已满足8%价格风险上限，历史阻力空间≥2R；仅供研究",
+        "参考价非明日开盘价，真实成交需确认港股最小价位、跳空、价差和交易费用",
+        "若触发前先跌破结构失效价，条件方案作废；失效价不保证止损按该价成交"
+      ],
+      "trigger_rule": "未来交易日向上突破参考触发价，且实际成交价接近参考价才重新评估；非订单"
+    }
+  ]
 }
