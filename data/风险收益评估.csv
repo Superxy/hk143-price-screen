@@ -1,1 +1,2 @@
 ﻿rank,bucket,code,name,target_session,signal_type,close,entry_reference,structure_invalidation,loss_pct_to_stop,risk_within_8pct,historical_resistance,reward_pct_to_resistance,reward_risk_to_resistance,hypothetical_2r_target,hypothetical_3r_target,risk_status,reference_low,reference_low_date,notes
+32,仅2026年低位,00017,新世界发展,2026-11-10,二次回踩,5.07,5.16531,4.8158,6.77,True,5.45,5.51,0.81,5.86433,6.21384,rr_below_threshold,4.84,2026-10-23,已满足8%价格风险上限，但至历史反弹高点空间不足2R；参考价非明日开盘价，真实成交需确认港股最小价位、跳空、价差和交易费用；若触发前先跌破结构失效价，条件方案作废；失效价不保证止损按该价成交

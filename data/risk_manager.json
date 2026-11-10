@@ -1,16 +1,16 @@
 {
   "meta": {
-    "target_session": "2026-11-09",
-    "generated_at_hkt": "2026-11-10 05:25:47 +0800",
+    "target_session": "2026-11-10",
+    "generated_at_hkt": "2026-11-11 02:40:19 +0800",
     "source_fresh_count": 143,
     "source_total": 143,
-    "source_candidate_count": 54,
-    "signal_candidates": 0,
-    "evaluated_count": 0,
+    "source_candidate_count": 51,
+    "signal_candidates": 1,
+    "evaluated_count": 1,
     "invalid_count": 0,
     "status_counts": {
       "scenario_pass": 0,
-      "rr_below_threshold": 0,
+      "rr_below_threshold": 1,
       "no_upside_resistance": 0,
       "over_8pct": 0,
       "data_not_verified": 0
@@ -22,5 +22,37 @@
     "rule_version": "conditional_risk_2b_retest_v1",
     "notice": "No future prices, no order, no guaranteed loss cap; fees/slippage not included"
   },
-  "assessments": []
+  "assessments": [
+    {
+      "rank": 32,
+      "bucket": "仅2026年低位",
+      "code": "00017",
+      "name": "新世界发展",
+      "target_session": "2026-11-10",
+      "signal_type": "二次回踩",
+      "close": 5.07,
+      "entry_reference": 5.16531,
+      "structure_invalidation": 4.8158,
+      "loss_pct_to_stop": 6.77,
+      "risk_within_8pct": true,
+      "historical_resistance": 5.45,
+      "historical_resistance_date_window": [
+        "2026-10-26",
+        "2026-11-09"
+      ],
+      "reward_pct_to_resistance": 5.51,
+      "reward_risk_to_resistance": 0.81,
+      "hypothetical_2r_target": 5.86433,
+      "hypothetical_3r_target": 6.21384,
+      "risk_status": "rr_below_threshold",
+      "reference_low": 4.84,
+      "reference_low_date": "2026-10-23",
+      "notes": [
+        "已满足8%价格风险上限，但至历史反弹高点空间不足2R",
+        "参考价非明日开盘价，真实成交需确认港股最小价位、跳空、价差和交易费用",
+        "若触发前先跌破结构失效价，条件方案作废；失效价不保证止损按该价成交"
+      ],
+      "trigger_rule": "未来交易日向上突破参考触发价，且实际成交价接近参考价才重新评估；非订单"
+    }
+  ]
 }
